@@ -187,7 +187,8 @@ if "last_quest" not in st.session_state:
     st.session_state.last_quest = None
 if "todays" not in st.session_state:
     st.session_state.todays = None
-
+if "kids_mode" not in st.session_state:
+    st.session_state.kids_mode = True
 
 def log_event(event: str):
     stamp = datetime.now(tz=tz.gettz("Europe/Warsaw")).strftime("%Y-%m-%d %H:%M:%S")
@@ -260,6 +261,8 @@ with st.sidebar:
             "Panel rodzica",
         ],
     )
+# Prostsz y widok dla dzieci (ukrywa JSON-y, pokazuje kafelki)
+    st.checkbox("Tryb dziecięcy (prostszy widok)", value=True, key="kids_mode")
 
     with st.expander("Słowniczek (skrót)"):
         for k, v in GLOSSARY.items():
@@ -881,14 +884,31 @@ elif page == "Hall of Fame":
         "missions_done": sorted([k for k, v in st.session_state.missions_state.items() if v.get("done")]),
     }
 
-    st.subheader("Mój profil (JSON)")
-    st.json(profile)
+    # --- NOWY, przyjazny widok ---
+    st.subheader("Mój profil")
+
+    c1, c2, c3, c4 = st.columns(4)
+    c1.metric("Imię", st.session_state.kid_name or "—")
+    c2.metric("Wiek", st.session_state.age or "—")
+    c3.metric("Poziom", current_level(st.session_state.xp))
+    c4.metric("XP", st.session_state.xp)
+
+    st.caption(
+        f"Odznaki: **{len(st.session_state.badges)}**  |  Naklejki: **{len(st.session_state.stickers)}**"
+    )
+
+    # Plik profilu do pobrania – zostaje na wierzchu
     st.download_button(
         "Pobierz mój profil (JSON)",
         data=json.dumps(profile, ensure_ascii=False, indent=2).encode("utf-8"),
         file_name="data4kids_profile.json",
         mime="application/json",
     )
+
+    # JSON techniczny: tylko gdy wyłączony tryb dziecięcy
+    if not st.session_state.get("kids_mode", True):
+        with st.expander("Pokaż dane techniczne (JSON)"):
+            st.json(profile)
 
     st.divider()
     st.subheader("Tabela Hall of Fame")
