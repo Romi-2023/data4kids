@@ -239,6 +239,342 @@ def show_hint(mid: str, hint: str):
         st.caption(hint)
 
 # -----------------------------
+# Chemistry constants + parser
+# -----------------------------
+ATOMIC_MASS = {"H": 1.008, "C": 12.011, "O": 15.999, "N": 14.007, "Na": 22.990, "Cl": 35.45}
+
+def _molar_mass(formula: str) -> Optional[float]:
+    # prosty parser: obsługa H2O, CO2, NaCl, C6H12O6 itp. (bez nawiasów)
+    import re
+    tokens = re.findall(r"[A-Z][a-z]?\d*", formula)
+    if not tokens:
+        return None
+    total = 0.0
+    for tok in tokens:
+        m = re.match(r"([A-Z][a-z]?)(\d*)", tok)
+        if not m:
+            return None
+        el, num = m.group(1), m.group(2)
+        if el not in ATOMIC_MASS:
+            return None
+        n = int(num) if num else 1
+        total += ATOMIC_MASS[el] * n
+    return total
+
+# -----------------------------
+# Missions (global definitions)
+# -----------------------------
+def mission_draw_xy(mid: str, req_x: str, req_y: str, req_type: str) -> None:
+    display_req_y = COUNT_LABEL if _is_count_choice(req_y) else req_y
+    st.write(f"**Zadanie:** Narysuj wykres: **{req_type}** z osią **X={req_x}**, **Y={display_req_y}**.")
+    df = st.session_state.data
+
+    x = st.selectbox("Oś X", df.columns.tolist(), key=f"{mid}_x")
+    y_options = [COUNT_LABEL] + df.columns.tolist()
+    y = st.selectbox("Oś Y", y_options, key=f"{mid}_y")
+    chart_type = st.selectbox("Typ wykresu", ["punktowy", "słupkowy"], key=f"{mid}_type")
+
+    try:
+        if chart_type == "punktowy":
+            if _is_count_choice(y):
+                st.warning("Dla wykresu punktowego wybierz kolumnę liczbową na osi Y (nie 'liczba osób').")
+                ch = alt.Chart(df).mark_circle(size=70, opacity=0.7).encode(x=x, y=x, tooltip=[x])
+            else:
+                ch = alt.Chart(df).mark_circle(size=70, opacity=0.7).encode(x=x, y=y, tooltip=[x, y])
+        else:  # słupkowy
+            if _is_count_choice(y):
+                ch = alt.Chart(df).mark_bar().encode(x=x, y=alt.Y("count():Q", title="Liczba osób"), tooltip=[x])
+            else:
+                ch = alt.Chart(df).mark_bar().encode(x=x, y=y, tooltip=[x, y])
+        st.altair_chart(ch.interactive(), use_container_width=True)
+    except Exception as e:
+        st.warning(f"Nie udało się narysować: {e}")
+
+    y_ok = (_is_count_choice(y) and _is_count_choice(req_y)) or (y == req_y)
+    ok = (x == req_x) and y_ok and (chart_type == req_type)
+
+    if st.button(f"Sprawdź {mid}"):
+        award(ok, 10, badge="Rysownik danych", mid=mid)
+        if ok:
+            grant_sticker("sticker_bars" if chart_type == "słupkowy" else "sticker_points")
+            st.success("✅ Super — dokładnie taki wykres!")
+        else:
+            st.warning(f"Jeszcze nie. Ustaw X={req_x}, Y={display_req_y}, typ={req_type}.")
+    show_hint(mid, "Słupki liczą **liczbę osób**, a punkty wymagają liczb na osi Y.")
+
+def mission_detect_city(mid: str) -> None:
+    st.write("**Zadanie detektywistyczne:** Znajdź **miasto**, w którym jest **co najmniej 5 osób** i ich **ulubiony owoc to 'arbuz'**.")
+
+    df = st.session_state.data
+
+    required = {"miasto", "ulubiony_owoc"}
+    if not required.issubset(set(df.columns)):
+        st.error("Potrzebne kolumny: 'miasto', 'ulubiony_owoc'.")
+        return
+
+    # Normalizacja + filtr na arbuz (case-insensitive)
+    norm = df.copy()
+    norm["miasto"] = norm["miasto"].astype(str).str.strip()
+    norm["ulubiony_owoc"] = norm["ulubiony_owoc"].astype(str).str.strip().str.lower()
+    df_arbuz = norm[norm["ulubiony_owoc"] == "arbuz"]
+
+    grp = (
+        df_arbuz
+        .groupby("miasto", as_index=False)
+        .size()
+        .rename(columns={"size": "liczba_osób"})
+        .sort_values("liczba_osób", ascending=False)
+    )
+
+    st.write("Zobacz wartości w tabeli lub narysuj słupki: X=miasto, Y=liczba osób (arbuz).")
+
+    if grp.empty:
+        st.info("Brak danych o fanach arbuza 🍉.")
+        return
+
+    st.dataframe(grp, use_container_width=True)
+    st.bar_chart(grp.set_index("miasto")["liczba_osób"])
+
+    city_pick = st.selectbox("Twoje miasto:", grp["miasto"].tolist(), key=f"{mid}_city")
+
+    if st.button(f"Sprawdź {mid}", key=f"{mid}_check"):
+        liczba = int(grp.loc[grp["miasto"] == city_pick, "liczba_osób"].iloc[0]) if city_pick in grp["miasto"].values else 0
+        ok = liczba >= 5
+        award(ok, 15, badge="Sherlock danych", mid=mid)
+        if ok:
+            grant_sticker("sticker_detect")
+            st.success("✅ Brawo! To miasto spełnia warunek (≥ 5 osób z arbuzem).")
+        else:
+            st.warning(f"W {city_pick} jest tylko {liczba} fanów arbuza. Poszukaj miasta z wynikiem ≥ 5.")
+
+        show_hint(mid, "Przefiltruj na 'arbuz', zgrupuj po mieście, policz i wybierz miasto z wynikiem ≥ 5.")
+
+def mission_fill_blank_text(mid: str, sentence_tpl: str, correct_word: str, options: List[str], xp_gain: int = 6) -> None:
+    st.write("**Uzupełnij zdanie:**")
+    st.write(sentence_tpl.replace("___", "**___**"))
+    pick = st.selectbox("Wybierz słowo:", options, key=f"{mid}_pick")
+
+    if st.button(f"Sprawdź {mid}"):
+        ok = pick == correct_word
+        award(ok, xp_gain, badge="Mistrz słówek", mid=mid)
+        if ok:
+            st.success("✅ Dobrze!")
+        else:
+            st.warning(f"Jeszcze nie. Poprawna odpowiedź: **{correct_word}**")
+
+    show_hint(mid, "Na osi Y w słupkach często jest **liczba osób**.")
+
+def mission_fill_number(mid: str, prompt: str, true_value: float, tolerance: Optional[float] = None, xp_gain: int = 8) -> None:
+    st.write(f"**Uzupełnij liczbę:** {prompt}")
+    step = 0.1 if isinstance(true_value, float) and not float(true_value).is_integer() else 1
+    guess = st.number_input("Twoja odpowiedź:", step=step, key=f"{mid}_num")
+
+    if st.button(f"Sprawdź {mid}"):
+        ok = (abs(guess - true_value) <= tolerance) if tolerance is not None else (guess == true_value)
+        award(ok, xp_gain, badge="Liczydło", mid=mid)
+        if ok:
+            st.success(f"✅ Tak! Prawidłowo: {true_value:g}.")
+        else:
+            st.warning(f"Prawidłowo: {true_value:g}.")
+
+    show_hint(mid, "Policz średnią: dodaj wszystkie i podziel przez liczbę osób.")
+
+def mission_order_steps(mid: str, prompt: str, steps_correct: List[str], xp_gain: int = 10) -> None:
+    st.write(f"**Ułóż w kolejności:** {prompt}")
+    picked = st.multiselect("Klikaj kroki we właściwej kolejności ⬇️", steps_correct, default=[], key=f"{mid}_order")
+    st.caption("Tip: klikaj po kolei; lista u góry zachowuje kolejność wyboru.")
+
+    if st.button(f"Sprawdź {mid}"):
+        ok = picked == steps_correct
+        award(ok, xp_gain, badge="Porządny planista", mid=mid)
+        if ok:
+            st.success("✅ Idealnie ułożone!")
+        else:
+            st.warning("Jeszcze nie. Zacznij od **Wczytaj dane** i skończ na **Zapisz wynik**.")
+
+    show_hint(mid, "Najpierw **wczytaj**, potem **wybierz kolumny**, potem **wykres**.")
+
+def mission_spot_the_error(mid: str, df_local: pd.DataFrame, xp_gain: int = 12) -> None:
+    st.write("**Znajdź błąd na wykresie:**")
+    if all(c in df_local.columns for c in ["ulubiony_owoc", "wiek"]):
+        bad = alt.Chart(df_local).mark_bar().encode(x="ulubiony_owoc:N", y="wiek:Q", tooltip=["ulubiony_owoc", "wiek"])
+        st.altair_chart(bad, use_container_width=True)
+        q = "Co jest nie tak?"
+        opts = [
+            "Na osi Y powinna być 'liczba osób', nie 'wiek'.",
+            "Na osi X powinna być liczba, nie kategoria.",
+            "Kolory są złe.",
+        ]
+        pick = st.radio(q, opts, index=None, key=f"{mid}_err")
+        if st.button(f"Sprawdź {mid}"):
+            ok = pick == opts[0]
+            award(ok, xp_gain, badge="Detektyw wykresów", mid=mid)
+            if ok:
+                st.success("✅ Dokładnie!")
+            else:
+                st.warning("Spróbuj jeszcze raz; pomyśl o tym, co liczą słupki.")
+    else:
+        st.info("Załaduj zestaw z kolumnami 'ulubiony_owoc' i 'wiek'.")
+
+    show_hint(mid, "Słupki zwykle liczą, ile elementów jest w każdej kategorii.")
+
+def mission_simulate_coin(mid: str) -> None:
+    st.write("**Symulacja rzutu monetą 🎲** — wybierz liczbę rzutów, zgadnij udział orłów, potem sprawdź!")
+    n = st.selectbox("Liczba rzutów:", [10, 100, 1000], index=1, key=f"{mid}_n")
+    guess = st.slider("Twoja zgadywana proporcja orłów", 0.0, 1.0, 0.5, 0.01, key=f"{mid}_g")
+    tol = 0.10 if n == 10 else (0.05 if n == 100 else 0.03)
+
+    if st.button(f"Symuluj {mid}"):
+        flips = [random.choice(["orzeł", "reszka"]) for _ in range(n)]
+        heads = flips.count("orzeł")
+        prop = heads / n
+        st.write(f"Wynik: orły = {heads}/{n} (≈ {prop:.2f})")
+        df_sim = pd.DataFrame({"wynik": flips})
+        chart = alt.Chart(df_sim).mark_bar().encode(x="wynik:N", y=alt.Y("count():Q", title="Liczba"))
+        st.altair_chart(chart, use_container_width=True)
+        ok = abs(prop - guess) <= tol
+        award(ok, 10, badge="Mały probabilista", mid=mid)
+        if ok:
+            grant_sticker("sticker_sim")
+            st.success("✅ Świetna estymacja!")
+        else:
+            st.info("Nie szkodzi! Im więcej rzutów, tym bliżej 0.5.")
+
+    show_hint(mid, "Przy dużej liczbie rzutów wynik zbliża się do 50% orłów.")
+
+def mission_math_arith(mid: str):
+    st.subheader("Matematyka ➗: szybkie działania")
+    a, b = random.randint(2, 12), random.randint(2, 12)
+    op = random.choice(["+", "-", "*"])
+    true = a + b if op == "+" else (a - b if op == "-" else a * b)
+    guess = st.number_input(f"Policz: {a} {op} {b} = ?", step=1, key=f"{mid}_g")
+    if st.button(f"Sprawdź {mid}"):
+        ok = (guess == true)
+        award(ok, 6, badge="Szybkie liczby", mid=mid)
+        if ok:
+            grant_sticker("sticker_math")
+            st.success("✅ Tak!")
+        else:
+            st.warning(f"Prawidłowo: {true}")
+    show_hint(mid, "Pamiętaj: najpierw mnożenie, potem dodawanie/odejmowanie.")
+
+def mission_math_line(mid: str):
+    st.subheader("Matematyka 📈: prosta y = a·x + b")
+    a = random.choice([-2, -1, 1, 2])
+    b = random.randint(-3, 3)
+    xs = list(range(-5, 6))
+    df_line = pd.DataFrame({"x": xs, "y": [a*x + b for x in xs]})
+    chart = alt.Chart(df_line).mark_line(point=True).encode(x="x:Q", y="y:Q")
+    st.altair_chart(chart, use_container_width=True)
+    q = st.radio("Jaki jest znak nachylenia a?", ["dodatni", "zerowy", "ujemny"], index=None, key=f"{mid}_slope")
+    if st.button(f"Sprawdź {mid}"):
+        sign = "zerowy" if a == 0 else ("dodatni" if a > 0 else "ujemny")
+        ok = (q == sign)
+        award(ok, 8, badge="Linia prosta", mid=mid)
+        if ok:
+            grant_sticker("sticker_math")
+            st.success("✅ Dobrze!")
+        else:
+            st.warning("Podpowiedź: linia rośnie → dodatni; maleje → ujemny.")
+
+def mission_polish_pos(mid: str):
+    st.subheader("Język polski 📝: część mowy")
+    sentence = "Ala ma kota i czerwony balon."
+    st.write(f"Zdanie: _{sentence}_")
+    pick = st.selectbox("Które słowo to rzeczownik?", ["Ala", "ma", "kota", "czerwony", "balon"], key=f"{mid}_pick")
+    if st.button(f"Sprawdź {mid}"):
+        ok = pick in {"Ala", "kota", "balon"}
+        award(ok, 7, badge="Językowa Iskra", mid=mid)
+        if ok:
+            grant_sticker("sticker_polish")
+            st.success("✅ Świetnie!")
+        else:
+            st.warning("Rzeczowniki to nazwy osób, rzeczy, zwierząt…")
+
+def mission_history_timeline(mid: str):
+    st.subheader("Historia 🏺: ułóż oś czasu")
+    events = [
+        ("Chrzest Polski", 966),
+        ("Bitwa pod Grunwaldem", 1410),
+        ("Konstytucja 3 Maja", 1791),
+        ("Odzyskanie niepodległości", 1918),
+    ]
+    labels = [e[0] for e in events]
+    order = st.multiselect("Klikaj w kolejności od najstarszego do najmłodszego", labels, key=f"{mid}_ord")
+    if st.button(f"Sprawdź {mid}"):
+        correct = [e[0] for e in sorted(events, key=lambda x: x[1])]
+        ok = (order == correct)
+        award(ok, 9, badge="Kronikarz", mid=mid)
+        if ok:
+            grant_sticker("sticker_history")
+            st.success("✅ Pięknie ułożone!")
+        else:
+            st.warning("Podpowiedź: 966 → 1410 → 1791 → 1918")
+
+def mission_geo_capitals(mid: str):
+    st.subheader("Geografia 🗺️: stolice")
+    pairs = {"Polska": "Warszawa", "Niemcy": "Berlin", "Francja": "Paryż", "Hiszpania": "Madryt"}
+    country = random.choice(list(pairs.keys()))
+    pick = st.selectbox(f"Stolica kraju: {country}", ["Warszawa", "Berlin", "Paryż", "Madryt"], key=f"{mid}_pick")
+    if st.button(f"Sprawdź {mid}"):
+        ok = (pick == pairs[country])
+        award(ok, 7, badge="Mały Geograf", mid=mid)
+        if ok:
+            grant_sticker("sticker_geo")
+            st.success("✅ Super!")
+        else:
+            st.warning(f"Prawidłowo: {pairs[country]}")
+
+def mission_physics_speed(mid: str):
+    st.subheader("Fizyka ⚙️: prędkość = droga / czas")
+    s = random.choice([100, 150, 200, 240])  # metry
+    t = random.choice([5, 8, 10, 12])        # sekundy
+    guess = st.number_input(f"Oblicz prędkość dla s={s} m, t={t} s (m/s)", step=1.0, key=f"{mid}_v")
+    true = s / t
+    if st.button(f"Sprawdź {mid}"):
+        ok = abs(guess - true) <= 0.1
+        award(ok, 8, badge="Fiz-Mistrz", mid=mid)
+        if ok:
+            grant_sticker("sticker_physics")
+            st.success("✅ Git!")
+        else:
+            st.warning(f"Prawidłowo ≈ {true:.2f} m/s")
+    show_hint(mid, "Wzór: v = s / t. Uważaj na jednostki!")
+
+def mission_chem_molar(mid: str):
+    st.subheader("Chemia 🧪: masa molowa")
+    choices = ["H2O", "CO2", "NaCl", "C6H12O6"]
+    pick = st.selectbox("Wybierz wzór:", choices, key=f"{mid}_f")
+    guess = st.number_input("Podaj masę molową (g/mol)", step=0.1, key=f"{mid}_m")
+    if st.button(f"Sprawdź {mid}"):
+        mm = _molar_mass(pick)
+        if mm is None:
+            st.warning("Nieobsługiwany wzór.")
+            return
+        ok = abs(guess - mm) <= 1.0
+        award(ok, 10, badge="Chemik Amator", mid=mid)
+        if ok:
+            grant_sticker("sticker_chem")
+            st.success("✅ Dobrze!")
+        else:
+            st.warning(f"Wynik ≈ {mm:.2f} g/mol")
+    show_hint(mid, "Zsumuj masy atomowe pierwiastków pomnożone przez indeksy.")
+
+def mission_english_irregular(mid: str):
+    st.subheader("Angielski 🇬🇧: irregular verbs")
+    verbs = {"go": "went", "see": "saw", "eat": "ate", "have": "had", "make": "made"}
+    base = random.choice(list(verbs.keys()))
+    pick = st.selectbox(f"Past Simple od '{base}' to…", sorted(set(verbs.values()) | {"goed", "seed"}), key=f"{mid}_v")
+    if st.button(f"Sprawdź {mid}"):
+        ok = (pick == verbs[base])
+        award(ok, 7, badge="Word Wizard", mid=mid)
+        if ok:
+            grant_sticker("sticker_english")
+            st.success("✅ Nice!")
+        else:
+            st.warning(f"Prawidłowo: {verbs[base]}")
+
+# -----------------------------
 # Sidebar
 # -----------------------------
 with st.sidebar:
@@ -261,7 +597,7 @@ with st.sidebar:
             "Panel rodzica",
         ],
     )
-# Prostsz y widok dla dzieci (ukrywa JSON-y, pokazuje kafelki)
+    # Prostszy widok dla dzieci (ukrywa JSON-y, pokazuje kafelki)
     st.checkbox("Tryb dziecięcy (prostszy widok)", value=True, key="kids_mode")
 
     with st.expander("Słowniczek (skrót)"):
@@ -371,148 +707,8 @@ elif page == "Misje":
 
     st.info(f"Twój poziom: **L{lvl}** (progi: 30/60/100 XP) | XP: **{xp}**")
 
-    # ---- Drawing missions ----
-    def mission_draw_xy(mid: str, req_x: str, req_y: str, req_type: str) -> None:
-        display_req_y = COUNT_LABEL if _is_count_choice(req_y) else req_y
-        st.write(f"**Zadanie:** Narysuj wykres: **{req_type}** z osią **X={req_x}**, **Y={display_req_y}**.")
-        df = st.session_state.data
-
-        x = st.selectbox("Oś X", df.columns.tolist(), key=f"{mid}_x")
-        y_options = [COUNT_LABEL] + df.columns.tolist()
-        y = st.selectbox("Oś Y", y_options, key=f"{mid}_y")
-        chart_type = st.selectbox("Typ wykresu", ["punktowy", "słupkowy"], key=f"{mid}_type")
-
-        try:
-            if chart_type == "punktowy":
-                if _is_count_choice(y):
-                    st.warning("Dla wykresu punktowego wybierz kolumnę liczbową na osi Y (nie 'liczba osób').")
-                    ch = alt.Chart(df).mark_circle(size=70, opacity=0.7).encode(x=x, y=x, tooltip=[x])
-                else:
-                    ch = alt.Chart(df).mark_circle(size=70, opacity=0.7).encode(x=x, y=y, tooltip=[x, y])
-            else:  # słupkowy
-                if _is_count_choice(y):
-                    ch = alt.Chart(df).mark_bar().encode(x=x, y=alt.Y("count():Q", title="Liczba osób"), tooltip=[x])
-                else:
-                    ch = alt.Chart(df).mark_bar().encode(x=x, y=y, tooltip=[x, y])
-            st.altair_chart(ch.interactive(), use_container_width=True)
-        except Exception as e:
-            st.warning(f"Nie udało się narysować: {e}")
-
-        y_ok = (_is_count_choice(y) and _is_count_choice(req_y)) or (y == req_y)
-        ok = (x == req_x) and y_ok and (chart_type == req_type)
-
-        if st.button(f"Sprawdź {mid}"):
-            award(ok, 10, badge="Rysownik danych", mid=mid)
-            if ok:
-                grant_sticker("sticker_bars" if chart_type == "słupkowy" else "sticker_points")
-                st.success("✅ Super — dokładnie taki wykres!")
-            else:
-                st.warning(f"Jeszcze nie. Ustaw X={req_x}, Y={display_req_y}, typ={req_type}.")
-        show_hint(mid, "Słupki liczą **liczbę osób**, a punkty wymagają liczb na osi Y.")
-        return None
-
-
-    # ---- Detective mission ----
-    def mission_detect_city(mid: str) -> None:
-        st.write("**Zadanie detektywistyczne:** Znajdź **miasto**, w którym jest **co najmniej 5 osób** i ich **ulubiony owoc to 'arbuz'**.")
-        df = st.session_state.data
-        city_pick = st.selectbox("Twoje miasto:", sorted(df["miasto"].unique()) if "miasto" in df.columns else ["(brak kolumny 'miasto')"], key=f"{mid}_city")
-
-        ok = False
-        if "miasto" in df.columns and "ulubiony_owoc" in df.columns:
-            mask = (df["ulubiony_owoc"] == "arbuz") & (df["miasto"] == city_pick)
-            ok = int(mask.sum()) >= 5
-
-        if st.button(f"Sprawdź {mid}"):
-            award(ok, 15, badge="Sherlock danych", mid=mid)
-            if ok:
-                grant_sticker("sticker_detect")
-                st.success("✅ Brawo! To miasto spełnia warunek (≥ 5 osób z arbuzem).")
-            else:
-                st.warning("Spróbuj inne miasto albo inny preset danych.")
-        show_hint(mid, "Zobacz wartości w tabeli lub narysuj słupki: X=miasto, Y=liczba osób (arbuz).")
-        return None
-
-
-    # ---- Cloze / Number / Order / Error (jak wcześniej) ----
-    def mission_fill_blank_text(mid: str, sentence_tpl: str, correct_word: str, options: List[str], xp_gain: int = 6) -> None:
-        st.write("**Uzupełnij zdanie:**")
-        st.write(sentence_tpl.replace("___", "**___**"))
-        pick = st.selectbox("Wybierz słowo:", options, key=f"{mid}_pick")
-
-        if st.button(f"Sprawdź {mid}"):
-            ok = pick == correct_word
-            award(ok, xp_gain, badge="Mistrz słówek", mid=mid)
-            if ok:
-                st.success("✅ Dobrze!")
-        else:
-            st.warning(f"Jeszcze nie. Poprawna odpowiedź: **{correct_word}**")
-
-        show_hint(mid, "Na osi Y w słupkach często jest **liczba osób**.")
-        return None
-
-
-    def mission_fill_number(mid: str, prompt: str, true_value: float, tolerance: Optional[float] = None, xp_gain: int = 8) -> None:
-        st.write(f"**Uzupełnij liczbę:** {prompt}")
-        step = 0.1 if isinstance(true_value, float) and not float(true_value).is_integer() else 1
-        guess = st.number_input("Twoja odpowiedź:", step=step, key=f"{mid}_num")
-
-        if st.button(f"Sprawdź {mid}"):
-            ok = (abs(guess - true_value) <= tolerance) if tolerance is not None else (guess == true_value)
-            award(ok, xp_gain, badge="Liczydło", mid=mid)
-            if ok:
-                st.success(f"✅ Tak! Prawidłowo: {true_value:g}.")
-        else:
-            st.warning(f"Prawidłowo: {true_value:g}.")
-
-        show_hint(mid, "Policz średnią: dodaj wszystkie i podziel przez liczbę osób.")
-        return None
-
-
-    def mission_order_steps(mid: str, prompt: str, steps_correct: List[str], xp_gain: int = 10) -> None:
-        st.write(f"**Ułóż w kolejności:** {prompt}")
-        picked = st.multiselect("Klikaj kroki we właściwej kolejności ⬇️", steps_correct, default=[], key=f"{mid}_order")
-        st.caption("Tip: klikaj po kolei; lista u góry zachowuje kolejność wyboru.")
-
-        if st.button(f"Sprawdź {mid}"):
-            ok = picked == steps_correct
-            award(ok, xp_gain, badge="Porządny planista", mid=mid)
-            if ok:
-                st.success("✅ Idealnie ułożone!")
-        else:
-            st.warning("Jeszcze nie. Zacznij od **Wczytaj dane** i skończ na **Zapisz wynik**.")
-
-        show_hint(mid, "Najpierw **wczytaj**, potem **wybierz kolumny**, potem **wykres**.")
-        return None
-
-
-    def mission_spot_the_error(mid: str, df_local: pd.DataFrame, xp_gain: int = 12) -> None:
-        st.write("**Znajdź błąd na wykresie:**")
-        if all(c in df_local.columns for c in ["ulubiony_owoc", "wiek"]):
-            bad = alt.Chart(df_local).mark_bar().encode(x="ulubiony_owoc:N", y="wiek:Q", tooltip=["ulubiony_owoc", "wiek"])
-            st.altair_chart(bad, use_container_width=True)
-            q = "Co jest nie tak?"
-            opts = [
-                "Na osi Y powinna być 'liczba osób', nie 'wiek'.",
-                "Na osi X powinna być liczba, nie kategoria.",
-                "Kolory są złe.",
-            ]
-            pick = st.radio(q, opts, index=None, key=f"{mid}_err")
-            if st.button(f"Sprawdź {mid}"):
-                ok = pick == opts[0]
-                award(ok, xp_gain, badge="Detektyw wykresów", mid=mid)
-                if ok:
-                    st.success("✅ Dokładnie!")
-                else:
-                    st.warning("Spróbuj jeszcze raz; pomyśl o tym, co liczą słupki.")
-            else:
-                st.info("Załaduj zestaw z kolumnami 'ulubiony_owoc' i 'wiek'.")
-            show_hint(mid, "Słupki zwykle liczą, ile elementów jest w każdej kategorii.")
-            return None
-
-
-    # ---- Daily Quest ----
-    def render_daily_quest():
+    # Daily Quest (jako funkcja lokalna korzystająca z df i lvl)
+    def render_daily_quest(df: pd.DataFrame, lvl: int):
         today = date.today().isoformat()
         if st.session_state.last_quest != today or st.session_state.todays is None:
             pool = ["DQ_avg_height", "DQ_draw_bar"]
@@ -536,35 +732,8 @@ elif page == "Misje":
         else:
             st.caption("Brakuje potrzebnych kolumn dla dzisiejszego wyzwania — zmień preset danych na Start.")
 
-    # ---- NEW: Simulation lab ----
-    def mission_simulate_coin(mid: str) -> None:
-        st.write("**Symulacja rzutu monetą 🎲** — wybierz liczbę rzutów, zgadnij udział orłów, potem sprawdź!")
-        n = st.selectbox("Liczba rzutów:", [10, 100, 1000], index=1, key=f"{mid}_n")
-        guess = st.slider("Twoja zgadywana proporcja orłów", 0.0, 1.0, 0.5, 0.01, key=f"{mid}_g")
-        tol = 0.10 if n == 10 else (0.05 if n == 100 else 0.03)
-
-        if st.button(f"Symuluj {mid}"):
-            flips = [random.choice(["orzeł", "reszka"]) for _ in range(n)]
-            heads = flips.count("orzeł")
-            prop = heads / n
-            st.write(f"Wynik: orły = {heads}/{n} (≈ {prop:.2f})")
-            df_sim = pd.DataFrame({"wynik": flips})
-            chart = alt.Chart(df_sim).mark_bar().encode(x="wynik:N", y=alt.Y("count():Q", title="Liczba"))
-            st.altair_chart(chart, use_container_width=True)
-            ok = abs(prop - guess) <= tol
-            award(ok, 10, badge="Mały probabilista", mid=mid)
-            if ok:
-                grant_sticker("sticker_sim")
-            if ok:
-                st.success("✅ Świetna estymacja!")
-        else:
-            st.info("Nie szkodzi! Im więcej rzutów, tym bliżej 0.5.")
-        show_hint(mid, "Przy dużej liczbie rzutów wynik zbliża się do 50% orłów.")
-        return None
-
-
-    # ---- RENDER: Daily Quest + zestawy ----
-    render_daily_quest()
+    # RENDER: Daily Quest + zestawy
+    render_daily_quest(df, lvl)
     st.divider()
 
     with st.expander("Zestaw L1 (0+ XP) — podstawy rysowania", expanded=(lvl == 1)):
@@ -613,178 +782,9 @@ elif page == "Przedmioty szkolne":
     st.markdown(f"<div class='big-title'>📚 {KID_EMOJI} Przedmioty szkolne</div>", unsafe_allow_html=True)
     st.caption("Zadania tematyczne: matematyka, polski, historia, geografia, fizyka, chemia, angielski. Wszystko na XP i z naklejkami!")
 
-    # ==== Matematyka ====
-    def mission_math_arith(mid: str):
-        st.subheader("Matematyka ➗: szybkie działania")
-        a, b = random.randint(2, 12), random.randint(2, 12)
-        op = random.choice(["+", "-", "*"])
-        true = a + b if op == "+" else (a - b if op == "-" else a * b)
-        guess = st.number_input(f"Policz: {a} {op} {b} = ?", step=1, key=f"{mid}_g")
-        if st.button(f"Sprawdź {mid}"):
-            ok = (guess == true)
-            award(ok, 6, badge="Szybkie liczby", mid=mid)
-            if ok:
-                grant_sticker("sticker_math")
-            if ok:
-                st.success("✅ Tak!")
-        else:
-            st.warning(f"Prawidłowo: {true}")
-        show_hint(mid, "Pamiętaj: najpierw mnożenie, potem dodawanie/odejmowanie.")
-
-    def mission_math_line(mid: str):
-        st.subheader("Matematyka 📈: prosta y = a·x + b")
-        a = random.choice([-2, -1, 1, 2])
-        b = random.randint(-3, 3)
-        xs = list(range(-5, 6))
-        df_line = pd.DataFrame({"x": xs, "y": [a*x + b for x in xs]})
-        chart = alt.Chart(df_line).mark_line(point=True).encode(x="x:Q", y="y:Q")
-        st.altair_chart(chart, use_container_width=True)
-        q = st.radio("Jaki jest znak nachylenia a?", ["dodatni", "zerowy", "ujemny"], index=None, key=f"{mid}_slope")
-        if st.button(f"Sprawdź {mid}"):
-            sign = "zerowy" if a == 0 else ("dodatni" if a > 0 else "ujemny")
-            ok = (q == sign)
-            award(ok, 8, badge="Linia prosta", mid=mid)
-            if ok:
-                grant_sticker("sticker_math")
-            if ok:
-                st.success("✅ Dobrze!")
-        else:
-            st.warning(f"Podpowiedź: linia rośnie → dodatni; maleje → ujemny.")
-
-    # ==== Język polski ====
-    def mission_polish_pos(mid: str):
-        st.subheader("Język polski 📝: część mowy")
-        sentence = "Ala ma kota i czerwony balon."
-        st.write(f"Zdanie: _{sentence}_")
-        pick = st.selectbox("Które słowo to rzeczownik?", ["Ala", "ma", "kota", "czerwony", "balon"], key=f"{mid}_pick")
-        if st.button(f"Sprawdź {mid}"):
-            ok = pick in {"Ala", "kota", "balon"}
-            award(ok, 7, badge="Językowa Iskra", mid=mid)
-            if ok:
-                grant_sticker("sticker_polish")
-            if ok:
-                st.success("✅ Świetnie!")
-        else:
-            st.warning("Rzeczowniki to nazwy osób, rzeczy, zwierząt…")
-
-    # ==== Historia ====
-    def mission_history_timeline(mid: str):
-        st.subheader("Historia 🏺: ułóż oś czasu")
-        events = [
-            ("Chrzest Polski", 966),
-            ("Bitwa pod Grunwaldem", 1410),
-            ("Konstytucja 3 Maja", 1791),
-            ("Odzyskanie niepodległości", 1918),
-        ]
-        labels = [e[0] for e in events]
-        order = st.multiselect("Klikaj w kolejności od najstarszego do najmłodszego", labels, key=f"{mid}_ord")
-        if st.button(f"Sprawdź {mid}"):
-            correct = [e[0] for e in sorted(events, key=lambda x: x[1])]
-            ok = (order == correct)
-            award(ok, 9, badge="Kronikarz", mid=mid)
-            if ok:
-                grant_sticker("sticker_history")
-            if ok:
-                st.success("✅ Pięknie ułożone!")
-        else:
-            st.warning("Podpowiedź: 966 → 1410 → 1791 → 1918")
-
-    # ==== Geografia ====
-    def mission_geo_capitals(mid: str):
-        st.subheader("Geografia 🗺️: stolice")
-        pairs = {"Polska": "Warszawa", "Niemcy": "Berlin", "Francja": "Paryż", "Hiszpania": "Madryt"}
-        country = random.choice(list(pairs.keys()))
-        pick = st.selectbox(f"Stolica kraju: {country}", ["Warszawa", "Berlin", "Paryż", "Madryt"], key=f"{mid}_pick")
-        if st.button(f"Sprawdź {mid}"):
-            ok = (pick == pairs[country])
-            award(ok, 7, badge="Mały Geograf", mid=mid)
-            if ok:
-                grant_sticker("sticker_geo")
-            if ok:
-                st.success("✅ Super!")
-        else:
-            st.warning(f"Prawidłowo: {pairs[country]}")
-
-    # ==== Fizyka ====
-    def mission_physics_speed(mid: str):
-        st.subheader("Fizyka ⚙️: prędkość = droga / czas")
-        s = random.choice([100, 150, 200, 240])  # metry
-        t = random.choice([5, 8, 10, 12])        # sekundy
-        guess = st.number_input(f"Oblicz prędkość dla s={s} m, t={t} s (m/s)", step=1.0, key=f"{mid}_v")
-        true = s / t
-        if st.button(f"Sprawdź {mid}"):
-            ok = abs(guess - true) <= 0.1
-            award(ok, 8, badge="Fiz-Mistrz", mid=mid)
-            if ok:
-                grant_sticker("sticker_physics")
-            if ok:
-                st.success("✅ Git!")
-        else:
-            st.warning(f"Prawidłowo ≈ {true:.2f} m/s")
-        show_hint(mid, "Wzór: v = s / t. Uważaj na jednostki!")
-
-    # ==== Chemia ====
-    ATOMIC_MASS = {"H": 1.008, "C": 12.011, "O": 15.999, "N": 14.007, "Na": 22.990, "Cl": 35.45}
-
-    def _molar_mass(formula: str) -> Optional[float]:
-        # prosty parser: obsługa H2O, CO2, NaCl, C6H12O6 itp. (bez nawiasów)
-        import re
-        tokens = re.findall(r"[A-Z][a-z]?\d*", formula)
-        if not tokens:
-            return None
-        total = 0.0
-        for tok in tokens:
-            import re as _re
-            m = _re.match(r"([A-Z][a-z]?)(\d*)", tok)
-            if not m:
-                return None
-            el, num = m.group(1), m.group(2)
-            if el not in ATOMIC_MASS:
-                return None
-            n = int(num) if num else 1
-            total += ATOMIC_MASS[el] * n
-        return total
-
-    def mission_chem_molar(mid: str):
-        st.subheader("Chemia 🧪: masa molowa")
-        choices = ["H2O", "CO2", "NaCl", "C6H12O6"]
-        pick = st.selectbox("Wybierz wzór:", choices, key=f"{mid}_f")
-        guess = st.number_input("Podaj masę molową (g/mol)", step=0.1, key=f"{mid}_m")
-        if st.button(f"Sprawdź {mid}"):
-            mm = _molar_mass(pick)
-            if mm is None:
-                st.warning("Nieobsługiwany wzór.")
-            else:
-                ok = abs(guess - mm) <= 1.0
-                award(ok, 10, badge="Chemik Amator", mid=mid)
-                if ok:
-                    grant_sticker("sticker_chem")
-                if ok:
-                    st.success("✅ Dobrze!")
-                else:
-                    st.warning(f"Wynik ≈ {mm:.2f} g/mol")
-            show_hint(mid, "Zsumuj masy atomowe pierwiastków pomnożone przez indeksy.")
-
-    # ==== Angielski ====
-    def mission_english_irregular(mid: str):
-        st.subheader("Angielski 🇬🇧: irregular verbs")
-        verbs = {"go": "went", "see": "saw", "eat": "ate", "have": "had", "make": "made"}
-        base = random.choice(list(verbs.keys()))
-        pick = st.selectbox(f"Past Simple od '{base}' to…", sorted(set(verbs.values()) | {"goed", "seed"}), key=f"{mid}_v")
-        if st.button(f"Sprawdź {mid}"):
-            ok = (pick == verbs[base])
-            award(ok, 7, badge="Word Wizard", mid=mid)
-            if ok:
-                grant_sticker("sticker_english")
-            if ok:
-                st.success("✅ Nice!")
-        else:
-            st.warning(f"Prawidłowo: {verbs[base]}")
-
-    # UI — zakładki na przedmioty
-    tab_math, tab_pol, tab_hist, tab_geo, tab_phys, tab_chem, tab_eng = st.tabs([
-        "Matematyka", "Język polski", "Historia", "Geografia", "Fizyka", "Chemia", "Angielski",
-    ])
+    tab_math, tab_pol, tab_hist, tab_geo, tab_phys, tab_chem, tab_eng = st.tabs(
+        ["Matematyka", "Język polski", "Historia", "Geografia", "Fizyka", "Chemia", "Angielski"]
+    )
 
     with tab_math:
         mission_math_arith("MAT-1")
