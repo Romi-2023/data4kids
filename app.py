@@ -375,10 +375,13 @@ elif page == "Misje":
     def mission_draw_xy(mid: str, req_x: str, req_y: str, req_type: str) -> None:
         display_req_y = COUNT_LABEL if _is_count_choice(req_y) else req_y
         st.write(f"**Zadanie:** Narysuj wykres: **{req_type}** z osią **X={req_x}**, **Y={display_req_y}**.")
+        df = st.session_state.data
+
         x = st.selectbox("Oś X", df.columns.tolist(), key=f"{mid}_x")
         y_options = [COUNT_LABEL] + df.columns.tolist()
         y = st.selectbox("Oś Y", y_options, key=f"{mid}_y")
         chart_type = st.selectbox("Typ wykresu", ["punktowy", "słupkowy"], key=f"{mid}_type")
+
         try:
             if chart_type == "punktowy":
                 if _is_count_choice(y):
@@ -394,8 +397,10 @@ elif page == "Misje":
             st.altair_chart(ch.interactive(), use_container_width=True)
         except Exception as e:
             st.warning(f"Nie udało się narysować: {e}")
+
         y_ok = (_is_count_choice(y) and _is_count_choice(req_y)) or (y == req_y)
         ok = (x == req_x) and y_ok and (chart_type == req_type)
+
         if st.button(f"Sprawdź {mid}"):
             award(ok, 10, badge="Rysownik danych", mid=mid)
             if ok:
@@ -404,16 +409,20 @@ elif page == "Misje":
             else:
                 st.warning(f"Jeszcze nie. Ustaw X={req_x}, Y={display_req_y}, typ={req_type}.")
         show_hint(mid, "Słupki liczą **liczbę osób**, a punkty wymagają liczb na osi Y.")
+        return None
+
 
     # ---- Detective mission ----
     def mission_detect_city(mid: str) -> None:
         st.write("**Zadanie detektywistyczne:** Znajdź **miasto**, w którym jest **co najmniej 5 osób** i ich **ulubiony owoc to 'arbuz'**.")
+        df = st.session_state.data
         city_pick = st.selectbox("Twoje miasto:", sorted(df["miasto"].unique()) if "miasto" in df.columns else ["(brak kolumny 'miasto')"], key=f"{mid}_city")
+
         ok = False
         if "miasto" in df.columns and "ulubiony_owoc" in df.columns:
             mask = (df["ulubiony_owoc"] == "arbuz") & (df["miasto"] == city_pick)
-            cnt = int(mask.sum())
-            ok = cnt >= 5
+            ok = int(mask.sum()) >= 5
+
         if st.button(f"Sprawdź {mid}"):
             award(ok, 15, badge="Sherlock danych", mid=mid)
             if ok:
@@ -422,39 +431,53 @@ elif page == "Misje":
             else:
                 st.warning("Spróbuj inne miasto albo inny preset danych.")
         show_hint(mid, "Zobacz wartości w tabeli lub narysuj słupki: X=miasto, Y=liczba osób (arbuz).")
+        return None
+
 
     # ---- Cloze / Number / Order / Error (jak wcześniej) ----
-    def mission_fill_blank_text(mid: str, sentence_tpl: str, correct_word: str, options: List[str], xp_gain: int = 6):
+    def mission_fill_blank_text(mid: str, sentence_tpl: str, correct_word: str, options: List[str], xp_gain: int = 6) -> None:
         st.write("**Uzupełnij zdanie:**")
         st.write(sentence_tpl.replace("___", "**___**"))
         pick = st.selectbox("Wybierz słowo:", options, key=f"{mid}_pick")
+
         if st.button(f"Sprawdź {mid}"):
             ok = pick == correct_word
             award(ok, xp_gain, badge="Mistrz słówek", mid=mid)
             st.success("✅ Dobrze!") if ok else st.warning(f"Jeszcze nie. Poprawna odpowiedź: **{correct_word}**")
-        show_hint(mid, "Na osi Y w słupkach często jest **liczba osób**.")
 
-    def mission_fill_number(mid: str, prompt: str, true_value: float, tolerance: Optional[float] = None, xp_gain: int = 8):
+        show_hint(mid, "Na osi Y w słupkach często jest **liczba osób**.")
+        return None
+
+
+    def mission_fill_number(mid: str, prompt: str, true_value: float, tolerance: Optional[float] = None, xp_gain: int = 8) -> None:
         st.write(f"**Uzupełnij liczbę:** {prompt}")
         step = 0.1 if isinstance(true_value, float) and not float(true_value).is_integer() else 1
         guess = st.number_input("Twoja odpowiedź:", step=step, key=f"{mid}_num")
+
         if st.button(f"Sprawdź {mid}"):
             ok = (abs(guess - true_value) <= tolerance) if tolerance is not None else (guess == true_value)
             award(ok, xp_gain, badge="Liczydło", mid=mid)
             st.success(f"✅ Tak! Prawidłowo: {true_value:g}.") if ok else st.warning(f"Prawidłowo: {true_value:g}.")
-        show_hint(mid, "Policz średnią: dodaj wszystkie i podziel przez liczbę osób.")
 
-    def mission_order_steps(mid: str, prompt: str, steps_correct: List[str], xp_gain: int = 10):
+        show_hint(mid, "Policz średnią: dodaj wszystkie i podziel przez liczbę osób.")
+        return None
+
+
+    def mission_order_steps(mid: str, prompt: str, steps_correct: List[str], xp_gain: int = 10) -> None:
         st.write(f"**Ułóż w kolejności:** {prompt}")
         picked = st.multiselect("Klikaj kroki we właściwej kolejności ⬇️", steps_correct, default=[], key=f"{mid}_order")
         st.caption("Tip: klikaj po kolei; lista u góry zachowuje kolejność wyboru.")
+
         if st.button(f"Sprawdź {mid}"):
             ok = picked == steps_correct
             award(ok, xp_gain, badge="Porządny planista", mid=mid)
             st.success("✅ Idealnie ułożone!") if ok else st.warning("Jeszcze nie. Zacznij od **Wczytaj dane** i skończ na **Zapisz wynik**.")
-        show_hint(mid, "Najpierw **wczytaj**, potem **wybierz kolumny**, potem **wykres**.")
 
-    def mission_spot_the_error(mid: str, df_local: pd.DataFrame, xp_gain: int = 12):
+        show_hint(mid, "Najpierw **wczytaj**, potem **wybierz kolumny**, potem **wykres**.")
+        return None
+
+
+    def mission_spot_the_error(mid: str, df_local: pd.DataFrame, xp_gain: int = 12) -> None:
         st.write("**Znajdź błąd na wykresie:**")
         if all(c in df_local.columns for c in ["ulubiony_owoc", "wiek"]):
             bad = alt.Chart(df_local).mark_bar().encode(x="ulubiony_owoc:N", y="wiek:Q", tooltip=["ulubiony_owoc", "wiek"])
@@ -473,6 +496,8 @@ elif page == "Misje":
         else:
             st.info("Załaduj zestaw z kolumnami 'ulubiony_owoc' i 'wiek'.")
         show_hint(mid, "Słupki zwykle liczą, ile elementów jest w każdej kategorii.")
+        return None
+
 
     # ---- Daily Quest ----
     def render_daily_quest():
@@ -500,11 +525,12 @@ elif page == "Misje":
             st.caption("Brakuje potrzebnych kolumn dla dzisiejszego wyzwania — zmień preset danych na Start.")
 
     # ---- NEW: Simulation lab ----
-    def mission_simulate_coin(mid: str):
+    def mission_simulate_coin(mid: str) -> None:
         st.write("**Symulacja rzutu monetą 🎲** — wybierz liczbę rzutów, zgadnij udział orłów, potem sprawdź!")
         n = st.selectbox("Liczba rzutów:", [10, 100, 1000], index=1, key=f"{mid}_n")
         guess = st.slider("Twoja zgadywana proporcja orłów", 0.0, 1.0, 0.5, 0.01, key=f"{mid}_g")
         tol = 0.10 if n == 10 else (0.05 if n == 100 else 0.03)
+
         if st.button(f"Symuluj {mid}"):
             flips = [random.choice(["orzeł", "reszka"]) for _ in range(n)]
             heads = flips.count("orzeł")
@@ -519,6 +545,8 @@ elif page == "Misje":
                 grant_sticker("sticker_sim")
             st.success("✅ Świetna estymacja!") if ok else st.info("Nie szkodzi! Im więcej rzutów, tym bliżej 0.5.")
         show_hint(mid, "Przy dużej liczbie rzutów wynik zbliża się do 50% orłów.")
+        return None
+
 
     # ---- RENDER: Daily Quest + zestawy ----
     render_daily_quest()
