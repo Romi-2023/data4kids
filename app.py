@@ -443,7 +443,10 @@ elif page == "Misje":
         if st.button(f"Sprawdź {mid}"):
             ok = pick == correct_word
             award(ok, xp_gain, badge="Mistrz słówek", mid=mid)
-            st.success("✅ Dobrze!") if ok else st.warning(f"Jeszcze nie. Poprawna odpowiedź: **{correct_word}**")
+            if ok:
+                st.success("✅ Dobrze!")
+        else:
+            st.warning(f"Jeszcze nie. Poprawna odpowiedź: **{correct_word}**")
 
         show_hint(mid, "Na osi Y w słupkach często jest **liczba osób**.")
         return None
@@ -457,7 +460,10 @@ elif page == "Misje":
         if st.button(f"Sprawdź {mid}"):
             ok = (abs(guess - true_value) <= tolerance) if tolerance is not None else (guess == true_value)
             award(ok, xp_gain, badge="Liczydło", mid=mid)
-            st.success(f"✅ Tak! Prawidłowo: {true_value:g}.") if ok else st.warning(f"Prawidłowo: {true_value:g}.")
+            if ok:
+                st.success(f"✅ Tak! Prawidłowo: {true_value:g}.")
+        else:
+            st.warning(f"Prawidłowo: {true_value:g}.")
 
         show_hint(mid, "Policz średnią: dodaj wszystkie i podziel przez liczbę osób.")
         return None
@@ -471,7 +477,10 @@ elif page == "Misje":
         if st.button(f"Sprawdź {mid}"):
             ok = picked == steps_correct
             award(ok, xp_gain, badge="Porządny planista", mid=mid)
-            st.success("✅ Idealnie ułożone!") if ok else st.warning("Jeszcze nie. Zacznij od **Wczytaj dane** i skończ na **Zapisz wynik**.")
+            if ok:
+                st.success("✅ Idealnie ułożone!")
+        else:
+            st.warning("Jeszcze nie. Zacznij od **Wczytaj dane** i skończ na **Zapisz wynik**.")
 
         show_hint(mid, "Najpierw **wczytaj**, potem **wybierz kolumny**, potem **wykres**.")
         return None
@@ -492,11 +501,14 @@ elif page == "Misje":
             if st.button(f"Sprawdź {mid}"):
                 ok = pick == opts[0]
                 award(ok, xp_gain, badge="Detektyw wykresów", mid=mid)
-                st.success("✅ Dokładnie!") if ok else st.warning("Spróbuj jeszcze raz; pomyśl o tym, co liczą słupki.")
-        else:
-            st.info("Załaduj zestaw z kolumnami 'ulubiony_owoc' i 'wiek'.")
-        show_hint(mid, "Słupki zwykle liczą, ile elementów jest w każdej kategorii.")
-        return None
+                if ok:
+                    st.success("✅ Dokładnie!")
+                else:
+                    st.warning("Spróbuj jeszcze raz; pomyśl o tym, co liczą słupki.")
+            else:
+                st.info("Załaduj zestaw z kolumnami 'ulubiony_owoc' i 'wiek'.")
+            show_hint(mid, "Słupki zwykle liczą, ile elementów jest w każdej kategorii.")
+            return None
 
 
     # ---- Daily Quest ----
@@ -543,7 +555,10 @@ elif page == "Misje":
             award(ok, 10, badge="Mały probabilista", mid=mid)
             if ok:
                 grant_sticker("sticker_sim")
-            st.success("✅ Świetna estymacja!") if ok else st.info("Nie szkodzi! Im więcej rzutów, tym bliżej 0.5.")
+            if ok:
+                st.success("✅ Świetna estymacja!")
+        else:
+            st.info("Nie szkodzi! Im więcej rzutów, tym bliżej 0.5.")
         show_hint(mid, "Przy dużej liczbie rzutów wynik zbliża się do 50% orłów.")
         return None
 
@@ -610,7 +625,10 @@ elif page == "Przedmioty szkolne":
             award(ok, 6, badge="Szybkie liczby", mid=mid)
             if ok:
                 grant_sticker("sticker_math")
-            st.success("✅ Tak!") if ok else st.warning(f"Prawidłowo: {true}")
+            if ok:
+                st.success("✅ Tak!")
+        else:
+            st.warning(f"Prawidłowo: {true}")
         show_hint(mid, "Pamiętaj: najpierw mnożenie, potem dodawanie/odejmowanie.")
 
     def mission_math_line(mid: str):
@@ -628,7 +646,10 @@ elif page == "Przedmioty szkolne":
             award(ok, 8, badge="Linia prosta", mid=mid)
             if ok:
                 grant_sticker("sticker_math")
-            st.success("✅ Dobrze!") if ok else st.warning(f"Podpowiedź: linia rośnie → dodatni; maleje → ujemny.")
+            if ok:
+                st.success("✅ Dobrze!")
+        else:
+            st.warning(f"Podpowiedź: linia rośnie → dodatni; maleje → ujemny.")
 
     # ==== Język polski ====
     def mission_polish_pos(mid: str):
@@ -641,7 +662,10 @@ elif page == "Przedmioty szkolne":
             award(ok, 7, badge="Językowa Iskra", mid=mid)
             if ok:
                 grant_sticker("sticker_polish")
-            st.success("✅ Świetnie!") if ok else st.warning("Rzeczowniki to nazwy osób, rzeczy, zwierząt…")
+            if ok:
+                st.success("✅ Świetnie!")
+        else:
+            st.warning("Rzeczowniki to nazwy osób, rzeczy, zwierząt…")
 
     # ==== Historia ====
     def mission_history_timeline(mid: str):
@@ -660,7 +684,10 @@ elif page == "Przedmioty szkolne":
             award(ok, 9, badge="Kronikarz", mid=mid)
             if ok:
                 grant_sticker("sticker_history")
-            st.success("✅ Pięknie ułożone!") if ok else st.warning("Podpowiedź: 966 → 1410 → 1791 → 1918")
+            if ok:
+                st.success("✅ Pięknie ułożone!")
+        else:
+            st.warning("Podpowiedź: 966 → 1410 → 1791 → 1918")
 
     # ==== Geografia ====
     def mission_geo_capitals(mid: str):
@@ -673,7 +700,10 @@ elif page == "Przedmioty szkolne":
             award(ok, 7, badge="Mały Geograf", mid=mid)
             if ok:
                 grant_sticker("sticker_geo")
-            st.success("✅ Super!") if ok else st.warning(f"Prawidłowo: {pairs[country]}")
+            if ok:
+                st.success("✅ Super!")
+        else:
+            st.warning(f"Prawidłowo: {pairs[country]}")
 
     # ==== Fizyka ====
     def mission_physics_speed(mid: str):
@@ -687,7 +717,10 @@ elif page == "Przedmioty szkolne":
             award(ok, 8, badge="Fiz-Mistrz", mid=mid)
             if ok:
                 grant_sticker("sticker_physics")
-            st.success("✅ Git!") if ok else st.warning(f"Prawidłowo ≈ {true:.2f} m/s")
+            if ok:
+                st.success("✅ Git!")
+        else:
+            st.warning(f"Prawidłowo ≈ {true:.2f} m/s")
         show_hint(mid, "Wzór: v = s / t. Uważaj na jednostki!")
 
     # ==== Chemia ====
@@ -726,8 +759,11 @@ elif page == "Przedmioty szkolne":
                 award(ok, 10, badge="Chemik Amator", mid=mid)
                 if ok:
                     grant_sticker("sticker_chem")
-                st.success("✅ Dobrze!") if ok else st.warning(f"Wynik ≈ {mm:.2f} g/mol")
-        show_hint(mid, "Zsumuj masy atomowe pierwiastków pomnożone przez indeksy.")
+                if ok:
+                    st.success("✅ Dobrze!")
+                else:
+                    st.warning(f"Wynik ≈ {mm:.2f} g/mol")
+            show_hint(mid, "Zsumuj masy atomowe pierwiastków pomnożone przez indeksy.")
 
     # ==== Angielski ====
     def mission_english_irregular(mid: str):
@@ -740,7 +776,10 @@ elif page == "Przedmioty szkolne":
             award(ok, 7, badge="Word Wizard", mid=mid)
             if ok:
                 grant_sticker("sticker_english")
-            st.success("✅ Nice!") if ok else st.warning(f"Prawidłowo: {verbs[base]}")
+            if ok:
+                st.success("✅ Nice!")
+        else:
+            st.warning(f"Prawidłowo: {verbs[base]}")
 
     # UI — zakładki na przedmioty
     tab_math, tab_pol, tab_hist, tab_geo, tab_phys, tab_chem, tab_eng = st.tabs([
