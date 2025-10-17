@@ -513,9 +513,30 @@ def mission_history_timeline(mid: str):
 
 def mission_geo_capitals(mid: str):
     st.subheader("Geografia 🗺️: stolice")
-    pairs = {"Polska": "Warszawa", "Niemcy": "Berlin", "Francja": "Paryż", "Hiszpania": "Madryt"}
-    country = random.choice(list(pairs.keys()))
-    pick = st.selectbox(f"Stolica kraju: {country}", ["Warszawa", "Berlin", "Paryż", "Madryt"], key=f"{mid}_pick")
+    pairs = {
+        "Polska": "Warszawa",
+        "Niemcy": "Berlin",
+        "Francja": "Paryż",
+        "Hiszpania": "Madryt",
+    }
+
+    # —— utrwal losowanie na czas rozwiązywania zadania ——
+    state_key = f"{mid}_country"
+    if state_key not in st.session_state:
+        st.session_state[state_key] = random.choice(list(pairs.keys()))
+    country = st.session_state[state_key]
+
+    # opcjonalny przycisk: losuj kolejne pytanie
+    if st.button("Wylosuj inne państwo", key=f"{mid}_new"):
+        st.session_state[state_key] = random.choice(list(pairs.keys()))
+        st.rerun()
+
+    pick = st.selectbox(
+        f"Stolica kraju: {country}",
+        ["Warszawa", "Berlin", "Paryż", "Madryt"],
+        key=f"{mid}_pick",
+    )
+
     if st.button(f"Sprawdź {mid}"):
         ok = (pick == pairs[country])
         award(ok, 7, badge="Mały Geograf", mid=mid)
@@ -524,6 +545,7 @@ def mission_geo_capitals(mid: str):
             st.success("✅ Super!")
         else:
             st.warning(f"Prawidłowo: {pairs[country]}")
+
 
 def mission_physics_speed(mid: str):
     st.subheader("Fizyka ⚙️: prędkość = droga / czas")
