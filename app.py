@@ -598,7 +598,7 @@ with st.sidebar:
         ],
     )
     # Prostszy widok dla dzieci (ukrywa JSON-y, pokazuje kafelki)
-    st.checkbox("Tryb dziecięcy (prostszy widok)", value=True, key="kids_mode")
+    st.checkbox("Tryb dziecięcy (prostszy widok)", key="kids_mode")
 
     with st.expander("Słowniczek (skrót)"):
         for k, v in GLOSSARY.items():
