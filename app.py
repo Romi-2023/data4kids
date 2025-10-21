@@ -153,6 +153,8 @@ STICKERS: Dict[str, Dict[str, str]] = {
     "sticker_physics": {"emoji": "⚙️", "label": "Fiz-Mistrz", "desc": "Fizyka — prędkość = s/t."},
     "sticker_chem": {"emoji": "🧪", "label": "Chemik Amator", "desc": "Chemia — masa molowa."},
     "sticker_english": {"emoji": "🇬🇧", "label": "Word Wizard", "desc": "Angielski — słówka/irregulars."},
+    "sticker_bio": {"emoji": "🧬", "label": "Mały Biolog", "desc": "Biologia — podstawy komórki i łańcucha pokarmowego."},
+
 }
 
 # -----------------------------
@@ -596,6 +598,52 @@ def mission_english_irregular(mid: str):
         else:
             st.warning(f"Prawidłowo: {verbs[base]}")
 
+def mission_bio_mito(mid: str):
+    st.subheader("Biologia 🧬: Komórka – co robi mitochondrium?")
+    question = "Który element komórki odpowiada za produkcję energii?"
+    options = ["jądro komórkowe", "mitochondrium", "błona komórkowa", "chloroplast"]
+    pick = st.radio(question, options, index=None, key=f"{mid}_pick")
+
+    if st.button(f"Sprawdź {mid}"):
+        ok = (pick == "mitochondrium")
+        award(ok, 7, badge="Mały Biolog", mid=mid)
+        if ok:
+            grant_sticker("sticker_bio")
+            st.success("✅ Tak! Mitochondrium to „elektrownia” komórki.")
+        else:
+            st.warning("To nie to. Podpowiedź: „elektrownia” komórki = mitochondrium.")
+    show_hint(mid, "Mitochondria wytwarzają ATP — paliwo energetyczne komórki.")
+
+def mission_bio_foodchain(mid: str):
+    st.subheader("Biologia 🧬: Łańcuch pokarmowy – kto jest kim?")
+    bank = [
+        {"prompt": "Kto jest producentem?", "options": ["trawa", "zając", "wilk"], "answer": "trawa"},
+        {"prompt": "Kto jest konsumentem I rzędu?", "options": ["zając", "trawa", "słońce"], "answer": "zając"},
+        {"prompt": "Kto jest drapieżnikiem (konsument wyższego rzędu)?", "options": ["wilk", "trawa", "zając"], "answer": "wilk"},
+    ]
+    key_q = f"{mid}_qidx"
+    if key_q not in st.session_state:
+        st.session_state[key_q] = random.randrange(len(bank))
+    q = bank[st.session_state[key_q]]
+
+    colL, colR = st.columns([3,1])
+    with colL:
+        pick = st.radio(q["prompt"], q["options"], index=None, key=f"{mid}_pick")
+    with colR:
+        if st.button("Wylosuj inne pytanie", key=f"{mid}_new"):
+            st.session_state[key_q] = random.randrange(len(bank))
+            st.rerun()
+
+    if st.button(f"Sprawdź {mid}", key=f"{mid}_check"):
+        ok = (pick == q["answer"])
+        award(ok, 8, badge="Mały Biolog", mid=mid)
+        if ok:
+            grant_sticker("sticker_bio")
+            st.success("✅ Brawo! Poprawna odpowiedź.")
+        else:
+            st.warning(f"Niestety nie. Poprawna odpowiedź: **{q['answer']}**.")
+    show_hint(mid, "Producent = roślina (tworzy pokarm dzięki fotosyntezie).")
+
 # -----------------------------
 # Sidebar
 # -----------------------------
@@ -804,9 +852,8 @@ elif page == "Przedmioty szkolne":
     st.markdown(f"<div class='big-title'>📚 {KID_EMOJI} Przedmioty szkolne</div>", unsafe_allow_html=True)
     st.caption("Zadania tematyczne: matematyka, polski, historia, geografia, fizyka, chemia, angielski. Wszystko na XP i z naklejkami!")
 
-    tab_math, tab_pol, tab_hist, tab_geo, tab_phys, tab_chem, tab_eng = st.tabs(
-        ["Matematyka", "Język polski", "Historia", "Geografia", "Fizyka", "Chemia", "Angielski"]
-    )
+    tab_math, tab_pol, tab_hist, tab_geo, tab_phys, tab_chem, tab_eng, tab_bio = st.tabs(
+        ["Matematyka", "Język polski", "Historia", "Geografia", "Fizyka", "Chemia", "Angielski", "Biologia",])
 
     with tab_math:
         mission_math_arith("MAT-1")
@@ -829,6 +876,10 @@ elif page == "Przedmioty szkolne":
 
     with tab_eng:
         mission_english_irregular("ANG-1")
+        
+    with tab_bio:
+        mission_bio_mito("BIO-1")
+        mission_bio_foodchain("BIO-2")
 
 # -----------------------------
 # QUIZ (tekstowy)
