@@ -14,6 +14,7 @@ import altair as alt
 import streamlit as st
 import streamlit.components.v1 as components
 import numpy as np
+import psycopg2
 
 APP_NAME = "Data4Kids"
 VERSION = "0.9.0"
@@ -44,16 +45,106 @@ def hash_text(text: str) -> str:
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
 
 # Storage paths
-DATA_DIR = os.environ.get("D4K_DATA_DIR", "/tmp/data4kids")
-os.makedirs(DATA_DIR, exist_ok=True)
+# Statyczne dane (quizy, zadania, lektury itp.) trzymamy w katalogu "data" obok app.py
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_DIR = os.path.join(BASE_DIR, "data")
 
+# Te pliki służą tylko jako fallback lokalny (np. przy dev), na produkcji używamy bazy
 USERS_FILE = os.path.join(DATA_DIR, "users.json")
 TASKS_FILE = os.path.join(DATA_DIR, "tasks.json")
-DONORS_FILE = os.path.join(DATA_DIR, "donors.json")  # NOWE
-DONORS_FILE = os.path.join(DATA_DIR, "donors.json")  # zgłoszenia do konkursów
-DRAWS_FILE = os.path.join(DATA_DIR, "draws.json")    # historia losowań
+DONORS_FILE = os.path.join(DATA_DIR, "donors.json")   # zgłoszenia do konkursów (lokalnie)
+DRAWS_FILE = os.path.join(DATA_DIR, "draws.json")     # historia losowań (lokalnie)
+
+# --- BAZA DANYCH (PostgreSQL przez psycopg2) do trwałego przechowywania JSON-ów ---
+DATABASE_URL = os.environ.get("DATABASE_URL")  # ustawiane automatycznie przez DigitalOcean
+
+
+def get_db_connection():
+    """Zwraca połączenie z bazą lub None jeśli brak DATABASE_URL."""
+    if not DATABASE_URL:
+        return None
+    return psycopg2.connect(DATABASE_URL)
+
+
+def ensure_kv_table():
+    """Tworzy tabelę kv_store, jeśli jeszcze nie istnieje."""
+    if not DATABASE_URL:
+        return
+    conn = get_db_connection()
+    if conn is None:
+        return
+    try:
+        with conn:
+            with conn.cursor() as cur:
+                cur.execute(
+                    """
+                    CREATE TABLE IF NOT EXISTS kv_store (
+                        key TEXT PRIMARY KEY,
+                        value TEXT NOT NULL
+                    );
+                    """
+                )
+    finally:
+        conn.close()
+
+
+def kv_get_json(key: str, default):
+    """Odczyt JSON-a spod klucza z bazy; jeśli brak/blad – zwraca default."""
+    if not DATABASE_URL:
+        return default
+    conn = get_db_connection()
+    if conn is None:
+        return default
+    try:
+        with conn:
+            with conn.cursor() as cur:
+                cur.execute("SELECT value FROM kv_store WHERE key = %s", (key,))
+                row = cur.fetchone()
+        if not row:
+            return default
+        try:
+            return json.loads(row[0])
+        except Exception:
+            return default
+    except Exception:
+        return default
+    finally:
+        conn.close()
+
+
+def kv_set_json(key: str, value) -> None:
+    """Zapis JSON-a pod kluczem w bazie (UPSERT)."""
+    if not DATABASE_URL:
+        return
+    payload = json.dumps(value, ensure_ascii=False)
+    conn = get_db_connection()
+    if conn is None:
+        return
+    try:
+        with conn:
+            with conn.cursor() as cur:
+                cur.execute(
+                    """
+                    INSERT INTO kv_store (key, value)
+                    VALUES (%s, %s)
+                    ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value;
+                    """,
+                    (key, payload),
+                )
+    finally:
+        conn.close()
+
+
+# Upewnij się przy starcie, że tabela istnieje
+ensure_kv_table()
 
 def _load_donors():
+    # 1. Próba odczytu z bazy
+    records = kv_get_json("donors", None)
+    if records is not None:
+        return records
+
+    # 2. Fallback lokalny (dev) z pliku JSON
     if not os.path.exists(DONORS_FILE):
         return []
     try:
@@ -62,11 +153,24 @@ def _load_donors():
     except Exception:
         return []
 
+
 def _save_donors(records: list) -> None:
-    with open(DONORS_FILE, "w", encoding="utf-8") as f:
-        json.dump(records, f, ensure_ascii=False, indent=2)
+    # 1. Zapis do bazy (jeśli dostępna)
+    kv_set_json("donors", records)
+
+    # 2. Opcjonalny zapis lokalny (np. przy dev)
+    try:
+        with open(DONORS_FILE, "w", encoding="utf-8") as f:
+            json.dump(records, f, ensure_ascii=False, indent=2)
+    except Exception:
+        # Na produkcji zapis do pliku może się nie udać – ignorujemy
+        pass
 
 def _load_draws():
+    records = kv_get_json("draws", None)
+    if records is not None:
+        return records
+
     if not os.path.exists(DRAWS_FILE):
         return []
     try:
@@ -75,11 +179,23 @@ def _load_draws():
     except Exception:
         return []
 
+
 def _save_draws(records: list) -> None:
-    with open(DRAWS_FILE, "w", encoding="utf-8") as f:
-        json.dump(records, f, ensure_ascii=False, indent=2)
+    kv_set_json("draws", records)
+
+    try:
+        with open(DRAWS_FILE, "w", encoding="utf-8") as f:
+            json.dump(records, f, ensure_ascii=False, indent=2)
+    except Exception:
+        pass
 
 def _load_users():
+    # 1. Odczyt z bazy
+    db = kv_get_json("users", None)
+    if db is not None:
+        return db
+
+    # 2. Fallback z pliku (np. lokalnie)
     if not os.path.exists(USERS_FILE):
         return {}
     try:
@@ -88,9 +204,17 @@ def _load_users():
     except Exception:
         return {}
 
+
 def _save_users(db: dict) -> None:
-    with open(USERS_FILE, "w", encoding="utf-8") as f:
-        json.dump(db, f, ensure_ascii=False, indent=2)
+    # 1. Zapis do bazy
+    kv_set_json("users", db)
+
+    # 2. Próba zapisu do pliku (może się nie udać na produkcji – pomijamy błąd)
+    try:
+        with open(USERS_FILE, "w", encoding="utf-8") as f:
+            json.dump(db, f, ensure_ascii=False, indent=2)
+    except Exception:
+        pass
 
 
 # === Parent PIN helpers (persistent in users.json) ===
