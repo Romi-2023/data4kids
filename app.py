@@ -1844,23 +1844,22 @@ elif page == "Regulamin":
 
 
 
-# -----------------------------
 # ADMINISTRATOR (TOTP / Authenticator)
 # -----------------------------
 elif page == "Administrator":
     st.markdown("# 🛡️ Administrator")
-    st.caption("Dostęp tylko przez TOTP (Authenticator) — sekret przechowywany bezpiecznie w bazie danych.")
+    st.caption(
+        "Dostęp tylko przez TOTP (Authenticator) — sekret przechowywany bezpiecznie w bazie danych."
+    )
 
-
-    # load/save admin TOTP secret in users DB under key "_admin_totp"
+    # load/save admin TOTP secret z bazy (helper get_admin_totp_secret)
     secret = get_admin_totp_secret()
-
 
     import_base_ok = True
     try:
         import pyotp
         import qrcode
-        from PIL import Image
+        from PIL import Image  # noqa: F401  (używane przez qrcode/Pillow)
         import io, base64
     except Exception:
         import_base_ok = False
@@ -1873,34 +1872,34 @@ elif page == "Administrator":
     if st.session_state.get("admin_unlocked", False):
         st.success("Jesteś zalogowany jako Administrator.")
         if st.button("Wyloguj administratora"):
-            st.session_state.admin_unlocked = False
+            st.session_state["admin_unlocked"] = False
             st.info("Wylogowano.")
             st.rerun()
 
-    # If no secret yet -> allow initial creation (only local)
+    # Jeśli nie ma jeszcze sekretu -> pozwól go utworzyć
     if not secret:
-        st.warning("Brak skonfigurowanego TOTP. Utwórz sekret i dodaj go do aplikacji Authenticator na telefonie.")
+        st.warning(
+            "Brak skonfigurowanego TOTP. Utwórz sekret i dodaj go do aplikacji Authenticator na telefonie."
+        )
         if st.button("Utwórz sekret TOTP teraz"):
             new_secret = pyotp.random_base32()
             set_admin_totp_secret(new_secret)
-            st.success("Sekret wygenerowany. Dodaj go do Authenticator (pokażę QR i secret).")
-            st.rerun()
-            st.success("Sekret wygenerowany. Dodaj go do Authenticator (pokażę QR i secret).")
+            st.success("Sekret wygenerowany. Dodaj go do Authenticator (pokażę QR i secret po zalogowaniu).")
             st.rerun()
         st.stop()
 
-    # Show login form (enter 6-digit code from phone)
+    # Formularz logowania TOTP
     st.markdown("**Zaloguj się kodem z aplikacji Authenticator**")
-    col_a, col_b = st.columns([2,1])
+    col_a, col_b = st.columns([2, 1])
     with col_a:
         code = st.text_input("6-cyfrowy kod TOTP", max_chars=6, key="admin_code_input")
     with col_b:
         if st.button("Zaloguj administratora"):
             try:
                 totp = pyotp.TOTP(secret)
-                ok = totp.verify(code, valid_window=1)
+                ok = totp.verify(code.strip(), valid_window=1)
                 if ok:
-                    st.session_state.admin_unlocked = True
+                    st.session_state["admin_unlocked"] = True
                     st.success("Zalogowano jako Administrator.")
                     st.rerun()
                 else:
@@ -1908,17 +1907,41 @@ elif page == "Administrator":
             except Exception as e:
                 st.error(f"Błąd weryfikacji: {e}")
 
+    # ⛔ Jeśli nie zalogowany admin – nie pokazujemy sekretu ani panelu
+    if not st.session_state.get("admin_unlocked", False):
+        st.info("Aby uzyskać dostęp do panelu administratora i konfiguracji sekretu, podaj poprawny kod TOTP.")
+        st.stop()
+
+    # ----------------- od tego miejsca UŻYTKOWNIK JEST ADMINEM -----------------
     st.divider()
-    st.markdown("### Konfiguracja sekretu (tylko lokalnie)")
-    col1, col2 = st.columns([2,1])
+    st.markdown("### Konfiguracja sekretu (tylko dla zalogowanego administratora)")
+    col1, col2 = st.columns([2, 1])
+
     with col1:
-        st.write("Jeżeli chcesz skonfigurować ręcznie w aplikacji Authenticator, użyj poniższego secretu.")
+        st.write(
+            "Jeżeli chcesz skonfigurować ręcznie w aplikacji Authenticator, "
+            "użyj poniższego secretu. **Nigdy nie udostępniaj go nikomu innemu.**"
+        )
         st.code(secret, language="text")
+
+        if st.button("Wygeneruj nowy sekret TOTP"):
+            new_secret = pyotp.random_base32()
+            set_admin_totp_secret(new_secret)
+            st.success(
+                "Wygenerowano nowy sekret. Skonfiguruj go ponownie w aplikacji Authenticator. "
+                "Bieżąca sesja administratora została wylogowana."
+            )
+            st.session_state["admin_unlocked"] = False
+            st.rerun()
+
     with col2:
         if st.button("Pokaż QR (provisioning URI)"):
             try:
                 totp = pyotp.TOTP(secret)
-                uri = totp.provisioning_uri(name=f"{APP_NAME}-admin", issuer_name=APP_NAME)
+                uri = totp.provisioning_uri(
+                    name=f"{APP_NAME}-admin",
+                    issuer_name=APP_NAME,
+                )
                 qr = qrcode.make(uri)
                 buf = io.BytesIO()
                 qr.save(buf, format="PNG")
@@ -1930,197 +1953,215 @@ elif page == "Administrator":
     st.markdown("---")
 
     # if admin unlocked -> show admin controls
-    if st.session_state.get("admin_unlocked", False):
-        st.markdown("## 🔧 Panel administratora — operacje")
-        db = _load_users()
+    # (tu już wiemy, że admin_unlocked == True)
+    st.markdown("## 🔧 Panel administratora — operacje")
+    db = _load_users()
 
-        st.subheader("Konta użytkowników")
-        if not db or all(k.startswith("_") for k in db.keys()):
-            st.caption("Brak użytkowników w bazie danych.")
-
-        else:
-            cols = st.columns([2,1,1])
-            cols[0].markdown("**Login**")
-            cols[1].markdown("**XP**")
-            cols[2].markdown("**Akcje**")
-            # show all real users (exclude internal keys starting with _)
-            users_list = [k for k in db.keys() if not k.startswith("_")]
-            for u in users_list:
-                prof = db.get(u, {})
-                xp = prof.get("xp", 0)
-                c1, c2, c3 = st.columns([2,1,1])
-                c1.write(u)
-                c2.write(xp)
-                if c3.button(f"Usuń konto: {u}", key=f"del_user_{u}"):
-                    del db[u]
-                    _save_users(db)
-                    st.success(f"Usunięto konto: {u}")
-                    st.rerun()
-
-        st.divider()
-
-        st.subheader("Pliki konfiguracji i backupy")
-        # download users.json
-        if st.button("Pobierz backup users.json"):
-            try:
-                st.download_button("Kliknij aby pobrać users.json", data=json.dumps(db, ensure_ascii=False, indent=2).encode("utf-8"),
-                                   file_name="users_backup.json", mime="application/json")
-            except Exception as e:
-                st.error(f"Błąd: {e}")
-
-        # upload new tasks.json (replace)
-        st.markdown("**Zastąp plik data/tasks.json (upload)**")
-        uploaded_tasks = st.file_uploader("Wgraj tasks.json (zastąpi obecny)", type=["json"], key="admin_upload_tasks")
-        if uploaded_tasks is not None:
-            try:
-                new_tasks = json.load(uploaded_tasks)
-                tf = os.path.join(DATA_DIR, "tasks.json")
-                with open(tf, "w", encoding="utf-8") as f:
-                    json.dump(new_tasks, f, ensure_ascii=False, indent=2)
-                st.success("Zapisano data/tasks.json")
-            except Exception as e:
-                st.error(f"Błąd zapisu: {e}")
-
-        # download tasks.json
-        if st.button("Pobierz obecny data/tasks.json"):
-            tf = os.path.join(DATA_DIR, "tasks.json")
-            if os.path.exists(tf):
-                with open(tf, "r", encoding="utf-8") as f:
-                    content = f.read()
-                st.download_button("Pobierz tasks.json", data=content.encode("utf-8"), file_name="tasks.json", mime="application/json")
-            else:
-                st.info("Brak pliku data/tasks.json")
-
-                st.divider()
-
-        st.subheader("🎁 Konkursy i losowanie nagród")
-
-        donors = _load_donors()
-        draws = _load_draws()
-
-        st.caption(f"Zgłoszeń konkursowych w donors.json: {len(donors)}")
-
-        if not donors:
-            st.info("Brak zgłoszeń w data/donors.json – najpierw niech rodzice wypełnią formularz w zakładce 'Wsparcie & konkursy'.")
-        else:
-            show_donors = st.checkbox("Pokaż listę zgłoszeń", value=False)
-            if show_donors:
-                try:
-                    df_donors = pd.DataFrame(donors)
-                    st.dataframe(df_donors, use_container_width=True)
-                except Exception:
-                    st.json(donors)
-
-            st.markdown("#### Konfiguracja losowania")
-
-            max_winners = max(1, len(donors))
-            num_winners = st.number_input(
-                "Liczba zwycięzców do wylosowania",
-                min_value=1,
-                max_value=max_winners,
-                value=min(3, max_winners),
-                step=1,
-            )
-
-            mode = st.radio(
-                "Sposób liczenia losów:",
-                [
-                    "Każde zgłoszenie = 1 los",
-                    "Unikalny e-mail = 1 los",
-                ],
-                index=0,
-                help=(
-                    "Każde zgłoszenie = ktoś kto zrobił kilka wpłat ma kilka losów.\n"
-                    "Unikalny e-mail = każdy kontakt ma tylko jeden los."
-                ),
-            )
-
-            if st.button("🎲 Wylosuj zwycięzców"):
-                import random
-                # przygotowanie puli
-                pool = donors
-                if mode == "Unikalny e-mail = 1 los":
-                    uniq = {}
-                    for d in donors:
-                        key = d.get("contact") or ""
-                        if key and key not in uniq:
-                            uniq[key] = d
-                    pool = list(uniq.values())
-
-                if not pool:
-                    st.warning("Brak prawidłowych zgłoszeń z e-mailem do losowania.")
-                else:
-                    k = min(num_winners, len(pool))
-                    winners = random.sample(pool, k=k)
-
-                    st.success(f"Wylosowano {k} zwycięzców:")
-                    st.json(winners)
-
-                    # zapis do historii losowań
-                    draw_record = {
-                        "timestamp": datetime.now(tz=tz.gettz("Europe/Warsaw")).isoformat(),
-                        "mode": mode,
-                        "num_candidates": len(pool),
-                        "num_winners": k,
-                        "winners": winners,
-                    }
-                    draws.append(draw_record)
-                    _save_draws(draws)
-                    st.info("Zapisano wynik losowania do data/draws.json")
-
-        if draws:
-            st.markdown("#### Historia losowań")
-            with st.expander("Pokaż historię losowań"):
-                try:
-                    df_draws = pd.DataFrame(
-                        [
-                            {
-                                "czas": d.get("timestamp"),
-                                "tryb": d.get("mode"),
-                                "kandydaci": d.get("num_candidates"),
-                                "zwycięzcy": ", ".join(
-                                    f"{w.get('parent_name','?')} <{w.get('contact','?')}>"
-                                    for w in d.get("winners", [])
-                                ),
-                            }
-                            for d in draws
-                        ]
-                    )
-                    st.dataframe(df_draws, use_container_width=True)
-                except Exception:
-                    st.json(draws)
-
-                st.download_button(
-                    "Pobierz historię losowań (JSON)",
-                    data=json.dumps(draws, ensure_ascii=False, indent=2).encode("utf-8"),
-                    file_name="draws.json",
-                    mime="application/json",
-                )
-
-        st.divider()
-        st.subheader("Ustawienia PIN rodzica")
-        admin_action = st.radio("Akcja", ["Pokaż rekord PIN rodzica", "Resetuj PIN rodzica"], index=0)
-        if admin_action == "Pokaż rekord PIN rodzica":
-            rec = db.get("_parent_pin", {})
-            st.json(rec)
-            st.caption("To tylko rekord (salt + hash). Nie da się odtworzyć pierwotnego PINu z hash.")
-        else:
-            if st.button("Resetuj PIN rodzica do domyślnego 1234"):
-                salt = secrets.token_hex(16)
-                db["_parent_pin"] = {"salt": salt, "hash": hash_text(salt + "1234")}
+    st.subheader("Konta użytkowników")
+    if not db or all(k.startswith("_") for k in db.keys()):
+        st.caption("Brak użytkowników w bazie danych.")
+    else:
+        cols = st.columns([2, 1, 1])
+        cols[0].markdown("**Login**")
+        cols[1].markdown("**XP**")
+        cols[2].markdown("**Akcje**")
+        # show all real users (exclude internal keys starting with _)
+        users_list = [k for k in db.keys() if not k.startswith("_")]
+        for u in users_list:
+            prof = db.get(u, {})
+            xp = prof.get("xp", 0)
+            c1, c2, c3 = st.columns([2, 1, 1])
+            c1.write(u)
+            c2.write(xp)
+            if c3.button(f"Usuń konto: {u}", key=f"del_user_{u}"):
+                del db[u]
                 _save_users(db)
-                st.success("Zresetowano PIN rodzica do 1234 (zmień go przez Panel rodzica).")
+                st.success(f"Usunięto konto: {u}")
+                st.rerun()
 
-        st.divider()
-        st.subheader("Ustawienia admina")
-        if st.button("Obróć sekret TOTP (wymaga ponownego ustawienia w Authenticator)"):
-            new_secret = pyotp.random_base32()
-            db["_admin_totp"] = {"secret": new_secret}
+    st.divider()
+
+    st.subheader("Pliki konfiguracji i backupy")
+    # download users.json (backup z bazy)
+    if st.button("Przygotuj backup users.json do pobrania"):
+        try:
+            st.download_button(
+                "Kliknij aby pobrać users.json",
+                data=json.dumps(db, ensure_ascii=False, indent=2).encode("utf-8"),
+                file_name="users_backup.json",
+                mime="application/json",
+            )
+        except Exception as e:
+            st.error(f"Błąd: {e}")
+
+    # upload new tasks.json (replace)
+    st.markdown("**Zastąp plik data/tasks.json (upload)**")
+    uploaded_tasks = st.file_uploader(
+        "Wgraj tasks.json (zastąpi obecny)", type=["json"], key="admin_upload_tasks"
+    )
+    if uploaded_tasks is not None:
+        try:
+            new_tasks = json.load(uploaded_tasks)
+            tf = os.path.join(DATA_DIR, "tasks.json")
+            with open(tf, "w", encoding="utf-8") as f:
+                json.dump(new_tasks, f, ensure_ascii=False, indent=2)
+            st.success("Zapisano data/tasks.json")
+        except Exception as e:
+            st.error(f"Błąd zapisu: {e}")
+
+    # download tasks.json
+    if st.button("Pobierz obecny data/tasks.json"):
+        tf = os.path.join(DATA_DIR, "tasks.json")
+        if os.path.exists(tf):
+            with open(tf, "r", encoding="utf-8") as f:
+                content = f.read()
+            st.download_button(
+                "Pobierz tasks.json",
+                data=content.encode("utf-8"),
+                file_name="tasks.json",
+                mime="application/json",
+            )
+        else:
+            st.info("Brak pliku data/tasks.json")
+
+    st.divider()
+
+    st.subheader("🎁 Konkursy i losowanie nagród")
+
+    donors = _load_donors()
+    draws = _load_draws()
+
+    st.caption(f"Zgłoszeń konkursowych: {len(donors)}")
+
+    if not donors:
+        st.info(
+            "Brak zgłoszeń — najpierw niech rodzice wypełnią formularz "
+            "w zakładce 'Wsparcie & konkursy'."
+        )
+    else:
+        show_donors = st.checkbox("Pokaż listę zgłoszeń", value=False)
+        if show_donors:
+            try:
+                df_donors = pd.DataFrame(donors)
+                st.dataframe(df_donors, use_container_width=True)
+            except Exception:
+                st.json(donors)
+
+        st.markdown("#### Konfiguracja losowania")
+
+        max_winners = max(1, len(donors))
+        num_winners = st.number_input(
+            "Liczba zwycięzców do wylosowania",
+            min_value=1,
+            max_value=max_winners,
+            value=min(3, max_winners),
+            step=1,
+        )
+
+        mode = st.radio(
+            "Sposób liczenia losów:",
+            [
+                "Każde zgłoszenie = 1 los",
+                "Unikalny e-mail = 1 los",
+            ],
+            index=0,
+            help=(
+                "Każde zgłoszenie = ktoś kto zrobił kilka wpłat ma kilka losów.\n"
+                "Unikalny e-mail = każdy kontakt ma tylko jeden los."
+            ),
+        )
+
+        if st.button("🎲 Wylosuj zwycięzców"):
+            import random
+
+            pool = donors
+            if mode == "Unikalny e-mail = 1 los":
+                uniq = {}
+                for d in donors:
+                    key = d.get("contact") or ""
+                    if key and key not in uniq:
+                        uniq[key] = d
+                pool = list(uniq.values())
+
+            if not pool:
+                st.warning("Brak prawidłowych zgłoszeń z e-mailem do losowania.")
+            else:
+                k = min(num_winners, len(pool))
+                winners = random.sample(pool, k=k)
+
+                st.success(f"Wylosowano {k} zwycięzców:")
+                st.json(winners)
+
+                draw_record = {
+                    "timestamp": datetime.now(tz=tz.gettz("Europe/Warsaw")).isoformat(),
+                    "mode": mode,
+                    "num_candidates": len(pool),
+                    "num_winners": k,
+                    "winners": winners,
+                }
+                draws.append(draw_record)
+                _save_draws(draws)
+                st.info("Zapisano wynik losowania do historii.")
+
+    if draws:
+        st.markdown("#### Historia losowań")
+        with st.expander("Pokaż historię losowań"):
+            try:
+                df_draws = pd.DataFrame(
+                    [
+                        {
+                            "czas": d.get("timestamp"),
+                            "tryb": d.get("mode"),
+                            "kandydaci": d.get("num_candidates"),
+                            "zwycięzcy": ", ".join(
+                                f"{w.get('parent_name','?')} <{w.get('contact','?')}>"
+                                for w in d.get("winners", [])
+                            ),
+                        }
+                        for d in draws
+                    ]
+                )
+                st.dataframe(df_draws, use_container_width=True)
+            except Exception:
+                st.json(draws)
+
+            st.download_button(
+                "Pobierz historię losowań (JSON)",
+                data=json.dumps(draws, ensure_ascii=False, indent=2).encode("utf-8"),
+                file_name="draws.json",
+                mime="application/json",
+            )
+
+    st.divider()
+    st.subheader("Ustawienia PIN rodzica")
+    admin_action = st.radio(
+        "Akcja", ["Pokaż rekord PIN rodzica", "Resetuj PIN rodzica"], index=0
+    )
+    if admin_action == "Pokaż rekord PIN rodzica":
+        rec = db.get("_parent_pin", {})
+        st.json(rec)
+        st.caption("To tylko rekord (salt + hash). Nie da się odtworzyć pierwotnego PINu z hash.")
+    else:
+        if st.button("Resetuj PIN rodzica do domyślnego 1234"):
+            salt = secrets.token_hex(16)
+            db["_parent_pin"] = {"salt": salt, "hash": hash_text(salt + "1234")}
             _save_users(db)
-            st.success("Wygenerowano nowy sekret. Zeskanuj nowy QR lub użyj secretu wyżej.")
-            st.experimental_rerun()
+            st.success("Zresetowano PIN rodzica do 1234 (zmień go przez Panel rodzica).")
 
-        st.markdown("Koniec panelu administratora.")
+    st.divider()
+    st.subheader("Ustawienia admina")
+    if st.button("Obróć sekret TOTP (wymaga ponownego ustawienia w Authenticator)"):
+        new_secret = pyotp.random_base32()
+        set_admin_totp_secret(new_secret)
+        st.success(
+            "Wygenerowano nowy sekret. Zeskanuj nowy QR lub użyj secretu w sekcji powyżej. "
+            "Bieżąca sesja została wylogowana."
+        )
+        st.session_state["admin_unlocked"] = False
+        st.experimental_rerun()
+
+    st.markdown("Koniec panelu administratora.")
+
 
 
 # -----------------------------
