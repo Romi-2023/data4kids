@@ -1,5 +1,14 @@
-﻿.venv/
+﻿# Python
 __pycache__/
 *.pyc
-.streamlit/
+
+# VS Code
+.vscode/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Systemowe
 .DS_Store
+Thumbs.db
+
