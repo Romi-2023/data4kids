@@ -216,6 +216,21 @@ def _save_users(db: dict) -> None:
     except Exception:
         pass
 
+from typing import Optional
+
+def get_admin_totp_secret() -> Optional[str]:
+    """Sekret TOTP admina z bazy (kv_store)."""
+    data = kv_get_json("admin_totp_secret", None)
+    if isinstance(data, dict):
+        return data.get("secret")
+    if isinstance(data, str):
+        return data
+    return None
+
+def set_admin_totp_secret(secret: str) -> None:
+    """Zapis sekretu TOTP admina do bazy."""
+    kv_set_json("admin_totp_secret", {"secret": secret})
+
 
 # === Parent PIN helpers (persistent in users.json) ===
 def _ensure_parent_pin_record():
@@ -1834,12 +1849,12 @@ elif page == "Regulamin":
 # -----------------------------
 elif page == "Administrator":
     st.markdown("# 🛡️ Administrator")
-    st.caption("Dostęp tylko przez TOTP (Authenticator) — sekret przechowywany lokalnie w data/users.json")
+    st.caption("Dostęp tylko przez TOTP (Authenticator) — sekret przechowywany bezpiecznie w bazie danych.")
+
 
     # load/save admin TOTP secret in users DB under key "_admin_totp"
-    db = _load_users()
-    admin_rec = db.get("_admin_totp", {})
-    secret = admin_rec.get("secret")
+    secret = get_admin_totp_secret()
+
 
     import_base_ok = True
     try:
@@ -1867,9 +1882,9 @@ elif page == "Administrator":
         st.warning("Brak skonfigurowanego TOTP. Utwórz sekret i dodaj go do aplikacji Authenticator na telefonie.")
         if st.button("Utwórz sekret TOTP teraz"):
             new_secret = pyotp.random_base32()
-            db = _load_users()
-            db["_admin_totp"] = {"secret": new_secret}
-            _save_users(db)
+            set_admin_totp_secret(new_secret)
+            st.success("Sekret wygenerowany. Dodaj go do Authenticator (pokażę QR i secret).")
+            st.rerun()
             st.success("Sekret wygenerowany. Dodaj go do Authenticator (pokażę QR i secret).")
             st.rerun()
         st.stop()
@@ -1921,7 +1936,8 @@ elif page == "Administrator":
 
         st.subheader("Konta użytkowników")
         if not db or all(k.startswith("_") for k in db.keys()):
-            st.caption("Brak użytkowników w users.json")
+            st.caption("Brak użytkowników w bazie danych.")
+
         else:
             cols = st.columns([2,1,1])
             cols[0].markdown("**Login**")
