@@ -1,0 +1,215 @@
+{
+  "title": "Quiz obrazkowy (MVP)",
+  "items": [
+    {
+      "image": "data/quiz_images/img_1.png",
+      "questions": [
+        {
+          "q": "Jaki napis widzisz na obrazku #1?",
+          "options": [
+            "TRIANGLE",
+            "CIRCLE",
+            "SQUARE",
+            "STAR"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Ile boków ma figura, której nazwę widzisz na obrazku #1?",
+          "options": [
+            "3",
+            "4",
+            "5",
+            "6"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Jakiego koloru jest tło obrazka #1?",
+          "options": [
+            "niebieskie",
+            "zielone",
+            "czerwone",
+            "żółte"
+          ],
+          "correct": 0
+        }
+      ]
+    },
+    {
+      "image": "data/quiz_images/img_2.png",
+      "questions": [
+        {
+          "q": "Jaki napis widzisz na obrazku #2?",
+          "options": [
+            "SQUARE",
+            "TRIANGLE",
+            "CIRCLE",
+            "STAR"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Ile boków ma figura, której nazwę widzisz na obrazku #2?",
+          "options": [
+            "3",
+            "4",
+            "5",
+            "8"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "Jakiego koloru jest tło obrazka #2?",
+          "options": [
+            "zielone",
+            "niebieskie",
+            "szare",
+            "czerwone"
+          ],
+          "correct": 0
+        }
+      ]
+    },
+    {
+      "image": "data/quiz_images/img_3.png",
+      "questions": [
+        {
+          "q": "Jaki napis widzisz na obrazku #3?",
+          "options": [
+            "CIRCLE",
+            "TRIANGLE",
+            "STAR",
+            "HEART"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Które słowo najlepiej opisuje figurę z napisu na obrazku #3?",
+          "options": [
+            "okrąg",
+            "kwadrat",
+            "strzałka",
+            "gwiazda"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Jakiego koloru jest tło obrazka #3?",
+          "options": [
+            "czerwone",
+            "zielone",
+            "żółte",
+            "niebieskie"
+          ],
+          "correct": 0
+        }
+      ]
+    },
+    {
+      "image": "data/quiz_images/img_4.png",
+      "questions": [
+        {
+          "q": "Jaki napis widzisz na obrazku #4?",
+          "options": [
+            "STAR",
+            "HEART",
+            "SQUARE",
+            "CIRCLE"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Z czym kojarzy ci się figura STAR?",
+          "options": [
+            "gwiazda",
+            "serce",
+            "koło",
+            "strzałka"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Jakiego koloru jest tło obrazka #4?",
+          "options": [
+            "żółte",
+            "niebieskie",
+            "szare",
+            "zielone"
+          ],
+          "correct": 0
+        }
+      ]
+    },
+    {
+      "image": "data/quiz_images/img_5.png",
+      "questions": [
+        {
+          "q": "Jaki napis widzisz na obrazku #5?",
+          "options": [
+            "HEART",
+            "STAR",
+            "CIRCLE",
+            "TRIANGLE"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Z czym kojarzy ci się figura HEART?",
+          "options": [
+            "serce",
+            "gwiazda",
+            "strzałka",
+            "kwadrat"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Jakiego koloru jest tło obrazka #5?",
+          "options": [
+            "szare",
+            "czerwone",
+            "zielone",
+            "turkusowe"
+          ],
+          "correct": 0
+        }
+      ]
+    },
+    {
+      "image": "data/quiz_images/img_6.png",
+      "questions": [
+        {
+          "q": "Jaki napis widzisz na obrazku #6?",
+          "options": [
+            "ARROW",
+            "CIRCLE",
+            "HEART",
+            "STAR"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Co oznacza po angielsku słowo ARROW?",
+          "options": [
+            "strzałka",
+            "koło",
+            "kwadrat",
+            "trójkąt"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Jakiego koloru jest tło obrazka #6?",
+          "options": [
+            "turkusowe",
+            "żółte",
+            "niebieskie",
+            "czerwone"
+          ],
+          "correct": 0
+        }
+      ]
+    }
+  ]
+}

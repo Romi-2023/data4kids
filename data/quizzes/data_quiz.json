@@ -1,0 +1,125 @@
+{
+  "title": "Quiz danych (MVP)",
+  "items": [
+    {
+      "q": "Który wykres najlepiej pokaże zmiany w czasie?",
+      "options": [
+        "Liniowy",
+        "Kołowy",
+        "Słupkowy",
+        "Pudełkowy"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Mediana to…",
+      "options": [
+        "wartość środkowa",
+        "średnia arytmetyczna",
+        "suma wartości",
+        "minimum"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "W CSV separator to zwykle…",
+      "options": [
+        ",",
+        ";",
+        "|",
+        "tab"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Który format NIE jest tabelaryczny?",
+      "options": [
+        "PNG",
+        "CSV",
+        "XLSX",
+        "Parquet"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Odchylenie standardowe mierzy…",
+      "options": [
+        "rozrzut danych",
+        "środkową wartość",
+        "nachylenie linii",
+        "liczbę kolumn"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Wykres pudełkowy pokazuje m.in.…",
+      "options": [
+        "medianę i kwartyle",
+        "tylko średnią",
+        "relację dwóch zmiennych",
+        "mapę cieplną"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Korelacja bliska 0 oznacza…",
+      "options": [
+        "brak liniowej zależności",
+        "silny związek",
+        "idealną linię",
+        "błąd obliczeń"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Który wykres dla udziałów procentowych?",
+      "options": [
+        "Kołowy",
+        "Liniowy",
+        "Wykres świecowy",
+        "Wektorowy"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Outlier to…",
+      "options": [
+        "wartość odstająca",
+        "kolumna kategoryczna",
+        "ID rekordu",
+        "sumaryczny wskaźnik"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "ETL oznacza…",
+      "options": [
+        "Extract, Transform, Load",
+        "Enter, Test, Log",
+        "Extend, Try, Learn",
+        "Exact, Total, Linear"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "W JSON pary to…",
+      "options": [
+        "klucz:wartość",
+        "kolumna:wiersz",
+        "suma:różnica",
+        "mnożnik:dzielna"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "W Pandas DataFrame wiersze indeksuje…",
+      "options": [
+        "index",
+        "rowid",
+        "gid",
+        "rid"
+      ],
+      "correct": 0
+    }
+  ]
+}

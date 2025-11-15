@@ -1,0 +1,102 @@
+[
+  {
+    "id": "m1",
+    "title": "Matematyczny rozruch",
+    "desc": "Rozwiąż 5 pytań z matematyki.",
+    "reward_xp": 20,
+    "sticker": "sticker_math",
+    "steps": [
+      "matematyka:5"
+    ]
+  },
+  {
+    "id": "m2",
+    "title": "Polonistyczny skok",
+    "desc": "Zdobądź 5 punktów w języku polskim.",
+    "reward_xp": 20,
+    "sticker": "sticker_lang",
+    "steps": [
+      "polski:5"
+    ]
+  },
+  {
+    "id": "m3",
+    "title": "Historyczna podróż",
+    "desc": "Ukończ 5 pytań z historii.",
+    "reward_xp": 20,
+    "sticker": "sticker_history",
+    "steps": [
+      "historia:5"
+    ]
+  },
+  {
+    "id": "m4",
+    "title": "Geo-ekspedycja",
+    "desc": "Ukończ 5 pytań z geografii.",
+    "reward_xp": 20,
+    "sticker": "sticker_geo",
+    "steps": [
+      "geografia:5"
+    ]
+  },
+  {
+    "id": "m5",
+    "title": "Fizyczne laboratorium",
+    "desc": "Ukończ 5 pytań z fizyki.",
+    "reward_xp": 20,
+    "sticker": "sticker_phys",
+    "steps": [
+      "fizyka:5"
+    ]
+  },
+  {
+    "id": "m6",
+    "title": "Chemiczny miks",
+    "desc": "Ukończ 5 pytań z chemii.",
+    "reward_xp": 20,
+    "sticker": "sticker_chem",
+    "steps": [
+      "chemia:5"
+    ]
+  },
+  {
+    "id": "m7",
+    "title": "English boost",
+    "desc": "Ukończ 5 pytań z angielskiego.",
+    "reward_xp": 20,
+    "sticker": "sticker_eng",
+    "steps": [
+      "angielski:5"
+    ]
+  },
+  {
+    "id": "m8",
+    "title": "Bio-misja",
+    "desc": "Ukończ 5 pytań z biologii.",
+    "reward_xp": 20,
+    "sticker": "sticker_bio",
+    "steps": [
+      "biologia:5"
+    ]
+  },
+  {
+    "id": "m9",
+    "title": "Dobra passa",
+    "desc": "Zrób serię 3 poprawnych odpowiedzi pod rząd.",
+    "reward_xp": 30,
+    "sticker": "sticker_combo",
+    "steps": [
+      "streak:3"
+    ]
+  },
+  {
+    "id": "m10",
+    "title": "Mistrz dnia",
+    "desc": "Ukończ 20 pytań w jeden dzień.",
+    "reward_xp": 50,
+    "sticker": "sticker_master",
+    "steps": [
+      "any:20"
+    ]
+  }
+]

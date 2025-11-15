@@ -1,0 +1,1 @@
+Przejść na draw_winners.py i w terminalu uruchomić komendę python draw_winners.py

@@ -1,0 +1,108 @@
+{
+  "title": "Moja karta rowerowa – teoria",
+  "sections": [
+    {
+      "id": "podstawy",
+      "label": "Podstawy ruchu drogowego",
+      "description": "Najważniejsze zasady, definicje i sytuacje, które musi znać młody rowerzysta.",
+      "topics": [
+        {
+          "id": "kim_jest_rowerzysta",
+          "title": "Kim jest rowerzysta?",
+          "age_hint": "10-13",
+          "text": "Rowerzysta to osoba poruszająca się po drodze rowerem. Dla przepisów prawa nie ma znaczenia, czy jedziesz dla zabawy, do szkoły czy na trening – zawsze jesteś uczestnikiem ruchu drogowego. Jako rowerzysta masz określone prawa (np. możesz jechać po drodze dla rowerów), ale też obowiązki (musisz stosować się do znaków, sygnałów i dbać o bezpieczeństwo swoje oraz innych).",
+          "bullet_points": [
+            "rowerzysta = uczestnik ruchu drogowego",
+            "musi znać i stosować przepisy",
+            "odpowiada za swoje zachowanie na drodze"
+          ],
+          "tip": "Pomyśl o sobie jak o kierowcy małego pojazdu, a nie jak o „dziecku na rowerku”."
+        },
+        {
+          "id": "gdzie_mozna_jechac",
+          "title": "Gdzie mogę jechać na rowerze?",
+          "age_hint": "10-13",
+          "text": "Rowerzysta powinien poruszać się przede wszystkim po drodze dla rowerów. Jeśli jej nie ma – po jezdni. Jazda po chodniku jest co do zasady zabroniona, ale istnieją trzy ważne wyjątki: (1) dziecko do 10 lat jedzie na rowerze pod opieką dorosłego, (2) chodnik ma co najmniej 2 metry szerokości, a na jezdni dozwolona prędkość to minimum 50 km/h i nie ma wydzielonego pasa dla rowerów, (3) bardzo złe warunki pogodowe (np. silny wiatr, lód).",
+          "bullet_points": [
+            "1️⃣ najpierw szukaj drogi dla rowerów",
+            "2️⃣ jeśli jej nie ma – jedź po jezdni przy prawej krawędzi",
+            "3️⃣ chodnik tylko w wyjątkowych sytuacjach"
+          ],
+          "tip": "Zanim ruszysz, rozejrzyj się: czy widzisz znak drogi dla rowerów lub pas rowerowy?"
+        },
+        {
+          "id": "sygnalizowanie_manewrow",
+          "title": "Jak sygnalizować skręcanie i zatrzymanie?",
+          "age_hint": "10-13",
+          "text": "Kierunkowskazem rowerzysty są jego ręce. Zanim zmienisz kierunek jazdy (skrętasz lub zmieniasz pas), musisz wyraźnie zasygnalizować zamiar. Skręt w lewo – wyprostowana lewa ręka. Skręt w prawo – wyprostowana prawa ręka. Ważne: sygnał pokazujesz chwilę przed manewrem, a potem wracasz ręką na kierownicę, żeby pewnie trzymać rower. Zatrzymanie możesz zasygnalizować uniesioną ręką w górę.",
+          "bullet_points": [
+            "skręt w lewo – lewa ręka w bok",
+            "skręt w prawo – prawa ręka w bok",
+            "zatrzymanie – ręka w górę",
+            "zawsze sygnalizuj ZANIM rozpoczniesz manewr"
+          ],
+          "tip": "Poćwicz sygnalizowanie na pustym placu – najpierw wolno, żeby utrzymać równowagę."
+        }
+      ]
+    },
+    {
+      "id": "pierwszenstwo",
+      "label": "Pierwszeństwo przejazdu",
+      "description": "Kto jedzie pierwszy na skrzyżowaniu? Tu trenujemy najważniejsze zasady.",
+      "topics": [
+        {
+          "id": "zasada_prawej_reki",
+          "title": "Zasada prawej ręki",
+          "age_hint": "10-13",
+          "text": "Na skrzyżowaniu równorzędnym (bez znaków pierwszeństwa) pierwszeństwo ma ten, kto nadjeżdża z prawej strony. Jeżeli ty nie masz nikogo z prawej – możesz jechać pierwszy. Jeśli z prawej strony zbliża się inny pojazd – musisz mu ustąpić. Ta zasada dotyczy również rowerzystów, nie tylko samochodów.",
+          "bullet_points": [
+            "brak znaków = skrzyżowanie równorzędne",
+            "patrz na pojazdy z prawej strony",
+            "ustępujesz temu, kto jest po twojej prawej"
+          ],
+          "tip": "Przed wjazdem na skrzyżowanie zrób krótkie: lewo–prawo–lewo. Zawsze szukaj pojazdów z prawej."
+        }
+      ]
+    },
+    {
+      "id": "sprzet",
+      "label": "Sprzęt i wyposażenie roweru",
+      "description": "Co musi mieć rower, żeby był dopuszczony do jazdy po drogach publicznych.",
+      "topics": [
+        {
+          "id": "obowiazkowe_wyposazenie",
+          "title": "Obowiązkowe wyposażenie roweru",
+          "age_hint": "10-13",
+          "text": "Rower, który porusza się po drodze, musi być sprawny technicznie i mieć określone elementy: sprawne hamulce (przynajmniej jeden, ale najlepiej przedni i tylny), sygnał dźwiękowy (np. dzwonek), światło przednie (białe lub żółte), światło tylne czerwone oraz czerwony odblask z tyłu. Opony powinny być napompowane, kierownica stabilna, a łańcuch nasmarowany.",
+          "bullet_points": [
+            "co najmniej jeden sprawny hamulec",
+            "dzwonek lub inny sygnał dźwiękowy",
+            "światło przednie białe/żółte",
+            "światło tylne czerwone + czerwony odblask",
+            "sprawdź opony, łańcuch, kierownicę"
+          ],
+          "tip": "Przed każdą dłuższą jazdą zrób krótką kontrolę: hamulce – światła – opony."
+        }
+      ]
+    },
+    {
+      "id": "pierwsza_pomoc",
+      "label": "Pierwsza pomoc",
+      "description": "Co zrobić, gdy dojdzie do wypadku lub kolizji.",
+      "topics": [
+        {
+          "id": "wezwanie_pomocy",
+          "title": "Jak wezwać pomoc?",
+          "age_hint": "10-13",
+          "text": "Jeśli widzisz wypadek lub poważny upadek, twoim pierwszym zadaniem jest zadbać o własne bezpieczeństwo – nie wbiegaj na jezdnię. Następnie sprawdź, czy osoba poszkodowana reaguje i oddycha. Jeśli sytuacja wygląda poważnie, zadzwoń pod numer alarmowy 112. Powiedz spokojnie: gdzie jesteś, co się stało, ile jest osób poszkodowanych i czy ktoś jest nieprzytomny. Nie rozłączaj się, dopóki dyspozytor nie powie, że możesz zakończyć rozmowę.",
+          "bullet_points": [
+            "najpierw bezpieczeństwo własne",
+            "sprawdź, czy poszkodowany reaguje i oddycha",
+            "zadzwoń pod 112 i odpowiedz na pytania dyspozytora"
+          ],
+          "tip": "Warto mieć przy rowerze karteczkę z własnymi danymi i numerem telefonu do rodzica."
+        }
+      ]
+    }
+  ]
+}

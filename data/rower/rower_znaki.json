@@ -1,0 +1,384 @@
+{
+  "title": "Znaki drogowe – karta rowerowa (pełniejszy zestaw)",
+  "categories": [
+    {
+      "id": "ostrzezenie",
+      "label": "Znaki ostrzegawcze (A)",
+      "color_hint": "yellow",
+      "signs": [
+        {
+          "code": "A-5",
+          "name": "Skrzyżowanie dróg",
+          "description": "Ostrzega przed zwykłym skrzyżowaniem, na którym mogą pojawić się pojazdy z różnych kierunków.",
+          "example": "Zbliżasz się do przecięcia dwóch dróg – zwalniasz, obserwujesz ruch z lewej i prawej strony."
+        },
+        {
+          "code": "A-6a",
+          "name": "Skrzyżowanie z drogą podporządkowaną z prawej strony",
+          "description": "Informuje, że z prawej strony dołącza droga podporządkowana.",
+          "example": "Jadąc drogą główną, możesz spodziewać się pojazdów wyjeżdżających z prawej strony."
+        },
+        {
+          "code": "A-6b",
+          "name": "Skrzyżowanie z drogą podporządkowaną z lewej strony",
+          "description": "Informuje, że z lewej strony dołącza droga podporządkowana.",
+          "example": "Uważasz na pojazdy, które mogą włączyć się do ruchu z lewej strony."
+        },
+        {
+          "code": "A-7",
+          "name": "Ustąp pierwszeństwa",
+          "description": "Ostrzega o konieczności ustąpienia pierwszeństwa pojazdom jadącym drogą z pierwszeństwem.",
+          "example": "Przed wjazdem na skrzyżowanie zwalniasz i przepuszczasz pojazdy jadące drogą główną."
+        },
+        {
+          "code": "A-10",
+          "name": "Przejazd kolejowy bez zapór",
+          "description": "Ostrzega przed przejazdem kolejowym, który nie ma rogatek.",
+          "example": "Przed torami zatrzymujesz się, rozglądasz w lewo i prawo i upewniasz się, że nie jedzie pociąg."
+        },
+        {
+          "code": "A-11",
+          "name": "Nierówna droga",
+          "description": "Informuje o odcinku drogi z wybojami lub muldami.",
+          "example": "Zwalniasz, bo na nierównościach łatwo stracić równowagę na rowerze."
+        },
+        {
+          "code": "A-12a",
+          "name": "Zwężenie jezdni – dwustronne",
+          "description": "Ostrzega, że jezdnia zwęża się z obu stron.",
+          "example": "Przygotowujesz się na mniejszą szerokość pasa ruchu i możliwe wyprzedzanie przez samochody."
+        },
+        {
+          "code": "A-12b",
+          "name": "Zwężenie jezdni – jednostronne",
+          "description": "Ostrzega, że jezdnia zwęża się z jednej strony.",
+          "example": "Zachowujesz ostrożność, bo pas ruchu staje się węższy z jednej strony."
+        },
+        {
+          "code": "A-16",
+          "name": "Przejście dla pieszych",
+          "description": "Ostrzega przed przejściem, na którym mogą pojawiać się piesi.",
+          "example": "Zbliżając się do szkoły lub przejścia, zwalniasz i jesteś gotowy do zatrzymania się."
+        },
+        {
+          "code": "A-17",
+          "name": "Dzieci",
+          "description": "Ostrzega przed miejscem, w którym często przebywają dzieci.",
+          "example": "Przy szkole lub placu zabaw liczysz się z tym, że dziecko może nagle wtargnąć na jezdnię."
+        },
+        {
+          "code": "A-24",
+          "name": "Rowerzyści",
+          "description": "Ostrzega, że na drodze mogą pojawiać się rowerzyści.",
+          "example": "Kierowcy powinni szczególnie uważać na rowerzystów, a ty wiesz, że nie jesteś sam na trasie."
+        }
+      ]
+    },
+    {
+      "id": "zakaz",
+      "label": "Znaki zakazu (B)",
+      "color_hint": "red",
+      "signs": [
+        {
+          "code": "B-1",
+          "name": "Zakaz ruchu w obu kierunkach",
+          "description": "Dalej nie mogą wjeżdżać żadne pojazdy – także rowery.",
+          "example": "Musisz znaleźć inną drogę albo zejść z roweru i iść jako pieszy, jeśli jest chodnik."
+        },
+        {
+          "code": "B-2",
+          "name": "Zakaz wjazdu",
+          "description": "Z tej strony droga jest zamknięta dla wszystkich pojazdów.",
+          "example": "W ulicę jednokierunkową nie możesz wjechać od strony znaku B-2."
+        },
+        {
+          "code": "B-9",
+          "name": "Zakaz wjazdu rowerów",
+          "description": "Na odcinku za znakiem nie wolno poruszać się rowerem.",
+          "example": "Jeśli chcesz tamtędy przejść, prowadzisz rower jak pieszy po chodniku (jeśli jest)."
+        },
+        {
+          "code": "B-11",
+          "name": "Zakaz wjazdu wózków rowerowych",
+          "description": "Zabrania wjazdu pojazdom wielośladowym napędzanym siłą mięśni, np. wózkom rowerowym.",
+          "example": "Rower jednośladowy może jechać, ale wózek rowerowy już nie."
+        },
+        {
+          "code": "B-20",
+          "name": "Stop",
+          "description": "Bez względu na sytuację musisz zatrzymać się przed linią lub krawędzią jezdni.",
+          "example": "Zatrzymujesz rower, patrzysz w lewo i prawo, dopiero potem ruszasz dalej."
+        },
+        {
+          "code": "B-21",
+          "name": "Zakaz skręcania w lewo",
+          "description": "Za znakiem nie wolno skręcić w lewo.",
+          "example": "Możesz jechać prosto lub w prawo, ale nie wolno ci skręcić w lewo na skrzyżowaniu."
+        },
+        {
+          "code": "B-22",
+          "name": "Zakaz skręcania w prawo",
+          "description": "Za znakiem nie wolno skręcić w prawo.",
+          "example": "Na skrzyżowaniu możesz skręcić tylko w lewo lub pojechać prosto."
+        },
+        {
+          "code": "B-23",
+          "name": "Zakaz zawracania",
+          "description": "Zabrania wykonania manewru zawracania.",
+          "example": "Nie możesz odwrócić kierunku jazdy w miejscu, gdzie stoi znak."
+        },
+        {
+          "code": "B-33",
+          "name": "Ograniczenie prędkości",
+          "description": "Wyznacza maksymalną dopuszczalną prędkość na danym odcinku.",
+          "example": "Jeśli znak pokazuje 30, kierowcy nie mogą przekraczać 30 km/h – to dla ciebie większe bezpieczeństwo."
+        },
+        {
+          "code": "B-35",
+          "name": "Zakaz postoju",
+          "description": "Zabrania postoju pojazdu w miejscu ustawienia znaku.",
+          "example": "Samochody nie powinny stać przy krawężniku w miejscu oznaczonym tym znakiem."
+        }
+      ]
+    },
+    {
+      "id": "nakaz",
+      "label": "Znaki nakazu (C)",
+      "color_hint": "blue",
+      "signs": [
+        {
+          "code": "C-1",
+          "name": "Nakaz jazdy w prawo przed znakiem",
+          "description": "Przed znakiem musisz skręcić w prawo.",
+          "example": "Droga rozwidla się – strzałka na znaku pokazuje, że rowerzyści i kierowcy skręcają w prawo."
+        },
+        {
+          "code": "C-2",
+          "name": "Nakaz jazdy w prawo za znakiem",
+          "description": "Za znakiem należy jechać w prawo.",
+          "example": "Za skrzyżowaniem droga może łagodnie skręcać w prawo – trzeba jechać zgodnie ze strzałką."
+        },
+        {
+          "code": "C-3",
+          "name": "Nakaz jazdy w lewo przed znakiem",
+          "description": "Przed znakiem obowiązuje skręt w lewo.",
+          "example": "Przed skrzyżowaniem musisz zmienić kierunek w lewo, nie możesz jechać prosto."
+        },
+        {
+          "code": "C-4",
+          "name": "Nakaz jazdy w lewo za znakiem",
+          "description": "Za znakiem należy jechać w lewo.",
+          "example": "Droga za znakiem wymusza skręt w lewo – nie możesz wybrać innego kierunku."
+        },
+        {
+          "code": "C-5",
+          "name": "Nakaz jazdy prosto",
+          "description": "Można jechać tylko prosto.",
+          "example": "Na skrzyżowaniu nie wolno skręcać – jedziesz prosto wraz z innymi pojazdami."
+        },
+        {
+          "code": "C-6",
+          "name": "Nakaz jazdy prosto lub w prawo",
+          "description": "Możesz jechać prosto lub skręcić w prawo.",
+          "example": "Jeśli chcesz skręcić w lewo, musisz znaleźć inne miejsce do zmiany kierunku."
+        },
+        {
+          "code": "C-7",
+          "name": "Nakaz jazdy prosto lub w lewo",
+          "description": "Dopuszcza jazdę prosto lub w lewo.",
+          "example": "Na skrzyżowaniu możesz pojechać na wprost albo skręcić w lewo."
+        },
+        {
+          "code": "C-8",
+          "name": "Nakaz jazdy w prawo lub w lewo",
+          "description": "Zabrania jazdy prosto – możesz wybrać tylko skręt w prawo lub w lewo.",
+          "example": "Droga kończy się – trzeba skręcić w którymś kierunku."
+        },
+        {
+          "code": "C-9",
+          "name": "Nakaz jazdy z prawej strony znaku",
+          "description": "Informuje, że przeszkodę należy ominąć z prawej strony.",
+          "example": "Wysepka na środku jezdni – wszystkie pojazdy przejeżdżają obok niej z prawej strony."
+        },
+        {
+          "code": "C-10",
+          "name": "Nakaz jazdy z lewej strony znaku",
+          "description": "Przeszkodę należy ominąć z lewej strony.",
+          "example": "Na zwężeniu drogi przejeżdżasz obok wysepki z lewej strony, zgodnie ze strzałką."
+        },
+        {
+          "code": "C-12",
+          "name": "Ruch okrężny",
+          "description": "Nakazuje jazdę po rondzie w kierunku wskazanym na znaku.",
+          "example": "Wjeżdżając na rondo, pamiętasz o zasadach pierwszeństwa i poruszasz się zgodnie ze strzałkami."
+        },
+        {
+          "code": "C-13",
+          "name": "Droga dla rowerów",
+          "description": "Oznacza drogę przeznaczoną tylko dla rowerzystów – masz obowiązek z niej korzystać.",
+          "example": "Obok jezdni widzisz drogę dla rowerów – nie jedziesz już po jezdni, tylko po wydzielonej drodze."
+        },
+        {
+          "code": "C-13a",
+          "name": "Koniec drogi dla rowerów",
+          "description": "Informuje o końcu odcinka wyznaczonego tylko dla rowerzystów.",
+          "example": "Po minięciu znaku możesz spodziewać się, że rowerzyści będą włączać się do ruchu na jezdni."
+        },
+        {
+          "code": "C-16",
+          "name": "Droga dla pieszych",
+          "description": "Droga przeznaczona wyłącznie dla pieszych.",
+          "example": "Jako starszy rowerzysta nie powinieneś jechać po takim chodniku – wybierz inną trasę."
+        },
+        {
+          "code": "C-13_16",
+          "name": "Droga dla rowerów i pieszych",
+          "description": "Oznacza wspólną drogę dla rowerzystów i pieszych.",
+          "example": "Jedziesz ostrożnie, bo na tej samej powierzchni mogą poruszać się piesi i rowerzyści."
+        }
+      ]
+    },
+    {
+      "id": "informacja",
+      "label": "Znaki informacyjne (D)",
+      "color_hint": "blue-light",
+      "signs": [
+        {
+          "code": "D-1",
+          "name": "Droga z pierwszeństwem",
+          "description": "Informuje, że poruszasz się drogą, która ma pierwszeństwo na skrzyżowaniach.",
+          "example": "Na kolejnych skrzyżowaniach inne pojazdy powinny ustępować ci pierwszeństwa, jeśli nie ma innych znaków."
+        },
+        {
+          "code": "D-2",
+          "name": "Koniec drogi z pierwszeństwem",
+          "description": "Znak informuje o końcu odcinka drogi, na którym miałeś pierwszeństwo.",
+          "example": "Na dalszych skrzyżowaniach zasady pierwszeństwa mogą być inne – zwracasz uwagę na nowe znaki."
+        },
+        {
+          "code": "D-3",
+          "name": "Droga jednokierunkowa",
+          "description": "Na tej drodze ruch odbywa się tylko w jednym kierunku.",
+          "example": "Wiedząc, że wszystkie pojazdy jadą jednym kierunkiem, łatwiej przewidujesz ruch na jezdni."
+        },
+        {
+          "code": "D-4a",
+          "name": "Droga bez przejazdu",
+          "description": "Informuje, że droga kończy się ślepo i nie ma przejazdu.",
+          "example": "Jeśli jedziesz rowerem na skróty, taki znak ostrzega, że możesz utknąć w ślepej uliczce."
+        },
+        {
+          "code": "D-6",
+          "name": "Przejście dla pieszych",
+          "description": "Informuje o miejscu wyznaczonym do przechodzenia pieszych przez jezdnię.",
+          "example": "Zbliżając się do zebry, pamiętasz, że piesi mogą wchodzić na przejście."
+        },
+        {
+          "code": "D-6a",
+          "name": "Przejazd dla rowerów",
+          "description": "Miejsce, gdzie droga rowerowa przecina jezdnię.",
+          "example": "Wjeżdżasz na przejazd rowerowy, upewniając się, że kierowcy ustępują ci pierwszeństwa, jeśli je masz."
+        },
+        {
+          "code": "D-6b",
+          "name": "Przejście dla pieszych i przejazd dla rowerów",
+          "description": "W jednym miejscu znajduje się przejście dla pieszych i przejazd rowerowy.",
+          "example": "Pilnujesz swojego pasa – jedziesz po części dla rowerów, nie po pasie dla pieszych."
+        },
+        {
+          "code": "D-7",
+          "name": "Droga ekspresowa",
+          "description": "Informuje o wjeździe na drogę ekspresową.",
+          "example": "Rowerzyści nie mogą poruszać się po drogach ekspresowych – musisz wybrać inną trasę."
+        },
+        {
+          "code": "D-18",
+          "name": "Parking",
+          "description": "Oznacza miejsce przeznaczone do postoju pojazdów.",
+          "example": "Możesz spodziewać się zaparkowanych samochodów, pomiędzy którymi trzeba jechać szczególnie ostrożnie."
+        },
+        {
+          "code": "D-23",
+          "name": "Stacja paliw",
+          "description": "Informuje o stacji paliw w pobliżu drogi.",
+          "example": "Na stacjach ruch bywa chaotyczny – piesi, samochody, dostawy – jedziesz tam bardzo ostrożnie."
+        }
+      ]
+    },
+    {
+      "id": "kierunek",
+      "label": "Znaki kierunku i miejscowości (E)",
+      "color_hint": "green",
+      "signs": [
+        {
+          "code": "E-14",
+          "name": "Tablica szlaku drogowego",
+          "description": "Informuje o numerze drogi i kierunku jej przebiegu.",
+          "example": "Jadąc wzdłuż tej samej drogi, widzisz kolejne tablice z jej numerem."
+        },
+        {
+          "code": "E-17a",
+          "name": "Miejscowość",
+          "description": "Informuje o wjeździe na teren miejscowości.",
+          "example": "Po minięciu tego znaku zwykle obowiązuje ograniczenie prędkości do 50 km/h."
+        },
+        {
+          "code": "E-18a",
+          "name": "Koniec miejscowości",
+          "description": "Informuje o wyjeździe z miejscowości.",
+          "example": "Po znaku końca miejscowości często zmieniają się ograniczenia prędkości."
+        },
+        {
+          "code": "E-22a",
+          "name": "Szlak turystyczny / obiekt turystyczny",
+          "description": "Informuje o trasie prowadzącej do atrakcji turystycznej lub obiektu wypoczynkowego.",
+          "example": "Na wycieczce rowerowej możesz kierować się tymi znakami, aby trafić do ciekawych miejsc."
+        }
+      ]
+    },
+    {
+      "id": "poziome",
+      "label": "Znaki drogowe poziome (P) – do teorii",
+      "color_hint": "gray",
+      "note": "Te znaki zwykle będziemy omawiać w teorii i quizach. Obrazki są opcjonalne.",
+      "signs": [
+        {
+          "code": "P-10",
+          "name": "Przejście dla pieszych",
+          "description": "Zebra namalowana na jezdni – miejsce przechodzenia pieszych.",
+          "example": "Zbliżając się na rowerze do pasów, zwalniasz i obserwujesz, czy ktoś nie wchodzi na przejście."
+        },
+        {
+          "code": "P-11",
+          "name": "Przejazd dla rowerzystów",
+          "description": "Oznaczone na jezdni miejsce, po którym rowerzyści mogą przejechać przez drogę.",
+          "example": "Najczęściej towarzyszy mu znak pionowy D-6a lub D-6b."
+        },
+        {
+          "code": "P-12",
+          "name": "Linia bezwzględnego zatrzymania – stop",
+          "description": "Linia, przed którą musisz zatrzymać się, gdy obowiązuje znak B-20.",
+          "example": "Zatrzymujesz się tak, by przednia opona nie przekraczała linii P-12."
+        },
+        {
+          "code": "P-14",
+          "name": "Linia warunkowego zatrzymania z trójkątów",
+          "description": "Wyznacza miejsce zatrzymania, gdy musisz ustąpić pierwszeństwa (np. przy znaku A-7).",
+          "example": "Zwalniasz i zatrzymujesz się, jeśli zbliżają się inne pojazdy."
+        },
+        {
+          "code": "P-21",
+          "name": "Powierzchnia wyłączona z ruchu",
+          "description": "Skośne pasy na jezdni – obszar, po którym nie należy jeździć.",
+          "example": "Nie przejeżdżasz po tej powierzchni, traktujesz ją jak przeszkodę."
+        },
+        {
+          "code": "P-23",
+          "name": "Rower",
+          "description": "Symbol roweru na nawierzchni – oznacza pas lub drogę dla rowerzystów.",
+          "example": "Jadąc po takim oznakowaniu, korzystasz z wydzielonego pasa dla rowerów."
+        }
+      ]
+    }
+  ]
+}

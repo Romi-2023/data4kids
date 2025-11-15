@@ -1,0 +1,3085 @@
+{
+  "matematyka": {
+    "7-9": [
+      {
+        "type": "mcq",
+        "q": "Ile to 5 + 5 + 5?",
+        "options": [
+          "10",
+          "15",
+          "20"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Połowa z 8 to?",
+        "options": [
+          "2",
+          "4",
+          "6"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Policz: 20 − 8",
+        "options": [
+          "21",
+          "20",
+          "19",
+          "18"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Ile słupków należy narysować? 3 słupki: 2, 5, 4",
+        "options": [
+          "5",
+          "4",
+          "3",
+          "2"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Ile to 2 × 6?",
+        "options": [
+          "8",
+          "10",
+          "12"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Porównaj: 12 … 9",
+        "options": [
+          "<",
+          "=",
+          ">"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Policz: 3 + 4 + 6",
+        "options": [
+          "13",
+          "14",
+          "11",
+          "12"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Liczba parzysta to…",
+        "options": [
+          "7",
+          "11",
+          "14"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Zaznacz połowę koła",
+        "options": [
+          "półkole",
+          "ćwierćkole",
+          "pełne koło",
+          "wycinek 30°"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Ułamek 1/2 to?",
+        "options": [
+          "0.5",
+          "-0.25",
+          "0",
+          "0.25"
+        ],
+        "correct": 2
+      }
+    ],
+    "10-12": [
+      {
+        "type": "mcq",
+        "q": "Ile sekund ma 1 godzina?",
+        "options": [
+          "3600",
+          "1800",
+          "600"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Ile to 12 × 8?",
+        "options": [
+          "96",
+          "88",
+          "108"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Oblicz: 45 + 37",
+        "options": [
+          "81",
+          "83",
+          "80",
+          "82"
+        ],
+        "correct": 3
+      },
+      {
+        "type": "mcq",
+        "q": "1/4 to ile procent?",
+        "options": [
+          "15%",
+          "20%",
+          "25%"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Porównaj liczby: 0.45 i 0.5",
+        "options": [
+          "0.45 > 0.5",
+          "0.45 = 0.5",
+          "0.45 < 0.5"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Policz średnią arytmetyczną z 12, 15, 17",
+        "options": [
+          "15.67",
+          "13.67",
+          "14.67",
+          "16.67"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Rozwiąż: 120 ÷ 6",
+        "options": [
+          "20",
+          "19",
+          "21",
+          "18"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Rozwiąż równanie: x + 9 = 21",
+        "options": [
+          "13",
+          "12",
+          "11",
+          "14"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Ile to 3^4?",
+        "options": [
+          "12",
+          "27",
+          "81"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Oszacuj cenę 7 jabłek po 1.39 zł",
+        "options": [
+          "10.0 zł",
+          "9.0 zł",
+          "9.5 zł",
+          "10.5 zł"
+        ],
+        "correct": 2
+      }
+    ],
+    "13-14": [
+      {
+        "type": "mcq",
+        "q": "Rozwiąż: 3x − 7 = 20; x = ?",
+        "options": [
+          "9",
+          "10",
+          "11"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Pole koła o r=4",
+        "options": [
+          "16π",
+          "8π",
+          "4π"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Wspólny mianownik dla 2/3 i 3/5",
+        "options": [
+          "8",
+          "15",
+          "30"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "0,08 jako ułamek zwykły",
+        "options": [
+          "8/10",
+          "2/25",
+          "1/8"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Rozwiń: 2(x+3)",
+        "options": [
+          "2x+3",
+          "2x+6",
+          "x+6"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Oblicz: 5!",
+        "options": [
+          "3",
+          "6",
+          "5",
+          "4"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Wzór na prędkość to…",
+        "options": [
+          "v=s/t",
+          "s=v/t",
+          "t=s/v"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Największa liczba: 0.7, 0.09, 0.65",
+        "options": [
+          "0.7",
+          "0.65",
+          "0.09"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Ułamek równy 1/2 to…",
+        "options": [
+          "2/4",
+          "3/4",
+          "4/5"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Średnia arytmetyczna liczb 2, 8, 10 to…",
+        "options": [
+          "6.67",
+          "7",
+          "8"
+        ],
+        "correct": 0
+      }
+    ]
+  },
+  "polski": {
+    "7-9": [
+      {
+        "type": "mcq",
+        "q": "W zdaniu 'Pies szczeka' podmiot to…",
+        "options": [
+          "Pies",
+          "szczeka",
+          "Pies szczeka"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Czasownik to…",
+        "options": [
+          "biegać",
+          "niebieski",
+          "kotek"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Popraw: 'Koty lubi mleko'",
+        "options": [
+          "Koty lubią mleko",
+          "Koty lubi mleko",
+          "Koty lubił mleko"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "W zdaniu 'Piotr czyta książkę' orzeczeniem jest…",
+        "options": [
+          "czyta",
+          "Piotr",
+          "książkę"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Wyraz bliskoznaczny do 'ważny' to…",
+        "options": [
+          "istotny",
+          "wąski",
+          "ważący"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Antonim do 'wysoki' to…",
+        "options": [
+          "niski",
+          "chudy",
+          "szeroki"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Liczba mnoga od 'dziecko' to…",
+        "options": [
+          "dzieci",
+          "dziecka",
+          "dzieckowie"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Czasownik odpowiada na pytania…",
+        "options": [
+          "co robi? co się dzieje?",
+          "jaki? jaka?",
+          "kto? co?"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Gatunek 'baśń' zawiera…",
+        "options": [
+          "elementy fantastyczne",
+          "kronikę faktów",
+          "przepis kulinarny"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Znak interpunkcyjny na końcu pytania to…",
+        "options": [
+          "?",
+          "!",
+          "."
+        ],
+        "correct": 0
+      }
+    ],
+    "10-12": [
+      {
+        "type": "mcq",
+        "q": "'Piękny' to…",
+        "options": [
+          "czasownik",
+          "przymiotnik",
+          "rzeczownik"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Narrator to…",
+        "options": [
+          "osoba mówiąca w tekście",
+          "główny bohater",
+          "autor"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Wyraz bliskoznaczny do 'ważny' to…",
+        "options": [
+          "istotny",
+          "wąski",
+          "ważący"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Gatunek 'baśń' zawiera…",
+        "options": [
+          "elementy fantastyczne",
+          "kronikę faktów",
+          "przepis kulinarny"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Narrator to…",
+        "options": [
+          "osoba mówiąca w tekście",
+          "autor podręcznika",
+          "postać historyczna"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "W zdaniu 'Piotr czyta książkę' orzeczeniem jest…",
+        "options": [
+          "czyta",
+          "Piotr",
+          "książkę"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Liczba mnoga od 'dziecko' to…",
+        "options": [
+          "dzieci",
+          "dziecka",
+          "dzieckowie"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Antonim do 'wysoki' to…",
+        "options": [
+          "niski",
+          "chudy",
+          "szeroki"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'By' w zdaniu to zwykle…",
+        "options": [
+          "spójnik",
+          "rzeczownik",
+          "przymiotnik"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Czasownik odpowiada na pytania…",
+        "options": [
+          "co robi? co się dzieje?",
+          "jaki? jaka?",
+          "kto? co?"
+        ],
+        "correct": 0
+      }
+    ],
+    "13-14": [
+      {
+        "type": "mcq",
+        "q": "Rymy parzyste to…",
+        "options": [
+          "aa bb",
+          "ab ab",
+          "ab ba"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Rodzaj narracji, gdy narrator jest uczestnikiem wydarzeń",
+        "options": [
+          "pierwszoosobowa",
+          "trzecioosobowa",
+          "wszechwiedząca"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Liczba mnoga od 'dziecko' to…",
+        "options": [
+          "dzieci",
+          "dziecka",
+          "dzieckowie"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Gatunek 'baśń' zawiera…",
+        "options": [
+          "elementy fantastyczne",
+          "kronikę faktów",
+          "przepis kulinarny"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Antonim do 'wysoki' to…",
+        "options": [
+          "niski",
+          "chudy",
+          "szeroki"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Epitet to…",
+        "options": [
+          "określenie rzeczownika",
+          "rodzaj czasownika",
+          "przysłówek"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Czasownik odpowiada na pytania…",
+        "options": [
+          "co robi? co się dzieje?",
+          "jaki? jaka?",
+          "kto? co?"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Narrator to…",
+        "options": [
+          "osoba mówiąca w tekście",
+          "autor podręcznika",
+          "postać historyczna"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Zdanie złożone ma…",
+        "options": [
+          "więcej niż jedno orzeczenie",
+          "jedno orzeczenie",
+          "zero orzeczeń"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'By' w zdaniu to zwykle…",
+        "options": [
+          "spójnik",
+          "rzeczownik",
+          "przymiotnik"
+        ],
+        "correct": 0
+      }
+    ]
+  },
+  "historia": {
+    "7-9": [
+      {
+        "type": "mcq",
+        "q": "Pierwszy historyczny władca Polski to…",
+        "options": [
+          "Mieszko I",
+          "Bolesław Chrobry",
+          "Kazimierz Wielki"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Konstytucja 3 maja uchwalona w…",
+        "options": [
+          "1791",
+          "1569",
+          "1918"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Pierwszy król Polski to…",
+        "options": [
+          "Bolesław Chrobry",
+          "Mieszko I",
+          "Kazimierz Wielki"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Starożytny Rzym leży w…",
+        "options": [
+          "Italii",
+          "Galii",
+          "Iberii"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Symbole Polski to…",
+        "options": [
+          "godło, flaga, hymn",
+          "herb, moneta, akt",
+          "paszport, mapa, stempel"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Pisano na…",
+        "options": [
+          "papirusie",
+          "gumie",
+          "betonie"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Chrzest Polski przyjmuje…",
+        "options": [
+          "Mieszko I",
+          "Bolesław Śmiały",
+          "Władysław Jagiełło"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Bitwa pod Grunwaldem to rok…",
+        "options": [
+          "1410",
+          "966",
+          "1791"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Wikingowie słynęli z…",
+        "options": [
+          "żeglugi i wypraw morskich",
+          "hodowli ryżu",
+          "wynalezienia druku"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Powstanie listopadowe wybuchło w…",
+        "options": [
+          "1830",
+          "1918",
+          "1863"
+        ],
+        "correct": 0
+      }
+    ],
+    "10-12": [
+      {
+        "type": "mcq",
+        "q": "Chrzest Polski: rok",
+        "options": [
+          "966",
+          "1025",
+          "1410"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Odkrycie Ameryki przez Kolumba…",
+        "options": [
+          "1492",
+          "1517",
+          "1525"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Konstytucja 3 maja uchwalona w…",
+        "options": [
+          "1791",
+          "1569",
+          "1918"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Starożytny Rzym leży w…",
+        "options": [
+          "Italii",
+          "Galii",
+          "Iberii"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Chrzest Polski przyjmuje…",
+        "options": [
+          "Mieszko I",
+          "Bolesław Śmiały",
+          "Władysław Jagiełło"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Bitwa pod Grunwaldem to rok…",
+        "options": [
+          "1410",
+          "966",
+          "1791"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Wikingowie słynęli z…",
+        "options": [
+          "żeglugi i wypraw morskich",
+          "hodowli ryżu",
+          "wynalezienia druku"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Powstanie listopadowe wybuchło w…",
+        "options": [
+          "1830",
+          "1918",
+          "1863"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Symbole Polski to…",
+        "options": [
+          "godło, flaga, hymn",
+          "herb, moneta, akt",
+          "paszport, mapa, stempel"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Rozbicie dzielnicowe zaczęło się w…",
+        "options": [
+          "1138",
+          "966",
+          "1410"
+        ],
+        "correct": 0
+      }
+    ],
+    "13-14": [
+      {
+        "type": "mcq",
+        "q": "Konstytucja 3 Maja została uchwalona w…",
+        "options": [
+          "1791",
+          "1772",
+          "1918"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Wikingowie słynęli z…",
+        "options": [
+          "żeglugi i wypraw morskich",
+          "hodowli ryżu",
+          "wynalezienia druku"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Konstytucja 3 maja uchwalona w…",
+        "options": [
+          "1791",
+          "1569",
+          "1918"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Symbole Polski to…",
+        "options": [
+          "godło, flaga, hymn",
+          "herb, moneta, akt",
+          "paszport, mapa, stempel"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Chrzest Polski przyjmuje…",
+        "options": [
+          "Mieszko I",
+          "Bolesław Śmiały",
+          "Władysław Jagiełło"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Rozbicie dzielnicowe zaczęło się w…",
+        "options": [
+          "1138",
+          "966",
+          "1410"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Powstanie listopadowe wybuchło w…",
+        "options": [
+          "1830",
+          "1918",
+          "1863"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Pierwszy król Polski to…",
+        "options": [
+          "Bolesław Chrobry",
+          "Mieszko I",
+          "Kazimierz Wielki"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Bitwa pod Grunwaldem to rok…",
+        "options": [
+          "1410",
+          "966",
+          "1791"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Pisano na…",
+        "options": [
+          "papirusie",
+          "gumie",
+          "betonie"
+        ],
+        "correct": 0
+      }
+    ]
+  },
+  "geografia": {
+    "7-9": [
+      {
+        "type": "mcq",
+        "q": "Ile jest kontynentów?",
+        "options": [
+          "5",
+          "6",
+          "7"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Ocean między Europą a Ameryką to…",
+        "options": [
+          "Atlantycki",
+          "Spokojny",
+          "Arktyczny"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Największy kontynent to…",
+        "options": [
+          "Azja",
+          "Afryka",
+          "Ameryka Płn."
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Najdłuższa rzeka w Polsce to…",
+        "options": [
+          "Wisła",
+          "Odra",
+          "Warta"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Klimat równikowy jest…",
+        "options": [
+          "gorący i wilgotny",
+          "zimny i suchy",
+          "umiarkowany chłodny"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Wulkan to…",
+        "options": [
+          "wylot magmy",
+          "lodowiec",
+          "jezioro"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Państwo-wyspa na Oceanie Indyjskim to…",
+        "options": [
+          "Madagaskar",
+          "Kuba",
+          "Nowa Zelandia"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Stolica Francji to…",
+        "options": [
+          "Paryż",
+          "Lyon",
+          "Marsylia"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Najwyższy szczyt Tatr to…",
+        "options": [
+          "Rysy",
+          "Gerlach",
+          "Kasprowy"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Pustynia w Chinach to…",
+        "options": [
+          "Gobi",
+          "Kalahari",
+          "Atakama"
+        ],
+        "correct": 0
+      }
+    ],
+    "10-12": [
+      {
+        "type": "mcq",
+        "q": "Strefa czasowa Polski to UTC…",
+        "options": [
+          "+0",
+          "+1",
+          "+2"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Kontynent z Saharą to…",
+        "options": [
+          "Afryka",
+          "Azja",
+          "Australia"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Najdłuższa rzeka w Polsce to…",
+        "options": [
+          "Wisła",
+          "Odra",
+          "Warta"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Ocean między Europą a Ameryką to…",
+        "options": [
+          "Atlantycki",
+          "Spokojny",
+          "Arktyczny"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Najwyższy szczyt Tatr to…",
+        "options": [
+          "Rysy",
+          "Gerlach",
+          "Kasprowy"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Stolica Francji to…",
+        "options": [
+          "Paryż",
+          "Lyon",
+          "Marsylia"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Klimat równikowy jest…",
+        "options": [
+          "gorący i wilgotny",
+          "zimny i suchy",
+          "umiarkowany chłodny"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Największy kontynent to…",
+        "options": [
+          "Azja",
+          "Afryka",
+          "Ameryka Płn."
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Państwo-wyspa na Oceanie Indyjskim to…",
+        "options": [
+          "Madagaskar",
+          "Kuba",
+          "Nowa Zelandia"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Pustynia w Chinach to…",
+        "options": [
+          "Gobi",
+          "Kalahari",
+          "Atakama"
+        ],
+        "correct": 0
+      }
+    ],
+    "13-14": [
+      {
+        "type": "mcq",
+        "q": "Proces urbanizacji to…",
+        "options": [
+          "spadek ludności miast",
+          "wzrost ludności miast",
+          "przyrost naturalny"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Pustynia w Chinach to…",
+        "options": [
+          "Gobi",
+          "Kalahari",
+          "Atakama"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Klimat równikowy jest…",
+        "options": [
+          "gorący i wilgotny",
+          "zimny i suchy",
+          "umiarkowany chłodny"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Państwo-wyspa na Oceanie Indyjskim to…",
+        "options": [
+          "Madagaskar",
+          "Kuba",
+          "Nowa Zelandia"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Największy kontynent to…",
+        "options": [
+          "Azja",
+          "Afryka",
+          "Ameryka Płn."
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Stolica Niemiec to…",
+        "options": [
+          "Berlin",
+          "Monachium",
+          "Hamburg"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Najdłuższa rzeka w Polsce to…",
+        "options": [
+          "Wisła",
+          "Odra",
+          "Warta"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Najwyższy szczyt Tatr to…",
+        "options": [
+          "Rysy",
+          "Gerlach",
+          "Kasprowy"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Wulkan to…",
+        "options": [
+          "wylot magmy",
+          "lodowiec",
+          "jezioro"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Stolica Francji to…",
+        "options": [
+          "Paryż",
+          "Lyon",
+          "Marsylia"
+        ],
+        "correct": 0
+      }
+    ]
+  },
+  "fizyka": {
+    "7-9": [
+      {
+        "type": "mcq",
+        "q": "Jednostka prędkości to…",
+        "options": [
+          "m/s",
+          "N",
+          "J"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jednostka pracy to…",
+        "options": [
+          "J",
+          "N",
+          "W"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jednostka prędkości w SI to…",
+        "options": [
+          "m/s",
+          "km/h",
+          "N"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Masa to…",
+        "options": [
+          "ilość materii",
+          "siła ciężkości",
+          "ciepło"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Przemiana energii w żarówce to głównie…",
+        "options": [
+          "elektryczna → świetlna",
+          "chemiczna → cieplna",
+          "światło → prąd"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Siła to…",
+        "options": [
+          "oddziaływanie ciał",
+          "rodzaj energii",
+          "temperatura"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Gęstość ρ to…",
+        "options": [
+          "m/V",
+          "V/m",
+          "F·a"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Ciśnienie p to…",
+        "options": [
+          "F/S",
+          "S/F",
+          "F·S"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Praca W to…",
+        "options": [
+          "F·s",
+          "F/s",
+          "s/F"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Wzór na prędkość to…",
+        "options": [
+          "v=s/t",
+          "s=v/t",
+          "t=s/v"
+        ],
+        "correct": 0
+      }
+    ],
+    "10-12": [
+      {
+        "type": "mcq",
+        "q": "Wzór na prędkość to…",
+        "options": [
+          "s=v/t",
+          "v=s/t",
+          "t=s/v"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Gęstość ρ to…",
+        "options": [
+          "m/V",
+          "V/m",
+          "F·a"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Ciśnienie p to…",
+        "options": [
+          "F/S",
+          "S/F",
+          "F·S"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Siła to…",
+        "options": [
+          "oddziaływanie ciał",
+          "rodzaj energii",
+          "temperatura"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Energia potencjalna rośnie gdy…",
+        "options": [
+          "zwiększamy wysokość",
+          "zmniejszamy masę",
+          "chłodzimy"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Tor ruchu to…",
+        "options": [
+          "linia po której porusza się ciało",
+          "czas ruchu",
+          "prędkość chwilowa"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Masa to…",
+        "options": [
+          "ilość materii",
+          "siła ciężkości",
+          "ciepło"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Praca W to…",
+        "options": [
+          "F·s",
+          "F/s",
+          "s/F"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Przemiana energii w żarówce to głównie…",
+        "options": [
+          "elektryczna → świetlna",
+          "chemiczna → cieplna",
+          "światło → prąd"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jednostka pracy to…",
+        "options": [
+          "J",
+          "N",
+          "W"
+        ],
+        "correct": 0
+      }
+    ],
+    "13-14": [
+      {
+        "type": "mcq",
+        "q": "Druga zasada Newtona mówi, że F=…",
+        "options": [
+          "m*a",
+          "m/v",
+          "a/m"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Tor ruchu to…",
+        "options": [
+          "linia po której porusza się ciało",
+          "czas ruchu",
+          "prędkość chwilowa"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Masa to…",
+        "options": [
+          "ilość materii",
+          "siła ciężkości",
+          "ciepło"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jednostka pracy to…",
+        "options": [
+          "J",
+          "N",
+          "W"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Przemiana energii w żarówce to głównie…",
+        "options": [
+          "elektryczna → świetlna",
+          "chemiczna → cieplna",
+          "światło → prąd"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Niezmiennik w ruchu jednostajnym to…",
+        "options": [
+          "prędkość",
+          "przyspieszenie",
+          "siła"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Praca W to…",
+        "options": [
+          "F·s",
+          "F/s",
+          "s/F"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Energia potencjalna rośnie gdy…",
+        "options": [
+          "zwiększamy wysokość",
+          "zmniejszamy masę",
+          "chłodzimy"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Ciśnienie p to…",
+        "options": [
+          "F/S",
+          "S/F",
+          "F·S"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Gęstość ρ to…",
+        "options": [
+          "m/V",
+          "V/m",
+          "F·a"
+        ],
+        "correct": 0
+      }
+    ]
+  },
+  "chemia": {
+    "7-9": [
+      {
+        "type": "mcq",
+        "q": "Symbol chemiczny wody to…",
+        "options": [
+          "CO2",
+          "H2O",
+          "O2"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Kowalencyjne wiązanie występuje gdy…",
+        "options": [
+          "atomy dzielą elektrony",
+          "elektrony są oddane",
+          "jądra się łączą"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Roztwór to…",
+        "options": [
+          "jednorodna mieszanina",
+          "ciało stałe",
+          "gaz szlachetny"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "CO₂ to…",
+        "options": [
+          "dwutlenek węgla",
+          "tlenek wodoru",
+          "tlen"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "pH=2 to odczyn…",
+        "options": [
+          "kwasowy",
+          "obojętny",
+          "zasadowy"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Kation ma ładunek…",
+        "options": [
+          "dodatni",
+          "ujemny",
+          "zerowy"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Najmniejsza cząstka pierwiastka to…",
+        "options": [
+          "atom",
+          "jon",
+          "cząsteczka"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Metale zwykle są…",
+        "options": [
+          "przewodnikami",
+          "izolatorami",
+          "gazami"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "H₂O to…",
+        "options": [
+          "woda",
+          "tlen",
+          "wodór"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Sól kuchenna to…",
+        "options": [
+          "NaCl",
+          "KCl",
+          "CaCO₃"
+        ],
+        "correct": 0
+      }
+    ],
+    "10-12": [
+      {
+        "type": "mcq",
+        "q": "Odczyn pH < 7 oznacza…",
+        "options": [
+          "zasadę",
+          "kwas",
+          "obojętny"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Najmniejsza cząstka pierwiastka to…",
+        "options": [
+          "atom",
+          "jon",
+          "cząsteczka"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Zjawisko zmiany stanu stałego na gaz to…",
+        "options": [
+          "sublimacja",
+          "krzepnięcie",
+          "skraplanie"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Metale zwykle są…",
+        "options": [
+          "przewodnikami",
+          "izolatorami",
+          "gazami"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Kowalencyjne wiązanie występuje gdy…",
+        "options": [
+          "atomy dzielą elektrony",
+          "elektrony są oddane",
+          "jądra się łączą"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Roztwór to…",
+        "options": [
+          "jednorodna mieszanina",
+          "ciało stałe",
+          "gaz szlachetny"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Powietrze to…",
+        "options": [
+          "mieszanina",
+          "związek chemiczny",
+          "pierwiastek"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Masa molowa wyrażana w…",
+        "options": [
+          "g/mol",
+          "mol/g",
+          "kg"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "CO₂ to…",
+        "options": [
+          "dwutlenek węgla",
+          "tlenek wodoru",
+          "tlen"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Kation ma ładunek…",
+        "options": [
+          "dodatni",
+          "ujemny",
+          "zerowy"
+        ],
+        "correct": 0
+      }
+    ],
+    "13-14": [
+      {
+        "type": "mcq",
+        "q": "Elektroujemność rośnie w okresie…",
+        "options": [
+          "w lewo i w dół",
+          "w prawo i w górę",
+          "losowo"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Najmniejsza cząstka pierwiastka to…",
+        "options": [
+          "atom",
+          "jon",
+          "cząsteczka"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Kowalencyjne wiązanie występuje gdy…",
+        "options": [
+          "atomy dzielą elektrony",
+          "elektrony są oddane",
+          "jądra się łączą"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "CO₂ to…",
+        "options": [
+          "dwutlenek węgla",
+          "tlenek wodoru",
+          "tlen"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Sól kuchenna to…",
+        "options": [
+          "NaCl",
+          "KCl",
+          "CaCO₃"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Zjawisko zmiany stanu stałego na gaz to…",
+        "options": [
+          "sublimacja",
+          "krzepnięcie",
+          "skraplanie"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Roztwór to…",
+        "options": [
+          "jednorodna mieszanina",
+          "ciało stałe",
+          "gaz szlachetny"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Kation ma ładunek…",
+        "options": [
+          "dodatni",
+          "ujemny",
+          "zerowy"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Masa molowa wyrażana w…",
+        "options": [
+          "g/mol",
+          "mol/g",
+          "kg"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "H₂O to…",
+        "options": [
+          "woda",
+          "tlen",
+          "wodór"
+        ],
+        "correct": 0
+      }
+    ]
+  },
+  "angielski": {
+    "7-9": [
+      {
+        "type": "mcq",
+        "q": "Jak po ang. 'dziękuję'?",
+        "options": [
+          "thanks",
+          "please",
+          "sorry"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Skrót 'USA' to…",
+        "options": [
+          "United States of America",
+          "Union South Africa",
+          "United State America"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'There are' użyjesz z…",
+        "options": [
+          "liczbą mnogą",
+          "liczbą pojedynczą",
+          "czasem przeszłym"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Poprawne: 'She ___ reading.'",
+        "options": [
+          "is",
+          "are",
+          "be"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Stopień wyższy od 'big' to…",
+        "options": [
+          "bigger",
+          "more big",
+          "biggest"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Liczba mnoga 'child' to…",
+        "options": [
+          "children",
+          "childs",
+          "childes"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Tłumacz: 'pies' →",
+        "options": [
+          "dog",
+          "cat",
+          "pig"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Artykuł nieokreślony to…",
+        "options": [
+          "a/an",
+          "the",
+          "—"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Tłumacz: 'książka' →",
+        "options": [
+          "book",
+          "back",
+          "bank"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Przyimek w 'on Monday' to…",
+        "options": [
+          "on",
+          "in",
+          "at"
+        ],
+        "correct": 0
+      }
+    ],
+    "10-12": [
+      {
+        "type": "mcq",
+        "q": "3. osobowa l.poj. w Present Simple końcówka…",
+        "options": [
+          "-ed",
+          "-s/-es",
+          "-ing"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Tłumacz: 'pies' →",
+        "options": [
+          "dog",
+          "cat",
+          "pig"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Present Continuous to…",
+        "options": [
+          "czynność trwająca teraz",
+          "nawyk ogólny",
+          "przeszłość"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Tłumacz: 'książka' →",
+        "options": [
+          "book",
+          "back",
+          "bank"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Stopień wyższy od 'big' to…",
+        "options": [
+          "bigger",
+          "more big",
+          "biggest"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Artykuł nieokreślony to…",
+        "options": [
+          "a/an",
+          "the",
+          "—"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Liczba mnoga 'child' to…",
+        "options": [
+          "children",
+          "childs",
+          "childes"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Past tense od 'go' to…",
+        "options": [
+          "went",
+          "goed",
+          "goes"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Przyimek w 'on Monday' to…",
+        "options": [
+          "on",
+          "in",
+          "at"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Poprawne: 'She ___ reading.'",
+        "options": [
+          "is",
+          "are",
+          "be"
+        ],
+        "correct": 0
+      }
+    ],
+    "13-14": [
+      {
+        "type": "mcq",
+        "q": "'I have been' to Present…",
+        "options": [
+          "Simple",
+          "Perfect",
+          "Perfect Continuous"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Artykuł nieokreślony to…",
+        "options": [
+          "a/an",
+          "the",
+          "—"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Past tense od 'go' to…",
+        "options": [
+          "went",
+          "goed",
+          "goes"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Present Continuous to…",
+        "options": [
+          "czynność trwająca teraz",
+          "nawyk ogólny",
+          "przeszłość"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Tłumacz: 'pies' →",
+        "options": [
+          "dog",
+          "cat",
+          "pig"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'There are' użyjesz z…",
+        "options": [
+          "liczbą mnogą",
+          "liczbą pojedynczą",
+          "czasem przeszłym"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Skrót 'USA' to…",
+        "options": [
+          "United States of America",
+          "Union South Africa",
+          "United State America"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Liczba mnoga 'child' to…",
+        "options": [
+          "children",
+          "childs",
+          "childes"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Tłumacz: 'książka' →",
+        "options": [
+          "book",
+          "back",
+          "bank"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Pytanie z 'do' tworzymy…",
+        "options": [
+          "Do you…?",
+          "Are you…?",
+          "Did you are…?"
+        ],
+        "correct": 0
+      }
+    ]
+  },
+  "biologia": {
+    "7-9": [
+      {
+        "type": "mcq",
+        "q": "Podstawowa jednostka życia to…",
+        "options": [
+          "komórka",
+          "tkanka",
+          "organ"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Ssaki oddychają…",
+        "options": [
+          "płucami",
+          "skrzelami",
+          "skórą"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Grzyby odżywiają się…",
+        "options": [
+          "heterotroficznie",
+          "autotroficznie",
+          "fotosyntezą"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Układ pokarmowy służy do…",
+        "options": [
+          "trawienia",
+          "oddychania",
+          "ruchu"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "DNA znajduje się głównie w…",
+        "options": [
+          "jądrze komórkowym",
+          "mitochondriach",
+          "ap. Golgiego"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Bakterie to organizmy…",
+        "options": [
+          "jednokomórkowe",
+          "wielokomórkowe",
+          "nieożywione"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Rośliny wytwarzają tlen w procesie…",
+        "options": [
+          "fotosyntezy",
+          "oddychania",
+          "fermentacji"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Układ krążenia pompuje…",
+        "options": [
+          "krew",
+          "limfę",
+          "gaz"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Nasienie roślin okrytonasiennych powstaje w…",
+        "options": [
+          "zalążni",
+          "liściu",
+          "kłączu"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Najmniejszą jednostką życia jest…",
+        "options": [
+          "komórka",
+          "tkanka",
+          "narząd"
+        ],
+        "correct": 0
+      }
+    ],
+    "10-12": [
+      {
+        "type": "mcq",
+        "q": "Fotosynteza zachodzi w…",
+        "options": [
+          "mitochondriach",
+          "jądrze",
+          "chloroplastach"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Zmysł wzroku znajduje się w…",
+        "options": [
+          "oczach",
+          "uszach",
+          "nosie"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Nasienie roślin okrytonasiennych powstaje w…",
+        "options": [
+          "zalążni",
+          "liściu",
+          "kłączu"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Najmniejszą jednostką życia jest…",
+        "options": [
+          "komórka",
+          "tkanka",
+          "narząd"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Rośliny wytwarzają tlen w procesie…",
+        "options": [
+          "fotosyntezy",
+          "oddychania",
+          "fermentacji"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Zielony barwnik roślin to…",
+        "options": [
+          "chlorofil",
+          "melanina",
+          "hemoglobina"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Bakterie to organizmy…",
+        "options": [
+          "jednokomórkowe",
+          "wielokomórkowe",
+          "nieożywione"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Grzyby odżywiają się…",
+        "options": [
+          "heterotroficznie",
+          "autotroficznie",
+          "fotosyntezą"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "DNA znajduje się głównie w…",
+        "options": [
+          "jądrze komórkowym",
+          "mitochondriach",
+          "ap. Golgiego"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Ssaki oddychają…",
+        "options": [
+          "płucami",
+          "skrzelami",
+          "skórą"
+        ],
+        "correct": 0
+      }
+    ],
+    "13-14": [
+      {
+        "type": "mcq",
+        "q": "Mejoza służy do…",
+        "options": [
+          "wzrostu komórek",
+          "podziałów płciowych",
+          "syntezy białek"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Zielony barwnik roślin to…",
+        "options": [
+          "chlorofil",
+          "melanina",
+          "hemoglobina"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "DNA znajduje się głównie w…",
+        "options": [
+          "jądrze komórkowym",
+          "mitochondriach",
+          "ap. Golgiego"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Układ krążenia pompuje…",
+        "options": [
+          "krew",
+          "limfę",
+          "gaz"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Rośliny wytwarzają tlen w procesie…",
+        "options": [
+          "fotosyntezy",
+          "oddychania",
+          "fermentacji"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Owady mają…",
+        "options": [
+          "6 odnóży",
+          "8 odnóży",
+          "4 odnóża"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Ssaki oddychają…",
+        "options": [
+          "płucami",
+          "skrzelami",
+          "skórą"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Bakterie to organizmy…",
+        "options": [
+          "jednokomórkowe",
+          "wielokomórkowe",
+          "nieożywione"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Grzyby odżywiają się…",
+        "options": [
+          "heterotroficznie",
+          "autotroficznie",
+          "fotosyntezą"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Układ pokarmowy służy do…",
+        "options": [
+          "trawienia",
+          "oddychania",
+          "ruchu"
+        ],
+        "correct": 0
+      }
+    ]
+  },
+  "niemiecki": {
+    "7-9": [
+      {
+        "type": "mcq",
+        "q": "Jak po niemiecku jest 'kot'?",
+        "options": [
+          "die Katze",
+          "der Hund",
+          "die Maus"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jak po niemiecku jest 'dom'?",
+        "options": [
+          "das Haus",
+          "die Schule",
+          "der Garten"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Kolor 'rot' to po polsku…",
+        "options": [
+          "czerwony",
+          "zielony",
+          "niebieski"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jak po niemiecku będzie 'dziękuję'?",
+        "options": [
+          "danke",
+          "bitte",
+          "hallo"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'Hund' oznacza…",
+        "options": [
+          "psa",
+          "ptaka",
+          "mysz"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jak po niemiecku jest 'jabłko'?",
+        "options": [
+          "der Apfel",
+          "die Banane",
+          "die Orange"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jak po niemiecku powiedzieć 'cześć'?",
+        "options": [
+          "hallo",
+          "danke",
+          "tschüss"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Co znaczy 'tschüss'?",
+        "options": [
+          "pa",
+          "cześć",
+          "proszę"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jak po niemiecku jest 'szkoła'?",
+        "options": [
+          "die Schule",
+          "das Haus",
+          "der Park"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'Freund' oznacza…",
+        "options": [
+          "przyjaciela",
+          "rodzinę",
+          "nauczyciela"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jak jest 'książka' po niemiecku?",
+        "options": [
+          "das Buch",
+          "der Tisch",
+          "die Lampe"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'Fisch' to…",
+        "options": [
+          "ryba",
+          "ptak",
+          "żaba"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Kolor 'blau' to…",
+        "options": [
+          "niebieski",
+          "biały",
+          "szary"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'Vogel' oznacza…",
+        "options": [
+          "ptaka",
+          "lisa",
+          "konia"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jak po niemiecku jest 'woda'?",
+        "options": [
+          "das Wasser",
+          "die Milch",
+          "der Saft"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jak po niemiecku jest 'dziecko'?",
+        "options": [
+          "das Kind",
+          "der Mann",
+          "die Frau"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Co znaczy 'bitte'?",
+        "options": [
+          "proszę",
+          "dziękuję",
+          "cześć"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Kolor 'gelb' to…",
+        "options": [
+          "żółty",
+          "zielony",
+          "brązowy"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jak po niemiecku jest 'auto'?",
+        "options": [
+          "das Auto",
+          "das Rad",
+          "der Zug"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'Lehrer' oznacza…",
+        "options": [
+          "nauczyciela",
+          "ucznia",
+          "kucharza"
+        ],
+        "correct": 0
+      }
+    ],
+    "10-12": [
+      {
+        "type": "mcq",
+        "q": "Jak po niemiecku będzie 'przepraszam'?",
+        "options": [
+          "entschuldigung",
+          "bitte",
+          "danke"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Co znaczy 'Frühstück'?",
+        "options": [
+          "śniadanie",
+          "kolacja",
+          "obiad"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'Brot' oznacza…",
+        "options": [
+          "chleb",
+          "ser",
+          "jajko"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jak po niemiecku jest 'księżyc'?",
+        "options": [
+          "der Mond",
+          "die Sonne",
+          "der Stern"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Co znaczy 'ich heiße'?",
+        "options": [
+          "nazywam się",
+          "mam",
+          "jestem"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jak po niemiecku będzie 'zimno'?",
+        "options": [
+          "kalt",
+          "warm",
+          "heiß"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'Stadt' oznacza…",
+        "options": [
+          "miasto",
+          "kraj",
+          "dom"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'Fenster' to…",
+        "options": [
+          "okno",
+          "drzwi",
+          "podłoga"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'Lecker' znaczy…",
+        "options": [
+          "pyszne",
+          "głośne",
+          "małe"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'Freitag' to…",
+        "options": [
+          "piątek",
+          "wtorek",
+          "sobota"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'Uhr' oznacza…",
+        "options": [
+          "zegar",
+          "but",
+          "samochód"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'Bruder' to…",
+        "options": [
+          "brat",
+          "córka",
+          "dziadek"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'Schule beginnt um…' oznacza:",
+        "options": [
+          "szkoła zaczyna się o…",
+          "szkoła kończy się o…",
+          "szkoła jest duża"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'Apotheke' to miejsce gdzie…",
+        "options": [
+          "kupujesz leki",
+          "kupujesz ubrania",
+          "jesz obiad"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'Küche' to…",
+        "options": [
+          "kuchnia",
+          "łazienka",
+          "ogród"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'Berg' oznacza…",
+        "options": [
+          "górę",
+          "las",
+          "pole"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'Bahn' to…",
+        "options": [
+          "pociąg",
+          "tramwaj",
+          "rower"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'Zucker' oznacza…",
+        "options": [
+          "cukier",
+          "oliwę",
+          "ryż"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'Kalt' to…",
+        "options": [
+          "zimny",
+          "drogi",
+          "długi"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'Schnell' znaczy…",
+        "options": [
+          "szybko",
+          "miło",
+          "cicho"
+        ],
+        "correct": 0
+      }
+    ],
+    "13-14": [
+      {
+        "type": "mcq",
+        "q": "'Umwelt' oznacza…",
+        "options": [
+          "środowisko",
+          "kosmos",
+          "morze"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Co znaczy 'Gesundheit'?",
+        "options": [
+          "zdrowie",
+          "siła",
+          "pogoda"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'Nachhaltigkeit' to…",
+        "options": [
+          "zrównoważony rozwój",
+          "podróż",
+          "nauka"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'Tagesablauf' oznacza…",
+        "options": [
+          "plan dnia",
+          "pogodę",
+          "przyszłość"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'Ich habe Hunger' to…",
+        "options": [
+          "jestem głodny",
+          "jestem zmęczony",
+          "jestem chory"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jak po niemiecku jest 'zaawansowany'?",
+        "options": [
+          "fortgeschritten",
+          "einfach",
+          "kurz"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'Zukunft' oznacza…",
+        "options": [
+          "przyszłość",
+          "czas wolny",
+          "pieniądze"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'Gegenwart' to…",
+        "options": [
+          "teraźniejszość",
+          "wczoraj",
+          "pogoda"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'Wissenschaft' oznacza…",
+        "options": [
+          "naukę",
+          "sport",
+          "historię"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'Bewegung' znaczy…",
+        "options": [
+          "ruch",
+          "jedzenie",
+          "muzyka"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'Schwierigkeit' to…",
+        "options": [
+          "trudność",
+          "powód",
+          "schemat"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'Weltall' oznacza…",
+        "options": [
+          "kosmos",
+          "świat zwierząt",
+          "historię"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'Klimawandel' to…",
+        "options": [
+          "zmiany klimatu",
+          "burza",
+          "pora roku"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'Wirtschaft' oznacza…",
+        "options": [
+          "gospodarkę",
+          "ekologię",
+          "naukę o zdrowiu"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'Technologie' to…",
+        "options": [
+          "technologia",
+          "biologia",
+          "filozofia"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'Erklärung' znaczy…",
+        "options": [
+          "wyjaśnienie",
+          "opis",
+          "wybór"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'Beispiel' to…",
+        "options": [
+          "przykład",
+          "zasada",
+          "opowieść"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'Verantwortung' oznacza…",
+        "options": [
+          "odpowiedzialność",
+          "trening",
+          "zabawa"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'Erfahrung' to…",
+        "options": [
+          "doświadczenie",
+          "zabawa",
+          "ryzyko"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "'Verhalten' oznacza…",
+        "options": [
+          "zachowanie",
+          "emocje",
+          "moc"
+        ],
+        "correct": 0
+      }
+    ]
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "title": "Quiz – przygotowanie do karty rowerowej",
+  "questions": [
+    {
+      "id": "q1_podstawy_rowerzysta",
+      "category": "podstawy",
+      "difficulty": "easy",
+      "question": "Rowerzysta to:",
+      "options": [
+        "osoba, która jeździ rowerem i jest uczestnikiem ruchu drogowego",
+        "tylko dziecko jadące po chodniku",
+        "osoba, która trenuje kolarstwo wyczynowe"
+      ],
+      "correct": 0,
+      "explanation": "Dla przepisów każdy, kto porusza się po drodze rowerem, jest rowerzystą – niezależnie od wieku i celu podróży."
+    },
+    {
+      "id": "q2_gdzie_mozna_jechac",
+      "category": "podstawy",
+      "difficulty": "medium",
+      "question": "Gdzie w pierwszej kolejności powinien jechać rowerzysta, jeśli jest taka możliwość?",
+      "options": [
+        "po jezdni",
+        "po drodze dla rowerów",
+        "po chodniku"
+      ],
+      "correct": 1,
+      "explanation": "Jeśli jest droga dla rowerów, rowerzysta ma obowiązek z niej korzystać."
+    },
+    {
+      "id": "q3_prawa_reka",
+      "category": "pierwszenstwo",
+      "difficulty": "medium",
+      "question": "Na skrzyżowaniu równorzędnym bez znaków pierwszeństwa ustępujesz:",
+      "options": [
+        "wyłącznie pojazdom jadącym prosto",
+        "pojazdom nadjeżdżającym z lewej strony",
+        "pojazdom nadjeżdżającym z prawej strony"
+      ],
+      "correct": 2,
+      "explanation": "Obowiązuje zasada prawej ręki – pierwszeństwo ma ten, kto nadjeżdża z prawej."
+    },
+    {
+      "id": "q4_znak_A7",
+      "category": "znaki",
+      "difficulty": "easy",
+      "question": "Co oznacza znak A-7 (trójkąt z czarną obwódką i napisem „ustąp pierwszeństwa”)?",
+      "options": [
+        "masz zawsze pierwszeństwo",
+        "musisz ustąpić pierwszeństwa pojazdom na drodze z pierwszeństwem",
+        "musisz się zatrzymać na STOP"
+      ],
+      "correct": 1,
+      "explanation": "Znak A-7 nakazuje ustąpić pierwszeństwa – zwalniasz i przepuszczasz pojazdy mające pierwszeństwo."
+    },
+    {
+      "id": "q5_znak_B9",
+      "category": "znaki",
+      "difficulty": "medium",
+      "question": "Znak B-9 (czerwone kółko z rowerem) oznacza:",
+      "options": [
+        "drogę tylko dla rowerów",
+        "zakaz wjazdu rowerów",
+        "parking dla rowerów"
+      ],
+      "correct": 1,
+      "explanation": "B-9 to zakaz wjazdu rowerów – na takim odcinku nie możesz poruszać się na rowerze."
+    },
+    {
+      "id": "q6_wyposazenie",
+      "category": "sprzet",
+      "difficulty": "easy",
+      "question": "Który z elementów NIE jest obowiązkowym wyposażeniem roweru?",
+      "options": [
+        "sprawny hamulec",
+        "dzwonek lub inny sygnał dźwiękowy",
+        "licznik prędkości"
+      ],
+      "correct": 2,
+      "explanation": "Licznik prędkości nie jest obowiązkowy, w przeciwieństwie do hamulców i sygnału dźwiękowego."
+    },
+    {
+      "id": "q7_pierwsza_pomoc_112",
+      "category": "pierwsza_pomoc",
+      "difficulty": "easy",
+      "question": "Jaki numer telefonu wybierzesz, gdy jesteś świadkiem poważnego wypadku?",
+      "options": [
+        "997",
+        "998",
+        "112"
+      ],
+      "correct": 2,
+      "explanation": "112 to ogólny numer alarmowy w całej Unii Europejskiej."
+    },
+    {
+      "id": "q8_sygnalizowanie",
+      "category": "podstawy",
+      "difficulty": "medium",
+      "question": "Jak zasygnalizujesz zamiar skrętu w prawo jadąc na rowerze?",
+      "options": [
+        "uniesiesz lewą rękę w górę",
+        "wyprostujesz prawą rękę na bok",
+        "zaczniesz szybciej pedałować"
+      ],
+      "correct": 1,
+      "explanation": "Skręt w prawo sygnalizujesz prawą ręką wyprostowaną na bok."
+    }
+  ]
+}

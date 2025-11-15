@@ -1,0 +1,36 @@
+{
+  "Roman": {
+    "salt": "86dbff7e893b1d93",
+    "password_hash": "4197981d70344ce540747418b5dd813afeb6a2890fa8c37049a08cf5d39bd6fa",
+    "xp": 0,
+    "stickers": [],
+    "badges": [],
+    "school_tasks": {
+      "2025-11-06": {
+        "matematyka": [
+          "cd1a6d45a857",
+          "ee60234f3fab"
+        ],
+        "historia": [
+          "f9fd986676a8"
+        ],
+        "polski": [
+          "8ad8f333823c",
+          "909e6f0b5a4f"
+        ]
+      },
+      "2025-11-07": {
+        "matematyka": [
+          "ee60234f3fab"
+        ]
+      }
+    }
+  },
+  "_parent_pin": {
+    "salt": "502ba5234eb852a2c902d6216a8ec297",
+    "hash": "a9b7404001ff5879bf3990ff48146b2a51987bccea93ba62c57a9418ca78b680"
+  },
+  "_admin_totp": {
+    "secret": "ZVNJEYA2WRBMBKBT4AWET4PUGPMYAILT"
+  }
+}
