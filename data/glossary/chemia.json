@@ -1,0 +1,10 @@
+{
+  "atom": "Najmniejsza cząstka pierwiastka.",
+  "pierwiastek": "Substancja złożona z jednakowych atomów (np. tlen).",
+  "związek chemiczny": "Połączenie co najmniej dwóch pierwiastków (np. H₂O).",
+  "mieszanina": "Połączenie substancji bez reakcji chemicznej.",
+  "roztwór": "Jednorodna mieszanina, np. sól w wodzie.",
+  "kwas": "Ma pH < 7 (np. sok z cytryny jest kwaśny).",
+  "zasada": "Ma pH > 7 (np. mydło jest zasadowe).",
+  "pH": "Skala kwasowości od 0 do 14."
+}

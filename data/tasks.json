@@ -30,7 +30,7 @@
           "19",
           "18"
         ],
-        "correct": 1
+        "correct": 3
       },
       {
         "type": "mcq",
@@ -40,26 +40,6 @@
           "4",
           "3",
           "2"
-        ],
-        "correct": 2
-      },
-      {
-        "type": "mcq",
-        "q": "Ile to 2 × 6?",
-        "options": [
-          "8",
-          "10",
-          "12"
-        ],
-        "correct": 2
-      },
-      {
-        "type": "mcq",
-        "q": "Porównaj: 12 … 9",
-        "options": [
-          "<",
-          "=",
-          ">"
         ],
         "correct": 2
       },
@@ -104,45 +84,688 @@
           "0",
           "0.25"
         ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Ile to 7 + 6?",
+        "options": [
+          "11",
+          "12",
+          "13",
+          "14"
+        ],
         "correct": 2
-      }
-    ],
-    "10-12": [
+      },
       {
         "type": "mcq",
-        "q": "Ile sekund ma 1 godzina?",
+        "q": "Policz: 15 − 7",
         "options": [
-          "3600",
-          "1800",
-          "600"
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Ile to 3 · 4?",
+        "options": [
+          "7",
+          "10",
+          "12",
+          "14"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Która z liczb jest parzysta?",
+        "options": [
+          "9",
+          "11",
+          "14",
+          "17"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Która z liczb jest nieparzysta?",
+        "options": [
+          "8",
+          "10",
+          "13",
+          "16"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Ile boków ma trójkąt?",
+        "options": [
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Ile boków ma kwadrat?",
+        "options": [
+          "2",
+          "3",
+          "4",
+          "6"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "W pudełku było 5 kredek. Dziecko dołożyło 3 kredki. Ile kredek jest teraz?",
+        "options": [
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Na drzewie siedziało 9 ptaków. 4 odleciały. Ile ptaków zostało?",
+        "options": [
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Mama upiekła 12 ciastek. Dziecko zjadło 3. Ile ciastek zostało?",
+        "options": [
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "W klasie jest 10 dziewczynek i 6 chłopców. Ilu uczniów jest razem?",
+        "options": [
+          "14",
+          "15",
+          "16",
+          "17"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Ile to 8 + 9?",
+        "options": [
+          "15",
+          "16",
+          "17",
+          "18"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Policz: 30 − 12",
+        "options": [
+          "16",
+          "18",
+          "20",
+          "22"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Która liczba jest największa?",
+        "options": [
+          "14",
+          "11",
+          "9",
+          "7"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Ile to 12 × 8?",
+        "q": "Która liczba jest najmniejsza?",
         "options": [
-          "96",
-          "88",
-          "108"
+          "3",
+          "6",
+          "9",
+          "12"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Oblicz: 45 + 37",
+        "q": "Jak nazywa się wynik dodawania?",
         "options": [
-          "81",
-          "83",
-          "80",
-          "82"
+          "różnica",
+          "iloczyn",
+          "suma",
+          "iloraz"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się wynik odejmowania?",
+        "options": [
+          "różnica",
+          "suma",
+          "iloczyn",
+          "iloraz"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się wynik mnożenia?",
+        "options": [
+          "różnica",
+          "suma",
+          "iloczyn",
+          "iloraz"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się wynik dzielenia?",
+        "options": [
+          "różnica",
+          "suma",
+          "iloczyn",
+          "iloraz"
         ],
         "correct": 3
       },
       {
         "type": "mcq",
-        "q": "1/4 to ile procent?",
+        "q": "Która figura jest okrągła?",
         "options": [
+          "kwadrat",
+          "trójkąt",
+          "koło",
+          "prostokąt"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Zegarek pokazuje godzinę 3:00. Za dwie godziny będzie…",
+        "options": [
+          "4:00",
+          "5:00",
+          "6:00",
+          "7:00"
+        ],
+        "correct": 1
+      }
+    ],
+    "10-12": [
+      {
+        "type": "mcq",
+        "q": "Oblicz: 6 · 7",
+        "options": [
+          "36",
+          "42",
+          "48",
+          "56"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Oblicz: 45 − 19",
+        "options": [
+          "24",
+          "25",
+          "26",
+          "27"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Oblicz: 120 : 8",
+        "options": [
+          "10",
+          "12",
+          "14",
+          "15"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Który ułamek jest równy 1/2?",
+        "options": [
+          "2/4",
+          "1/3",
+          "3/5",
+          "2/3"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jaki to ułamek: 0,25?",
+        "options": [
+          "1/2",
+          "1/3",
+          "1/4",
+          "2/5"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Ile to 3/10 z 100?",
+        "options": [
+          "10",
+          "20",
+          "30",
+          "40"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Ile to 25% z 80?",
+        "options": [
+          "15",
+          "18",
+          "20",
+          "25"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Ile to 10% z 200?",
+        "options": [
+          "10",
+          "15",
+          "20",
+          "25"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Cena 100 zł została obniżona o 10%. Nowa cena to…",
+        "options": [
+          "80 zł",
+          "85 zł",
+          "90 zł",
+          "95 zł"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Obwód prostokąta o bokach 5 cm i 9 cm wynosi…",
+        "options": [
+          "14 cm",
+          "28 cm",
+          "45 cm",
+          "90 cm"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Pole prostokąta o bokach 7 cm i 4 cm wynosi…",
+        "options": [
+          "11 cm²",
+          "14 cm²",
+          "21 cm²",
+          "28 cm²"
+        ],
+        "correct": 3
+      },
+      {
+        "type": "mcq",
+        "q": "Pole kwadratu o boku 6 cm wynosi…",
+        "options": [
+          "12 cm²",
+          "24 cm²",
+          "36 cm²",
+          "18 cm²"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Średnia arytmetyczna liczb 4, 6, 10 to…",
+        "options": [
+          "6",
+          "7",
+          "8",
+          "10"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Średnia arytmetyczna liczb 2, 6, 10 wynosi…",
+        "options": [
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Rozwiąż równanie: x + 7 = 15",
+        "options": [
+          "x = 7",
+          "x = 8",
+          "x = 9",
+          "x = 10"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Rozwiąż równanie: 3x = 21",
+        "options": [
+          "x = 5",
+          "x = 6",
+          "x = 7",
+          "x = 9"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Która liczba jest wielokrotnością 6?",
+        "options": [
+          "14",
+          "18",
+          "20",
+          "22"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Która liczba jest liczbą pierwszą?",
+        "options": [
+          "9",
+          "11",
+          "15",
+          "21"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Trójkąt prostokątny ma przyprostokątne 3 cm i 4 cm. Przeciwprostokątna ma…",
+        "options": [
+          "4 cm",
+          "5 cm",
+          "6 cm",
+          "7 cm"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Ile stopni ma kąt pełny?",
+        "options": [
+          "90°",
+          "180°",
+          "270°",
+          "360°"
+        ],
+        "correct": 3
+      },
+      {
+        "type": "mcq",
+        "q": "Ile stopni ma kąt prosty?",
+        "options": [
+          "45°",
+          "60°",
+          "90°",
+          "180°"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "W klasie 40% uczniów to chłopcy. Jeśli jest 20 uczniów, ilu jest chłopców?",
+        "options": [
+          "6",
+          "8",
+          "10",
+          "12"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Oblicz: 2 · (5 + 8)",
+        "options": [
+          "18",
+          "20",
+          "24",
+          "26"
+        ],
+        "correct": 3
+      },
+      {
+        "type": "mcq",
+        "q": "Która liczba jest podzielna przez 5?",
+        "options": [
+          "21",
+          "26",
+          "30",
+          "32"
+        ],
+        "correct": 2
+      }
+    ],
+    "13-14": [
+      {
+        "type": "mcq",
+        "q": "Rozwiąż równanie: 2x − 3 = 11",
+        "options": [
+          "x = 7",
+          "x = 6",
+          "x = 5",
+          "x = 8"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Rozwiąż równanie: 3(x − 4) = 15",
+        "options": [
+          "x = 3",
+          "x = 5",
+          "x = 7",
+          "x = 9"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Rozwiąż równanie: 4x − 8 = 3x + 5",
+        "options": [
+          "x = 5",
+          "x = 10",
+          "x = 13",
+          "x = −5"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Rozwiąż nierówność: 2x > 10",
+        "options": [
+          "x > 2",
+          "x > 3",
+          "x > 4",
+          "x > 5"
+        ],
+        "correct": 3
+      },
+      {
+        "type": "mcq",
+        "q": "Rozwiąż równanie: x/3 = 7",
+        "options": [
+          "x = 10",
+          "x = 18",
+          "x = 21",
+          "x = 24"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Dana jest funkcja liniowa y = 3x − 1. Jaki jest współczynnik kierunkowy?",
+        "options": [
+          "−1",
+          "1",
+          "3",
+          "−3"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Dana jest funkcja liniowa y = −2x + 5. Jaka jest wartość wyrazu wolnego?",
+        "options": [
+          "−2",
+          "5",
+          "2",
+          "−5"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Punkt (2, 5) leży na wykresie funkcji y = x + b. Ile wynosi b?",
+        "options": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Ile to 2³?",
+        "options": [
+          "4",
+          "6",
+          "8",
+          "9"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Ile to 3²?",
+        "options": [
+          "6",
+          "8",
+          "9",
+          "12"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Pierwiastek kwadratowy z 25 to…",
+        "options": [
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Pierwiastek kwadratowy z 81 to…",
+        "options": [
+          "8",
+          "9",
+          "10",
+          "11"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Oblicz: 5!",
+        "options": [
+          "24",
+          "60",
+          "120",
+          "20"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Trójkąt o bokach 6, 8, 10 jest…",
+        "options": [
+          "prostokątny",
+          "równoboczny",
+          "równoramienny",
+          "rozwartokątny"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "W trójkącie prostokątnym jedna przyprostokątna ma 5, druga 12. Przeciwprostokątna ma…",
+        "options": [
+          "10",
+          "11",
+          "12",
+          "13"
+        ],
+        "correct": 3
+      },
+      {
+        "type": "mcq",
+        "q": "Cena towaru wzrosła z 80 zł do 100 zł. Procentowy wzrost ceny to…",
+        "options": [
+          "10%",
+          "20%",
+          "25%",
+          "30%"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Cena spadła ze 120 zł na 90 zł. Procentowy spadek ceny to…",
+        "options": [
+          "10%",
           "15%",
           "20%",
           "25%"
@@ -151,170 +774,58 @@
       },
       {
         "type": "mcq",
-        "q": "Porównaj liczby: 0.45 i 0.5",
+        "q": "Liczba 40 stanowi 20% pewnej liczby. Jaka to liczba?",
         "options": [
-          "0.45 > 0.5",
-          "0.45 = 0.5",
-          "0.45 < 0.5"
+          "100",
+          "150",
+          "180",
+          "200"
         ],
-        "correct": 2
+        "correct": 3
       },
       {
         "type": "mcq",
-        "q": "Policz średnią arytmetyczną z 12, 15, 17",
+        "q": "W zbiorze {1, 3, 3, 6, 7} dominantą jest…",
         "options": [
-          "15.67",
-          "13.67",
-          "14.67",
-          "16.67"
-        ],
-        "correct": 2
-      },
-      {
-        "type": "mcq",
-        "q": "Rozwiąż: 120 ÷ 6",
-        "options": [
-          "20",
-          "19",
-          "21",
-          "18"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Rozwiąż równanie: x + 9 = 21",
-        "options": [
-          "13",
-          "12",
-          "11",
-          "14"
-        ],
-        "correct": 1
-      },
-      {
-        "type": "mcq",
-        "q": "Ile to 3^4?",
-        "options": [
-          "12",
-          "27",
-          "81"
-        ],
-        "correct": 2
-      },
-      {
-        "type": "mcq",
-        "q": "Oszacuj cenę 7 jabłek po 1.39 zł",
-        "options": [
-          "10.0 zł",
-          "9.0 zł",
-          "9.5 zł",
-          "10.5 zł"
-        ],
-        "correct": 2
-      }
-    ],
-    "13-14": [
-      {
-        "type": "mcq",
-        "q": "Rozwiąż: 3x − 7 = 20; x = ?",
-        "options": [
-          "9",
-          "10",
-          "11"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Pole koła o r=4",
-        "options": [
-          "16π",
-          "8π",
-          "4π"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Wspólny mianownik dla 2/3 i 3/5",
-        "options": [
-          "8",
-          "15",
-          "30"
-        ],
-        "correct": 2
-      },
-      {
-        "type": "mcq",
-        "q": "0,08 jako ułamek zwykły",
-        "options": [
-          "8/10",
-          "2/25",
-          "1/8"
-        ],
-        "correct": 1
-      },
-      {
-        "type": "mcq",
-        "q": "Rozwiń: 2(x+3)",
-        "options": [
-          "2x+3",
-          "2x+6",
-          "x+6"
-        ],
-        "correct": 1
-      },
-      {
-        "type": "mcq",
-        "q": "Oblicz: 5!",
-        "options": [
+          "1",
           "3",
           "6",
+          "7"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "W zbiorze {5, 7, 9} medianą jest…",
+        "options": [
           "5",
-          "4"
+          "7",
+          "9",
+          "8"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Suma miar kątów w trójkącie wynosi…",
+        "options": [
+          "90°",
+          "120°",
+          "180°",
+          "360°"
         ],
         "correct": 2
       },
       {
         "type": "mcq",
-        "q": "Wzór na prędkość to…",
+        "q": "Suma miar kątów w czworokącie wynosi…",
         "options": [
-          "v=s/t",
-          "s=v/t",
-          "t=s/v"
+          "90°",
+          "180°",
+          "270°",
+          "360°"
         ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Największa liczba: 0.7, 0.09, 0.65",
-        "options": [
-          "0.7",
-          "0.65",
-          "0.09"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Ułamek równy 1/2 to…",
-        "options": [
-          "2/4",
-          "3/4",
-          "4/5"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Średnia arytmetyczna liczb 2, 8, 10 to…",
-        "options": [
-          "6.67",
-          "7",
-          "8"
-        ],
-        "correct": 0
+        "correct": 3
       }
     ]
   },
@@ -322,163 +833,61 @@
     "7-9": [
       {
         "type": "mcq",
-        "q": "W zdaniu 'Pies szczeka' podmiot to…",
+        "q": "W zdaniu 'Pies szczeka głośno' podmiot to…",
         "options": [
           "Pies",
           "szczeka",
-          "Pies szczeka"
+          "głośno"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Czasownik to…",
+        "q": "Które słowo jest rzeczownikiem?",
         "options": [
-          "biegać",
-          "niebieski",
-          "kotek"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Popraw: 'Koty lubi mleko'",
-        "options": [
-          "Koty lubią mleko",
-          "Koty lubi mleko",
-          "Koty lubił mleko"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "W zdaniu 'Piotr czyta książkę' orzeczeniem jest…",
-        "options": [
-          "czyta",
-          "Piotr",
-          "książkę"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Wyraz bliskoznaczny do 'ważny' to…",
-        "options": [
-          "istotny",
-          "wąski",
-          "ważący"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Antonim do 'wysoki' to…",
-        "options": [
-          "niski",
-          "chudy",
-          "szeroki"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Liczba mnoga od 'dziecko' to…",
-        "options": [
-          "dzieci",
-          "dziecka",
-          "dzieckowie"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Czasownik odpowiada na pytania…",
-        "options": [
-          "co robi? co się dzieje?",
-          "jaki? jaka?",
-          "kto? co?"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Gatunek 'baśń' zawiera…",
-        "options": [
-          "elementy fantastyczne",
-          "kronikę faktów",
-          "przepis kulinarny"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Znak interpunkcyjny na końcu pytania to…",
-        "options": [
-          "?",
-          "!",
-          "."
-        ],
-        "correct": 0
-      }
-    ],
-    "10-12": [
-      {
-        "type": "mcq",
-        "q": "'Piękny' to…",
-        "options": [
-          "czasownik",
-          "przymiotnik",
-          "rzeczownik"
+          "biega",
+          "książka",
+          "szybko"
         ],
         "correct": 1
       },
       {
         "type": "mcq",
-        "q": "Narrator to…",
+        "q": "Które słowo jest przymiotnikiem?",
         "options": [
-          "osoba mówiąca w tekście",
-          "główny bohater",
-          "autor"
+          "dom",
+          "czerwony",
+          "czyta"
         ],
-        "correct": 0
+        "correct": 1
       },
       {
         "type": "mcq",
-        "q": "Wyraz bliskoznaczny do 'ważny' to…",
+        "q": "Jaką literą piszemy początek zdania?",
         "options": [
-          "istotny",
-          "wąski",
-          "ważący"
+          "małą",
+          "wielką",
+          "jakąkolwiek"
         ],
-        "correct": 0
+        "correct": 1
       },
       {
         "type": "mcq",
-        "q": "Gatunek 'baśń' zawiera…",
+        "q": "Jakim znakiem kończy się zdanie pytające?",
         "options": [
-          "elementy fantastyczne",
-          "kronikę faktów",
-          "przepis kulinarny"
+          ".",
+          "?",
+          "!"
         ],
-        "correct": 0
+        "correct": 1
       },
       {
         "type": "mcq",
-        "q": "Narrator to…",
+        "q": "Wskaż poprawnie napisane słowo:",
         "options": [
-          "osoba mówiąca w tekście",
-          "autor podręcznika",
-          "postać historyczna"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "W zdaniu 'Piotr czyta książkę' orzeczeniem jest…",
-        "options": [
-          "czyta",
-          "Piotr",
-          "książkę"
+          "huśtawka",
+          "chuśtawka",
+          "huśtafka"
         ],
         "correct": 0
       },
@@ -494,135 +903,237 @@
       },
       {
         "type": "mcq",
-        "q": "Antonim do 'wysoki' to…",
+        "q": "Które zdanie jest zapisane poprawnie?",
         "options": [
-          "niski",
-          "chudy",
-          "szeroki"
+          "To jest moj kolega.",
+          "To jest mój kolega.",
+          "To jest muj kolega."
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Do jakiego gatunku należy utwór o zaczarowanych przedmiotach i magii?",
+        "options": [
+          "baśń",
+          "reportaż",
+          "list"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "'By' w zdaniu to zwykle…",
+        "q": "Jak nazywa się krótka forma wypowiedzi przesyłana do kogoś pocztą lub e-mailem?",
         "options": [
-          "spójnik",
-          "rzeczownik",
-          "przymiotnik"
+          "wiersz",
+          "list",
+          "legenda"
+        ],
+        "correct": 1
+      }
+    ],
+    "10-12": [
+      {
+        "type": "mcq",
+        "q": "W zdaniu 'Ania szybko czyta ciekawą książkę' przymiotnikiem jest…",
+        "options": [
+          "szybko",
+          "czyta",
+          "ciekawą"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Które zdanie jest złożone?",
+        "options": [
+          "Lubię lody.",
+          "Lubię lody i chodzę na spacery.",
+          "Pada deszcz."
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "W zdaniu 'Gdy wyszło słońce, poszliśmy na dwór' spójnikiem jest…",
+        "options": [
+          "Gdy",
+          "słońce",
+          "dwór"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Czasownik odpowiada na pytania…",
+        "q": "Który zestaw to części mowy?",
         "options": [
-          "co robi? co się dzieje?",
-          "jaki? jaka?",
-          "kto? co?"
+          "rzeczownik, czasownik, przymiotnik",
+          "podmiot, orzeczenie, dopełnienie",
+          "zdanie, wyraz, głoska"
         ],
         "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Które wyrażenie jest frazeologizmem?",
+        "options": [
+          "zielony liść",
+          "mieć muchy w nosie",
+          "czytać książkę"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Która forma jest poprawna?",
+        "options": [
+          "poszłem",
+          "poszedłem",
+          "poszedłemem"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Autor książki to…",
+        "options": [
+          "osoba, która ją napisała",
+          "główny bohater",
+          "osoba, która ją kupiła"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Narrator mówiący 'ja' to…",
+        "options": [
+          "narrator pierwszoosobowy",
+          "narrator trzecioosobowy",
+          "liryczny podmiot zbiorowy"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Które zdanie ma poprawną interpunkcję?",
+        "options": [
+          "Lubię lody pizze i frytki.",
+          "Lubię lody, pizze i frytki.",
+          "Lubię, lody, pizze i frytki."
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Co to jest streszczenie?",
+        "options": [
+          "dokładne przepisanie tekstu",
+          "krótkie przedstawienie najważniejszych informacji z tekstu",
+          "przepis kulinarny"
+        ],
+        "correct": 1
       }
     ],
     "13-14": [
       {
         "type": "mcq",
-        "q": "Rymy parzyste to…",
+        "q": "Wskaż zdanie z poprawnie użytym imiesłowem:",
         "options": [
-          "aa bb",
-          "ab ab",
-          "ab ba"
+          "Idąc do szkoły, padał deszcz.",
+          "Idąc do szkoły, spotkałem kolegę.",
+          "Spotkałem kolegę, idąc deszcz."
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Który wyraz jest przysłówkiem?",
+        "options": [
+          "szybko",
+          "szybki",
+          "szybkość"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Rodzaj narracji, gdy narrator jest uczestnikiem wydarzeń",
+        "q": "Które zestawienie przedstawia poprawną odmianę?",
         "options": [
-          "pierwszoosobowa",
-          "trzecioosobowa",
-          "wszechwiedząca"
+          "ta profesor, tej profesor",
+          "ten profesor, tego profesora",
+          "ten profesor, tej profesor"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Który tytuł należy do lektury szkolnej?",
+        "options": [
+          "Hobbit, czyli tam i z powrotem",
+          "Harry Potter i Zakon Feniksa",
+          "Wiedźmin: Ostatnie życzenie"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Liczba mnoga od 'dziecko' to…",
+        "q": "Co to jest narrator wszechwiedzący?",
         "options": [
-          "dzieci",
-          "dziecka",
-          "dzieckowie"
+          "bohater, który dużo czyta",
+          "narrator znający myśli i uczucia bohaterów",
+          "osoba pisząca recenzje książek"
         ],
-        "correct": 0
+        "correct": 1
       },
       {
         "type": "mcq",
-        "q": "Gatunek 'baśń' zawiera…",
+        "q": "Wskaż zdanie w stronie biernej:",
         "options": [
-          "elementy fantastyczne",
-          "kronikę faktów",
-          "przepis kulinarny"
+          "Uczeń rozwiązał zadanie.",
+          "Zadanie zostało rozwiązane przez ucznia.",
+          "Uczeń właśnie rozwiązuje zadanie."
         ],
-        "correct": 0
+        "correct": 1
       },
       {
         "type": "mcq",
-        "q": "Antonim do 'wysoki' to…",
+        "q": "Jaką funkcję pełni metafora w tekście?",
         "options": [
-          "niski",
-          "chudy",
-          "szeroki"
+          "informuje o dokładnych faktach",
+          "upiększa wypowiedź i pobudza wyobraźnię",
+          "zastępuje przecinki w zdaniu"
         ],
-        "correct": 0
+        "correct": 1
       },
       {
         "type": "mcq",
-        "q": "Epitet to…",
+        "q": "Które słowo to związek frazeologiczny?",
         "options": [
-          "określenie rzeczownika",
-          "rodzaj czasownika",
-          "przysłówek"
+          "ciężka praca",
+          "pękać ze śmiechu",
+          "długi dzień"
         ],
-        "correct": 0
+        "correct": 1
       },
       {
         "type": "mcq",
-        "q": "Czasownik odpowiada na pytania…",
+        "q": "W jakim celu pisze się rozprawkę?",
         "options": [
-          "co robi? co się dzieje?",
-          "jaki? jaka?",
-          "kto? co?"
+          "aby opisać wygląd osoby",
+          "aby przedstawić i uzasadnić własne zdanie na dany temat",
+          "aby streścić film"
         ],
-        "correct": 0
+        "correct": 1
       },
       {
         "type": "mcq",
-        "q": "Narrator to…",
+        "q": "Które zdanie ma poprawną interpunkcję?",
         "options": [
-          "osoba mówiąca w tekście",
-          "autor podręcznika",
-          "postać historyczna"
+          "Chociaż było zimno wszyscy przyszli.",
+          "Chociaż było zimno, wszyscy przyszli.",
+          "Chociaż, było zimno, wszyscy przyszli."
         ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Zdanie złożone ma…",
-        "options": [
-          "więcej niż jedno orzeczenie",
-          "jedno orzeczenie",
-          "zero orzeczeń"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "'By' w zdaniu to zwykle…",
-        "options": [
-          "spójnik",
-          "rzeczownik",
-          "przymiotnik"
-        ],
-        "correct": 0
+        "correct": 1
       }
     ]
   },
@@ -630,101 +1141,101 @@
     "7-9": [
       {
         "type": "mcq",
-        "q": "Pierwszy historyczny władca Polski to…",
+        "q": "Jak nazywał się słynny polski król zwany 'Wielkim'?",
         "options": [
           "Mieszko I",
-          "Bolesław Chrobry",
-          "Kazimierz Wielki"
+          "Kazimierz III",
+          "Władysław Łokietek"
         ],
-        "correct": 0
+        "correct": 1
       },
       {
         "type": "mcq",
-        "q": "Konstytucja 3 maja uchwalona w…",
+        "q": "Które miasto było pierwszą stolicą Polski?",
         "options": [
-          "1791",
-          "1569",
-          "1918"
+          "Warszawa",
+          "Kraków",
+          "Gniezno"
         ],
-        "correct": 0
+        "correct": 2
       },
       {
         "type": "mcq",
-        "q": "Pierwszy król Polski to…",
+        "q": "Chrzest Polski tradycyjnie datuje się na rok…",
         "options": [
-          "Bolesław Chrobry",
-          "Mieszko I",
-          "Kazimierz Wielki"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Starożytny Rzym leży w…",
-        "options": [
-          "Italii",
-          "Galii",
-          "Iberii"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Symbole Polski to…",
-        "options": [
-          "godło, flaga, hymn",
-          "herb, moneta, akt",
-          "paszport, mapa, stempel"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Pisano na…",
-        "options": [
-          "papirusie",
-          "gumie",
-          "betonie"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Chrzest Polski przyjmuje…",
-        "options": [
-          "Mieszko I",
-          "Bolesław Śmiały",
-          "Władysław Jagiełło"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Bitwa pod Grunwaldem to rok…",
-        "options": [
-          "1410",
           "966",
-          "1791"
+          "1410",
+          "1525"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Wikingowie słynęli z…",
+        "q": "Jak nazywał się pierwszy historyczny władca Polski?",
         "options": [
-          "żeglugi i wypraw morskich",
-          "hodowli ryżu",
-          "wynalezienia druku"
+          "Bolesław Chrobry",
+          "Mieszko I",
+          "Zygmunt Stary"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Bitwa pod Grunwaldem odbyła się w roku…",
+        "options": [
+          "966",
+          "1410",
+          "1939"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Które państwo sąsiaduje z Polską?",
+        "options": [
+          "Francja",
+          "Niemcy",
+          "Hiszpania"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywał się słynny polski astronom, który 'wstrzymał Słońce, ruszył Ziemię'?",
+        "options": [
+          "Mikołaj Kopernik",
+          "Jan Matejko",
+          "Fryderyk Chopin"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Powstanie listopadowe wybuchło w…",
+        "q": "Kim był Józef Piłsudski?",
         "options": [
-          "1830",
-          "1918",
-          "1863"
+          "polskim kompozytorem",
+          "dowódcą i współtwórcą niepodległej Polski",
+          "malarzem"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "W którym miesiącu obchodzimy Święto Niepodległości Polski?",
+        "options": [
+          "maj",
+          "listopad",
+          "grudzień"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "11 listopada świętujemy…",
+        "options": [
+          "odzyskanie niepodległości przez Polskę",
+          "uchwalenie Konstytucji 3 maja",
+          "początek II wojny światowej"
         ],
         "correct": 0
       }
@@ -732,101 +1243,101 @@
     "10-12": [
       {
         "type": "mcq",
-        "q": "Chrzest Polski: rok",
+        "q": "Konstytucja 3 maja została uchwalona w roku…",
         "options": [
-          "966",
-          "1025",
-          "1410"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Odkrycie Ameryki przez Kolumba…",
-        "options": [
-          "1492",
-          "1517",
-          "1525"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Konstytucja 3 maja uchwalona w…",
-        "options": [
+          "1772",
           "1791",
-          "1569",
+          "1918"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Który rozbiór Polski był pierwszym?",
+        "options": [
+          "1772",
+          "1793",
+          "1795"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Powstanie listopadowe wybuchło w roku…",
+        "options": [
+          "1830",
+          "1863",
           "1918"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Starożytny Rzym leży w…",
+        "q": "Powstanie styczniowe wybuchło w roku…",
         "options": [
-          "Italii",
-          "Galii",
-          "Iberii"
+          "1791",
+          "1830",
+          "1863"
         ],
-        "correct": 0
+        "correct": 2
       },
       {
         "type": "mcq",
-        "q": "Chrzest Polski przyjmuje…",
+        "q": "II wojna światowa rozpoczęła się w roku…",
         "options": [
-          "Mieszko I",
-          "Bolesław Śmiały",
+          "1914",
+          "1939",
+          "1945"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Symbolem zrywu Polaków podczas II wojny światowej w 1944 r. było…",
+        "options": [
+          "Powstanie listopadowe",
+          "Powstanie styczniowe",
+          "Powstanie warszawskie"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Które miasto jest obecnie stolicą Polski?",
+        "options": [
+          "Kraków",
+          "Warszawa",
+          "Poznań"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywał się pierwszy król koronowany na króla Polski?",
+        "options": [
+          "Bolesław Chrobry",
+          "Kazimierz Wielki",
           "Władysław Jagiełło"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Bitwa pod Grunwaldem to rok…",
+        "q": "W której epoce historycznej żyli rycerze w zbrojach i zamkach?",
         "options": [
-          "1410",
-          "966",
-          "1791"
+          "starożytność",
+          "średniowiecze",
+          "czasy nowożytne"
         ],
-        "correct": 0
+        "correct": 1
       },
       {
         "type": "mcq",
-        "q": "Wikingowie słynęli z…",
+        "q": "Która z postaci była królem Polski?",
         "options": [
-          "żeglugi i wypraw morskich",
-          "hodowli ryżu",
-          "wynalezienia druku"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Powstanie listopadowe wybuchło w…",
-        "options": [
-          "1830",
-          "1918",
-          "1863"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Symbole Polski to…",
-        "options": [
-          "godło, flaga, hymn",
-          "herb, moneta, akt",
-          "paszport, mapa, stempel"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Rozbicie dzielnicowe zaczęło się w…",
-        "options": [
-          "1138",
-          "966",
-          "1410"
+          "Jan III Sobieski",
+          "Adam Mickiewicz",
+          "Tadeusz Kościuszko"
         ],
         "correct": 0
       }
@@ -834,103 +1345,103 @@
     "13-14": [
       {
         "type": "mcq",
-        "q": "Konstytucja 3 Maja została uchwalona w…",
+        "q": "Unia polsko-litewska zawarta w Krewie została podpisana w roku…",
         "options": [
-          "1791",
-          "1772",
-          "1918"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Wikingowie słynęli z…",
-        "options": [
-          "żeglugi i wypraw morskich",
-          "hodowli ryżu",
-          "wynalezienia druku"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Konstytucja 3 maja uchwalona w…",
-        "options": [
-          "1791",
-          "1569",
-          "1918"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Symbole Polski to…",
-        "options": [
-          "godło, flaga, hymn",
-          "herb, moneta, akt",
-          "paszport, mapa, stempel"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Chrzest Polski przyjmuje…",
-        "options": [
-          "Mieszko I",
-          "Bolesław Śmiały",
-          "Władysław Jagiełło"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Rozbicie dzielnicowe zaczęło się w…",
-        "options": [
-          "1138",
-          "966",
-          "1410"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Powstanie listopadowe wybuchło w…",
-        "options": [
-          "1830",
-          "1918",
-          "1863"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Pierwszy król Polski to…",
-        "options": [
-          "Bolesław Chrobry",
-          "Mieszko I",
-          "Kazimierz Wielki"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Bitwa pod Grunwaldem to rok…",
-        "options": [
+          "1385",
           "1410",
-          "966",
-          "1791"
+          "966"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Pisano na…",
+        "q": "Która bitwa zakończyła się wielkim zwycięstwem wojsk polsko-litewskich nad zakonem krzyżackim?",
         "options": [
-          "papirusie",
-          "gumie",
-          "betonie"
+          "bitwa pod Wiedniem",
+          "bitwa pod Grunwaldem",
+          "bitwa pod Kircholmem"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Który król wygrał bitwę pod Wiedniem w 1683 roku?",
+        "options": [
+          "Zygmunt III Waza",
+          "Jan III Sobieski",
+          "Stanisław August Poniatowski"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Sejm Czteroletni obradował w latach…",
+        "options": [
+          "1772–1775",
+          "1788–1792",
+          "1795–1800"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Który traktat zakończył I wojnę światową i był ważny dla sprawy polskiej?",
+        "options": [
+          "traktat wersalski",
+          "traktat w Tylży",
+          "pokój w Rydze"
         ],
         "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Które państwa dokonały rozbiorów Polski?",
+        "options": [
+          "Niemcy, Francja, Włochy",
+          "Rosja, Prusy, Austria",
+          "Rosja, Szwecja, Turcja"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "W którym roku wybuchło powstanie kościuszkowskie?",
+        "options": [
+          "1791",
+          "1794",
+          "1830"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "W którym roku wybuchła I wojna światowa?",
+        "options": [
+          "1914",
+          "1918",
+          "1939"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "W którym roku Polska odzyskała niepodległość po zaborach?",
+        "options": [
+          "1772",
+          "1795",
+          "1918"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Który z polityków PRL jest kojarzony z wprowadzeniem stanu wojennego?",
+        "options": [
+          "Józef Piłsudski",
+          "Lech Wałęsa",
+          "Wojciech Jaruzelski"
+        ],
+        "correct": 2
       }
     ]
   },
@@ -938,203 +1449,203 @@
     "7-9": [
       {
         "type": "mcq",
-        "q": "Ile jest kontynentów?",
+        "q": "Stolicą Polski jest…",
         "options": [
-          "5",
-          "6",
-          "7"
-        ],
-        "correct": 2
-      },
-      {
-        "type": "mcq",
-        "q": "Ocean między Europą a Ameryką to…",
-        "options": [
-          "Atlantycki",
-          "Spokojny",
-          "Arktyczny"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Największy kontynent to…",
-        "options": [
-          "Azja",
-          "Afryka",
-          "Ameryka Płn."
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Najdłuższa rzeka w Polsce to…",
-        "options": [
-          "Wisła",
-          "Odra",
-          "Warta"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Klimat równikowy jest…",
-        "options": [
-          "gorący i wilgotny",
-          "zimny i suchy",
-          "umiarkowany chłodny"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Wulkan to…",
-        "options": [
-          "wylot magmy",
-          "lodowiec",
-          "jezioro"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Państwo-wyspa na Oceanie Indyjskim to…",
-        "options": [
-          "Madagaskar",
-          "Kuba",
-          "Nowa Zelandia"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Stolica Francji to…",
-        "options": [
-          "Paryż",
-          "Lyon",
-          "Marsylia"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Najwyższy szczyt Tatr to…",
-        "options": [
-          "Rysy",
-          "Gerlach",
-          "Kasprowy"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Pustynia w Chinach to…",
-        "options": [
-          "Gobi",
-          "Kalahari",
-          "Atakama"
-        ],
-        "correct": 0
-      }
-    ],
-    "10-12": [
-      {
-        "type": "mcq",
-        "q": "Strefa czasowa Polski to UTC…",
-        "options": [
-          "+0",
-          "+1",
-          "+2"
+          "Kraków",
+          "Warszawa",
+          "Gdańsk"
         ],
         "correct": 1
       },
       {
         "type": "mcq",
-        "q": "Kontynent z Saharą to…",
+        "q": "Który z obiektów jest górą?",
         "options": [
-          "Afryka",
-          "Azja",
-          "Australia"
+          "Bałtyk",
+          "Rysy",
+          "Wisła"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Który kierunek na kompasie jest przeciwny do północy?",
+        "options": [
+          "wschód",
+          "zachód",
+          "południe"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się duży zbiornik słonej wody?",
+        "options": [
+          "jezioro",
+          "morze",
+          "rzeka"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Która pora roku następuje po zimie?",
+        "options": [
+          "jesień",
+          "wiosna",
+          "lato"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Na mapie kolor zielony najczęściej oznacza…",
+        "options": [
+          "lasy i niziny",
+          "morza",
+          "wysokie góry"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Najdłuższa rzeka w Polsce to…",
+        "q": "Jak nazywa się wielka rzeka przepływająca przez Warszawę?",
+        "options": [
+          "Odra",
+          "Wisła",
+          "Warta"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Które z tych miejsc jest lasem?",
+        "options": [
+          "miejsce z wieloma drzewami",
+          "miejsce z samym piaskiem",
+          "miejsce z samą wodą"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Na jakim kontynencie leży Polska?",
+        "options": [
+          "w Afryce",
+          "w Europie",
+          "w Azji"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Które z tych zwierząt częściej spotkamy w lesie w Polsce?",
+        "options": [
+          "pingwin",
+          "sarna",
+          "wieloryb"
+        ],
+        "correct": 1
+      }
+    ],
+    "10-12": [
+      {
+        "type": "mcq",
+        "q": "Najwyższym szczytem Polski są…",
+        "options": [
+          "Tatry",
+          "Rysy",
+          "Świętokrzyskie"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Która z rzek NIE przepływa przez Polskę?",
         "options": [
           "Wisła",
           "Odra",
-          "Warta"
+          "Nil"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Polska ma dostęp do morza…",
+        "options": [
+          "Bałtyckiego",
+          "Czarnego",
+          "Śródziemnego"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Ocean między Europą a Ameryką to…",
+        "q": "Które z tych państw graniczy z Polską?",
         "options": [
-          "Atlantycki",
-          "Spokojny",
-          "Arktyczny"
+          "Czechy",
+          "Francja",
+          "Włochy"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Najwyższy szczyt Tatr to…",
+        "q": "Jak nazywa się warstwa powietrza otaczająca Ziemię?",
         "options": [
-          "Rysy",
-          "Gerlach",
-          "Kasprowy"
+          "atmosfera",
+          "litosfera",
+          "hydrosfera"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Stolica Francji to…",
+        "q": "Co przedstawia globus?",
         "options": [
-          "Paryż",
-          "Lyon",
-          "Marsylia"
+          "plan mieszkania",
+          "pomniejszony model Ziemi",
+          "mapę miasta"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Na półkuli północnej lato przypada w miesiącach…",
+        "options": [
+          "grudzień–luty",
+          "marzec–maj",
+          "czerwiec–sierpień"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Którą formą ukształtowania terenu jest pustynia?",
+        "options": [
+          "obszar głównie z piaskiem i małą ilością roślin",
+          "wysokie góry całe w śniegu",
+          "głęboka dolina pełna wody"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Klimat równikowy jest…",
+        "q": "Jeżeli idziemy z Warszawy do Gdańska, to poruszamy się głównie w kierunku…",
         "options": [
-          "gorący i wilgotny",
-          "zimny i suchy",
-          "umiarkowany chłodny"
+          "północnym",
+          "południowym",
+          "zachodnim"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Największy kontynent to…",
+        "q": "Jak nazywa się najważniejsza linia szerokości geograficznej dzieląca Ziemię na półkulę północną i południową?",
         "options": [
-          "Azja",
-          "Afryka",
-          "Ameryka Płn."
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Państwo-wyspa na Oceanie Indyjskim to…",
-        "options": [
-          "Madagaskar",
-          "Kuba",
-          "Nowa Zelandia"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Pustynia w Chinach to…",
-        "options": [
-          "Gobi",
-          "Kalahari",
-          "Atakama"
+          "równik",
+          "zwrotnik",
+          "południk zerowy"
         ],
         "correct": 0
       }
@@ -1142,103 +1653,103 @@
     "13-14": [
       {
         "type": "mcq",
-        "q": "Proces urbanizacji to…",
+        "q": "Ile kontynentów wyróżnia się najczęściej w geografii szkolnej?",
         "options": [
-          "spadek ludności miast",
-          "wzrost ludności miast",
-          "przyrost naturalny"
+          "4",
+          "5",
+          "7"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Który ocean jest największy?",
+        "options": [
+          "Ocean Atlantycki",
+          "Ocean Spokojny (Pacyfik)",
+          "Ocean Indyjski"
         ],
         "correct": 1
       },
       {
         "type": "mcq",
-        "q": "Pustynia w Chinach to…",
+        "q": "Na którym kontynencie leży Sahara?",
         "options": [
-          "Gobi",
-          "Kalahari",
-          "Atakama"
+          "w Azji",
+          "w Afryce",
+          "w Ameryce Południowej"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Która strefa klimatyczna charakteryzuje się bardzo niskimi temperaturami przez cały rok?",
+        "options": [
+          "zwrotnikowa",
+          "umiarkowana",
+          "okołobiegunowa"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Długość geograficzna mierzy odległość…",
+        "options": [
+          "na wschód i zachód od południka zerowego",
+          "na północ i południe od równika",
+          "od bieguna północnego do południowego"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Klimat równikowy jest…",
+        "q": "Miasta, w których mieszka bardzo wielu ludzi, nazywamy…",
         "options": [
-          "gorący i wilgotny",
-          "zimny i suchy",
-          "umiarkowany chłodny"
+          "wsiosferą",
+          "metropoliami",
+          "pustkowiami"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Która forma działalności człowieka najmniej szkodzi środowisku?",
+        "options": [
+          "elektrownia węglowa",
+          "spalanie śmieci w ognisku",
+          "elektrownia wiatrowa"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Które z wymienionych państw leży w Ameryce Południowej?",
+        "options": [
+          "Brazylia",
+          "Hiszpania",
+          "Egipt"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Państwo-wyspa na Oceanie Indyjskim to…",
+        "q": "W jakiej strefie klimatycznej leży większość terytorium Polski?",
         "options": [
-          "Madagaskar",
-          "Kuba",
-          "Nowa Zelandia"
+          "umiarkowanej",
+          "zwrotnikowej",
+          "okołobiegunowej"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Największy kontynent to…",
+        "q": "Zjawisko długotrwałego braku opadów i wysychania gleb to…",
         "options": [
-          "Azja",
-          "Afryka",
-          "Ameryka Płn."
+          "powódź",
+          "susza",
+          "huragan"
         ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Stolica Niemiec to…",
-        "options": [
-          "Berlin",
-          "Monachium",
-          "Hamburg"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Najdłuższa rzeka w Polsce to…",
-        "options": [
-          "Wisła",
-          "Odra",
-          "Warta"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Najwyższy szczyt Tatr to…",
-        "options": [
-          "Rysy",
-          "Gerlach",
-          "Kasprowy"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Wulkan to…",
-        "options": [
-          "wylot magmy",
-          "lodowiec",
-          "jezioro"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Stolica Francji to…",
-        "options": [
-          "Paryż",
-          "Lyon",
-          "Marsylia"
-        ],
-        "correct": 0
+        "correct": 1
       }
     ]
   },
@@ -1246,101 +1757,101 @@
     "7-9": [
       {
         "type": "mcq",
-        "q": "Jednostka prędkości to…",
+        "q": "Co przyciąga przedmioty do Ziemi?",
         "options": [
-          "m/s",
-          "N",
-          "J"
+          "podmuch wiatru",
+          "grawitacja",
+          "magia"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się źródło światła używane w domu?",
+        "options": [
+          "latarka",
+          "żarówka",
+          "kompas"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Co jest potrzebne, aby wprawić przedmiot w ruch?",
+        "options": [
+          "cisza",
+          "siła",
+          "cień"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się zjawisko powstawania cienia?",
+        "options": [
+          "odbicie",
+          "załamanie",
+          "pochłanianie światła"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Które urządzenie pokazuje temperaturę?",
+        "options": [
+          "termometr",
+          "mikroskop",
+          "zegarek"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Jednostka pracy to…",
+        "q": "Woda zamienia się w lód, gdy jej temperatura spada poniżej…",
         "options": [
-          "J",
-          "N",
-          "W"
+          "0°C",
+          "10°C",
+          "100°C"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Jednostka prędkości w SI to…",
+        "q": "Co dzieje się z balonem, gdy powietrze w nim ogrzewamy?",
         "options": [
-          "m/s",
-          "km/h",
-          "N"
+          "kurczy się",
+          "rozszerza się",
+          "robi się cięższy"
         ],
-        "correct": 0
+        "correct": 1
       },
       {
         "type": "mcq",
-        "q": "Masa to…",
+        "q": "Magnes przyciąga…",
         "options": [
-          "ilość materii",
-          "siła ciężkości",
-          "ciepło"
+          "plastik",
+          "aluminium",
+          "żelazo"
         ],
-        "correct": 0
+        "correct": 2
       },
       {
         "type": "mcq",
-        "q": "Przemiana energii w żarówce to głównie…",
+        "q": "Jak nazywa się dźwięk o bardzo dużym natężeniu mogący być szkodliwy?",
         "options": [
-          "elektryczna → świetlna",
-          "chemiczna → cieplna",
-          "światło → prąd"
+          "brzęk",
+          "hałas",
+          "cisza"
         ],
-        "correct": 0
+        "correct": 1
       },
       {
         "type": "mcq",
-        "q": "Siła to…",
+        "q": "Co odbija światło?",
         "options": [
-          "oddziaływanie ciał",
-          "rodzaj energii",
-          "temperatura"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Gęstość ρ to…",
-        "options": [
-          "m/V",
-          "V/m",
-          "F·a"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Ciśnienie p to…",
-        "options": [
-          "F/S",
-          "S/F",
-          "F·S"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Praca W to…",
-        "options": [
-          "F·s",
-          "F/s",
-          "s/F"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Wzór na prędkość to…",
-        "options": [
-          "v=s/t",
-          "s=v/t",
-          "t=s/v"
+          "lustro",
+          "gąbka",
+          "kartka papieru"
         ],
         "correct": 0
       }
@@ -1348,203 +1859,203 @@
     "10-12": [
       {
         "type": "mcq",
-        "q": "Wzór na prędkość to…",
+        "q": "Jednostką prędkości w układzie SI jest…",
         "options": [
-          "s=v/t",
-          "v=s/t",
-          "t=s/v"
+          "m/s",
+          "km",
+          "kg"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się siła działająca przeciwnie do ruchu?",
+        "options": [
+          "tarcie",
+          "ciężar",
+          "siła wyporu"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się energia zgromadzona w ciałach na wysokości?",
+        "options": [
+          "energia kinetyczna",
+          "energia potencjalna",
+          "energia cieplna"
         ],
         "correct": 1
       },
       {
         "type": "mcq",
-        "q": "Gęstość ρ to…",
+        "q": "Czy światło rozchodzi się w prostej linii?",
         "options": [
-          "m/V",
-          "V/m",
-          "F·a"
+          "tak",
+          "nie",
+          "czasem"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Ciśnienie p to…",
+        "q": "Która z tych substancji jest najlepszym przewodnikiem prądu elektrycznego?",
         "options": [
-          "F/S",
-          "S/F",
-          "F·S"
+          "guma",
+          "drewno",
+          "miedź"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się zmiana energii elektrycznej w cieplną np. w czajniku?",
+        "options": [
+          "parowanie",
+          "efekt Joule’a",
+          "magnetyzm"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Przyspieszenie to…",
+        "options": [
+          "zmiana prędkości w czasie",
+          "droga podzielona przez czas",
+          "siła działająca na ciało"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Siła to…",
+        "q": "Siła wyporu działa w kierunku…",
         "options": [
-          "oddziaływanie ciał",
-          "rodzaj energii",
-          "temperatura"
+          "w dół",
+          "w bok",
+          "do góry"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Dźwignia dwustronna to…",
+        "options": [
+          "urządzenie zmieniające kierunek i wartość siły",
+          "rodzaj światła",
+          "rodzaj magnesu"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Energia potencjalna rośnie gdy…",
+        "q": "Grawitacja jest najsilniejsza, gdy ciała są…",
         "options": [
-          "zwiększamy wysokość",
-          "zmniejszamy masę",
-          "chłodzimy"
+          "bardzo daleko",
+          "bardzo blisko",
+          "zanurzone w wodzie"
         ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Tor ruchu to…",
-        "options": [
-          "linia po której porusza się ciało",
-          "czas ruchu",
-          "prędkość chwilowa"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Masa to…",
-        "options": [
-          "ilość materii",
-          "siła ciężkości",
-          "ciepło"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Praca W to…",
-        "options": [
-          "F·s",
-          "F/s",
-          "s/F"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Przemiana energii w żarówce to głównie…",
-        "options": [
-          "elektryczna → świetlna",
-          "chemiczna → cieplna",
-          "światło → prąd"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Jednostka pracy to…",
-        "options": [
-          "J",
-          "N",
-          "W"
-        ],
-        "correct": 0
+        "correct": 1
       }
     ],
     "13-14": [
       {
         "type": "mcq",
-        "q": "Druga zasada Newtona mówi, że F=…",
+        "q": "Jednostką siły w układzie SI jest…",
         "options": [
-          "m*a",
-          "m/v",
-          "a/m"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Tor ruchu to…",
-        "options": [
-          "linia po której porusza się ciało",
-          "czas ruchu",
-          "prędkość chwilowa"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Masa to…",
-        "options": [
-          "ilość materii",
-          "siła ciężkości",
-          "ciepło"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Jednostka pracy to…",
-        "options": [
-          "J",
+          "W",
           "N",
-          "W"
+          "J"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Szybkość rozchodzenia się dźwięku w powietrzu wynosi około…",
+        "options": [
+          "340 m/s",
+          "1000 m/s",
+          "300 000 km/s"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Przemiana energii w żarówce to głównie…",
+        "q": "Jak nazywa się zjawisko zmiany kierunku światła przy przejściu między ośrodkami?",
         "options": [
-          "elektryczna → świetlna",
-          "chemiczna → cieplna",
-          "światło → prąd"
+          "odbicie",
+          "załamanie",
+          "dyfrakcja"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Co to jest opór elektryczny?",
+        "options": [
+          "przeciwdziałanie przepływowi prądu",
+          "energia elektryczna",
+          "siła przyciągania magnetycznego"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Niezmiennik w ruchu jednostajnym to…",
+        "q": "Które ciało ma większą energię kinetyczną?",
         "options": [
-          "prędkość",
-          "przyspieszenie",
-          "siła"
+          "ciało o większej prędkości",
+          "ciało stojące w miejscu",
+          "ciało leżące"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Praca W to…",
+        "q": "Jak nazywa się prawo mówiące o tym, że im większa masa, tym większa siła potrzebna do zmiany ruchu?",
         "options": [
-          "F·s",
-          "F/s",
-          "s/F"
+          "I zasada dynamiki Newtona",
+          "II zasada dynamiki Newtona",
+          "III zasada dynamiki Newtona"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Wzajemne oddziaływanie biegunów magnetycznych polega na tym, że…",
+        "options": [
+          "różne bieguny się przyciągają",
+          "różne bieguny się odpychają",
+          "magnesy działają tylko w nocy"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Energia potencjalna rośnie gdy…",
+        "q": "Co to jest praca mechaniczna?",
         "options": [
-          "zwiększamy wysokość",
-          "zmniejszamy masę",
-          "chłodzimy"
+          "przenoszenie energii przez działanie siły",
+          "zmiana cieczy w gaz",
+          "przepływ ładunków elektrycznych"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Ciśnienie p to…",
+        "q": "Które urządzenie zmienia energię elektryczną w mechaniczną?",
         "options": [
-          "F/S",
-          "S/F",
-          "F·S"
+          "żarówka",
+          "silnik elektryczny",
+          "czajnik"
         ],
-        "correct": 0
+        "correct": 1
       },
       {
         "type": "mcq",
-        "q": "Gęstość ρ to…",
+        "q": "Jądro atomowe składa się z…",
         "options": [
-          "m/V",
-          "V/m",
-          "F·a"
+          "protonów i neutronów",
+          "elektronów",
+          "fal dźwiękowych"
         ],
         "correct": 0
       }
@@ -1554,305 +2065,305 @@
     "7-9": [
       {
         "type": "mcq",
-        "q": "Symbol chemiczny wody to…",
+        "q": "Co jest podstawowym składnikiem wody?",
         "options": [
-          "CO2",
-          "H2O",
-          "O2"
+          "wodór i tlen",
+          "tlen i hel",
+          "węgiel i tlen"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się stan skupienia, w którym substancja nie ma stałego kształtu ani objętości?",
+        "options": [
+          "ciecz",
+          "gaz",
+          "ciało stałe"
         ],
         "correct": 1
       },
       {
         "type": "mcq",
-        "q": "Kowalencyjne wiązanie występuje gdy…",
-        "options": [
-          "atomy dzielą elektrony",
-          "elektrony są oddane",
-          "jądra się łączą"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Roztwór to…",
-        "options": [
-          "jednorodna mieszanina",
-          "ciało stałe",
-          "gaz szlachetny"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "CO₂ to…",
+        "q": "Która substancja jest bezbarwnym gazem, potrzebnym do oddychania?",
         "options": [
           "dwutlenek węgla",
-          "tlenek wodoru",
-          "tlen"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "pH=2 to odczyn…",
-        "options": [
-          "kwasowy",
-          "obojętny",
-          "zasadowy"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Kation ma ładunek…",
-        "options": [
-          "dodatni",
-          "ujemny",
-          "zerowy"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Najmniejsza cząstka pierwiastka to…",
-        "options": [
-          "atom",
-          "jon",
-          "cząsteczka"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Metale zwykle są…",
-        "options": [
-          "przewodnikami",
-          "izolatorami",
-          "gazami"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "H₂O to…",
-        "options": [
-          "woda",
           "tlen",
+          "azot"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Co powstaje podczas spalania świecy?",
+        "options": [
+          "woda i dwutlenek węgla",
+          "tylko tlen",
+          "złoto"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Która z tych rzeczy jest mieszaniną?",
+        "options": [
+          "sól",
+          "cukier",
+          "powietrze"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Które z tych produktów jest kwasem?",
+        "options": [
+          "ocet",
+          "sól kuchenna",
+          "woda"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się substancja, która zmienia kolor w kontakcie z kwasem lub zasadą?",
+        "options": [
+          "indykator",
+          "lakier",
+          "barwnik spożywczy"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "W którym stanie skupienia cząsteczki są najbardziej oddalone od siebie?",
+        "options": [
+          "w ciele stałym",
+          "w cieczy",
+          "w gazie"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Co oznacza skrót „H2O”?",
+        "options": [
+          "tlen",
+          "wodę",
           "wodór"
         ],
-        "correct": 0
+        "correct": 1
       },
       {
         "type": "mcq",
-        "q": "Sól kuchenna to…",
+        "q": "Sól morska jest przykładem…",
         "options": [
-          "NaCl",
-          "KCl",
-          "CaCO₃"
+          "pierwiastka",
+          "mieszaniny",
+          "związku chemicznego"
         ],
-        "correct": 0
+        "correct": 2
       }
     ],
     "10-12": [
       {
         "type": "mcq",
-        "q": "Odczyn pH < 7 oznacza…",
+        "q": "Który z pierwiastków ma symbol „O”?",
         "options": [
-          "zasadę",
-          "kwas",
-          "obojętny"
+          "złoto",
+          "tlen",
+          "wodór"
         ],
         "correct": 1
       },
       {
         "type": "mcq",
-        "q": "Najmniejsza cząstka pierwiastka to…",
+        "q": "Jak nazywa się skala określająca kwasowość i zasadowość roztworów?",
         "options": [
-          "atom",
-          "jon",
-          "cząsteczka"
+          "skala Celsjusza",
+          "skala pH",
+          "skala Newtona"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Związki zawierające węgiel to najczęściej…",
+        "options": [
+          "związki organiczne",
+          "sole",
+          "gazy szlachetne"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Zjawisko zmiany stanu stałego na gaz to…",
+        "q": "Produkt reakcji spalania metanu to…",
         "options": [
-          "sublimacja",
-          "krzepnięcie",
-          "skraplanie"
+          "dwutlenek węgla i woda",
+          "tlen i wodór",
+          "siarka i żelazo"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Metale zwykle są…",
+        "q": "Która mieszanina jest jednorodna?",
         "options": [
-          "przewodnikami",
-          "izolatorami",
-          "gazami"
+          "słona woda",
+          "sałatka warzywna",
+          "piasek z cukrem"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Kowalencyjne wiązanie występuje gdy…",
+        "q": "Jaki ładunek ma proton?",
         "options": [
-          "atomy dzielą elektrony",
-          "elektrony są oddane",
-          "jądra się łączą"
+          "ujemny",
+          "dodatni",
+          "neutralny"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Jaki gaz odpowiada za efekt cieplarniany?",
+        "options": [
+          "dwutlenek węgla",
+          "hel",
+          "argon"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Roztwór to…",
+        "q": "Co opisuje równanie chemiczne?",
         "options": [
-          "jednorodna mieszanina",
-          "ciało stałe",
-          "gaz szlachetny"
+          "wygląd cząsteczki",
+          "przebieg reakcji chemicznej",
+          "temperaturę w laboratorium"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Która z poniższych substancji jest zasadą?",
+        "options": [
+          "mydło",
+          "ocet",
+          "sok cytrynowy"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Powietrze to…",
+        "q": "Woda destylowana to…",
         "options": [
           "mieszanina",
           "związek chemiczny",
           "pierwiastek"
         ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Masa molowa wyrażana w…",
-        "options": [
-          "g/mol",
-          "mol/g",
-          "kg"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "CO₂ to…",
-        "options": [
-          "dwutlenek węgla",
-          "tlenek wodoru",
-          "tlen"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Kation ma ładunek…",
-        "options": [
-          "dodatni",
-          "ujemny",
-          "zerowy"
-        ],
-        "correct": 0
+        "correct": 1
       }
     ],
     "13-14": [
       {
         "type": "mcq",
-        "q": "Elektroujemność rośnie w okresie…",
+        "q": "Atom składa się z protonów, neutronów i…",
         "options": [
-          "w lewo i w dół",
-          "w prawo i w górę",
-          "losowo"
+          "fosforu",
+          "elektronów",
+          "tlenu"
         ],
         "correct": 1
       },
       {
         "type": "mcq",
-        "q": "Najmniejsza cząstka pierwiastka to…",
+        "q": "Jak nazywa się najmniejsza jednostka związku chemicznego?",
         "options": [
+          "cząsteczka",
           "atom",
-          "jon",
-          "cząsteczka"
+          "jon"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Kowalencyjne wiązanie występuje gdy…",
+        "q": "Proces zmiany cieczy w gaz to…",
         "options": [
-          "atomy dzielą elektrony",
-          "elektrony są oddane",
-          "jądra się łączą"
+          "skraplanie",
+          "parowanie",
+          "topnienie"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Jony dodatnie nazywamy…",
+        "options": [
+          "anionami",
+          "izotopami",
+          "kationami"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się substancja przyspieszająca reakcję chemiczną?",
+        "options": [
+          "katalizator",
+          "inhibitor",
+          "neutron"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "CO₂ to…",
+        "q": "Która reakcja zachodzi w ogniwie elektrycznym?",
         "options": [
-          "dwutlenek węgla",
-          "tlenek wodoru",
-          "tlen"
+          "spalanie metanu",
+          "reakcja utleniania i redukcji",
+          "krzepnięcie wody"
         ],
-        "correct": 0
+        "correct": 1
       },
       {
         "type": "mcq",
-        "q": "Sól kuchenna to…",
+        "q": "Który gaz jest głównym składnikiem powietrza?",
         "options": [
-          "NaCl",
-          "KCl",
-          "CaCO₃"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Zjawisko zmiany stanu stałego na gaz to…",
-        "options": [
-          "sublimacja",
-          "krzepnięcie",
-          "skraplanie"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Roztwór to…",
-        "options": [
-          "jednorodna mieszanina",
-          "ciało stałe",
-          "gaz szlachetny"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Kation ma ładunek…",
-        "options": [
-          "dodatni",
-          "ujemny",
-          "zerowy"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Masa molowa wyrażana w…",
-        "options": [
-          "g/mol",
-          "mol/g",
-          "kg"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "H₂O to…",
-        "options": [
-          "woda",
           "tlen",
-          "wodór"
+          "azot",
+          "dwutlenek węgla"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Roztwór o pH 1 to…",
+        "options": [
+          "mocny kwas",
+          "obojętny",
+          "mocna zasada"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Cząsteczka glukozy ma wzór…",
+        "options": [
+          "H2O",
+          "CO2",
+          "C6H12O6"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Proces rozdzielania mieszanin przez podgrzewanie i skraplanie to…",
+        "options": [
+          "destylacja",
+          "filtrowanie",
+          "magnetyzowanie"
         ],
         "correct": 0
       }
@@ -1862,101 +2373,101 @@
     "7-9": [
       {
         "type": "mcq",
-        "q": "Jak po ang. 'dziękuję'?",
+        "q": "Jak po angielsku jest 'pies'?",
+        "options": [
+          "cat",
+          "dog",
+          "mouse"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Jak po angielsku powiemy 'dzień dobry'?",
+        "options": [
+          "hello",
+          "please",
+          "thank you"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Co oznacza słowo 'blue'?",
+        "options": [
+          "czerwony",
+          "zielony",
+          "niebieski"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Jak powiedzieć po angielsku 'dziękuję'?",
         "options": [
           "thanks",
-          "please",
-          "sorry"
+          "sorry",
+          "goodbye"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Skrót 'USA' to…",
+        "q": "Które słowo oznacza 'jabłko'?",
         "options": [
-          "United States of America",
-          "Union South Africa",
-          "United State America"
+          "apple",
+          "banana",
+          "pear"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "'There are' użyjesz z…",
+        "q": "Jak po angielsku zapytasz: 'Jak masz na imię?'",
         "options": [
-          "liczbą mnogą",
-          "liczbą pojedynczą",
-          "czasem przeszłym"
+          "How are you?",
+          "What is your name?",
+          "Where do you live?"
         ],
-        "correct": 0
+        "correct": 1
       },
       {
         "type": "mcq",
-        "q": "Poprawne: 'She ___ reading.'",
+        "q": "Słowo 'big' znaczy…",
         "options": [
-          "is",
-          "are",
-          "be"
+          "mały",
+          "duży",
+          "szybki"
         ],
-        "correct": 0
+        "correct": 1
       },
       {
         "type": "mcq",
-        "q": "Stopień wyższy od 'big' to…",
+        "q": "Jak po angielsku będzie 'kot'?",
         "options": [
-          "bigger",
-          "more big",
-          "biggest"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Liczba mnoga 'child' to…",
-        "options": [
-          "children",
-          "childs",
-          "childes"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Tłumacz: 'pies' →",
-        "options": [
-          "dog",
           "cat",
-          "pig"
+          "cow",
+          "cup"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Artykuł nieokreślony to…",
+        "q": "Jak powiedzieć po angielsku 'proszę'?",
         "options": [
-          "a/an",
-          "the",
-          "—"
+          "please",
+          "sorry",
+          "hello"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Tłumacz: 'książka' →",
+        "q": "Słowo 'family' oznacza…",
         "options": [
-          "book",
-          "back",
-          "bank"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Przyimek w 'on Monday' to…",
-        "options": [
-          "on",
-          "in",
-          "at"
+          "rodzinę",
+          "szkołę",
+          "jedzenie"
         ],
         "correct": 0
       }
@@ -1964,203 +2475,203 @@
     "10-12": [
       {
         "type": "mcq",
-        "q": "3. osobowa l.poj. w Present Simple końcówka…",
+        "q": "Jak po angielsku jest 'chodzić'?",
         "options": [
-          "-ed",
-          "-s/-es",
-          "-ing"
+          "walk",
+          "sleep",
+          "eat"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Które słowo oznacza 'szybko'?",
+        "options": [
+          "fast",
+          "slow",
+          "late"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jak przetłumaczyć 'I like music'?",
+        "options": [
+          "Lubię muzykę",
+          "Nie lubię muzyki",
+          "Gram na instrumencie"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jak po angielsku będzie 'pogoda'?",
+        "options": [
+          "weather",
+          "week",
+          "water"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Które zdanie znaczy: 'Mam 12 lat'?",
+        "options": [
+          "I have 12 years",
+          "I am 12 years old",
+          "I am 12 old"
         ],
         "correct": 1
       },
       {
         "type": "mcq",
-        "q": "Tłumacz: 'pies' →",
+        "q": "Jak po angielsku zapytasz: 'Gdzie mieszkasz?'",
         "options": [
-          "dog",
-          "cat",
-          "pig"
+          "Where do you live?",
+          "Where you live?",
+          "Do you where live?"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Present Continuous to…",
+        "q": "Słowo 'always' oznacza…",
         "options": [
-          "czynność trwająca teraz",
-          "nawyk ogólny",
-          "przeszłość"
+          "zawsze",
+          "czasami",
+          "nigdy"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Tłumacz: 'książka' →",
+        "q": "Jak po angielsku jest 'książka'?",
         "options": [
           "book",
-          "back",
-          "bank"
+          "bag",
+          "bike"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Stopień wyższy od 'big' to…",
+        "q": "Jak przetłumaczyć: 'She is my friend'?",
         "options": [
-          "bigger",
-          "more big",
-          "biggest"
+          "Ona jest moją mamą",
+          "Ona jest moją koleżanką",
+          "Ona jest moim psem"
         ],
-        "correct": 0
+        "correct": 1
       },
       {
         "type": "mcq",
-        "q": "Artykuł nieokreślony to…",
+        "q": "Które z tych zdań jest poprawne?",
         "options": [
-          "a/an",
-          "the",
-          "—"
+          "He have a car",
+          "He has a car",
+          "He haves a car"
         ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Liczba mnoga 'child' to…",
-        "options": [
-          "children",
-          "childs",
-          "childes"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Past tense od 'go' to…",
-        "options": [
-          "went",
-          "goed",
-          "goes"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Przyimek w 'on Monday' to…",
-        "options": [
-          "on",
-          "in",
-          "at"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Poprawne: 'She ___ reading.'",
-        "options": [
-          "is",
-          "are",
-          "be"
-        ],
-        "correct": 0
+        "correct": 1
       }
     ],
     "13-14": [
       {
         "type": "mcq",
-        "q": "'I have been' to Present…",
+        "q": "Jak po angielsku jest 'ważny'?",
         "options": [
-          "Simple",
-          "Perfect",
-          "Perfect Continuous"
+          "important",
+          "import",
+          "improved"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jak przetłumaczyć: 'They are studying now'?",
+        "options": [
+          "Oni uczą się teraz",
+          "Oni uczą codziennie",
+          "Oni śpią teraz"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Które zdanie jest w czasie przyszłym?",
+        "options": [
+          "I eat dinner",
+          "I will eat dinner",
+          "I am eating dinner"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Co znaczy słowo 'environment'?",
+        "options": [
+          "środowisko",
+          "doświadczenie",
+          "otoczenie społeczne"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jak przetłumaczyć: 'We should help others'?",
+        "options": [
+          "Powinniśmy pomagać innym",
+          "Musimy uczyć się więcej",
+          "Chcemy odpocząć"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jak po angielsku jest 'podróżować'?",
+        "options": [
+          "travel",
+          "drive",
+          "move"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Które słowo jest synonimem 'happy'?",
+        "options": [
+          "sad",
+          "angry",
+          "joyful"
         ],
         "correct": 2
       },
       {
         "type": "mcq",
-        "q": "Artykuł nieokreślony to…",
+        "q": "W zdaniu 'She has already finished' słowo 'already' sugeruje…",
         "options": [
-          "a/an",
-          "the",
-          "—"
+          "czynność niedokończoną",
+          "czynność zakończoną wcześniej",
+          "czynność w przyszłości"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Jak powiedzieć: 'To zależy'?",
+        "options": [
+          "It depends",
+          "It helps",
+          "It makes"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Past tense od 'go' to…",
+        "q": "Co oznacza 'improve your skills'?",
         "options": [
-          "went",
-          "goed",
-          "goes"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Present Continuous to…",
-        "options": [
-          "czynność trwająca teraz",
-          "nawyk ogólny",
-          "przeszłość"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Tłumacz: 'pies' →",
-        "options": [
-          "dog",
-          "cat",
-          "pig"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "'There are' użyjesz z…",
-        "options": [
-          "liczbą mnogą",
-          "liczbą pojedynczą",
-          "czasem przeszłym"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Skrót 'USA' to…",
-        "options": [
-          "United States of America",
-          "Union South Africa",
-          "United State America"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Liczba mnoga 'child' to…",
-        "options": [
-          "children",
-          "childs",
-          "childes"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Tłumacz: 'książka' →",
-        "options": [
-          "book",
-          "back",
-          "bank"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Pytanie z 'do' tworzymy…",
-        "options": [
-          "Do you…?",
-          "Are you…?",
-          "Did you are…?"
+          "popraw swoje umiejętności",
+          "zapomnij wszystko",
+          "poszukaj nowych zabawek"
         ],
         "correct": 0
       }
@@ -2170,305 +2681,305 @@
     "7-9": [
       {
         "type": "mcq",
-        "q": "Podstawowa jednostka życia to…",
+        "q": "Z czego zbudowane jest ciało człowieka, roślin i zwierząt?",
         "options": [
-          "komórka",
-          "tkanka",
-          "organ"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Ssaki oddychają…",
-        "options": [
-          "płucami",
-          "skrzelami",
-          "skórą"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Grzyby odżywiają się…",
-        "options": [
-          "heterotroficznie",
-          "autotroficznie",
-          "fotosyntezą"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Układ pokarmowy służy do…",
-        "options": [
-          "trawienia",
-          "oddychania",
-          "ruchu"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "DNA znajduje się głównie w…",
-        "options": [
-          "jądrze komórkowym",
-          "mitochondriach",
-          "ap. Golgiego"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Bakterie to organizmy…",
-        "options": [
-          "jednokomórkowe",
-          "wielokomórkowe",
-          "nieożywione"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Rośliny wytwarzają tlen w procesie…",
-        "options": [
-          "fotosyntezy",
-          "oddychania",
-          "fermentacji"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Układ krążenia pompuje…",
-        "options": [
-          "krew",
-          "limfę",
-          "gaz"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Nasienie roślin okrytonasiennych powstaje w…",
-        "options": [
-          "zalążni",
-          "liściu",
-          "kłączu"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Najmniejszą jednostką życia jest…",
-        "options": [
-          "komórka",
-          "tkanka",
-          "narząd"
-        ],
-        "correct": 0
-      }
-    ],
-    "10-12": [
-      {
-        "type": "mcq",
-        "q": "Fotosynteza zachodzi w…",
-        "options": [
-          "mitochondriach",
-          "jądrze",
-          "chloroplastach"
-        ],
-        "correct": 2
-      },
-      {
-        "type": "mcq",
-        "q": "Zmysł wzroku znajduje się w…",
-        "options": [
-          "oczach",
-          "uszach",
-          "nosie"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Nasienie roślin okrytonasiennych powstaje w…",
-        "options": [
-          "zalążni",
-          "liściu",
-          "kłączu"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Najmniejszą jednostką życia jest…",
-        "options": [
-          "komórka",
-          "tkanka",
-          "narząd"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Rośliny wytwarzają tlen w procesie…",
-        "options": [
-          "fotosyntezy",
-          "oddychania",
-          "fermentacji"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Zielony barwnik roślin to…",
-        "options": [
-          "chlorofil",
-          "melanina",
-          "hemoglobina"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Bakterie to organizmy…",
-        "options": [
-          "jednokomórkowe",
-          "wielokomórkowe",
-          "nieożywione"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Grzyby odżywiają się…",
-        "options": [
-          "heterotroficznie",
-          "autotroficznie",
-          "fotosyntezą"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "DNA znajduje się głównie w…",
-        "options": [
-          "jądrze komórkowym",
-          "mitochondriach",
-          "ap. Golgiego"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Ssaki oddychają…",
-        "options": [
-          "płucami",
-          "skrzelami",
-          "skórą"
-        ],
-        "correct": 0
-      }
-    ],
-    "13-14": [
-      {
-        "type": "mcq",
-        "q": "Mejoza służy do…",
-        "options": [
-          "wzrostu komórek",
-          "podziałów płciowych",
-          "syntezy białek"
+          "z klocków",
+          "z komórek",
+          "z kropek"
         ],
         "correct": 1
       },
       {
         "type": "mcq",
-        "q": "Zielony barwnik roślin to…",
+        "q": "Który narząd pompuje krew w naszym ciele?",
         "options": [
-          "chlorofil",
-          "melanina",
-          "hemoglobina"
+          "mózg",
+          "płuca",
+          "serce"
         ],
-        "correct": 0
+        "correct": 2
       },
       {
         "type": "mcq",
-        "q": "DNA znajduje się głównie w…",
+        "q": "Która z tych czynności jest najbardziej zdrowa dla człowieka?",
         "options": [
-          "jądrze komórkowym",
-          "mitochondriach",
-          "ap. Golgiego"
+          "jedzenie słodyczy codziennie",
+          "ruch na świeżym powietrzu",
+          "picie tylko napojów gazowanych"
         ],
-        "correct": 0
+        "correct": 1
       },
       {
         "type": "mcq",
-        "q": "Układ krążenia pompuje…",
+        "q": "Rośliny do życia potrzebują światła, wody i…",
         "options": [
-          "krew",
-          "limfę",
-          "gaz"
+          "książek",
+          "powietrza",
+          "telefonu"
         ],
-        "correct": 0
+        "correct": 1
       },
       {
         "type": "mcq",
-        "q": "Rośliny wytwarzają tlen w procesie…",
+        "q": "Jak nazywa się zielona część drzewa, w której znajdują się liście?",
         "options": [
-          "fotosyntezy",
-          "oddychania",
-          "fermentacji"
+          "pień",
+          "korona",
+          "korzeń"
         ],
-        "correct": 0
+        "correct": 1
       },
       {
         "type": "mcq",
-        "q": "Owady mają…",
+        "q": "Które ze zwierząt jest ssakiem?",
         "options": [
-          "6 odnóży",
-          "8 odnóży",
-          "4 odnóża"
+          "żaba",
+          "wrona",
+          "kot"
         ],
-        "correct": 0
+        "correct": 2
       },
       {
         "type": "mcq",
-        "q": "Ssaki oddychają…",
+        "q": "Czym oddycha człowiek?",
         "options": [
+          "skórą",
           "płucami",
-          "skrzelami",
-          "skórą"
+          "brzuchem"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Która część rośliny pobiera wodę z gleby?",
+        "options": [
+          "liście",
+          "kwiaty",
+          "korzenie"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Co powinniśmy robić przed jedzeniem, aby dbać o zdrowie?",
+        "options": [
+          "myć ręce",
+          "biegać w kółko",
+          "nic nie robić"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Bakterie to organizmy…",
+        "q": "Które zwierzę żyje naturalnie w lesie w Polsce?",
         "options": [
-          "jednokomórkowe",
-          "wielokomórkowe",
-          "nieożywione"
+          "słoń",
+          "niedźwiedź brunatny",
+          "tygrys"
+        ],
+        "correct": 1
+      }
+    ],
+    "10-12": [
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się proces, w którym rośliny wytwarzają pokarm z użyciem światła?",
+        "options": [
+          "oddychanie",
+          "fotosynteza",
+          "trawienie"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "W którym narządzie człowieka zachodzi głównie trawienie pokarmu?",
+        "options": [
+          "wątroba",
+          "żołądek i jelita",
+          "płuca"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Układ krwionośny człowieka składa się m.in. z serca i…",
+        "options": [
+          "naczyń krwionośnych",
+          "kości",
+          "płuc"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Grzyby odżywiają się…",
+        "q": "W jakim narządzie zachodzi wymiana gazowa u człowieka?",
         "options": [
-          "heterotroficznie",
-          "autotroficznie",
-          "fotosyntezą"
+          "w płucach",
+          "w sercu",
+          "w żołądku"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Układ pokarmowy służy do…",
+        "q": "Która grupa zawiera wyłącznie zwierzęta roślinożerne?",
         "options": [
-          "trawienia",
-          "oddychania",
-          "ruchu"
+          "krowa, koń, zając",
+          "lew, wilk, krowa",
+          "kot, pies, kura"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się nauka badająca organizmy żywe?",
+        "options": [
+          "biologia",
+          "geografia",
+          "fizyka"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Który element komórki roślinnej nadaje jej zielony kolor?",
+        "options": [
+          "jądro komórkowe",
+          "chloroplasty",
+          "błona komórkowa"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Jakie znaczenie ma sen dla człowieka?",
+        "options": [
+          "jest niepotrzebny",
+          "pomaga odpocząć i zregenerować organizm",
+          "tylko marnuje czas"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Który organizm jest producentem w łańcuchu pokarmowym?",
+        "options": [
+          "trawa",
+          "zając",
+          "lis"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Które zachowanie sprzyja ochronie środowiska?",
+        "options": [
+          "wyrzucanie śmieci do lasu",
+          "segregacja odpadów",
+          "marnowanie wody"
+        ],
+        "correct": 1
+      }
+    ],
+    "13-14": [
+      {
+        "type": "mcq",
+        "q": "Podstawową jednostką budującą organizmy żywe jest…",
+        "options": [
+          "narząd",
+          "tkanka",
+          "komórka"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Który układ odpowiada za koordynację pracy organizmu i przewodzenie impulsów nerwowych?",
+        "options": [
+          "układ nerwowy",
+          "układ krążenia",
+          "układ pokarmowy"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "W jakim miejscu w komórce znajduje się materiał genetyczny (DNA)?",
+        "options": [
+          "w jądrze komórkowym",
+          "w ścianie komórkowej",
+          "w aparacie Golgiego"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się proces podziału komórek somatycznych prowadzący do powstania dwóch komórek potomnych?",
+        "options": [
+          "mejoza",
+          "mitoza",
+          "fotosynteza"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Który z wymienionych organizmów jest organizmem jednokomórkowym?",
+        "options": [
+          "dąb",
+          "człowiek",
+          "bakteria"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Jaką funkcję pełnią czerwone krwinki (erytrocyty)?",
+        "options": [
+          "biorą udział w obronie organizmu",
+          "transportują tlen",
+          "produkują hormony"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Który z wymienionych składników jest głównym źródłem energii w diecie człowieka?",
+        "options": [
+          "białka",
+          "węglowodany",
+          "witaminy"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się proces stopniowych zmian gatunków w czasie, prowadzący do powstawania nowych form życia?",
+        "options": [
+          "ewolucja",
+          "dyfuzja",
+          "fermentacja"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Które z poniższych zachowań sprzyja zachowaniu bioróżnorodności?",
+        "options": [
+          "wycinanie dużych obszarów lasów",
+          "tworzenie parków narodowych i rezerwatów",
+          "zanieczyszczanie rzek"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywamy wszystkie organizmy zamieszkujące dany obszar razem z warunkami środowiska nieożywionego?",
+        "options": [
+          "ekosystem",
+          "biom",
+          "populacja"
         ],
         "correct": 0
       }
@@ -2478,31 +2989,11 @@
     "7-9": [
       {
         "type": "mcq",
-        "q": "Jak po niemiecku jest 'kot'?",
+        "q": "Jak po niemiecku jest 'dzień dobry' (rano)?",
         "options": [
-          "die Katze",
-          "der Hund",
-          "die Maus"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Jak po niemiecku jest 'dom'?",
-        "options": [
-          "das Haus",
-          "die Schule",
-          "der Garten"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Kolor 'rot' to po polsku…",
-        "options": [
-          "czerwony",
-          "zielony",
-          "niebieski"
+          "Guten Morgen",
+          "Guten Abend",
+          "Gute Nacht"
         ],
         "correct": 0
       },
@@ -2510,169 +3001,89 @@
         "type": "mcq",
         "q": "Jak po niemiecku będzie 'dziękuję'?",
         "options": [
-          "danke",
-          "bitte",
-          "hallo"
+          "Bitte",
+          "Danke",
+          "Hallo"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Co znaczy 'Hund'?",
+        "options": [
+          "kot",
+          "pies",
+          "ptak"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Jak po niemiecku będzie 'tak'?",
+        "options": [
+          "ja",
+          "nein",
+          "bitte"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "'Hund' oznacza…",
+        "q": "Jak po niemiecku powiesz 'mam na imię…'?",
         "options": [
-          "psa",
-          "ptaka",
-          "mysz"
+          "Ich heiße…",
+          "Ich habe…",
+          "Ich bin… Jahre"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Jak po niemiecku jest 'jabłko'?",
+        "q": "Co znaczy 'Schule'?",
         "options": [
-          "der Apfel",
-          "die Banane",
-          "die Orange"
+          "szkoła",
+          "samochód",
+          "dom"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Jak po niemiecku powiedzieć 'cześć'?",
+        "q": "Jak po niemiecku będzie 'mama'?",
         "options": [
-          "hallo",
-          "danke",
-          "tschüss"
+          "Mutter",
+          "Vater",
+          "Bruder"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Co znaczy 'tschüss'?",
+        "q": "Co znaczy 'Katze'?",
         "options": [
-          "pa",
-          "cześć",
-          "proszę"
+          "kaczka",
+          "krowa",
+          "kot"
         ],
-        "correct": 0
+        "correct": 2
       },
       {
         "type": "mcq",
-        "q": "Jak po niemiecku jest 'szkoła'?",
+        "q": "Jak po niemiecku jest 'do widzenia'?",
         "options": [
-          "die Schule",
-          "das Haus",
-          "der Park"
+          "Guten Tag",
+          "Auf Wiedersehen",
+          "Gute Nacht"
         ],
-        "correct": 0
+        "correct": 1
       },
       {
         "type": "mcq",
-        "q": "'Freund' oznacza…",
+        "q": "Jak po niemiecku będzie 'przyjaciel'?",
         "options": [
-          "przyjaciela",
-          "rodzinę",
-          "nauczyciela"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Jak jest 'książka' po niemiecku?",
-        "options": [
-          "das Buch",
-          "der Tisch",
-          "die Lampe"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "'Fisch' to…",
-        "options": [
-          "ryba",
-          "ptak",
-          "żaba"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Kolor 'blau' to…",
-        "options": [
-          "niebieski",
-          "biały",
-          "szary"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "'Vogel' oznacza…",
-        "options": [
-          "ptaka",
-          "lisa",
-          "konia"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Jak po niemiecku jest 'woda'?",
-        "options": [
-          "das Wasser",
-          "die Milch",
-          "der Saft"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Jak po niemiecku jest 'dziecko'?",
-        "options": [
-          "das Kind",
-          "der Mann",
-          "die Frau"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Co znaczy 'bitte'?",
-        "options": [
-          "proszę",
-          "dziękuję",
-          "cześć"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Kolor 'gelb' to…",
-        "options": [
-          "żółty",
-          "zielony",
-          "brązowy"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "Jak po niemiecku jest 'auto'?",
-        "options": [
-          "das Auto",
-          "das Rad",
-          "der Zug"
-        ],
-        "correct": 0
-      },
-      {
-        "type": "mcq",
-        "q": "'Lehrer' oznacza…",
-        "options": [
-          "nauczyciela",
-          "ucznia",
-          "kucharza"
+          "Freund",
+          "Feind",
+          "Fisch"
         ],
         "correct": 0
       }
@@ -2680,201 +3091,409 @@
     "10-12": [
       {
         "type": "mcq",
-        "q": "Jak po niemiecku będzie 'przepraszam'?",
+        "q": "Jak po niemiecku jest 'lubić'?",
         "options": [
-          "entschuldigung",
-          "bitte",
-          "danke"
+          "mögen",
+          "machen",
+          "müssen"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Co znaczy 'Frühstück'?",
+        "q": "Które zdanie znaczy: 'Mam 13 lat'?",
         "options": [
-          "śniadanie",
-          "kolacja",
-          "obiad"
+          "Ich habe 13 Jahre.",
+          "Ich bin 13 Jahre alt.",
+          "Ich heiße 13."
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Jak po niemiecku będzie 'mój dom'?",
+        "options": [
+          "mein Haus",
+          "meine Haus",
+          "meinen Haus"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "'Brot' oznacza…",
+        "q": "Które słowo oznacza 'szybko'?",
         "options": [
-          "chleb",
-          "ser",
-          "jajko"
+          "langsam",
+          "schnell",
+          "spät"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Co znaczy zdanie: 'Ich komme aus Polen.'",
+        "options": [
+          "Mieszkam w Polsce.",
+          "Pochodzę z Polski.",
+          "Jadę do Polski."
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Jak po niemiecku zapytasz: 'Gdzie mieszkasz?'",
+        "options": [
+          "Wo wohnst du?",
+          "Wo bist du?",
+          "Wo kommst du?"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Jak po niemiecku jest 'księżyc'?",
+        "q": "Jak po niemiecku będzie 'poniedziałek'?",
         "options": [
-          "der Mond",
-          "die Sonne",
-          "der Stern"
+          "Montag",
+          "Dienstag",
+          "Freitag"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Co znaczy 'ich heiße'?",
+        "q": "Co znaczy 'Ich habe keine Geschwister.'?",
         "options": [
-          "nazywam się",
-          "mam",
-          "jestem"
+          "Nie mam rodzeństwa.",
+          "Mam brata i siostrę.",
+          "Mam tylko siostrę."
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Jak po niemiecku będzie 'zimno'?",
+        "q": "Jak po niemiecku powiedzieć 'po szkole'?",
         "options": [
-          "kalt",
-          "warm",
-          "heiß"
+          "in der Schule",
+          "nach der Schule",
+          "vor der Schule"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Co znaczy 'Hausaufgaben machen'?",
+        "options": [
+          "robić zakupy",
+          "odrabiać lekcje",
+          "sprzątać dom"
+        ],
+        "correct": 1
+      }
+    ],
+    "13-14": [
+      {
+        "type": "mcq",
+        "q": "Jak po niemiecku będzie 'ważny dla mnie'?",
+        "options": [
+          "wichtig für mich",
+          "wichtig mit mir",
+          "wichtig von mir"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "'Stadt' oznacza…",
+        "q": "Jak przetłumaczyć: 'Ich interessiere mich für Informatik.'",
         "options": [
-          "miasto",
-          "kraj",
-          "dom"
+          "Interesuję się informatyką.",
+          "Uczę informatyki.",
+          "Nie lubię informatyki."
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "'Fenster' to…",
+        "q": "Które zdanie jest w czasie przyszłym (Futur I)?",
         "options": [
-          "okno",
-          "drzwi",
-          "podłoga"
+          "Ich gehe heute ins Kino.",
+          "Ich werde morgen ins Kino gehen.",
+          "Ich bin ins Kino gegangen."
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Co znaczy zdanie: 'Ich bin schon fertig.'",
+        "options": [
+          "Dopiero zaczynam.",
+          "Jestem już gotowy.",
+          "Jestem bardzo zmęczony."
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Jak po niemiecku będzie: 'To zależy od sytuacji.'",
+        "options": [
+          "Es hängt von der Situation ab.",
+          "Es ist in der Situation.",
+          "Es ist mit der Situation."
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "'Lecker' znaczy…",
+        "q": "Co oznacza 'Umwelt schützen'?",
         "options": [
-          "pyszne",
-          "głośne",
-          "małe"
+          "niszczyć środowisko",
+          "chronić środowisko",
+          "ignorować środowisko"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Jak przetłumaczyć: 'Wir müssen zusammenarbeiten.'",
+        "options": [
+          "Musimy razem pracować.",
+          "Możemy razem pracować.",
+          "Nie chcemy razem pracować."
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "'Freitag' to…",
+        "q": "Które zdanie oznacza 'On jest odpowiedzialny za projekt.'?",
         "options": [
-          "piątek",
-          "wtorek",
-          "sobota"
+          "Er ist müde von dem Projekt.",
+          "Er ist verantwortlich für das Projekt.",
+          "Er ist fertig mit dem Projekt."
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Co znaczy 'Ich habe keine Lust.'?",
+        "options": [
+          "Nie mam ochoty.",
+          "Nie mam czasu.",
+          "Nie mam pieniędzy."
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "'Uhr' oznacza…",
+        "q": "Jak po niemiecku powiedzieć: 'Chciałbym pewnego dnia studiować.'",
         "options": [
-          "zegar",
-          "but",
-          "samochód"
+          "Ich möchte eines Tages studieren.",
+          "Ich muss eines Tages studieren.",
+          "Ich kann eines Tages studieren."
+        ],
+        "correct": 0
+      }
+    ]
+  },
+  "wf": {
+    "7-9": [
+      {
+        "type": "mcq",
+        "q": "Dlaczego warto się rozgrzać przed ćwiczeniami?",
+        "options": [
+          "żeby szybciej skończyć lekcję",
+          "żeby przygotować mięśnie i uniknąć kontuzji",
+          "żeby się spocić na początku"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Który sport jest drużynowy?",
+        "options": [
+          "piłka nożna",
+          "bieganie",
+          "skok wzwyż"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "'Bruder' to…",
+        "q": "Co trzeba robić podczas biegu?",
         "options": [
-          "brat",
-          "córka",
-          "dziadek"
+          "oddychać równomiernie",
+          "wstrzymywać oddech",
+          "biec z zamkniętymi oczami"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "'Schule beginnt um…' oznacza:",
+        "q": "Które z zachowań to fair play?",
         "options": [
-          "szkoła zaczyna się o…",
-          "szkoła kończy się o…",
-          "szkoła jest duża"
+          "oszukiwanie dla wygranej",
+          "granie zgodnie z zasadami",
+          "przeszkadzanie przeciwnikowi"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Co pomaga budować siłę mięśni?",
+        "options": [
+          "ćwiczenia ruchowe",
+          "oglądanie sportu w TV",
+          "jedzenie chipsów"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "'Apotheke' to miejsce gdzie…",
+        "q": "Który napój najlepiej gasi pragnienie podczas wysiłku?",
         "options": [
-          "kupujesz leki",
-          "kupujesz ubrania",
-          "jesz obiad"
+          "woda",
+          "cola",
+          "energetyk"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "'Küche' to…",
+        "q": "Które ćwiczenie jest dobre dla kręgosłupa?",
         "options": [
-          "kuchnia",
-          "łazienka",
-          "ogród"
+          "mostek",
+          "kołyska na plecach",
+          "szpagat"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Jak zachować się podczas gry zespołowej?",
+        "options": [
+          "współpracować z drużyną",
+          "krzyczeć na kolegów",
+          "nie podawać nikomu piłki"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "'Berg' oznacza…",
+        "q": "Co poprawia regularna aktywność fizyczna?",
         "options": [
-          "górę",
-          "las",
-          "pole"
+          "samopoczucie i zdrowie",
+          "zmęczenie i ospałość",
+          "słabszą kondycję"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "'Bahn' to…",
+        "q": "Jaki element stroju jest obowiązkowy na WF?",
         "options": [
-          "pociąg",
-          "tramwaj",
-          "rower"
+          "kapelusz",
+          "obuwie sportowe",
+          "kurtka zimowa"
+        ],
+        "correct": 1
+      }
+    ],
+    "10-12": [
+      {
+        "type": "mcq",
+        "q": "Co oznacza pojęcie „kondycja”?",
+        "options": [
+          "poziom sprawności fizycznej",
+          "czy masz nowe buty sportowe",
+          "ile punktów zdobywasz w grach"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "'Zucker' oznacza…",
+        "q": "Dlaczego ważne jest regularne picie wody?",
         "options": [
-          "cukier",
-          "oliwę",
-          "ryż"
+          "pomaga utrzymać nawodnienie i dobrą pracę organizmu",
+          "żeby mieć co rozlać",
+          "żeby nie musieć ćwiczyć"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "'Kalt' to…",
+        "q": "Co to jest koordynacja ruchowa?",
         "options": [
-          "zimny",
-          "drogi",
-          "długi"
+          "umiejętność łączenia ruchów ciała",
+          "bieganie najszybciej w klasie",
+          "jedzenie w trakcie ćwiczeń"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "'Schnell' znaczy…",
+        "q": "Która forma wysiłku najlepiej poprawia wydolność?",
         "options": [
-          "szybko",
-          "miło",
-          "cicho"
+          "długi bieg",
+          "szachy",
+          "jazda windą"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Co robić po intensywnym treningu?",
+        "options": [
+          "zrobić rozciąganie",
+          "przestać oddychać",
+          "iść spać w stroju sportowym"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jak zapobiegać kontuzjom?",
+        "options": [
+          "rozgrzewka i ćwiczenia zgodnie z zasadami",
+          "bieganie na mokrej podłodze",
+          "skakanie bez patrzenia"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Co oznacza „czysty doping”?",
+        "options": [
+          "dopingowanie bez krzyku",
+          "uczciwe granie bez stosowania niedozwolonych środków",
+          "brak kibiców"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Który sport poprawia równowagę?",
+        "options": [
+          "joga",
+          "piłka nożna",
+          "kręgle"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Dlaczego sen jest ważny dla sportowca?",
+        "options": [
+          "regeneruje ciało i mózg",
+          "bo tak mówią rodzice",
+          "żeby mieć wymówkę, by nie ćwiczyć"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Co jest najważniejsze w grach zespołowych?",
+        "options": [
+          "współpraca",
+          "samolubne granie",
+          "kłótnie"
         ],
         "correct": 0
       }
@@ -2882,201 +3501,1949 @@
     "13-14": [
       {
         "type": "mcq",
-        "q": "'Umwelt' oznacza…",
+        "q": "Co to jest tętno spoczynkowe?",
         "options": [
-          "środowisko",
-          "kosmos",
-          "morze"
+          "liczba uderzeń serca w spoczynku",
+          "tempo muzyki",
+          "szybkość biegu"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Co znaczy 'Gesundheit'?",
+        "q": "Co wpływa na wydolność organizmu?",
         "options": [
-          "zdrowie",
-          "siła",
-          "pogoda"
+          "regularny trening",
+          "jedzenie batonów",
+          "oglądanie meczów"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "'Nachhaltigkeit' to…",
+        "q": "Jaki rodzaj ćwiczeń zwiększa siłę mięśni?",
         "options": [
-          "zrównoważony rozwój",
-          "podróż",
-          "nauka"
+          "trening siłowy",
+          "jogging",
+          "czytanie książek"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "'Tagesablauf' oznacza…",
+        "q": "Czym jest stretching?",
         "options": [
-          "plan dnia",
-          "pogodę",
-          "przyszłość"
+          "rozciąganie mięśni",
+          "bieg sprinterski",
+          "gra zespołowa"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "'Ich habe Hunger' to…",
+        "q": "Dlaczego prawidłowa postawa jest ważna?",
         "options": [
-          "jestem głodny",
-          "jestem zmęczony",
-          "jestem chory"
+          "zapobiega bólom kręgosłupa i kontuzjom",
+          "wygląda się poważniej",
+          "bo tak mówi nauczyciel"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "Jak po niemiecku jest 'zaawansowany'?",
+        "q": "Co to jest BMI?",
         "options": [
-          "fortgeschritten",
-          "einfach",
-          "kurz"
+          "wskaźnik masy ciała",
+          "rodzaj biegu",
+          "technika oddychania"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "'Zukunft' oznacza…",
+        "q": "Jakie cechy rozwija sprint?",
         "options": [
-          "przyszłość",
-          "czas wolny",
-          "pieniądze"
+          "szybkość i dynamikę",
+          "cierpliwość",
+          "umiejętność stania w miejscu"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "'Gegenwart' to…",
+        "q": "Co oznacza regeneracja potreningowa?",
         "options": [
-          "teraźniejszość",
-          "wczoraj",
-          "pogoda"
+          "odpoczynek i odnowa mięśni",
+          "obiad po WF-ie",
+          "oglądanie memów"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "'Wissenschaft' oznacza…",
+        "q": "Które zachowanie sportowe jest nieetyczne?",
         "options": [
-          "naukę",
-          "sport",
-          "historię"
+          "uczciwa gra",
+          "doping",
+          "gratulowanie przeciwnikowi"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Dlaczego balans między aktywnością a odpoczynkiem jest ważny?",
+        "options": [
+          "chroni przed przemęczeniem i kontuzjami",
+          "nie ma żadnego znaczenia",
+          "bo tak mówią trenerzy"
+        ],
+        "correct": 0
+      }
+    ]
+  },
+  "wos": {
+    "7-9": [
+      {
+        "type": "mcq",
+        "q": "Co to jest rodzina?",
+        "options": [
+          "grupa przypadkowych osób w sklepie",
+          "osoby połączone więzią, wspólnie mieszkające i opiekujące się sobą",
+          "tylko koledzy z klasy"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Która osoba może być Twoim zaufanym dorosłym?",
+        "options": [
+          "nieznajomy z internetu",
+          "nauczyciel lub rodzic",
+          "osoba, która prosi o Twoje hasło"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Jakie kolory ma flaga Polski?",
+        "options": [
+          "biały i czerwony",
+          "niebieski i żółty",
+          "zielony i biały"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "'Bewegung' znaczy…",
+        "q": "Co powinieneś zrobić, gdy widzisz, że ktoś jest prześladowany w szkole?",
         "options": [
-          "ruch",
-          "jedzenie",
-          "muzyka"
+          "dołączyć, żeby się nie wyróżniać",
+          "udzielić wsparcia i powiedzieć dorosłemu",
+          "nakręcić film i wrzucić do internetu"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Która z tych rzeczy jest prawem dziecka?",
+        "options": [
+          "prawo do nauki",
+          "prawo do prześladowania innych",
+          "prawo do łamania zasad"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "'Schwierigkeit' to…",
+        "q": "Jak nazywa się dokument, który zawiera ważne zasady w klasie?",
         "options": [
-          "trudność",
-          "powód",
-          "schemat"
+          "gazetka",
+          "kontrakt klasowy / regulamin",
+          "spis lektur"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Co to znaczy być odpowiedzialnym?",
+        "options": [
+          "zawsze zrzucać winę na innych",
+          "wywiązywać się ze swoich obowiązków",
+          "zapominać o umowach"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Kto w szkole pomaga rozwiązywać konflikty?",
+        "options": [
+          "woźny",
+          "nauczyciele, wychowawca, pedagog",
+          "przypadkowi uczniowie z korytarza"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Które zachowanie jest kulturalne?",
+        "options": [
+          "przerywanie innym w trakcie mówienia",
+          "mówienie „proszę”, „dziękuję”, „przepraszam”",
+          "wyśmiewanie się z innych"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Po co są zasady w szkole i w domu?",
+        "options": [
+          "żeby było bezpiecznie i sprawiedliwie",
+          "żeby utrudnić życie",
+          "żeby tylko dorośli mieli wygodnie"
+        ],
+        "correct": 0
+      }
+    ],
+    "10-12": [
+      {
+        "type": "mcq",
+        "q": "Co to jest konstytucja?",
+        "options": [
+          "plan lekcji",
+          "najważniejszy akt prawny w państwie",
+          "kodeks drogowy"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Kto stoi na czele gminy (miasta lub wsi)?",
+        "options": [
+          "dyrektor szkoły",
+          "prezydent kraju",
+          "wójt, burmistrz lub prezydent miasta"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się zgromadzenie uczniów, które współdecyduje o życiu szkoły?",
+        "options": [
+          "samorząd uczniowski",
+          "rada rodziców",
+          "parlament krajowy"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "'Weltall' oznacza…",
+        "q": "Które z poniższych jest przykładem obowiązku obywatela?",
         "options": [
-          "kosmos",
-          "świat zwierząt",
-          "historię"
+          "udział w wyborach szkolnych czy klasowych",
+          "oglądanie wiadomości codziennie",
+          "pisanie komentarzy w internecie"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "'Klimawandel' to…",
+        "q": "Jak nazywa się ustrój, w którym obywatele biorą udział w wyborach?",
         "options": [
-          "zmiany klimatu",
-          "burza",
-          "pora roku"
+          "monarchia absolutna",
+          "demokracja",
+          "dyktatura"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Które zachowanie w internecie jest poprawne?",
+        "options": [
+          "wysyłanie komuś obraźliwych memów",
+          "podawanie swojego hasła koledze",
+          "szanowanie innych i zgłaszanie nadużyć"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się organizacja skupiająca wiele państw europejskich, w tym Polskę?",
+        "options": [
+          "Liga Narodów",
+          "Unia Europejska",
+          "ONZ tylko dla Europy"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Kto w Polsce ma obowiązek chodzić do szkoły podstawowej?",
+        "options": [
+          "tylko dorośli",
+          "dzieci w wieku szkolnym",
+          "nikt – to tylko dobrowolne"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Co to jest prawo?",
+        "options": [
+          "zbiór zasad obowiązujących w państwie",
+          "dowolne pomysły ludzi",
+          "tylko regulamin szkoły"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "'Wirtschaft' oznacza…",
+        "q": "Które zachowanie pokazuje bycie dobrym obywatelem?",
         "options": [
-          "gospodarkę",
-          "ekologię",
-          "naukę o zdrowiu"
+          "niszczenie wspólnego mienia",
+          "segregowanie śmieci i dbanie o otoczenie",
+          "łamanie przepisów dla zabawy"
+        ],
+        "correct": 1
+      }
+    ],
+    "13-14": [
+      {
+        "type": "mcq",
+        "q": "Na czym polega trójpodział władzy w państwie demokratycznym?",
+        "options": [
+          "na podziale państwa na trzy regiony",
+          "na podziale władzy na ustawodawczą, wykonawczą i sądowniczą",
+          "na wyborze trzech najbogatszych osób w kraju"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Co robi władza ustawodawcza?",
+        "options": [
+          "wydaje wyroki w sądach",
+          "uchwala ustawy",
+          "wykonuje wyroki sądowe"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Co jest przykładem prawa człowieka?",
+        "options": [
+          "prawo do godnego traktowania",
+          "prawo do obrażania innych",
+          "prawo do łamania zasad"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "'Technologie' to…",
+        "q": "Co to jest samorząd terytorialny?",
         "options": [
-          "technologia",
-          "biologia",
-          "filozofia"
+          "organizacja szkolna",
+          "lokalne wspólnoty mieszkańców zarządzające częścią spraw publicznych",
+          "firma transportowa"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Kto może głosować w wyborach powszechnych w Polsce?",
+        "options": [
+          "każdy uczeń szkoły",
+          "obywatele Polski po ukończeniu odpowiedniego wieku",
+          "tylko osoby pracujące w administracji"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Co to jest dyskryminacja?",
+        "options": [
+          "równe traktowanie wszystkich ludzi",
+          "gorsze traktowanie kogoś z powodu np. pochodzenia lub wyglądu",
+          "udzielanie komuś pomocy"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Jaką rolę pełnią organizacje pozarządowe (NGO)?",
+        "options": [
+          "są częścią rządu",
+          "działają dla dobra publicznego, np. pomagają potrzebującym",
+          "zajmują się tylko działalnością gospodarczą"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Co oznacza aktywne uczestnictwo w życiu społecznym?",
+        "options": [
+          "bierne przyglądanie się wydarzeniom",
+          "udział w działaniach społecznych, wyborach, wolontariacie",
+          "unikanie wszelkich decyzji"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Jaką rolę pełnią media w państwie demokratycznym?",
+        "options": [
+          "tylko rozrywkową",
+          "informacyjną, kontrolną i opiniotwórczą",
+          "służą wyłącznie reklamie produktów"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Co to jest wolontariat?",
+        "options": [
+          "praca przymusowa",
+          "dobrowolna, nieodpłatna pomoc innym",
+          "praca tylko za wysoką zapłatę"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  "informatyka": {
+    "7-9": [
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się urządzenie służące do wprowadzania tekstu do komputera?",
+        "options": [
+          "mysz",
+          "klawiatura",
+          "monitor"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Które urządzenie wyświetla obraz z komputera?",
+        "options": [
+          "drukarka",
+          "głośnik",
+          "monitor"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się komputer, który możesz trzymać na kolanach?",
+        "options": [
+          "laptop",
+          "serwer",
+          "drukarka"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "'Erklärung' znaczy…",
+        "q": "Co oznacza skrót 'www' w adresie strony?",
         "options": [
-          "wyjaśnienie",
-          "opis",
-          "wybór"
+          "World Wide Web",
+          "Wide World Word",
+          "Warm Web Window"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "'Beispiel' to…",
+        "q": "Jak nazywa się program do przeglądania stron internetowych?",
         "options": [
-          "przykład",
-          "zasada",
-          "opowieść"
+          "przeglądarka",
+          "edytor tekstu",
+          "kalkulator"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "'Verantwortung' oznacza…",
+        "q": "Które hasło jest bezpieczniejsze?",
         "options": [
-          "odpowiedzialność",
-          "trening",
-          "zabawa"
+          "1234",
+          "password",
+          "Kota_2025!"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Co powinieneś zrobić, gdy dostajesz wiadomość od nieznajomej osoby w internecie?",
+        "options": [
+          "podać swoje dane",
+          "od razu się spotkać",
+          "nie podawać danych i powiedzieć o tym dorosłemu"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Co oznacza 'kliknąć dwa razy'?",
+        "options": [
+          "double click",
+          "right click",
+          "middle click"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "'Erfahrung' to…",
+        "q": "Gdzie zapisujesz pliki, żeby się nie zgubiły?",
         "options": [
-          "doświadczenie",
-          "zabawa",
-          "ryzyko"
+          "w koszu",
+          "w odpowiednim folderze",
+          "tylko w pamięci"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Co powinieneś zrobić przed wyłączeniem komputera?",
+        "options": [
+          "wyciągnąć kabel z gniazdka",
+          "zamknąć programy i użyć opcji 'Zamknij system'",
+          "potrząsnąć komputerem"
+        ],
+        "correct": 1
+      }
+    ],
+    "10-12": [
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się główny „mózg” komputera?",
+        "options": [
+          "dysk twardy",
+          "procesor (CPU)",
+          "pamięć RAM"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Który format pliku najczęściej dotyczy obrazów?",
+        "options": [
+          ".jpg",
+          ".txt",
+          ".mp3"
         ],
         "correct": 0
       },
       {
         "type": "mcq",
-        "q": "'Verhalten' oznacza…",
+        "q": "Co to jest „plik” na komputerze?",
         "options": [
-          "zachowanie",
-          "emocje",
-          "moc"
+          "pudełko na biurku",
+          "pojemnik na dane, np. dokument lub zdjęcie",
+          "tylko program do gier"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Do czego służy arkusz kalkulacyjny?",
+        "options": [
+          "do pisania opowiadań",
+          "do obliczeń i tworzenia tabel",
+          "do rysowania obrazków"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Co oznacza skrót 'USB' (w kontekście portu)?",
+        "options": [
+          "Uniwersalny sposób ładowania baterii",
+          "Uniwersalna magistrala szeregowa",
+          "Program do obrabiania zdjęć"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Które z haseł jest NAJLEPSZYM przykładem bezpiecznego?",
+        "options": [
+          "asia123",
+          "Qwerty1",
+          "MocneHaslo_24#"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Co to jest 'backup'?",
+        "options": [
+          "zawsze najnowsza wersja programu",
+          "kopiowanie danych w inne miejsce na wszelki wypadek",
+          "usuwanie plików z dysku"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Która z wymienionych rzeczy jest przykładem systemu operacyjnego?",
+        "options": [
+          "Windows",
+          "Word",
+          "Chrome"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Co oznacza skrót „CPU”?",
+        "options": [
+          "Central Processing Unit",
+          "Computer Personal Unit",
+          "Central Program Utility"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Co powinieneś zrobić, aby chronić się przed wirusami komputerowymi?",
+        "options": [
+          "nie instalować aktualizacji",
+          "nie otwierać podejrzanych załączników i używać antywirusa",
+          "zapisywać hasła na pulpicie"
+        ],
+        "correct": 1
+      }
+    ],
+    "13-14": [
+      {
+        "type": "mcq",
+        "q": "Co to jest algorytm?",
+        "options": [
+          "urządzenie komputerowe",
+          "dokładny przepis na rozwiązanie zadania",
+          "język programowania"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Który z języków jest językiem programowania?",
+        "options": [
+          "Python",
+          "HTML",
+          "JPEG"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Które stwierdzenie najlepiej opisuje zmienną w programowaniu?",
+        "options": [
+          "miejsce na przechowywanie wartości",
+          "rodzaj komputera",
+          "tylko liczba całkowita"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Instrukcja warunkowa w programie służy do…",
+        "options": [
+          "rysowania obrazków",
+          "wykonywania różnych działań w zależności od warunku",
+          "zapisywania plików"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Co oznacza skrót „HTML” w kontekście stron internetowych?",
+        "options": [
+          "HyperText Markup Language",
+          "High Technical Machine Language",
+          "Home Tool Main Link"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Który przykład przedstawia poprawny adres e-mail?",
+        "options": [
+          "user#mail.com",
+          "user@mail",
+          "user123@mail.com"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Co to jest phishing?",
+        "options": [
+          "rodzaj gry sieciowej",
+          "oszustwo polegające na wyłudzaniu danych",
+          "legalne zabezpieczenie konta"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Jakiego typu dane należy szczególnie chronić w internecie?",
+        "options": [
+          "ulubiony kolor",
+          "PESEL, hasła, adres domowy",
+          "ilość punktów w grze"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Licencja oprogramowania to…",
+        "options": [
+          "rodzaj kabla",
+          "pozwolenie na określony sposób używania programu",
+          "program antywirusowy"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Co oznacza skrót „GPU” w komputerze?",
+        "options": [
+          "układ graficzny",
+          "główny procesor",
+          "pamięć operacyjna"
+        ],
+        "correct": 0
+      }
+    ]
+  },
+  "etyka": {
+    "7-9": [
+      {
+        "type": "mcq",
+        "q": "Co oznacza być uczciwym?",
+        "options": [
+          "mówić prawdę i nie oszukiwać",
+          "brać cudze rzeczy",
+          "zrzucać winę na innych"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jakie zachowanie pokazuje empatię?",
+        "options": [
+          "wyśmiewanie innych",
+          "próba zrozumienia czyichś uczuć",
+          "ignorowanie kogoś, kto płacze"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Co oznacza słowo „szacunek”?",
+        "options": [
+          "uważne i życzliwe traktowanie innych",
+          "mówienie innym, co mają robić",
+          "robienie tego, co się chce"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jak zachowuje się odpowiedzialna osoba?",
+        "options": [
+          "wywiązuje się ze swoich obowiązków",
+          "zawsze zapomina o umowach",
+          "robi coś tylko wtedy, gdy ma ochotę"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Co można zrobić, aby komuś pomóc?",
+        "options": [
+          "zignorować problem",
+          "okazać wsparcie lub zapytać, czy czegoś nie potrzeba",
+          "śmiać się z tej osoby"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Jakie zachowanie jest fair play?",
+        "options": [
+          "oszukiwanie, by wygrać",
+          "granie zgodnie z zasadami",
+          "popychanie łokciami"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Co oznacza „dotrzymywać słowa”?",
+        "options": [
+          "robić to, co się obiecało",
+          "zapominać o obietnicach",
+          "zmieniać zdanie co chwilę"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jak można rozwiązać konflikt?",
+        "options": [
+          "krzykiem i obrażaniem",
+          "ucieczką",
+          "rozmową i próbą porozumienia"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Co to jest „życzliwość”?",
+        "options": [
+          "robienie komuś na złość",
+          "okazywanie dobroci i miłego podejścia",
+          "krytykowanie każdego"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Co robić, gdy widzisz, że ktoś jest wyśmiewany?",
+        "options": [
+          "dołączyć, żeby się nie wyróżniać",
+          "powiedzieć dorosłemu i okazać wsparcie poszkodowanemu",
+          "nagrywać telefonem"
+        ],
+        "correct": 1
+      }
+    ],
+    "10-12": [
+      {
+        "type": "mcq",
+        "q": "Jaki jest pierwszy krok w rozwiązaniu konfliktu?",
+        "options": [
+          "oskarżenie drugiej osoby",
+          "próba spokojnej rozmowy",
+          "udawanie, że problem nie istnieje"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Co oznacza empatia?",
+        "options": [
+          "zdolność odczuwania emocji innych",
+          "robienie tylko tego, co się chce",
+          "unikanie rozmów"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jakie zachowanie buduje zaufanie?",
+        "options": [
+          "kłamanie dla wygody",
+          "dotrzymywanie obietnic",
+          "zdradzanie cudzych sekretów"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Co oznacza odpowiedzialność cyfrowa?",
+        "options": [
+          "bezpieczne i mądre korzystanie z internetu",
+          "wysyłanie hejtu",
+          "udostępnianie prywatnych danych"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Które zachowanie jest przykładem odwagi?",
+        "options": [
+          "stanąć w obronie kolegi",
+          "udawać, że nic się nie widzi",
+          "wyśmiewać innych"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Co pomaga podejmować dobre decyzje?",
+        "options": [
+          "emocje i pośpiech",
+          "zastanowienie i rozmowa z kimś zaufanym",
+          "robienie tego, co robią inni"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Jakie zachowanie jest etyczne w internecie?",
+        "options": [
+          "hejtowanie dla zabawy",
+          "poszanowanie prywatności innych",
+          "wyłudzanie haseł"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Co oznacza „dobro wspólne”?",
+        "options": [
+          "rzecz należąca tylko do jednej osoby",
+          "coś, z czego korzysta cała społeczność",
+          "coś, czego nie wolno dotykać"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Co można zrobić, gdy ktoś popełni błąd?",
+        "options": [
+          "wyśmiewać go",
+          "pomóc mu to naprawić",
+          "ignorować go do końca życia"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Jak najlepiej przeprosić?",
+        "options": [
+          "szczerze i z wyjaśnieniem",
+          "szybko mruknąć „sorry”",
+          "przepraszać tylko, gdy ktoś patrzy"
+        ],
+        "correct": 0
+      }
+    ],
+    "13-14": [
+      {
+        "type": "mcq",
+        "q": "Co oznacza „moralność”?",
+        "options": [
+          "zbiór zasad określających, co jest dobre, a co złe",
+          "modne ubrania",
+          "reguły tylko w grach komputerowych"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Na czym polega odpowiedzialność osobista?",
+        "options": [
+          "na tłumaczeniu się innymi",
+          "na braniu konsekwencji swoich działań",
+          "na ignorowaniu swoich błędów"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Które z zachowań to etyczne korzystanie z technologii?",
+        "options": [
+          "niepodawanie swoich danych",
+          "udostępnianie cudzych zdjęć bez zgody",
+          "podszywanie się pod kogoś"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Co oznacza słowo „integralność”?",
+        "options": [
+          "umiejętność przepraszania",
+          "zgodność słów z czynami",
+          "robienie tego, co inni mówią"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Które zachowanie jest przykładem altruizmu?",
+        "options": [
+          "pomoc innym bez oczekiwania nagrody",
+          "zawieranie umów tylko dla zysku",
+          "kierowanie się tylko własnym interesem"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Co oznacza pojęcie „dylemat moralny”?",
+        "options": [
+          "sytuacja, w której wybór jest trudny, bo obie opcje mają konsekwencje",
+          "łatwa decyzja",
+          "pytanie, co na obiad"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Które działanie pomaga budować zaufanie w grupie?",
+        "options": [
+          "wyśmiewanie błędów innych",
+          "uczciwość i współpraca",
+          "kłótnie o drobiazgi"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Jak można okazać szacunek w dyskusji?",
+        "options": [
+          "słuchając innych i nie przerywając",
+          "krzycząc, by mieć rację",
+          "obrażając rozmówcę"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jak zachować się, gdy widzisz niesprawiedliwość?",
+        "options": [
+          "nic nie robić",
+          "stanąć w obronie słabszych lub zgłosić sprawę",
+          "nagrać filmik dla śmiechu"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Co oznacza „autorytet” w pozytywnym sensie?",
+        "options": [
+          "ktoś, kogo się boisz",
+          "osoba, którą cenisz i od której możesz się uczyć",
+          "ktoś, kto wymusza posłuszeństwo"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  "muzyka": {
+    "7-9": [
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się pięć poziomych linii, na których zapisujemy nuty?",
+        "options": [
+          "linijka",
+          "zapis",
+          "pięciolinia"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się symbol oznaczający początek linii i wysokość dźwięków (np. 🎼)?",
+        "options": [
+          "klucz wiolinowy",
+          "nutka",
+          "pauza"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Który z tych instrumentów jest instrumentem smyczkowym?",
+        "options": [
+          "gitara",
+          "skrzypce",
+          "flet"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Który z tych instrumentów jest instrumentem dętym?",
+        "options": [
+          "pianino",
+          "bęben",
+          "flet"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywamy osobę, która prowadzi orkiestrę?",
+        "options": [
+          "dyrygent",
+          "kompozytor",
+          "solista"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Co to jest rytm?",
+        "options": [
+          "kolejność dźwięków według wysokości",
+          "uporządkowane następstwo dźwięków w czasie",
+          "cisza w utworze"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Który z tych gatunków muzycznych jest najbliżej muzyki poważnej?",
+        "options": [
+          "rap",
+          "pop",
+          "muzyka klasyczna"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się przerwa w muzyce, czyli „cisza”?",
+        "options": [
+          "pauza",
+          "nutka",
+          "akord"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Który z tych instrumentów należy do perkusji?",
+        "options": [
+          "trąbka",
+          "werbel",
+          "flet"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się osoba, która śpiewa na scenie?",
+        "options": [
+          "dyrygent",
+          "wokalista",
+          "kompozytor"
+        ],
+        "correct": 1
+      }
+    ],
+    "10-12": [
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się zapis kilku dźwięków granych jednocześnie?",
+        "options": [
+          "melodia",
+          "akord",
+          "tempo"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Co oznacza w muzyce słowo 'tempo'?",
+        "options": [
+          "głośność utworu",
+          "szybkość wykonania utworu",
+          "liczbę instrumentów"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Który z tych kompozytorów tworzył muzykę poważną?",
+        "options": [
+          "Fryderyk Chopin",
+          "Michael Jackson",
+          "Ed Sheeran"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się zespół wielu muzyków grających na różnych instrumentach, np. smyczkowych, dętych, perkusyjnych?",
+        "options": [
+          "chór",
+          "orkiestra",
+          "duet"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Które słowo oznacza śpiew kilku osób naraz?",
+        "options": [
+          "solo",
+          "duet",
+          "chór"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Który z tych utworów Fryderyka Chopina jest typem tańca?",
+        "options": [
+          "polonez",
+          "rap",
+          "rock"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Co to jest „refren” w piosence?",
+        "options": [
+          "część, która się powtarza",
+          "początek utworu",
+          "nagły głośny fragment"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się miejsce, w którym odbywają się koncerty muzyki klasycznej?",
+        "options": [
+          "siłownia",
+          "filharmonia",
+          "boisko"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się zapis nutowy utworu lub jego fragmentu?",
+        "options": [
+          "partytura",
+          "plakat",
+          "legenda"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Które z określeń oznacza granie cicho?",
+        "options": [
+          "forte",
+          "piano",
+          "presto"
+        ],
+        "correct": 1
+      }
+    ],
+    "13-14": [
+      {
+        "type": "mcq",
+        "q": "Fryderyk Chopin był głównie kompozytorem utworów na…",
+        "options": [
+          "skrzypce",
+          "fortepian",
+          "organy"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Który okres w historii muzyki występował najwcześniej?",
+        "options": [
+          "barok",
+          "renesans",
+          "klasycyzm"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Który kompozytor był przedstawicielem klasycyzmu wiedeńskiego?",
+        "options": [
+          "Ludwig van Beethoven",
+          "Johann Sebastian Bach",
+          "Antonio Vivaldi"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się utwór muzyczny przeznaczony na orkiestrę i solistę (np. fortepian)?",
+        "options": [
+          "sonata",
+          "koncert",
+          "kantata"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Który gatunek muzyczny kojarzysz z improwizacją i saksofonem?",
+        "options": [
+          "jazz",
+          "muzyka barokowa",
+          "opera"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się utwór muzyczny połączony z akcją teatralną, śpiewem i kostiumami?",
+        "options": [
+          "suita",
+          "opera",
+          "etiuda"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Które z określeń oznacza bardzo szybkie tempo?",
+        "options": [
+          "adagio",
+          "andante",
+          "presto"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się zespół śpiewaków wykonujących utwory wokalne, często bez instrumentów?",
+        "options": [
+          "duet",
+          "chór",
+          "orkiestra"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Co oznacza termin „a cappella”?",
+        "options": [
+          "śpiew bez akompaniamentu instrumentalnego",
+          "gra tylko na fortepianie",
+          "bardzo głośne wykonanie"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Które z poniższych jest przykładem muzyki elektronicznej?",
+        "options": [
+          "symfonia Beethovena",
+          "utwór z syntezatorami i bitami",
+          "chorał gregoriański"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  "religie_swiata": {
+    "7-9": [
+      {
+        "type": "mcq",
+        "q": "Które święto chrześcijańskie związane jest ze zmartwychwstaniem Jezusa?",
+        "options": [
+          "Boże Narodzenie",
+          "Wielkanoc",
+          "Wszystkich Świętych"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się święta księga chrześcijan?",
+        "options": [
+          "Biblia",
+          "Koran",
+          "Tora"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "W jakiej religii ważne jest święto Ramadan?",
+        "options": [
+          "hinduizm",
+          "islam",
+          "buddyzm"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Które święto żydowskie związane jest ze światłem?",
+        "options": [
+          "Hanuka",
+          "Pesach",
+          "Purim"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "W jakiej religii postacią centralną jest Budda?",
+        "options": [
+          "islam",
+          "buddyzm",
+          "chrześcijaństwo"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się dom modlitwy muzułmanów?",
+        "options": [
+          "kościół",
+          "synagoga",
+          "meczet"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Który symbol kojarzony jest z chrześcijaństwem?",
+        "options": [
+          "krzyż",
+          "półksiężyc",
+          "koło dharmy"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Z jaką religią związany jest półksiężyc?",
+        "options": [
+          "islam",
+          "hinduizm",
+          "judaizm"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Które święto jest obchodzone w wielu krajach 25 grudnia?",
+        "options": [
+          "Boże Narodzenie",
+          "Wielki Post",
+          "Eid al-Fitr"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się miejsce modlitwy żydów?",
+        "options": [
+          "synagoga",
+          "kościół",
+          "meczet"
+        ],
+        "correct": 0
+      }
+    ],
+    "10-12": [
+      {
+        "type": "mcq",
+        "q": "W jakiej religii świętą księgą jest Koran?",
+        "options": [
+          "buddyzm",
+          "islam",
+          "hinduizm"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się największe święto żydowskie upamiętniające wyjście z Egiptu?",
+        "options": [
+          "Purim",
+          "Pesach",
+          "Sukkot"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Jakie święto w hinduizmie znane jest jako „Święto Świateł”?",
+        "options": [
+          "Diwali",
+          "Holi",
+          "Ramadan"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się święto kończące muzułmański Ramadan?",
+        "options": [
+          "Eid al-Fitr",
+          "Wesak",
+          "Rosz ha-Szana"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "W jakiej religii ważną postacią jest Mojżesz?",
+        "options": [
+          "judaizm",
+          "buddyzm",
+          "hinduizm"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Co upamiętnia Boże Narodzenie?",
+        "options": [
+          "narodziny Jezusa",
+          "zmartwychwstanie Jezusa",
+          "śmierć Mahometa"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "W jakiej religii wierni modlą się często przed statuą Buddy?",
+        "options": [
+          "buddyzm",
+          "judaizm",
+          "islam"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jakie święto związane jest z kolorowymi proszkami w Indiach?",
+        "options": [
+          "Holi",
+          "Ramadan",
+          "Sabbath"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Czym jest Rosz ha-Szana?",
+        "options": [
+          "żydowskim Nowym Rokiem",
+          "buddyjskim świętem narodzin Buddy",
+          "świętem zakończenia roku szkolnego"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się chrześcijański okres poprzedzający Boże Narodzenie?",
+        "options": [
+          "Adwent",
+          "Wielki Post",
+          "Ramadan"
+        ],
+        "correct": 0
+      }
+    ],
+    "13-14": [
+      {
+        "type": "mcq",
+        "q": "Która z wymienionych religii jest najstarsza?",
+        "options": [
+          "chrześcijaństwo",
+          "islam",
+          "hinduizm"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się główna świątynia w buddyzmie?",
+        "options": [
+          "pagoda",
+          "synagoga",
+          "katedra"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się święta księga judaizmu?",
+        "options": [
+          "Tora",
+          "Biblia",
+          "Koran"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "W jakiej religii czczony jest Mahomet?",
+        "options": [
+          "islam",
+          "buddyzm",
+          "judaizm"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Co symbolizuje koło dharmy w buddyzmie?",
+        "options": [
+          "prawo natury",
+          "osiem ścieżek prowadzących do oświecenia",
+          "początek nowego roku"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się chrześcijańskie święto poprzedzające Wielkanoc?",
+        "options": [
+          "Wielki Post",
+          "Ramadan",
+          "Holi"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Co oznacza słowo 'mesjasz' w tradycji żydowskiej i chrześcijańskiej?",
+        "options": [
+          "zwykłego proroka",
+          "osobę pomazaną przez Boga, zapowiedzianego wybawiciela",
+          "anioła stróża"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "W jakiej religii występują bogowie Brahma, Wisznu i Sziwa?",
+        "options": [
+          "judaizm",
+          "hinduizm",
+          "islam"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Jak nazywa się największy kościół chrześcijański pod względem liczby wyznawców?",
+        "options": [
+          "Kościół prawosławny",
+          "Kościół katolicki",
+          "Protestanci"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Czym jest pielgrzymka do Mekki w islamie?",
+        "options": [
+          "opcjonalnym zwyczajem",
+          "jednym z pięciu filarów islamu",
+          "świętem noworocznym"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  "logika": {
+    "7-9": [
+      {
+        "type": "mcq",
+        "q": "Jeśli Ola jest wyższa od Ani, a Ania jest wyższa od Zuzi, to kto jest najwyższy?",
+        "options": [
+          "Ania",
+          "Zuzia",
+          "Ola"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Który przedmiot NIE pasuje do reszty: pies, kot, chomik, jabłko?",
+        "options": [
+          "chomik",
+          "pies",
+          "jabłko"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Masz 3 czerwone klocki i 2 niebieskie. Ile masz razem klocków?",
+        "options": [
+          "5",
+          "3",
+          "2"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Które z poniższych to przeciwieństwo słowa „głośny”?",
+        "options": [
+          "cichy",
+          "szybki",
+          "duży"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Kot waży 4 kg, a pies waży 10 kg. Ile kg więcej waży pies?",
+        "options": [
+          "6",
+          "10",
+          "4"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Który wzór dokończy sekwencję: □ ○ □ ○ ...?",
+        "options": [
+          "□",
+          "○",
+          "△"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jaś ma o 2 lata więcej niż Zosia. Zosia ma 8 lat. Ile lat ma Jaś?",
+        "options": [
+          "10",
+          "6",
+          "8"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Które zwierzę NIE potrafi latać?",
+        "options": [
+          "sikorka",
+          "orzeł",
+          "pingwin"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Jeśli 2+2=4, a 4+4=8, to 8+8=?",
+        "options": [
+          "12",
+          "16",
+          "8"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Gdy zegar wskazuje 12:00, to wskazówka godzinowa jest na:",
+        "options": [
+          "12",
+          "3",
+          "6"
+        ],
+        "correct": 0
+      }
+    ],
+    "10-12": [
+      {
+        "type": "mcq",
+        "q": "Która liczba pasuje do sekwencji: 3, 6, 9, 12, ...?",
+        "options": [
+          "14",
+          "15",
+          "18"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Jeśli A > B i B > C, to:",
+        "options": [
+          "A > C",
+          "A < C",
+          "A = C"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Które słowo NIE pasuje: poniedziałek, wtorek, rok, środa?",
+        "options": [
+          "rok",
+          "poniedziałek",
+          "wtorek"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Masz liczbę 124. Jeśli dodasz 10, wynik to:",
+        "options": [
+          "120",
+          "134",
+          "114"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "W klasie jest 30 uczniów. 12 to chłopcy. Ile jest dziewczyn?",
+        "options": [
+          "18",
+          "12",
+          "30"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Który dla NIEGO jest najszybszy do pokonania trasy: 1 km biegu, 1 km jazdy rowerem, 1 km marszu?",
+        "options": [
+          "marsz",
+          "bieg",
+          "rower"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Jaki jest wynik równania: (6 × 3) − 5?",
+        "options": [
+          "13",
+          "18",
+          "5"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Jeśli coś dzieje się co 2 godziny, to ile razy wydarzy się w ciągu 12 godzin?",
+        "options": [
+          "4",
+          "6",
+          "12"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Ania miała 50 zł. Wydała 20 zł. Ile zostało?",
+        "options": [
+          "10",
+          "30",
+          "70"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Jaka figura ma cztery równe boki?",
+        "options": [
+          "prostokąt",
+          "trójkąt",
+          "kwadrat"
+        ],
+        "correct": 2
+      }
+    ],
+    "13-14": [
+      {
+        "type": "mcq",
+        "q": "Które równanie ma rozwiązanie x = 5?",
+        "options": [
+          "x + 2 = 10",
+          "x − 3 = 2",
+          "2x = 20"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "W sekwencji: 2, 4, 8, 16, ... kolejna liczba to:",
+        "options": [
+          "20",
+          "18",
+          "32"
+        ],
+        "correct": 2
+      },
+      {
+        "type": "mcq",
+        "q": "Które z poniższych jest przykładem wnioskowania logicznego?",
+        "options": [
+          "Pada deszcz, więc ziemia jest mokra",
+          "Jest wtorek, więc jutro pizza",
+          "Kot miauczy, więc jest głodny"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Który z elementów nie pasuje: kwadrat, romb, koło, prostokąt?",
+        "options": [
+          "romb",
+          "koło",
+          "prostokąt"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Jeśli p = prawda i q = fałsz, to p AND q = ?",
+        "options": [
+          "prawda",
+          "fałsz",
+          "nie wiadomo"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Rozwiąż: 3x − 9 = 0",
+        "options": [
+          "x = 0",
+          "x = 3",
+          "x = 9"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Jakie jest przeciwieństwo logiczne zdania: „Pada deszcz”?",
+        "options": [
+          "Pada dużo deszczu",
+          "Nie pada deszcz",
+          "Będzie padać"
+        ],
+        "correct": 1
+      },
+      {
+        "type": "mcq",
+        "q": "Jeśli p => q (p implikuje q), a p jest prawdziwe, to:",
+        "options": [
+          "q też musi być prawdziwe",
+          "q jest fałszywe",
+          "nie mamy informacji"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Kto jest najstarszy? A ma 14 lat, B jest o 2 lata młodszy, C o rok starszy od B.",
+        "options": [
+          "A",
+          "B",
+          "C"
+        ],
+        "correct": 0
+      },
+      {
+        "type": "mcq",
+        "q": "Który skrót oznacza sztuczną inteligencję?",
+        "options": [
+          "AI",
+          "USB",
+          "CPU"
         ],
         "correct": 0
       }

@@ -1,215 +1,376 @@
 {
-  "title": "Quiz obrazkowy (MVP)",
   "items": [
     {
-      "image": "data/quiz_images/img_1.png",
-      "questions": [
-        {
-          "q": "Jaki napis widzisz na obrazku #1?",
-          "options": [
-            "TRIANGLE",
-            "CIRCLE",
-            "SQUARE",
-            "STAR"
-          ],
-          "correct": 0
-        },
-        {
-          "q": "Ile boków ma figura, której nazwę widzisz na obrazku #1?",
-          "options": [
-            "3",
-            "4",
-            "5",
-            "6"
-          ],
-          "correct": 0
-        },
-        {
-          "q": "Jakiego koloru jest tło obrazka #1?",
-          "options": [
-            "niebieskie",
-            "zielone",
-            "czerwone",
-            "żółte"
-          ],
-          "correct": 0
-        }
-      ]
+      "category": "shapes",
+      "image": "shape_triangle.png",
+      "q": "Jak nazywa się ta figura geometryczna?",
+      "options": [
+        "romb",
+        "gwiazda",
+        "trapez",
+        "trójkąt"
+      ],
+      "correct": 3
     },
     {
-      "image": "data/quiz_images/img_2.png",
-      "questions": [
-        {
-          "q": "Jaki napis widzisz na obrazku #2?",
-          "options": [
-            "SQUARE",
-            "TRIANGLE",
-            "CIRCLE",
-            "STAR"
-          ],
-          "correct": 0
-        },
-        {
-          "q": "Ile boków ma figura, której nazwę widzisz na obrazku #2?",
-          "options": [
-            "3",
-            "4",
-            "5",
-            "8"
-          ],
-          "correct": 1
-        },
-        {
-          "q": "Jakiego koloru jest tło obrazka #2?",
-          "options": [
-            "zielone",
-            "niebieskie",
-            "szare",
-            "czerwone"
-          ],
-          "correct": 0
-        }
-      ]
+      "category": "shapes",
+      "image": "shape_circle.png",
+      "q": "Jak nazywa się ta figura geometryczna?",
+      "options": [
+        "koło",
+        "prostokąt",
+        "romb",
+        "pięciokąt"
+      ],
+      "correct": 0
     },
     {
-      "image": "data/quiz_images/img_3.png",
-      "questions": [
-        {
-          "q": "Jaki napis widzisz na obrazku #3?",
-          "options": [
-            "CIRCLE",
-            "TRIANGLE",
-            "STAR",
-            "HEART"
-          ],
-          "correct": 0
-        },
-        {
-          "q": "Które słowo najlepiej opisuje figurę z napisu na obrazku #3?",
-          "options": [
-            "okrąg",
-            "kwadrat",
-            "strzałka",
-            "gwiazda"
-          ],
-          "correct": 0
-        },
-        {
-          "q": "Jakiego koloru jest tło obrazka #3?",
-          "options": [
-            "czerwone",
-            "zielone",
-            "żółte",
-            "niebieskie"
-          ],
-          "correct": 0
-        }
-      ]
+      "category": "shapes",
+      "image": "shape_square.png",
+      "q": "Jak nazywa się ta figura geometryczna?",
+      "options": [
+        "gwiazda",
+        "pięciokąt",
+        "kwadrat",
+        "trapez"
+      ],
+      "correct": 2
     },
     {
-      "image": "data/quiz_images/img_4.png",
-      "questions": [
-        {
-          "q": "Jaki napis widzisz na obrazku #4?",
-          "options": [
-            "STAR",
-            "HEART",
-            "SQUARE",
-            "CIRCLE"
-          ],
-          "correct": 0
-        },
-        {
-          "q": "Z czym kojarzy ci się figura STAR?",
-          "options": [
-            "gwiazda",
-            "serce",
-            "koło",
-            "strzałka"
-          ],
-          "correct": 0
-        },
-        {
-          "q": "Jakiego koloru jest tło obrazka #4?",
-          "options": [
-            "żółte",
-            "niebieskie",
-            "szare",
-            "zielone"
-          ],
-          "correct": 0
-        }
-      ]
+      "category": "shapes",
+      "image": "shape_rectangle.png",
+      "q": "Jak nazywa się ta figura geometryczna?",
+      "options": [
+        "koło",
+        "prostokąt",
+        "romb",
+        "trójkąt"
+      ],
+      "correct": 1
     },
     {
-      "image": "data/quiz_images/img_5.png",
-      "questions": [
-        {
-          "q": "Jaki napis widzisz na obrazku #5?",
-          "options": [
-            "HEART",
-            "STAR",
-            "CIRCLE",
-            "TRIANGLE"
-          ],
-          "correct": 0
-        },
-        {
-          "q": "Z czym kojarzy ci się figura HEART?",
-          "options": [
-            "serce",
-            "gwiazda",
-            "strzałka",
-            "kwadrat"
-          ],
-          "correct": 0
-        },
-        {
-          "q": "Jakiego koloru jest tło obrazka #5?",
-          "options": [
-            "szare",
-            "czerwone",
-            "zielone",
-            "turkusowe"
-          ],
-          "correct": 0
-        }
-      ]
+      "category": "shapes",
+      "image": "shape_pentagon.png",
+      "q": "Jak nazywa się ta figura geometryczna?",
+      "options": [
+        "sześciokąt",
+        "gwiazda",
+        "pięciokąt",
+        "koło"
+      ],
+      "correct": 2
     },
     {
-      "image": "data/quiz_images/img_6.png",
-      "questions": [
-        {
-          "q": "Jaki napis widzisz na obrazku #6?",
-          "options": [
-            "ARROW",
-            "CIRCLE",
-            "HEART",
-            "STAR"
-          ],
-          "correct": 0
-        },
-        {
-          "q": "Co oznacza po angielsku słowo ARROW?",
-          "options": [
-            "strzałka",
-            "koło",
-            "kwadrat",
-            "trójkąt"
-          ],
-          "correct": 0
-        },
-        {
-          "q": "Jakiego koloru jest tło obrazka #6?",
-          "options": [
-            "turkusowe",
-            "żółte",
-            "niebieskie",
-            "czerwone"
-          ],
-          "correct": 0
-        }
-      ]
+      "category": "shapes",
+      "image": "shape_hexagon.png",
+      "q": "Jak nazywa się ta figura geometryczna?",
+      "options": [
+        "kwadrat",
+        "gwiazda",
+        "trójkąt",
+        "sześciokąt"
+      ],
+      "correct": 3
+    },
+    {
+      "category": "shapes",
+      "image": "shape_trapezoid.png",
+      "q": "Jak nazywa się ta figura geometryczna?",
+      "options": [
+        "trapez",
+        "kwadrat",
+        "romb",
+        "pięciokąt"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "shapes",
+      "image": "shape_rhombus.png",
+      "q": "Jak nazywa się ta figura geometryczna?",
+      "options": [
+        "kwadrat",
+        "trapez",
+        "strzałka",
+        "romb"
+      ],
+      "correct": 3
+    },
+    {
+      "category": "shapes",
+      "image": "shape_star.png",
+      "q": "Jak nazywa się ta figura geometryczna?",
+      "options": [
+        "trapez",
+        "trójkąt",
+        "gwiazda",
+        "prostokąt"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "shapes",
+      "image": "shape_arrow.png",
+      "q": "Jak nazywa się ta figura geometryczna?",
+      "options": [
+        "strzałka",
+        "trójkąt",
+        "trapez",
+        "kwadrat"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "plots",
+      "image": "plot_line.png",
+      "q": "Jaki to typ wykresu?",
+      "options": [
+        "histogram",
+        "krzywa gęstości",
+        "wykres liniowy",
+        "wykres kołowy"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "plots",
+      "image": "plot_bar.png",
+      "q": "Jaki to typ wykresu?",
+      "options": [
+        "krzywa gęstości",
+        "mapa ciepła (heatmap)",
+        "wykres słupkowy",
+        "wykres pudełkowy (boxplot)"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "plots",
+      "image": "plot_scatter.png",
+      "q": "Jaki to typ wykresu?",
+      "options": [
+        "wykres powierzchniowy",
+        "wykres punktowy",
+        "wykres pudełkowy (boxplot)",
+        "wykres słupkowy"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "plots",
+      "image": "plot_hist.png",
+      "q": "Jaki to typ wykresu?",
+      "options": [
+        "krzywa gęstości",
+        "histogram",
+        "wykres liniowy",
+        "wykres słupkowy"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "plots",
+      "image": "plot_box.png",
+      "q": "Jaki to typ wykresu?",
+      "options": [
+        "wykres słupkowy",
+        "mapa ciepła (heatmap)",
+        "wykres pudełkowy (boxplot)",
+        "krzywa gęstości"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "plots",
+      "image": "plot_pie.png",
+      "q": "Jaki to typ wykresu?",
+      "options": [
+        "wykres powierzchniowy",
+        "histogram",
+        "wykres punktowy",
+        "wykres kołowy"
+      ],
+      "correct": 3
+    },
+    {
+      "category": "plots",
+      "image": "plot_heatmap.png",
+      "q": "Jaki to typ wykresu?",
+      "options": [
+        "wykres punktowy",
+        "mapa ciepła (heatmap)",
+        "wykres słupkowy",
+        "wykres powierzchniowy"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "plots",
+      "image": "plot_density.png",
+      "q": "Jaki to typ wykresu?",
+      "options": [
+        "wykres powierzchniowy",
+        "histogram",
+        "krzywa gęstości",
+        "wykres kołowy"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "plots",
+      "image": "plot_area.png",
+      "q": "Jaki to typ wykresu?",
+      "options": [
+        "histogram",
+        "wykres liniowy",
+        "wykres powierzchniowy",
+        "mapa ciepła (heatmap)"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "plots",
+      "image": "plot_bubble.png",
+      "q": "Jaki to typ wykresu?",
+      "options": [
+        "wykres bąbelkowy",
+        "mapa ciepła (heatmap)",
+        "wykres kołowy",
+        "krzywa gęstości"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "objects",
+      "image": "obj_bike.png",
+      "q": "Co przedstawia ten rysunek?",
+      "options": [
+        "okulary",
+        "parasol",
+        "samochód",
+        "rower"
+      ],
+      "correct": 3
+    },
+    {
+      "category": "objects",
+      "image": "obj_car.png",
+      "q": "Co przedstawia ten rysunek?",
+      "options": [
+        "parasol",
+        "samochód",
+        "okulary",
+        "klucz"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "objects",
+      "image": "obj_key.png",
+      "q": "Co przedstawia ten rysunek?",
+      "options": [
+        "klucz",
+        "samochód",
+        "parasol",
+        "książka"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "objects",
+      "image": "obj_umbrella.png",
+      "q": "Co przedstawia ten rysunek?",
+      "options": [
+        "rower",
+        "samochód",
+        "książka",
+        "parasol"
+      ],
+      "correct": 3
+    },
+    {
+      "category": "objects",
+      "image": "obj_book.png",
+      "q": "Co przedstawia ten rysunek?",
+      "options": [
+        "książka",
+        "parasol",
+        "rower",
+        "samochód"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "objects",
+      "image": "obj_glasses.png",
+      "q": "Co przedstawia ten rysunek?",
+      "options": [
+        "okulary",
+        "książka",
+        "parasol",
+        "samochód"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "emotions",
+      "image": "emo_happy.png",
+      "q": "Jaką emocję przedstawia ta buźka?",
+      "options": [
+        "radość",
+        "strach",
+        "złość",
+        "smutek"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "emotions",
+      "image": "emo_sad.png",
+      "q": "Jaką emocję przedstawia ta buźka?",
+      "options": [
+        "radość",
+        "złość",
+        "smutek",
+        "strach"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "emotions",
+      "image": "emo_angry.png",
+      "q": "Jaką emocję przedstawia ta buźka?",
+      "options": [
+        "radość",
+        "złość",
+        "strach",
+        "smutek"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "emotions",
+      "image": "emo_scared.png",
+      "q": "Jaką emocję przedstawia ta buźka?",
+      "options": [
+        "strach",
+        "złość",
+        "smutek",
+        "radość"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "emotions",
+      "image": "emo_surprised.png",
+      "q": "Jaką emocję przedstawia ta buźka?",
+      "options": [
+        "złość",
+        "zaskoczenie",
+        "radość",
+        "smutek"
+      ],
+      "correct": 1
     }
   ]
 }

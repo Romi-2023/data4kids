@@ -2,122 +2,462 @@
   "title": "Quiz danych (MVP)",
   "items": [
     {
-      "q": "Który wykres najlepiej pokaże zmiany w czasie?",
+      "q": "W Pandas DataFrame wiersze indeksuje przede wszystkim…",
+      "options": ["index", "rowid", "gid", "rid"],
+      "correct": 0
+    },
+    {
+      "q": "Outlier (wartość odstająca) to…",
       "options": [
-        "Liniowy",
-        "Kołowy",
-        "Słupkowy",
-        "Pudełkowy"
+        "wartość bardzo nietypowa na tle innych",
+        "kolumna kategoryczna",
+        "identyfikator rekordu",
+        "średnia wszystkich wartości"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "CSV to plik, w którym dane są zwykle zapisane w…",
+      "options": [
+        "wierszach i kolumnach oddzielonych przecinkami",
+        "formie obrazka",
+        "pliku dźwiękowym",
+        "prezentacji slajdów"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Kolumna w tabeli danych opisuje…",
+      "options": [
+        "jedno wybrane pole / cechę (np. wiek)",
+        "jeden wiersz",
+        "cały folder",
+        "nazwę pliku"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Wiersz w tabeli danych to zwykle…",
+      "options": [
+        "jeden rekord, np. jeden uczeń",
+        "wszystkie wartości w kolumnie",
+        "tytuł wykresu",
+        "jedna komórka"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Średnia arytmetyczna to…",
+      "options": [
+        "suma wartości podzielona przez ich liczbę",
+        "najczęściej występująca wartość",
+        "wartość środkowa po posortowaniu",
+        "zawsze największa wartość"
       ],
       "correct": 0
     },
     {
       "q": "Mediana to…",
       "options": [
+        "wartość środkowa po posortowaniu danych",
+        "zawsze najmniejsza wartość",
+        "suma wszystkich wartości",
+        "liczba kolumn w tabeli"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Moda w statystyce to…",
+      "options": [
+        "najczęściej występująca wartość",
         "wartość środkowa",
-        "średnia arytmetyczna",
-        "suma wartości",
+        "maksimum",
         "minimum"
       ],
       "correct": 0
     },
     {
-      "q": "W CSV separator to zwykle…",
+      "q": "Histogram służy do…",
       "options": [
-        ",",
-        ";",
-        "|",
-        "tab"
+        "pokazywania rozkładu wartości liczbowych",
+        "pokazywania mapy świata",
+        "rysowania drzew genealogicznych",
+        "tworzenia tabeli tekstowej"
       ],
       "correct": 0
     },
     {
-      "q": "Który format NIE jest tabelaryczny?",
+      "q": "Wykres liniowy najlepiej nadaje się do…",
       "options": [
-        "PNG",
-        "CSV",
-        "XLSX",
-        "Parquet"
+        "pokazywania zmian w czasie",
+        "porównywania części całości",
+        "pokazywania relacji na mapie",
+        "zapisywania tekstu"
       ],
       "correct": 0
     },
     {
-      "q": "Odchylenie standardowe mierzy…",
+      "q": "Wykres kołowy używamy wtedy, gdy…",
       "options": [
-        "rozrzut danych",
-        "środkową wartość",
-        "nachylenie linii",
-        "liczbę kolumn"
+        "chcemy pokazać, z jakich części składa się całość",
+        "analizujemy zmiany co sekundę",
+        "porównujemy bardzo wiele kategorii (np. 30)",
+        "badamy temperaturę w czasie"
       ],
       "correct": 0
     },
     {
-      "q": "Wykres pudełkowy pokazuje m.in.…",
+      "q": "Scraping danych z internetu to…",
       "options": [
-        "medianę i kwartyle",
-        "tylko średnią",
-        "relację dwóch zmiennych",
-        "mapę cieplną"
+        "automatyczne zbieranie danych ze stron www",
+        "ręczne przepisywanie tabelek do zeszytu",
+        "tworzenie kopii zapasowej komputera",
+        "czyszczenie ekranu monitora"
       ],
       "correct": 0
     },
     {
-      "q": "Korelacja bliska 0 oznacza…",
+      "q": "Brakujące dane w tabeli oznaczamy często jako…",
+      "options": ["NaN lub pustą komórkę", "INF", "TXT", "JPG"],
+      "correct": 0
+    },
+    {
+      "q": "Usuwanie duplikatów w tabeli danych sprawia, że…",
       "options": [
-        "brak liniowej zależności",
-        "silny związek",
-        "idealną linię",
-        "błąd obliczeń"
+        "ten sam rekord nie powtarza się kilka razy",
+        "wszystkie liczby stają się większe",
+        "zmienia się typ pliku",
+        "dane stają się zaszyfrowane"
       ],
       "correct": 0
     },
     {
-      "q": "Który wykres dla udziałów procentowych?",
+      "q": "Normalizacja danych zwykle polega na…",
       "options": [
-        "Kołowy",
-        "Liniowy",
-        "Wykres świecowy",
-        "Wektorowy"
+        "skalowaniu wartości do podobnego zakresu",
+        "usuwaniu wszystkich liczb",
+        "dodawaniu losowych wartości",
+        "zmianie koloru tła w tabeli"
       ],
       "correct": 0
     },
     {
-      "q": "Outlier to…",
+      "q": "W Pandas `df.head()` służy do…",
       "options": [
-        "wartość odstająca",
-        "kolumna kategoryczna",
-        "ID rekordu",
-        "sumaryczny wskaźnik"
+        "pokazania kilku pierwszych wierszy",
+        "zapisania pliku na dysk",
+        "tworzenia wykresu",
+        "usuwania całej tabeli"
       ],
       "correct": 0
     },
     {
-      "q": "ETL oznacza…",
+      "q": "W Pandas `df.describe()` daje…",
       "options": [
-        "Extract, Transform, Load",
-        "Enter, Test, Log",
-        "Extend, Try, Learn",
-        "Exact, Total, Linear"
+        "podstawowe statystyki liczbowe kolumn",
+        "opis tekstowy pliku",
+        "instrukcję obsługi Pythona",
+        "historię zmian w systemie"
       ],
       "correct": 0
     },
     {
-      "q": "W JSON pary to…",
+      "q": "W Pandas `df.info()` pomaga sprawdzić…",
       "options": [
-        "klucz:wartość",
-        "kolumna:wiersz",
-        "suma:różnica",
-        "mnożnik:dzielna"
+        "liczbę wierszy, typy kolumn i brakujące dane",
+        "kolory wykresu",
+        "hasło użytkownika",
+        "działanie karty graficznej"
       ],
       "correct": 0
     },
     {
-      "q": "W Pandas DataFrame wiersze indeksuje…",
+      "q": "Typ danych `int` w Pythonie oznacza…",
+      "options": ["liczby całkowite", "tekst", "liczby z przecinkiem", "prawda/fałsz"],
+      "correct": 0
+    },
+    {
+      "q": "Typ danych `float` w Pythonie to…",
+      "options": ["liczby z częścią ułamkową", "długi tekst", "data i godzina", "obrazek"],
+      "correct": 0
+    },
+    {
+      "q": "Typ danych `str` w Pythonie służy do…",
+      "options": ["przechowywania tekstu", "rysowania wykresów", "sterowania robotem", "obliczania średniej"],
+      "correct": 0
+    },
+    {
+      "q": "Typ danych `bool` w Pythonie przyjmuje wartości…",
+      "options": ["True lub False", "0 do 255", "dowolny tekst", "dowolną liczbę rzeczywistą"],
+      "correct": 0
+    },
+    {
+      "q": "Instrukcja `if` w programie służy do…",
       "options": [
-        "index",
-        "rowid",
-        "gid",
-        "rid"
+        "podejmowania decyzji w zależności od warunku",
+        "rysowania tabeli",
+        "zapisywania pliku",
+        "instalowania Pythona"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Pętla `for` przydaje się, gdy…",
+      "options": [
+        "chcemy wykonać to samo wiele razy dla wielu elementów",
+        "chcemy napisać e-mail",
+        "uruchamiamy komputer",
+        "drukujemy dokument"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Biblioteka `pandas` w Pythonie służy głównie do…",
+      "options": [
+        "pracy z danymi tabelarycznymi",
+        "tworzenia gier 3D",
+        "projektowania stron www",
+        "obróbki dźwięku"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Biblioteka `matplotlib` pomaga głównie w…",
+      "options": ["tworzeniu wykresów", "pisaniu e-maili", "sortowaniu plików", "kompresji zdjęć"],
+      "correct": 0
+    },
+    {
+      "q": "Biblioteka `scikit-learn` jest najczęściej używana do…",
+      "options": [
+        "uczenia maszynowego (machine learning)",
+        "rysowania komiksów",
+        "tworzenia muzyki",
+        "łączenia z bazą danych MySQL"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Zaokrąglanie wartości w dół do najbliższej liczby całkowitej to…",
+      "options": ["floor", "ceil", "round half up", "median"],
+      "correct": 0
+    },
+    {
+      "q": "Zaokrąglanie wartości w górę do najbliższej liczby całkowitej to…",
+      "options": ["ceil", "floor", "mean", "min"],
+      "correct": 0
+    },
+    {
+      "q": "W Pandas metoda `groupby` pozwala…",
+      "options": [
+        "grupować wiersze według wybranej kolumny",
+        "usuwać kolumny",
+        "łączyć pliki tekstowe",
+        "zmieniać typ zmiennej na tekst"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Łączenie dwóch tabel z danymi po wspólnej kolumnie nazywamy…",
+      "options": ["join / merge", "split", "pivot", "compress"],
+      "correct": 0
+    },
+    {
+      "q": "Czyszczenie danych (data cleaning) polega m.in. na…",
+      "options": [
+        "usuwaniu błędów i braków w danych",
+        "zmianie języka systemu",
+        "instalowaniu nowej myszki",
+        "zwiększaniu głośności"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Model uczenia maszynowego (ML) uczy się na…",
+      "options": [
+        "przykładowych danych treningowych",
+        "tapecie na pulpicie",
+        "ikonach na ekranie",
+        "plikach z muzyką"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Zmienne objaśniające (features) w modelu ML to…",
+      "options": [
+        "cechy, na podstawie których model przewiduje wynik",
+        "tytuł wykresu",
+        "przycisk w aplikacji",
+        "numer wersji programu"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Zmienne, które model próbuje przewidzieć, nazywamy…",
+      "options": ["target / label", "index", "path", "cursor"],
+      "correct": 0
+    },
+    {
+      "q": "Dane kategoryczne to takie, które…",
+      "options": [
+        "przyjmują kilka możliwych kategorii, np. kolor",
+        "zawsze są liczbami całkowitymi",
+        "muszą być ujemne",
+        "są dłuższe niż milion rekordów"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Dane liczbowe ciągłe to np.…",
+      "options": ["wzrost w centymetrach", "typ samochodu", "ulubiony kolor", "płeć"],
+      "correct": 0
+    },
+    {
+      "q": "Wykres pudełkowy (boxplot) pomaga zobaczyć…",
+      "options": [
+        "medianę, kwartyle i wartości odstające",
+        "zdjęcia z wakacji",
+        "kolejność alfabetyczną imion",
+        "dokładny adres IP"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Standaryzacja danych (z-score) polega na…",
+      "options": [
+        "odjęciu średniej i podzieleniu przez odchylenie standardowe",
+        "dodaniu 1 do każdej wartości",
+        "podzieleniu wszystkich liczb przez 10",
+        "pomnożeniu przez 100"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Trenowanie modelu nadmiernie dopasowanego (overfitting) oznacza, że…",
+      "options": [
+        "jest świetny na danych treningowych, a słaby na nowych danych",
+        "działa szybko na każdym komputerze",
+        "zawsze zgaduje losowo",
+        "nie uczy się w ogóle"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Walidacja krzyżowa (cross-validation) służy do…",
+      "options": [
+        "sprawdzania jakości modelu na różnych podziałach danych",
+        "tworzenia kopii bazy danych",
+        "wysyłania danych mailem",
+        "czyszczenia dysku twardego"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Accuracy (dokładność) w klasyfikacji to…",
+      "options": [
+        "odsetek dobrze przewidzianych przykładów",
+        "średnia wartości liczb",
+        "maksymalna wartość w kolumnie",
+        "liczba kolumn w tabeli"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Uczenie nadzorowane (supervised learning) to…",
+      "options": [
+        "uczenie na danych, dla których znamy prawidłową odpowiedź",
+        "uczenie bez żadnych danych",
+        "losowe generowanie odpowiedzi",
+        "nauka gry na instrumencie muzycznym"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Uczenie nienadzorowane (unsupervised learning) polega na…",
+      "options": [
+        "szukaniu struktur w danych bez etykiet odpowiedzi",
+        "dokładnym przepisywaniu wyników z klucza",
+        "sprawdzaniu poprawności hasła",
+        "tworzeniu kopii bezpieczeństwa"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Klasteryzacja (clustering) to zadanie, w którym…",
+      "options": [
+        "grupujemy podobne obiekty razem",
+        "szukamy mediany",
+        "liczymy średnią",
+        "usuwamy wszystkie wartości odstające"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Regresja liniowa próbuje…",
+      "options": [
+        "dopasować linię przewidującą wartość liczbową",
+        "podzielić dane na klasę 0/1",
+        "zawsze tworzyć wykres kołowy",
+        "usuwać indeksy w tabeli"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Drzewo decyzyjne to model, który…",
+      "options": [
+        "podejmuje decyzje, zadając kolejne pytania o cechy",
+        "rysuje gałęzie na ekranie",
+        "sortuje pliki w folderze",
+        "tworzy kopie danych"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Confusion matrix (macierz pomyłek) pokazuje…",
+      "options": [
+        "ile przypadków sklasyfikowano poprawnie i błędnie",
+        "historię logowania do komputera",
+        "pliki tymczasowe systemu",
+        "kolory użyte na wykresie"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Feature importance (ważność cech) mówi nam…",
+      "options": [
+        "które cechy są najbardziej wpływowe dla modelu",
+        "które kolumny trzeba usunąć z dysku",
+        "które pliki są największe",
+        "które wiersze mają braki danych"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Train/test split polega na…",
+      "options": [
+        "podziale danych na część do nauki i część do testowania",
+        "dzieleniu danych na pliki tekstowe i obrazki",
+        "łączeniu tabel z dwóch baz",
+        "sortowaniu nazw po alfabecie"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Id kolumny, który jednoznacznie wskazuje rekord, nazywamy często…",
+      "options": [
+        "kluczem głównym (primary key)",
+        "kolumną pomocniczą",
+        "random seed",
+        "headerem"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Losowe ustawienie ziarna (random seed) w eksperymencie pozwala…",
+      "options": [
+        "powtarzalnie otrzymywać te same losowe wyniki",
+        "szybciej wczytać plik",
+        "zwiększyć rozdzielczość ekranu",
+        "zmniejszyć liczbę kolumn"
       ],
       "correct": 0
     }

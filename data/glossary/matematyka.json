@@ -1,0 +1,18 @@
+{
+  "parzysta liczba": "Dzieli się przez 2 bez reszty (np. 4, 10, 28).",
+  "nieparzysta liczba": "Nie dzieli się przez 2 bez reszty (np. 3, 7, 19).",
+  "dzielnik": "Liczba, przez którą dzielimy inną liczbę.",
+  "wielokrotność": "Wynik mnożenia danej liczby (np. wielokrotności 5 to 10, 15, 20…).",
+  "liczba pierwsza": "Ma dokładnie dwa dzielniki: 1 i samą siebie (np. 2, 3, 5, 7).",
+  "ułamek": "Część całości zapisana jak 1/2, 3/4.",
+  "ułamek dziesiętny": "Ułamek zapisany z przecinkiem (np. 0,5).",
+  "procent": "Część ze 100, np. 25% to 25 na 100.",
+  "pole figury": "Powierzchnia w środku figury (np. ile farby by zakryło kształt).",
+  "obwód": "Długość dookoła figury.",
+  "kąt prosty": "Ma 90°.",
+  "średnia arytmetyczna": "Suma liczb podzielona przez ich liczbę.",
+  "promień": "Od środka okręgu do jego brzegu.",
+  "średnica": "Od brzegu do brzegu przez środek (2× promień).",
+  "proporcja": "Porównanie dwóch wielkości tak, by zachować ten sam stosunek.",
+  "prędkość": "Jak szybko coś się porusza (v = s/t)."
+}

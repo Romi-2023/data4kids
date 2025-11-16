@@ -1,0 +1,17 @@
+{
+  "wnioskowanie": "Wyciąganie wniosków na podstawie przesłanek.",
+  "argument": "Uzasadnienie, dlaczego coś uważamy za prawdziwe.",
+  "przesłanka": "Zdanie, z którego wyciągamy wniosek.",
+  "wniosek": "Zdanie wynikające z innych zdań.",
+  "sprzeczność": "Sytuacja, w której dwie informacje nie mogą być jednocześnie prawdziwe.",
+  "zdanie logiczne": "Zdanie, które może być prawdziwe albo fałszywe.",
+  "prawda": "Zdanie zgodne z rzeczywistością.",
+  "fałsz": "Zdanie niezgodne z rzeczywistością.",
+  "dowód": "Pokazanie krok po kroku, że coś jest prawdziwe.",
+  "dedukcja": "Wnioskowanie od ogólnych zasad do szczegółowych przypadków.",
+  "indukcja": "Wnioskowanie na podstawie wielu przykładów.",
+  "analogia": "Wnioskowanie przez podobieństwo sytuacji.",
+  "błąd logiczny": "Niepoprawne rozumowanie prowadzące do złych wniosków.",
+  "uogólnienie": "Rozszerzenie wniosku na więcej przypadków.",
+  "paradoks": "Sytuacja, która wydaje się sprzeczna, choć jest sensowna."
+}

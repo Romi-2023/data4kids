@@ -1,0 +1,13 @@
+{
+  "rzeczownik": "Nazywa osoby, zwierzęta, rzeczy (np. kot, szkoła).",
+  "czasownik": "Mówi co się dzieje (np. biega, czyta).",
+  "przymiotnik": "Opisuje cechę (np. szybki, zielona).",
+  "przysłówek": "Opisuje czynność (np. szybko, cicho).",
+  "podmiot": "Kto/co wykonuje czynność w zdaniu.",
+  "orzeczenie": "Co robi podmiot (czasownik w zdaniu).",
+  "epitet": "Słowo ozdabiające rzeczownik (np. srebrny księżyc).",
+  "antonim": "Słowo przeciwne (wysoki ↔ niski).",
+  "synonim": "Słowo podobne znaczeniem (ważny ↔ istotny).",
+  "rym": "Podobne brzmienia na końcach wyrazów (kotek – płotek).",
+  "narrator": "Głos opowiadający historię w tekście."
+}

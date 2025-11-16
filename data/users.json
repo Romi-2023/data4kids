@@ -24,6 +24,17 @@
           "ee60234f3fab"
         ]
       }
+    },
+    "rower": {
+      "theory_viewed": [
+        "podstawy:kim_jest_rowerzysta"
+      ],
+      "quiz_total": 24,
+      "quiz_correct": 22,
+      "exam_best_score": 100,
+      "hard_questions": {
+        "q3_prawa_reka": 1
+      }
     }
   },
   "_parent_pin": {

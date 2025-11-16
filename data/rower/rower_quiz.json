@@ -104,6 +104,552 @@
       ],
       "correct": 1,
       "explanation": "Skręt w prawo sygnalizujesz prawą ręką wyprostowaną na bok."
+    },
+    {
+      "id": "q9_ograniczenie_prędkości",
+      "category": "podstawy",
+      "difficulty": "easy",
+      "question": "Co oznacza, że na danym odcinku drogi obowiązuje ograniczenie prędkości do 30 km/h?",
+      "options": [
+        "Że można jechać szybciej, jeśli droga jest pusta",
+        "Że nie wolno przekroczyć prędkości 30 km/h",
+        "Że ograniczenie dotyczy tylko samochodów"
+      ],
+      "correct": 1,
+      "explanation": "Ograniczenie prędkości dotyczy wszystkich pojazdów, również rowerzystów – nie wolno przekraczać podanej wartości."
+    },
+    {
+      "id": "q10_chodnik_dziecko",
+      "category": "podstawy",
+      "difficulty": "medium",
+      "question": "Kiedy rowerzysta może jechać po chodniku?",
+      "options": [
+        "Gdy bardzo mu się spieszy",
+        "Gdy opiekuje się dzieckiem do 10 roku życia jadącym na rowerze",
+        "Gdy nie chce mu się zsiadać z roweru na przejściu dla pieszych"
+      ],
+      "correct": 1,
+      "explanation": "Po chodniku można jechać w kilku szczególnych sytuacjach, m.in. gdy opiekujemy się dzieckiem do 10 lat jadącym na rowerze."
+    },
+    {
+      "id": "q11_przejazd_rowerowy",
+      "category": "podstawy",
+      "difficulty": "medium",
+      "question": "Jak nazywa się miejsce, w którym droga dla rowerów przecina jezdnię i oznaczone jest białymi kwadratami lub liniami na jezdni?",
+      "options": [
+        "Przejście dla pieszych",
+        "Przejazd dla rowerów",
+        "Strefa zamieszkania"
+      ],
+      "correct": 1,
+      "explanation": "Miejsce, w którym droga dla rowerów przecina jezdnię, to przejazd dla rowerów – rowerzysta nie musi zsiadać z roweru."
+    },
+    {
+      "id": "q12_jazda_obok_siebie",
+      "category": "podstawy",
+      "difficulty": "medium",
+      "question": "Czy dwoje rowerzystów może jechać obok siebie po jezdni lub drodze dla rowerów?",
+      "options": [
+        "Tak, jeśli nie utrudniają ruchu innym",
+        "Nie, zawsze trzeba jechać gęsiego jeden za drugim",
+        "Tak, zawsze, niezależnie od warunków"
+      ],
+      "correct": 0,
+      "explanation": "Przepisy pozwalają na jazdę obok siebie, jeśli nie utrudnia to ruchu innym uczestnikom i nie zagraża bezpieczeństwu."
+    },
+    {
+      "id": "q13_swiatla_pora_dnia",
+      "category": "sprzet",
+      "difficulty": "easy",
+      "question": "Kiedy rower musi mieć włączone oświetlenie z przodu i z tyłu?",
+      "options": [
+        "Tylko zimą",
+        "Od zmierzchu do świtu oraz zawsze, gdy widoczność jest ograniczona",
+        "Tylko podczas deszczu"
+      ],
+      "correct": 1,
+      "explanation": "Światła należy włączyć od zmierzchu do świtu oraz w dzień, gdy widoczność jest ograniczona, np. we mgle lub ulewnym deszczu."
+    },
+    {
+      "id": "q14_kask_obowiazek",
+      "category": "sprzet",
+      "difficulty": "easy",
+      "question": "Czy w Polsce kask rowerowy jest obowiązkowy dla rowerzysty?",
+      "options": [
+        "Tak, zawsze",
+        "Nie, ale jest bardzo zalecany",
+        "Tak, tylko w mieście"
+      ],
+      "correct": 1,
+      "explanation": "Kask nie jest obowiązkowy, ale znacząco zwiększa bezpieczeństwo i zawsze warto go zakładać."
+    },
+    {
+      "id": "q15_przejscie_dla_pieszych",
+      "category": "podstawy",
+      "difficulty": "medium",
+      "question": "Jak powinien zachować się rowerzysta, który chce przejechać na drugą stronę jezdni po samym przejściu dla pieszych (bez przejazdu dla rowerów)?",
+      "options": [
+        "Może przejechać szybko na rowerze",
+        "Powinien zejść z roweru i przeprowadzić go po pasach",
+        "Powinien użyć dzwonka i przejechać"
+      ],
+      "correct": 1,
+      "explanation": "Jeśli jest samo przejście dla pieszych, rowerzysta powinien zejść z roweru i przeprowadzić go po pasach."
+    },
+    {
+      "id": "q16_ręka_zahamowanie",
+      "category": "podstawy",
+      "difficulty": "easy",
+      "question": "Jak zasygnalizujesz zamiar zatrzymania się na rowerze?",
+      "options": [
+        "Uniesiesz lewą rękę w górę",
+        "Wyprostujesz prawą rękę na bok",
+        "Opuścisz rękę w dół z sygnałem dźwiękowym"
+      ],
+      "correct": 0,
+      "explanation": "Zatrzymanie lub znaczne zmniejszenie prędkości sygnalizuje się uniesieniem ręki w górę."
+    },
+    {
+      "id": "q17_odleglosc_od_krawedzi",
+      "category": "podstawy",
+      "difficulty": "medium",
+      "question": "Gdzie na jezdni powinien poruszać się rowerzysta, gdy nie ma pobocza ani drogi dla rowerów?",
+      "options": [
+        "Jak najbliżej prawej krawędzi jezdni",
+        "Na środku pasa ruchu",
+        "Jak najbliżej lewej krawędzi jezdni"
+      ],
+      "correct": 0,
+      "explanation": "Rowerzysta porusza się przy prawej krawędzi jezdni, zachowując bezpieczny odstęp od krawężnika i przeszkód."
+    },
+    {
+      "id": "q18_pieszy_na_ddr",
+      "category": "podstawy",
+      "difficulty": "medium",
+      "question": "Co powinien zrobić rowerzysta, gdy na drodze dla rowerów przed nim idzie pieszy?",
+      "options": [
+        "Zatrąbić i jechać bardzo blisko pieszego",
+        "Zwolnić, zachować ostrożność i ewentualnie użyć dzwonka z odpowiedniej odległości",
+        "Zignorować pieszego, bo nie ma prawa iść po drodze dla rowerów"
+      ],
+      "correct": 1,
+      "explanation": "Rowerzysta musi zachować szczególną ostrożność, zwolnić i uprzedzić pieszego dzwonkiem z bezpiecznej odległości."
+    },
+    {
+      "id": "q19_wyprzedzanie_pieszych",
+      "category": "podstawy",
+      "difficulty": "medium",
+      "question": "Jak powinieneś wyprzedzać pieszych idących poboczem lub chodnikiem, gdy jedziesz rowerem po jezdni?",
+      "options": [
+        "Z jak najmniejszym odstępem, żeby szybko ich minąć",
+        "Z zachowaniem szczególnej ostrożności i bez zajeżdżania im drogi",
+        "Nie można wyprzedzać pieszych"
+      ],
+      "correct": 1,
+      "explanation": "Wyprzedzając kogokolwiek, trzeba zachować szczególną ostrożność i bezpieczny odstęp."
+    },
+    {
+      "id": "q20_numer_112_inf",
+      "category": "pierwsza_pomoc",
+      "difficulty": "easy",
+      "question": "Co powinieneś podać dyspozytorowi pod numerem 112, zgłaszając wypadek?",
+      "options": [
+        "Tylko swoje imię",
+        "Miejsce zdarzenia, co się stało, liczbę poszkodowanych i swój numer telefonu",
+        "Tylko rodzaj pojazdów biorących udział w wypadku"
+      ],
+      "correct": 1,
+      "explanation": "Najważniejsze informacje to miejsce zdarzenia, opis sytuacji, liczba poszkodowanych oraz numer telefonu zgłaszającego."
+    },
+    {
+      "id": "q21_bezpieczenstwo_własne",
+      "category": "pierwsza_pomoc",
+      "difficulty": "medium",
+      "question": "Co jest pierwszą zasadą pierwszej pomocy na miejscu wypadku?",
+      "options": [
+        "Jak najszybciej przemieścić poszkodowanego",
+        "Zadbaj najpierw o własne bezpieczeństwo",
+        "Nie dzwonić po pomoc, tylko działać samodzielnie"
+      ],
+      "correct": 1,
+      "explanation": "Ratownik musi zadbać o własne bezpieczeństwo – jeśli sam ulegnie wypadkowi, nie pomoże poszkodowanemu."
+    },
+    {
+      "id": "q22_krwotok",
+      "category": "pierwsza_pomoc",
+      "difficulty": "medium",
+      "question": "Co zrobisz w przypadku silnego krwotoku z kończyny po upadku z roweru?",
+      "options": [
+        "Założysz opatrunek uciskowy i uniesiesz kończynę, jeśli to możliwe",
+        "Zmyjesz krew wodą",
+        "Nic nie zrobisz, samo przestanie krwawić"
+      ],
+      "correct": 0,
+      "explanation": "Przy silnym krwotoku trzeba założyć opatrunek uciskowy i unieść kończynę powyżej poziomu serca, jeśli stan na to pozwala."
+    },
+    {
+      "id": "q23_bezpieczne_ubranie",
+      "category": "sprzet",
+      "difficulty": "easy",
+      "question": "Które ubranie jest najbezpieczniejsze do jazdy na rowerze?",
+      "options": [
+        "Długa, luźna peleryna powiewająca za rowerzystą",
+        "Odblaskowa kamizelka i ubranie, które nie wkręci się w łańcuch",
+        "Buty na bardzo wysokim obcasie"
+      ],
+      "correct": 1,
+      "explanation": "Ubranie powinno być wygodne, nie wkręcać się w łańcuch ani koła, a elementy odblaskowe zwiększają widoczność."
+    },
+    {
+      "id": "q24_przejazd_kolejowy",
+      "category": "podstawy",
+      "difficulty": "medium",
+      "question": "Jak powinien zachować się rowerzysta przed przejazdem kolejowym?",
+      "options": [
+        "Przejechać jak najszybciej, nie rozglądając się",
+        "Zachować szczególną ostrożność, upewnić się, czy nie nadjeżdża pociąg i stosować się do sygnałów",
+        "Zatrzymać się zawsze, nawet gdy rogatki są podniesione"
+      ],
+      "correct": 1,
+      "explanation": "Na przejeździe kolejowym trzeba zachować szczególną ostrożność i stosować się do znaków oraz sygnałów."
+    },
+    {
+      "id": "q25_zakaz_wyprzedzania",
+      "category": "znaki",
+      "difficulty": "medium",
+      "question": "Co oznacza znak B-25 „zakaz wyprzedzania”?",
+      "options": [
+        "Zakaz wyprzedzania wszystkich pojazdów silnikowych",
+        "Zakaz wyprzedzania pojazdów wielośladowych przez pojazdy silnikowe",
+        "Zakaz wyprzedzania rowerów"
+      ],
+      "correct": 1,
+      "explanation": "Znak B-25 oznacza zakaz wyprzedzania pojazdów wielośladowych przez pojazdy silnikowe."
+    },
+    {
+      "id": "q26_droga_rowerowa_piesi",
+      "category": "znaki",
+      "difficulty": "medium",
+      "question": "Znak C-13/16 (droga dla pieszych i rowerzystów) z poziomym podziałem oznacza, że:",
+      "options": [
+        "pieszy i rowerzysta mogą poruszać się dowolnie całą szerokością drogi",
+        "część drogi jest wyznaczona dla pieszych, a część dla rowerzystów",
+        "jest to wyłącznie droga dla rowerów"
+      ],
+      "correct": 1,
+      "explanation": "Przy wspólnej drodze z podziałem poziomym wyraźnie wskazana jest część dla pieszych i część dla rowerzystów."
+    },
+    {
+      "id": "q27_pierwszenstwo_autobus",
+      "category": "pierwszenstwo",
+      "difficulty": "medium",
+      "question": "Autobus włącza się do ruchu z zatoki autobusowej na obszarze zabudowanym. Jak powinien zachować się rowerzysta jadący prawym pasem?",
+      "options": [
+        "Zawsze ma pierwszeństwo przed autobusem",
+        "Powinien, jeśli to możliwe, ułatwić autobusowi włączenie się do ruchu",
+        "Nie musi zwracać uwagi na autobus"
+      ],
+      "correct": 1,
+      "explanation": "Na obszarze zabudowanym kierujący powinni ułatwić autobusowi włączanie się do ruchu."
+    },
+    {
+      "id": "q28_pierwszenstwo_tramwaj",
+      "category": "pierwszenstwo",
+      "difficulty": "hard",
+      "question": "Na skrzyżowaniu równorzędnym rowerzysta i tramwaj dojeżdżają jednocześnie. Kto ma pierwszeństwo, jeśli nie ma innych znaków?",
+      "options": [
+        "Zawsze tramwaj",
+        "Zawsze rowerzysta, bo jest mniejszy",
+        "Obowiązuje zasada prawej ręki – pierwszeństwo ma pojazd z prawej"
+      ],
+      "correct": 0,
+      "explanation": "Na skrzyżowaniach równorzędnych tramwaj ma pierwszeństwo niezależnie od tego, z której strony nadjeżdża."
+    },
+    {
+      "id": "q29_przewoz_osoby",
+      "category": "podstawy",
+      "difficulty": "medium",
+      "question": "Kiedy rowerzysta może przewozić inną osobę na rowerze?",
+      "options": [
+        "Gdy ta osoba trzyma się mocno ramy roweru",
+        "Gdy rower jest do tego przystosowany (np. fotelik dziecięcy, przyczepka)",
+        "Nigdy nie wolno przewozić innych osób"
+      ],
+      "correct": 1,
+      "explanation": "Przewóz innej osoby jest dozwolony, jeśli rower jest do tego przystosowany – np. fotelik dla dziecka lub przyczepka."
+    },
+    {
+      "id": "q30_słuchawki",
+      "category": "podstawy",
+      "difficulty": "medium",
+      "question": "Czy jazda na rowerze w słuchawkach jest dobrym pomysłem?",
+      "options": [
+        "Tak, jeśli muzyka jest bardzo głośna",
+        "Nie, bo ogranicza słyszenie otoczenia i może być niebezpieczna",
+        "Tak, zawsze"
+      ],
+      "correct": 1,
+      "explanation": "Głośna muzyka w słuchawkach ogranicza słyszenie samochodów i sygnałów ostrzegawczych, co jest niebezpieczne."
+    },
+    {
+      "id": "q31_odblaski_noc",
+      "category": "sprzet",
+      "difficulty": "easy",
+      "question": "Dlaczego elementy odblaskowe są szczególnie ważne po zmroku?",
+      "options": [
+        "Bo są modne",
+        "Bo sprawiają, że rowerzysta jest lepiej widoczny w światłach pojazdów",
+        "Bo zastępują oświetlenie roweru"
+      ],
+      "correct": 1,
+      "explanation": "Odblaski odbijają światło reflektorów, dzięki czemu kierowcy wcześniej zauważają rowerzystę."
+    },
+    {
+      "id": "q32_pobocze_a_ddr",
+      "category": "podstawy",
+      "difficulty": "medium",
+      "question": "Gdzie powinien jechać rowerzysta, gdy obok jezdni jest jednocześnie pobocze i droga dla rowerów?",
+      "options": [
+        "Po poboczu",
+        "Po drodze dla rowerów",
+        "Po jezdni"
+      ],
+      "correct": 1,
+      "explanation": "Jeśli jest wyznaczona droga dla rowerów, rowerzysta powinien korzystać właśnie z niej."
+    },
+    {
+      "id": "q33_skrzyzowanie_swiatla",
+      "category": "podstawy",
+      "difficulty": "medium",
+      "question": "Co powinien zrobić rowerzysta, gdy na sygnalizatorze dla rowerów świeci czerwone światło?",
+      "options": [
+        "Ostrożnie przejechać, jeśli nic nie jedzie",
+        "Zatrzymać się przed linią i poczekać na zielone",
+        "Pojechać chodnikiem, żeby ominąć światła"
+      ],
+      "correct": 1,
+      "explanation": "Czerwone światło oznacza zakaz wjazdu na skrzyżowanie – trzeba się zatrzymać i czekać na zielone."
+    },
+    {
+      "id": "q34_jazda_po_jezdni_noc",
+      "category": "podstawy",
+      "difficulty": "medium",
+      "question": "Jedziesz rowerem po słabo oświetlonej jezdni po zmroku. Co jest najważniejsze dla Twojego bezpieczeństwa?",
+      "options": [
+        "Jazda środkiem jezdni",
+        "Włączone światła, odblaski i trzymanie się prawej krawędzi",
+        "Szybka jazda, żeby krócej być na drodze"
+      ],
+      "correct": 1,
+      "explanation": "Po zmroku trzeba być dobrze widocznym – mieć włączone światła, odblaski i jechać przy prawej krawędzi jezdni."
+    },
+    {
+      "id": "q35_strefa_zamieszkania",
+      "category": "podstawy",
+      "difficulty": "medium",
+      "question": "Co jest szczególnego w strefie zamieszkania?",
+      "options": [
+        "Można jechać bardzo szybko",
+        "Pieszy ma pierwszeństwo przed pojazdami i może poruszać się całą szerokością drogi",
+        "Nie wolno tam wjeżdżać rowerem"
+      ],
+      "correct": 1,
+      "explanation": "W strefie zamieszkania pieszy ma pierwszeństwo i może poruszać się całą szerokością drogi, a prędkość pojazdów jest mocno ograniczona."
+    },
+    {
+      "id": "q36_telefon_jazda",
+      "category": "podstawy",
+      "difficulty": "medium",
+      "question": "Czy można korzystać z telefonu trzymanego w ręku podczas jazdy na rowerze?",
+      "options": [
+        "Tak, jeśli jedziesz powoli",
+        "Nie, bo odrywa uwagę i ręce od kierownicy",
+        "Tak, jeśli droga jest pusta"
+      ],
+      "correct": 1,
+      "explanation": "Korzystanie z telefonu w ręku ogranicza koncentrację i kontrolę nad rowerem – jest bardzo niebezpieczne."
+    },
+    {
+      "id": "q37_zjazd_z_chodnika",
+      "category": "podstawy",
+      "difficulty": "medium",
+      "question": "Zjeżdżasz z chodnika na jezdnię. Co powinieneś zrobić?",
+      "options": [
+        "Wjechać szybko bez rozglądania się",
+        "Upewnić się, czy nie nadjeżdża żaden pojazd i ustąpić pierwszeństwa",
+        "Zatrąbić dzwonkiem i wjechać"
+      ],
+      "correct": 1,
+      "explanation": "Włączając się do ruchu z chodnika, rowerzysta musi ustąpić pierwszeństwa pojazdom jadącym jezdnią."
+    },
+    {
+      "id": "q38_dziecko_do10",
+      "category": "podstawy",
+      "difficulty": "easy",
+      "question": "Dziecko do 10 roku życia jadące na rowerze jest traktowane jako:",
+      "options": [
+        "pieszy",
+        "kierujący pojazdem",
+        "pasażer"
+      ],
+      "correct": 0,
+      "explanation": "Dziecko do 10 lat jadące na rowerze jest traktowane jako pieszy, dlatego może poruszać się po chodniku."
+    },
+    {
+      "id": "q39_zakret_bez_swiatel",
+      "category": "podstawy",
+      "difficulty": "medium",
+      "question": "Zbliżasz się rowerem do ostrego zakrętu z ograniczoną widocznością. Jak powinieneś jechać?",
+      "options": [
+        "Szybko, żeby mieć to za sobą",
+        "Wolniej, przy prawej krawędzi i gotowy do hamowania",
+        "Na środku jezdni"
+      ],
+      "correct": 1,
+      "explanation": "Przed zakrętem z ograniczoną widocznością należy zwolnić, trzymać się prawej strony i być gotowym do hamowania."
+    },
+    {
+      "id": "q40_pasy_bez_przejazdu",
+      "category": "podstawy",
+      "difficulty": "medium",
+      "question": "Dlaczego nie wolno przejeżdżać rowerem po zwykłym przejściu dla pieszych (bez przejazdu rowerowego)?",
+      "options": [
+        "Bo tak jest wygodniej dla kierowców",
+        "Bo pieszy jest tam uprzywilejowany, a rowerzysta musi prowadzić rower",
+        "Bo rower mógłby ubrudzić pasy"
+      ],
+      "correct": 1,
+      "explanation": "Przejście dla pieszych jest przeznaczone dla pieszych – rowerzysta powinien zejść z roweru i przeprowadzić go po pasach."
+    },
+    {
+      "id": "q41_pojazd_uprzywilejowany",
+      "category": "podstawy",
+      "difficulty": "medium",
+      "question": "Co powinien zrobić rowerzysta, gdy słyszy sygnał pojazdu uprzywilejowanego (np. karetki) za sobą?",
+      "options": [
+        "Przyspieszyć, żeby mu nie przeszkadzać",
+        "Zjechać jak najbardziej do prawej i umożliwić przejazd",
+        "Nic nie robić"
+      ],
+      "correct": 1,
+      "explanation": "Na dźwięk sygnału pojazdu uprzywilejowanego trzeba ułatwić mu przejazd, zjeżdżając do prawej strony."
+    },
+    {
+      "id": "q42_przekraczanie_jezdni",
+      "category": "podstawy",
+      "difficulty": "medium",
+      "question": "Jak powinien przekroczyć jezdnię rowerzysta pieszo prowadzący rower?",
+      "options": [
+        "Ma takie same prawa jak pieszy i może przechodzić po pasach",
+        "Musi biec, żeby nie blokować ruchu",
+        "Nie ma prawa wchodzić na przejście"
+      ],
+      "correct": 0,
+      "explanation": "Rowerzysta, który prowadzi rower, jest traktowany jak pieszy i może korzystać z przejścia dla pieszych."
+    },
+    {
+      "id": "q43_jazda_po_parku",
+      "category": "podstawy",
+      "difficulty": "easy",
+      "question": "Jadąc rowerem po parku, powinieneś przede wszystkim:",
+      "options": [
+        "jechać jak najszybciej, bo to nie droga publiczna",
+        "uważać na pieszych, dzieci i zwierzęta, jechać spokojnie",
+        "omijać alejki i jeździć po trawnikach"
+      ],
+      "correct": 1,
+      "explanation": "W parkach jest dużo pieszych i dzieci – trzeba jechać spokojnie i z dużą ostrożnością."
+    },
+    {
+      "id": "q44_jazda_po_błocie",
+      "category": "sprzet",
+      "difficulty": "easy",
+      "question": "Po jeździe w błocie powinieneś:",
+      "options": [
+        "tylko postawić rower w garażu",
+        "wyczyścić rower, szczególnie napęd i hamulce",
+        "podnieść ciśnienie w oponach do maksimum"
+      ],
+      "correct": 1,
+      "explanation": "Błoto może utrudniać pracę hamulców i napędu – po takiej jeździe warto rower dokładnie oczyścić."
+    },
+    {
+      "id": "q45_łańcuch_smarowanie",
+      "category": "sprzet",
+      "difficulty": "medium",
+      "question": "Dlaczego warto regularnie smarować łańcuch w rowerze?",
+      "options": [
+        "Bo wtedy rower jest cięższy",
+        "Bo zmniejsza to zużycie napędu i poprawia płynność jazdy",
+        "Bo dzięki temu hamulce działają lepiej"
+      ],
+      "correct": 1,
+      "explanation": "Smarowanie łańcucha zmniejsza tarcie i zużycie elementów napędu oraz sprawia, że jazda jest płynniejsza."
+    },
+    {
+      "id": "q46_hamowanie_przod_tyl",
+      "category": "sprzet",
+      "difficulty": "medium",
+      "question": "Jak powinno wyglądać prawidłowe hamowanie na rowerze z dwoma hamulcami (przód i tył)?",
+      "options": [
+        "Używać tylko przedniego hamulca",
+        "Używać obu hamulców jednocześnie, stopniowo zwiększając siłę hamowania",
+        "Używać tylko tylnego hamulca"
+      ],
+      "correct": 1,
+      "explanation": "Najbezpieczniej hamować, używając obu hamulców jednocześnie, stopniowo zwiększając nacisk, aby nie zablokować kół."
+    },
+    {
+      "id": "q47_boczne_wiatry",
+      "category": "podstawy",
+      "difficulty": "hard",
+      "question": "Jedziesz rowerem przy silnym bocznym wietrze. Co powinieneś zrobić?",
+      "options": [
+        "Jechać jak zwykle, wiatr nie ma znaczenia",
+        "Zmniejszyć prędkość i mocniej trzymać kierownicę",
+        "Puścić kierownicę, aby rower sam się ustabilizował"
+      ],
+      "correct": 1,
+      "explanation": "Silny boczny wiatr może zepchnąć rowerzystę z toru jazdy – trzeba jechać wolniej i pewnie trzymać kierownicę."
+    },
+    {
+      "id": "q48_odstep_wyprzedzanie",
+      "category": "podstawy",
+      "difficulty": "medium",
+      "question": "Jaki odstęp powinien zachować kierowca samochodu, wyprzedzając rowerzystę?",
+      "options": [
+        "Co najmniej 1 metr",
+        "Co najmniej 1,5 metra",
+        "Nie ma określonego odstępu"
+      ],
+      "correct": 1,
+      "explanation": "Przepisy wymagają, by kierowca wyprzedzający rowerzystę zachował co najmniej 1,5 m odstępu."
+    },
+    {
+      "id": "q49_mgła_jazda",
+      "category": "podstawy",
+      "difficulty": "medium",
+      "question": "Jedziesz rowerem we mgle. Jak powinieneś się zachować?",
+      "options": [
+        "Jechać szybciej, żeby krócej być na drodze",
+        "Zmniejszyć prędkość, włączyć oświetlenie i zachować szczególną ostrożność",
+        "Jechać bez świateł, żeby nie oślepiać innych"
+      ],
+      "correct": 1,
+      "explanation": "We mgle widoczność jest ograniczona – trzeba mieć włączone światła, jechać wolniej i bardzo ostrożnie."
+    },
+    {
+      "id": "q50_zatrzymanie_przy_przystanku",
+      "category": "podstawy",
+      "difficulty": "medium",
+      "question": "Zbliżasz się rowerem do przystanku, na którym zatrzymał się autobus i wysiadają ludzie. Co robisz?",
+      "options": [
+        "Przejeżdżasz jak najszybciej między ludźmi",
+        "Zwolniasz, zachowujesz odstęp i jesteś gotowy do zatrzymania się",
+        "Dzwonisz dzwonkiem, żeby ludzie zeszli z drogi"
+      ],
+      "correct": 1,
+      "explanation": "Przy przystanku z wysiadającymi ludźmi trzeba jechać bardzo ostrożnie, zachować odstęp i być gotowym do zatrzymania."
     }
   ]
 }

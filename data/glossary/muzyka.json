@@ -1,0 +1,23 @@
+{
+  "rytm": "Ułożenie dźwięków w czasie, to, co sprawia że chce się klaskać.",
+  "melodia": "Główna linia dźwięków, którą możemy zanucić.",
+  "akord": "Kilka dźwięków granych jednocześnie.",
+  "tempo": "Szybkość wykonywania utworu.",
+  "dynamika": "Głośność utworu, np. cicho lub głośno.",
+  "instrument strunowy": "Instrument, na którym dźwięk powstaje dzięki drgającym strunom.",
+  "instrument dęty": "Instrument, na którym dźwięk powstaje dzięki powietrzu.",
+  "instrument perkusyjny": "Instrument, w który uderzamy lub potrząsamy.",
+  "chór": "Grupa osób śpiewających razem.",
+  "orkiestra": "Duża grupa muzyków grających na różnych instrumentach.",
+  "kompozytor": "Osoba, która tworzy muzykę.",
+  "wykonawca": "Osoba, która gra lub śpiewa utwór.",
+  "gatunek muzyczny": "Rodzaj muzyki, np. rock, jazz, muzyka filmowa.",
+  "nuty": "Znaki, którymi zapisujemy dźwięki.",
+  "pięciolinia": "Pięć linii, na których zapisujemy nuty.",
+  "takt": "Podział utworu na równe części w zapisie nutowym.",
+  "muzyka klasyczna": "Muzyka tworzona m.in. przez kompozytorów takich jak Mozart czy Chopin.",
+  "muzyka filmowa": "Muzyka napisana specjalnie do filmu.",
+  "improwizacja": "Muzyk wymyśla melodię na bieżąco podczas grania.",
+  "śpiew jednogłosowy": "Gdy wszyscy śpiewają tę samą melodię.",
+  "śpiew wielogłosowy": "Gdy różne osoby śpiewają różne melodie jednocześnie."
+}

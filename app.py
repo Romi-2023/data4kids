@@ -4,11 +4,12 @@ import json
 import hashlib
 import secrets
 import random
+import io
 from math import ceil
 from datetime import datetime, date
 from dateutil import tz
 from typing import Optional, List, Dict
-
+from fpdf import FPDF
 import pandas as pd
 import altair as alt
 import streamlit as st
@@ -411,145 +412,6 @@ def log_event(event: str):
     stamp = datetime.now(tz=tz.gettz("Europe/Warsaw")).strftime("%Y-%m-%d %H:%M:%S")
     st.session_state.activity_log.append({"time": stamp, "event": event})
 
-# Glossary
-GLOSSARY = {
-    "średnia": "Suma wszystkich wartości podzielona przez ich liczbę.",
-    "mediana": "Wartość środkowa po ułożeniu danych od najmniejszej do największej.",
-    "korelacja": "Miara tego, jak dwie rzeczy zmieniają się razem (dodatnia, ujemna, brak).",
-    "agregacja": "Łączenie danych (np. liczenie średniej) w grupach.",
-    "kategoria": "Słowo/etykieta zamiast liczby (np. kolor, miasto).",
-}
-COUNT_LABEL = "liczba osób"
-
-# --- Categorized kid-friendly glossary (used only on Słowniczek page) ---
-CATEGORIZED_GLOSSARY = {
-  "MATEMATYKA": {
-    "parzysta liczba": "Dzieli się przez 2 bez reszty (np. 4, 10, 28).",
-    "nieparzysta liczba": "Nie dzieli się przez 2 bez reszty (np. 3, 7, 19).",
-    "dzielnik": "Liczba, przez którą dzielimy inną liczbę.",
-    "wielokrotność": "Wynik mnożenia danej liczby (np. wielokrotności 5 to 10, 15, 20…).",
-    "liczba pierwsza": "Ma dokładnie dwa dzielniki: 1 i samą siebie (np. 2, 3, 5, 7).",
-    "ułamek": "Część całości zapisana jak 1/2, 3/4.",
-    "ułamek dziesiętny": "Ułamek zapisany z przecinkiem (np. 0,5).",
-    "procent": "Część ze 100, np. 25% to 25 na 100.",
-    "pole figury": "Powierzchnia w środku figury (np. ile farby by zakryło kształt).",
-    "obwód": "Długość dookoła figury.",
-    "kąt prosty": "Ma 90°.",
-    "średnia arytmetyczna": "Suma liczb podzielona przez ich liczbę.",
-    "promień": "Od środka okręgu do jego brzegu.",
-    "średnica": "Od brzegu do brzegu przez środek (2× promień).",
-    "proporcja": "Porównanie dwóch wielkości tak, by zachować ten sam stosunek.",
-    "prędkość": "Jak szybko coś się porusza (v = s/t)."
-  },
-  "POLSKI": {
-    "rzeczownik": "Nazywa osoby, zwierzęta, rzeczy (np. kot, szkoła).",
-    "czasownik": "Mówi co się dzieje (np. biega, czyta).",
-    "przymiotnik": "Opisuje cechę (np. szybki, zielona).",
-    "przysłówek": "Opisuje czynność (np. szybko, cicho).",
-    "podmiot": "Kto/co wykonuje czynność w zdaniu.",
-    "orzeczenie": "Co robi podmiot (czasownik w zdaniu).",
-    "epitet": "Słowo ozdabiające rzeczownik (np. srebrny księżyc).",
-    "antonim": "Słowo przeciwne (wysoki ↔ niski).",
-    "synonim": "Słowo podobne znaczeniem (ważny ↔ istotny).",
-    "rym": "Podobne brzmienia na końcach wyrazów (kotek – płotek).",
-    "narrator": "Głos opowiadający historię w tekście."
-  },
-  "HISTORIA": {
-    "średniowiecze": "Czas między starożytnością a nowożytnością.",
-    "konstytucja": "Najważniejsze prawo państwa.",
-    "unia lubelska": "Połączenie Polski i Litwy w 1569 roku.",
-    "zabory": "Podział Polski przez sąsiadów w XVIII wieku.",
-    "powstanie": "Wystąpienie zbrojne przeciw władzy.",
-    "rycerz": "Wojownik konny z dawnych czasów.",
-    "dynastia": "Ród panujący przez wiele pokoleń."
-  },
-  "GEOGRAFIA": {
-    "kontynent": "Ogromny ląd, np. Afryka, Europa.",
-    "ocean": "Bardzo wielka masa słonej wody.",
-    "pustynia": "Miejsce z małą ilością opadów (np. Sahara).",
-    "wyżyna": "Dość wysokie, rozległe tereny.",
-    "nizina": "Płaski, niski teren.",
-    "delta": "Rozgałęzienie rzeki przy ujściu do morza.",
-    "klimat": "Typ pogody w danym miejscu przez długi czas.",
-    "wulkan": "Góra, z której może wydobywać się lawa."
-  },
-  "FIZYKA": {
-    "siła": "Oddziaływanie, które może zmieniać ruch lub kształt.",
-    "masa": "Ilość materii w ciele.",
-    "ciśnienie": "Siła nacisku na powierzchnię (p=F/S).",
-    "energia": "Zdolność do wykonania pracy.",
-    "praca": "Przekaz energii przez działanie siłą na odcinku.",
-    "gęstość": "Masa w danej objętości (ρ=m/V).",
-    "tarcie": "Siła hamująca ruch przy dotyku powierzchni.",
-    "prędkość światła": "Około 300 000 km/s."
-  },
-  "CHEMIA": {
-    "atom": "Najmniejsza cząstka pierwiastka.",
-    "pierwiastek": "Substancja złożona z jednakowych atomów (np. tlen).",
-    "związek chemiczny": "Połączenie co najmniej dwóch pierwiastków (np. H₂O).",
-    "mieszanina": "Połączenie substancji bez reakcji chemicznej.",
-    "roztwór": "Jednorodna mieszanina, np. sól w wodzie.",
-    "kwas": "Ma pH < 7 (np. sok z cytryny jest kwaśny).",
-    "zasada": "Ma pH > 7 (np. mydło jest zasadowe).",
-    "pH": "Skala kwasowości od 0 do 14."
-  },
-  "ANGIELSKI": {
-    "noun": "Rzeczownik.",
-    "verb": "Czasownik.",
-    "adjective": "Przymiotnik.",
-    "adverb": "Przysłówek.",
-    "plural": "Liczba mnoga.",
-    "past simple": "Czas przeszły prosty (went, saw).",
-    "present simple": "Czas teraźniejszy prosty (go, see).",
-    "present continuous": "Czynność trwająca teraz (is/are + -ing).",
-    "future simple": "Czas przyszły prosty (will + bezokolicznik).",
-    "to be": "Czasownik 'być' (am/is/are).",
-    "to have": "Mieć (have/has).",
-    "irregular verbs": "Czasowniki nieregularne (go–went–gone…).",
-    "question": "Pytanie.",
-    "sentence": "Zdanie."
-  },
-    "NIEMIECKI": {
-      "der Hund": "pies.",
-      "die Katze": "kot.",
-      "die Schule": "szkoła.",
-      "das Haus": "dom.",
-      "die Stadt": "miasto.",
-      "die Zahl": "liczba.",
-      "lesen": "czytać.",
-      "schreiben": "pisać.",
-      "sprechen": "mówić.",
-      "hören": "słuchać.",
-      "gut": "dobry, dobrze.",
-      "schön": "ładny, piękny.",
-      "schnell": "szybki, szybko.",
-      "langsam": "wolny, powoli.",
-      "Hallo": "cześć.",
-      "Tschüss": "pa, na razie.",
-      "Bitte": "proszę (np. podając coś / jako „proszę bardzo”).",
-      "Danke": "dziękuję."
-  },
-  "BIOLOGIA": {
-    "komórka": "Najmniejsza część żywego organizmu.",
-    "tkanka": "Zespół podobnych komórek.",
-    "narząd": "Część ciała z określoną funkcją (np. serce).",
-    "układ oddechowy": "Służy do oddychania (płuca, tchawica).",
-    "układ krążenia": "Transportuje krew (serce, naczynia).",
-    "fotosynteza": "Rośliny tworzą pokarm z wody, dwutlenku węgla i światła.",
-    "DNA": "Instrukcja życia zapisana w komórkach.",
-    "chlorofil": "Zielony barwnik w roślinach."
-  },
-  "DANE I STATYSTYKA": {
-    "dane": "Zebrane informacje, liczby, odpowiedzi.",
-    "średnia": "Suma podzielona przez liczbę elementów.",
-    "mediana": "Środkowa wartość po ułożeniu od najmniejszej do największej.",
-    "moda": "Wartość, która występuje najczęściej.",
-    "wykres słupkowy": "Wysokość słupków pokazuje wartości.",
-    "wykres kołowy": "Koło podzielone na kawałki pokazujące części całości.",
-    "ankieta": "Pytania, które zbierają odpowiedzi od ludzi."
-  }
-}
-
 def flatten_glossary(categories: dict) -> dict:
     flat = {}
     for cat, entries in categories.items():
@@ -640,7 +502,7 @@ def apply_fantasy(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 def _is_count_choice(val: str) -> bool:
-    return val in ("count()", COUNT_LABEL)
+    return val == "count()"
 
 # Global helpers for missions
 def award(ok: bool, xp_gain: int, badge: Optional[str] = None, mid: str = ""):
@@ -767,6 +629,146 @@ def get_today_key() -> str:
 def days_since_epoch() -> int:
     return (date.today() - date(2025, 1, 1)).days
 
+def generate_rower_certificate_pdf(username: str, date_str: str, correct: int, total: int, percent: int) -> bytes:
+    """
+    Tworzy certyfikat treningu karty rowerowej jako PDF i zwraca go jako bytes.
+    Tytuł: DancingScript (jeśli dostępny), reszta: Arial (jeśli dostępny).
+    """
+    pdf = FPDF(orientation="L", unit="mm", format="A4")
+    pdf.set_auto_page_break(auto=False, margin=0)
+    pdf.add_page()
+
+    # Ścieżki do czcionek
+    script_path = os.path.join(BASE_DIR, "fonts", "DancingScript-VariableFont_wght.ttf")
+    sans_path = os.path.join(BASE_DIR, "fonts", "arial.ttf")
+
+    script_ok = False
+    sans_ok = False
+
+    # Najpierw próbujemy załadować Arial (Unicode)
+    try:
+        if os.path.exists(sans_path):
+            pdf.add_font("Sans", "", sans_path, uni=True)
+            sans_ok = True
+    except Exception:
+        sans_ok = False
+
+    # Potem DancingScript – tylko do tytułu, też Unicode
+    try:
+        if os.path.exists(script_path):
+            pdf.add_font("Script", "", script_path, uni=True)
+            script_ok = True
+    except Exception:
+        script_ok = False
+
+    # --- Tytuł ---
+    title_text = "Certyfikat treningu – karta rowerowa"
+
+    # Wybór fontu do tytułu
+    if script_ok:
+        pdf.set_font("Script", "", 34)
+    elif sans_ok:
+        pdf.set_font("Sans", "", 28)
+    else:
+        # Ostateczny fallback – Helvetica BEZ „–”, żeby nie wybuchło
+        pdf.set_font("Helvetica", "B", 26)
+        title_text = "Certyfikat treningu - karta rowerowa"
+
+    # Ramka
+    pdf.set_draw_color(200, 0, 80)
+    pdf.set_line_width(1.5)
+    pdf.rect(10, 10, 277, 190)
+
+    # Obrazek odznaki (to co masz jako cert_bike.png)
+    img_path = os.path.join(BASE_DIR, "assets", "cert_bike.png")
+    if os.path.exists(img_path):
+        # x, y, szerokość (dostosuj jeśli chcesz większy/mniejszy)
+        pdf.image(img_path, x=20, y=22, w=40)
+
+    # Tytuł
+    pdf.set_xy(10, 20)
+    pdf.cell(277, 15, title_text, align="C", ln=1)
+
+    # --- Podtytuł i treść – używamy Arial jeśli się wczytał ---
+    if sans_ok:
+        pdf.set_font("Sans", "", 15)
+    else:
+        pdf.set_font("Helvetica", "", 13)
+    pdf.set_text_color(80, 80, 80)
+    pdf.ln(3)
+    pdf.cell(277, 10, "Data4Kids – moduł przygotowania do karty rowerowej", align="C", ln=1)
+
+    if sans_ok:
+        pdf.set_font("Sans", "", 17)
+    else:
+        pdf.set_font("Helvetica", "", 15)
+    pdf.set_text_color(0, 0, 0)
+    pdf.ln(8)
+    pdf.multi_cell(
+        0,
+        10,
+        txt=(
+            f"Potwierdzamy, że {username} w dniu {date_str}\n"
+            f"ukończył(a) egzamin próbny na kartę rowerową\n"
+            f"z wynikiem {correct} / {total} ({percent}%)."
+        ),
+        align="C",
+    )
+
+    # Krótkie wyjaśnienie
+    if sans_ok:
+        pdf.set_font("Sans", "", 13)
+    else:
+        pdf.set_font("Helvetica", "", 11)
+    pdf.set_text_color(90, 90, 90)
+    pdf.ln(5)
+    pdf.multi_cell(
+        0,
+        7,
+        txt=(
+            "Certyfikat dotyczy treningu w aplikacji Data4Kids i może być użyty jako "
+            "potwierdzenie przygotowań dziecka do właściwego egzaminu na kartę rowerową."
+        ),
+        align="C",
+    )
+
+    # Miejsce na podpis rodzica + „pieczątka” systemu
+    pdf.ln(18)
+    if sans_ok:
+        pdf.set_font("Sans", "", 12)
+    else:
+        pdf.set_font("Helvetica", "", 11)
+    pdf.set_text_color(0, 0, 0)
+
+    # lewa strona – podpis rodzica
+    pdf.cell(138, 10, "......................................", align="C")
+    pdf.cell(1)
+    # prawa strona – tekst zamiast pustej linii
+    pdf.cell(138, 10, "Potwierdzono w systemie Data4Kids", align="C", ln=1)
+
+    pdf.cell(138, 6, "Opiekun / rodzic", align="C")
+    pdf.cell(1)
+    pdf.cell(138, 6, "(podpis elektroniczny systemu)", align="C", ln=1)
+
+
+    # Stopka
+    pdf.set_y(190)
+    if sans_ok:
+        pdf.set_font("Sans", "", 8)
+    else:
+        pdf.set_font("Helvetica", "", 8)
+    pdf.set_text_color(120, 120, 120)
+    pdf.cell(0, 5, "Wygenerowano automatycznie w Data4Kids – moduł 'Moja karta rowerowa'.", align="C")
+
+    result = pdf.output(dest="S")  # w fpdf2 to jest bytes albo bytearray
+    if isinstance(result, bytearray):
+        pdf_bytes = bytes(result)
+    else:
+        pdf_bytes = result
+    return pdf_bytes
+
+
+
 def safe_load_json(path: str, default):
     try:
         if not os.path.exists(path):
@@ -775,6 +777,45 @@ def safe_load_json(path: str, default):
             return json.load(f)
     except Exception:
         return default
+    
+def load_glossary_all():
+    """
+    Wczytuje słowniczki z osobnych plików w data/glossary/*.json.
+
+    Każdy plik ma postać:
+    {
+      "hasło": "definicja",
+      "inne hasło": "inna definicja"
+    }
+
+    Nazwa pliku (bez .json), zamieniona na wielkie litery i spacje, jest nazwą zakładki,
+    np. dane_i_statystyka.json -> "DANE I STATYSTYKA".
+    """
+    folder = os.path.join(DATA_DIR, "glossary")
+    glossary = {}
+
+    if not os.path.isdir(folder):
+        return glossary
+
+    for fname in os.listdir(folder):
+        if not fname.endswith(".json"):
+            continue
+
+        path = os.path.join(folder, fname)
+        data = safe_load_json(path, default={})
+
+        # matematyka.json -> "MATEMATYKA"
+        # dane_i_statystyka.json -> "DANE I STATYSTYKA"
+        base = os.path.splitext(fname)[0]
+        subject_key = base.replace("_", " ").upper()
+
+        if isinstance(data, dict):
+            glossary[subject_key] = data
+
+    return glossary
+
+CATEGORIZED_GLOSSARY = load_glossary_all()
+
 
 def load_tasks() -> Dict[str, list]:
     d = safe_load_json(TASKS_FILE, default={})
@@ -866,6 +907,7 @@ with st.sidebar:
             "Hall of Fame",
             "Wsparcie & konkursy",
             "Regulamin",
+            "Kontakt",
             "Administrator",
             "Panel rodzica",
         ],
@@ -892,18 +934,11 @@ def _try_unlock_parent():
             st.warning("Zły PIN. Spróbuj ponownie.")
 
 # --- Globalny wymóg logowania dla stron dziecięcych ---
-PUBLIC_PAGES = {"Start", "Regulamin", "Administrator", "Panel rodzica", "Wsparcie & konkursy"}
+PUBLIC_PAGES = {"Start", "Regulamin", "Kontakt", "Administrator", "Panel rodzica", "Wsparcie & konkursy"}
 
 if page not in PUBLIC_PAGES and not st.session_state.get("user"):
     st.info("Najpierw zaloguj się na stronie **Start**. Potem możesz korzystać z całej aplikacji. 🚀")
     st.stop()
-
-# -----------------------------
-# START (with auth gate)
-# -----------------------------
-if page == "Start":
-    ...
-
 
 # -----------------------------
 # START (with auth gate)
@@ -1082,58 +1117,129 @@ elif page == "Quiz danych":
                 st.error(f"❌ Nie. Poprawna: **{opts[corr]}**.")
 
 elif page == "Quiz obrazkowy":
-    st.markdown(f"<div class='big-title'>🖼️ {KID_EMOJI} Quiz obrazkowy</div>", unsafe_allow_html=True)
+    st.markdown(
+        f"<div class='big-title'>🖼️ {KID_EMOJI} Quiz obrazkowy</div>",
+        unsafe_allow_html=True,
+    )
 
     iq_path = os.path.join(DATA_DIR, "quiz_images", "image_quiz.json")
     iq = safe_load_json(iq_path, default={"items": []})
-    items = iq.get("items", [])
+    raw_items = iq.get("items", [])
 
-    # policz wszystkie pytania ze wszystkich obrazków
-    total_q = sum(len(item.get("questions", [])) for item in items)
-    st.caption(f"Liczba pytań: {total_q}")
-
-    q_counter = 0  # globalny licznik pytań
-
-    for img_idx, item in enumerate(items, start=1):
-        img_path = item.get("image")
-        questions = item.get("questions", [])
-
-        if not questions:
+    # --- Obsługa starego i nowego formatu --------------------------
+    flat_items = []
+    for item in raw_items:
+        img = item.get("image")
+        if not img:
             continue
 
-        # obrazek wyświetlamy raz dla całego zestawu pytań
-        try:
-            st.image(img_path, caption=f"Obrazek {img_idx}", use_container_width=True)
-        except Exception:
-            st.caption(f"(Brak obrazu: {img_path})")
-
-        for local_q_idx, t in enumerate(questions, start=1):
-            q_counter += 1
-            q = t.get("q", "")
-            opts = t.get("options", [])
-            corr = int(t.get("correct", 0))
-
-            st.markdown(f"**{q_counter}. {q}**")
-
-            key_base = f"iq_{img_idx}_{local_q_idx}"
-            choice = st.radio(
-                "Wybierz:",
-                opts,
-                key=key_base,
-                label_visibility="collapsed",
-                index=None,
+        if "questions" in item:
+            # stary format: 1 obrazek -> lista pytań
+            for t in item.get("questions", []):
+                flat_items.append(
+                    {
+                        "image": img,
+                        "q": t.get("q", ""),
+                        "options": t.get("options", []),
+                        "correct": int(t.get("correct", 0)),
+                        "category": t.get("category", item.get("category", "")),
+                    }
+                )
+        else:
+            # nowy format: 1 rekord = 1 pytanie
+            flat_items.append(
+                {
+                    "image": img,
+                    "q": item.get("q", ""),
+                    "options": item.get("options", []),
+                    "correct": int(item.get("correct", 0)),
+                    "category": item.get("category", ""),
+                }
             )
 
-            if st.button("Sprawdź ✅", key=f"{key_base}_check"):
-                if choice is None:
-                    st.warning("Wybierz odpowiedź.")
-                elif opts and opts.index(choice) == corr:
-                    st.success("✅ Dobrze!")
+    if not flat_items:
+        st.info("Brak pytań w quizie obrazkowym. Uzupełnij plik data/quiz_images/image_quiz.json.")
+        st.stop()
+
+    # --- WYBÓR GRUPY WIEKOWEJ --------------------------------------
+    age_label = st.radio(
+        "Wybierz grupę wiekową:",
+        ["7–9 lat", "10–12 lat", "13–14 lat"],
+        key="img_quiz_age_group",
+        horizontal=True,
+    )
+
+    if age_label == "7–9 lat":
+        allowed_cats = {"shapes", "objects", "emotions"}
+    elif age_label == "10–12 lat":
+        allowed_cats = {"shapes", "objects", "emotions", "plots"}
+    else:  # 13–14
+        allowed_cats = {"shapes", "objects", "emotions", "plots"}
+
+    age_items = [
+        it for it in flat_items
+        if (it.get("category") or "") in allowed_cats
+    ]
+
+    total_q = len(age_items)
+
+    if not total_q:
+        st.warning("Brak pytań dla wybranej grupy wiekowej.")
+        st.stop()
+
+    # --- DZIENNA ROTACJA PYTAŃ (5 / dzień) -------------------------
+    day_idx = days_since_epoch()
+    k_daily = min(5, total_q)
+
+    daily_items = pick_daily_chunk(
+        age_items,
+        k_daily,
+        day_idx,
+        f"image_quiz_{age_label}",
+    )
+    
+    st.caption(
+        f"Dzisiejszy zestaw: {len(daily_items)} pytań "
+        f"(z {total_q} dostępnych dla {age_label})."
+    )
+
+    # --- WYŚWIETLANIE PYTAŃ ---------------------------------------
+    for i, t in enumerate(daily_items, start=1):
+        img_file = t.get("image")
+        img_path = os.path.join(DATA_DIR, "quiz_images", img_file)
+
+        try:
+            st.image(img_path, use_container_width=True)
+        except Exception:
+            st.caption(f"(Nie udało się wczytać obrazu: {img_path})")
+
+        q = t.get("q", "")
+        opts = t.get("options", [])
+        corr = int(t.get("correct", 0))
+
+        st.markdown(f"**{i}. {q}**")
+
+        key_base = f"iq_flat_{age_label}_{i}"
+        choice = st.radio(
+            "Wybierz:",
+            opts,
+            key=key_base,
+            label_visibility="collapsed",
+            index=None,
+        )
+
+        if st.button("Sprawdź ✅", key=f"{key_base}_check"):
+            if choice is None:
+                st.warning("Wybierz odpowiedź.")
+            elif opts and opts.index(choice) == corr:
+                st.success("✅ Dobrze!")
+                st.session_state.xp += 2
+                st.session_state.stickers.add("sticker_hawkeye")
+            else:
+                if opts:
+                    st.error(f"❌ Nie. Poprawna: **{opts[corr]}**.")
                 else:
-                    if opts:
-                        st.error(f"❌ Nie. Poprawna: **{opts[corr]}**.")
-                    else:
-                        st.error("Brak opcji odpowiedzi w danych quizu.")
+                    st.error("Brak opcji odpowiedzi w danych quizu.")
 
 
 elif page == "Album naklejek":
@@ -1180,6 +1286,34 @@ elif page == "Pomoce szkolne":
                 st.markdown(f"### {book.get('title','Bez tytułu')}")
                 st.caption(f"Autor: **{book.get('author','?')}**")
 
+# --- Progres lektur powiązany z kontem dziecka ---
+                book_id = book.get("id")
+                user = st.session_state.get("user")
+
+                if user and book_id:
+                    profile = _user_db_get(user) or {}
+                    read_list = profile.get("lektury_read", [])
+                    already_read = book_id in read_list
+
+                    if already_read:
+                        st.success("✅ Ta lektura jest już oznaczona jako zaliczona.")
+                    else:
+                        if st.button(
+                            "✔️ Oznacz jako przeczytaną / powtórzoną",
+                            key=f"lektura_read_btn_{book_id}",
+                        ):
+                            read_list = list(read_list)
+                            if book_id not in read_list:
+                                read_list.append(book_id)
+                            profile["lektury_read"] = read_list
+                            _user_db_set(user, profile)
+                            save_progress()
+
+                            st.success("Lektura oznaczona jako przeczytana/powtórzona. 📚")
+                            st.experimental_rerun()
+
+
+
                 st.markdown("#### Streszczenie")
                 summary = book.get("summary_long") or book.get("summary_short") or "Brak streszczenia."
                 st.write(summary)
@@ -1223,6 +1357,70 @@ elif page == "Pomoce szkolne":
                     for i, step in enumerate(plan, start=1):
                         st.markdown(f"{i}. {step}")
 
+                    # --- Plan odpowiedzi ustnej (5 kroków) ---
+                    if st.button(
+                        "🎤 Wygeneruj plan odpowiedzi ustnej (5 kroków)",
+                        key=f"lektura_plan_ustny_{book_id}",
+                    ):
+                        st.markdown("#### Pomysł na odpowiedź ustną")
+                        core_steps = plan[:5] if len(plan) > 5 else plan
+                        for i, step in enumerate(core_steps, start=1):
+                            st.markdown(f"{i}. {step}")
+                        st.info("Spróbuj opowiedzieć własnymi słowami każdy z punktów – jak przy odpowiedzi przy tablicy.")
+
+
+ # --- Szybki quiz: 3 pytania ---
+                all_q = book.get("questions") or []
+                if all_q:
+                    st.markdown("### ❓ Szybki quiz – 3 pytania")
+
+                    # Stały dobór pytań dla danej lektury (deterministyczny, żeby dzieci miały powtarzalny zestaw)
+                    if len(all_q) <= 3:
+                        quiz_qs = all_q
+                    else:
+                        rnd = random.Random(f"{book_id}_quiz")
+                        quiz_qs = rnd.sample(all_q, 3)
+
+                    for i, q in enumerate(quiz_qs, start=1):
+                        st.markdown(f"**Pytanie {i}:** {q}")
+                        st.text_input(
+                            "Twoja odpowiedź:",
+                            key=f"lektura_quiz_{book_id}_{i}",
+                            placeholder="Napisz własnymi słowami...",
+                        )
+
+                    st.caption("To nie jest test na ocenę – po prostu spróbuj odpowiedzieć własnymi słowami 🙂")
+
+                    # --- XP ZA QUIZ, NIE ZA SAMO KLIKNIĘCIE ---
+                    user = st.session_state.get("user")
+                    if user and book_id:
+                        profile = _user_db_get(user) or {}
+                        read_list = profile.get("lektury_read", [])
+                        already_done = book_id in read_list
+
+                        if already_done:
+                            st.success("✅ Lektura zaliczona – XP już przyznane.")
+                        else:
+                            if st.button(
+                                "🎉 Zaliczone! Przyznaj XP za tę lekturę",
+                                key=f"lektura_quiz_xp_{book_id}",
+                            ):
+                                # Zaznaczamy lekturę jako zaliczoną
+                                read_list = list(read_list)
+                                if book_id not in read_list:
+                                    read_list.append(book_id)
+                                profile["lektury_read"] = read_list
+                                _user_db_set(user, profile)
+
+                                # XP dopiero po quzie
+                                st.session_state.xp += 4
+                                save_progress()
+
+                                st.success("Brawo! +4 XP za pracę z tą lekturą. 📚🚀")
+                                st.experimental_rerun()
+
+
+
     # --- Moja karta rowerowa ---
     with tab_rower:
         st.markdown("### 🚴 Moja karta rowerowa")
@@ -1237,8 +1435,47 @@ elif page == "Pomoce szkolne":
         if not teoria and not znaki and not quiz:
             st.info("Dodaj pliki data/rower/rower_teoria.json, rower_znaki.json i rower_quiz.json, aby korzystać z modułu karty rowerowej.")
         else:
+            # --- Pasek postępu przygotowań ---
+            user = st.session_state.get("user")
+
+            sections = teoria.get("sections", []) if isinstance(teoria, dict) else []
+            total_topics = sum(len(sec.get("topics", [])) for sec in sections)
+            total_questions = len(quiz.get("questions", [])) if isinstance(quiz, dict) else 0
+
+            viewed_topics = 0
+            quiz_correct_sum = 0
+            hard_count = 0
+
+            if user:
+                profile = _user_db_get(user) or {}
+                rower_data = profile.get("rower", {})
+                viewed_topics = len(rower_data.get("theory_viewed", []))
+                quiz_correct_sum = int(rower_data.get("quiz_correct", 0))
+                hard_map = rower_data.get("hard_questions", {})
+                hard_count = sum(1 for _qid, cnt in hard_map.items() if cnt >= 2)
+
+            theory_progress = (viewed_topics / total_topics) if total_topics else 0.0
+            # zakładamy, że docelowo dobrze odpowiesz przynajmniej raz na każde pytanie
+            quiz_progress = min(1.0, quiz_correct_sum / total_questions) if total_questions else 0.0
+
+            overall = 0.5 * theory_progress + 0.5 * quiz_progress
+
+            st.progress(
+                overall,
+                text=f"Postęp przygotowań: {int(overall*100)}% (teoria + quiz)"
+            )
+
+            st.caption(
+                f"Teoria: {viewed_topics}/{total_topics} tematów • "
+                f"Quiz: {quiz_correct_sum} trafionych odpowiedzi "
+                f"(docelowo {total_questions})."
+            )
+            if hard_count:
+                st.caption(f"Masz {hard_count} pytania(a), które sprawiają Ci kłopot – zobacz sekcję „Moje najtrudniejsze pytania” w quizie.")
+
             sub_teoria, sub_znaki, sub_quiz = st.tabs(["Teoria", "Znaki", "Quiz"])
 
+            # ---------- TEORIA ----------
             with sub_teoria:
                 sections = teoria.get("sections", [])
                 if not sections:
@@ -1273,6 +1510,19 @@ elif page == "Pomoce szkolne":
                         t_idx = topic_ids.index(topic_choice)
                         topic = topics[t_idx]
 
+                        # --- oznaczenie obejrzanego tematu ---
+                        user = st.session_state.get("user")
+                        if user:
+                            profile = _user_db_get(user) or {}
+                            rower_data = profile.setdefault("rower", {})
+                            viewed = set(rower_data.get("theory_viewed", []))
+                            topic_key = f"{sec_choice}:{topic_choice}"
+                            if topic_key not in viewed:
+                                viewed.add(topic_key)
+                                rower_data["theory_viewed"] = list(viewed)
+                                profile["rower"] = rower_data
+                                _user_db_set(user, profile)
+
                         st.markdown(f"#### {topic.get('title','Temat')}")
                         st.write(topic.get("text", ""))
 
@@ -1286,6 +1536,7 @@ elif page == "Pomoce szkolne":
                         if tip:
                             st.info(tip)
 
+            # ---------- ZNAKI ----------
             with sub_znaki:
                 categories = znaki.get("categories", [])
                 if not categories:
@@ -1308,10 +1559,7 @@ elif page == "Pomoce szkolne":
                         header = f"{sign.get('code','?')} — {sign.get('name','(bez nazwy)')}"
                         with st.expander(header):
                             code = sign.get("code", "").replace("/", "_")
-
-                            # ŚCIEŻKA DO OBRAZKA – TU JEST MAGIA :)
                             img_file = os.path.join("rower_signs", f"{code}.png")
-
 
                             if os.path.exists(img_file):
                                 st.image(img_file, width=140)
@@ -1321,19 +1569,16 @@ elif page == "Pomoce szkolne":
                             st.markdown(f"**Opis:** {sign.get('description','')}")
                             st.markdown(f"**Przykład:** {sign.get('example','')}")
 
+            # ---------- QUIZ ----------
             with sub_quiz:
                 items = quiz.get("questions", [])
                 if not items:
                     st.info("Brak pytań w pliku quizu.")
                 else:
-                    # --- Wspólna dzienna pula pytań dla Nauki i Egzaminu ---
-                    day_idx = days_since_epoch()
-                    k_daily = min(10, len(items))  # ile pytań dziennie
-                    daily_items = pick_daily_chunk(items, k_daily, day_idx, "rower_quiz")
+                    total_items = len(items)
 
-                    if not daily_items:
-                        st.info("Brak pytań w dzisiejszej puli.")
-                        st.stop()
+                    # ile pytań na zestaw (dla Nauki i Egzaminu)
+                    k_batch = min(10, total_items)
 
                     mode = st.radio(
                         "Tryb pracy:",
@@ -1342,13 +1587,25 @@ elif page == "Pomoce szkolne":
                         key="rower_quiz_mode",
                     )
 
+
                     # === TRYB NAUKA ===
                     if mode == "Nauka":
+                        # numer „zestawu nauki” w tej sesji – żeby dało się wylosować nowe
+                        learn_batch = st.session_state.get("rower_learn_batch", 0)
+
+                        # losujemy k_batch pytań bez powtórzeń w ramach zestawu
+                        if total_items <= k_batch:
+                            learn_items = items
+                        else:
+                            rnd = random.Random(f"rower_learn_{learn_batch}_{total_items}")
+                            learn_items = rnd.sample(items, k_batch)
+
                         st.caption(
-                            f"Dzisiaj uczysz się na podstawie {len(daily_items)} pytań "
-                            f"(z {len(items)} w całej bazie)."
+                            f"Zestaw nauki #{learn_batch + 1}: {len(learn_items)} pytań "
+                            f"(z {total_items} w całej bazie)."
                         )
-                        for i, q in enumerate(daily_items, start=1):
+
+                        for i, q in enumerate(learn_items, start=1):
                             st.markdown(f"**{i}. {q.get('question','')}**")
                             options = q.get("options", [])
                             if not options:
@@ -1357,14 +1614,15 @@ elif page == "Pomoce szkolne":
                             choice = st.radio(
                                 "Wybierz odpowiedź:",
                                 options,
-                                key=f"rower_q_{i}",
+                                key=f"rower_q_{learn_batch}_{i}",
                                 label_visibility="collapsed",
                                 index=None,
                             )
-                            if st.button("Sprawdź", key=f"rower_q_check_{i}"):
+                            if st.button("Sprawdź", key=f"rower_q_check_{learn_batch}_{i}"):
                                 if choice is None:
                                     st.warning("Najpierw wybierz odpowiedź.")
                                 else:
+                                    user = st.session_state.get("user")
                                     if options.index(choice) == correct_idx:
                                         st.success("✅ Dobrze!")
                                     else:
@@ -1372,17 +1630,29 @@ elif page == "Pomoce szkolne":
                                             f"❌ Nie, prawidłowa odpowiedź to: "
                                             f"**{options[correct_idx]}**."
                                         )
+                                        # zapamiętujemy trudne pytanie
+                                        if user:
+                                            qid = q.get("id")
+                                            if qid:
+                                                profile = _user_db_get(user) or {}
+                                                rower_data = profile.setdefault("rower", {})
+                                                hard = rower_data.get("hard_questions", {})
+                                                hard[qid] = int(hard.get(qid, 0)) + 1
+                                                rower_data["hard_questions"] = hard
+                                                profile["rower"] = rower_data
+                                                _user_db_set(user, profile)
                                     expl = q.get("explanation")
                                     if expl:
                                         st.info(expl)
 
+                        # przycisk: nowy zestaw nauki
+                        if st.button("🔁 Wylosuj nowy zestaw pytań do nauki"):
+                            st.session_state["rower_learn_batch"] = learn_batch + 1
+                            st.experimental_rerun()
+
+
                     # === TRYB EGZAMIN PRÓBNY ===
                     else:
-                        st.caption(
-                            f"Egzamin próbny: dzisiejszy zestaw to {len(daily_items)} pytań "
-                            f"(z {len(items)} w całej bazie)."
-                        )
-
                         today_key = get_today_key()
 
                         # Jeśli weszliśmy w nowy dzień – resetujemy egzamin.
@@ -1390,11 +1660,29 @@ elif page == "Pomoce szkolne":
                             st.session_state["rower_exam_initialized"] = False
 
                         if not st.session_state.get("rower_exam_initialized", False):
+                            # NOWY egzamin = NOWY losowy zestaw pytań
                             st.session_state["rower_exam_initialized"] = True
-                            st.session_state["rower_exam_items"] = daily_items
+                            st.session_state["rower_exam_date"] = today_key
                             st.session_state["rower_exam_current"] = 0
                             st.session_state["rower_exam_correct"] = 0
-                            st.session_state["rower_exam_date"] = today_key
+                            st.session_state["rower_exam_recorded"] = False
+
+                            if total_items <= k_batch:
+                                exam_items = items
+                            else:
+                                # losowo bez powtórzeń
+                                rnd = random.Random()  # systemowy seed
+                                exam_items = rnd.sample(items, k_batch)
+
+                            st.session_state["rower_exam_items"] = exam_items
+
+                        exam_items = st.session_state["rower_exam_items"]
+                        cur = st.session_state["rower_exam_current"]
+
+                        st.caption(
+                            f"Egzamin próbny: bieżący zestaw to {len(exam_items)} pytań "
+                            f"(z {total_items} w całej bazie)."
+                        )
 
                         exam_items = st.session_state["rower_exam_items"]
                         cur = st.session_state["rower_exam_current"]
@@ -1403,14 +1691,53 @@ elif page == "Pomoce szkolne":
                         if cur >= len(exam_items):
                             total = len(exam_items)
                             correct = st.session_state["rower_exam_correct"]
+                            percent = int(round(correct * 100 / total)) if total else 0
+
                             st.success(
-                                f"Twój wynik: {correct} / {total} poprawnych odpowiedzi."
+                                f"Twój wynik: {correct} / {total} poprawnych odpowiedzi ({percent}%)."
                             )
+
+                            user = st.session_state.get("user")
+                            if user and total > 0 and not st.session_state.get("rower_exam_recorded", False):
+                                profile = _user_db_get(user) or {}
+                                rower_data = profile.setdefault("rower", {})
+                                rower_data["quiz_total"] = int(rower_data.get("quiz_total", 0)) + total
+                                rower_data["quiz_correct"] = int(rower_data.get("quiz_correct", 0)) + correct
+                                best = int(rower_data.get("exam_best_score", 0))
+                                if percent > best:
+                                    rower_data["exam_best_score"] = percent
+                                profile["rower"] = rower_data
+                                _user_db_set(user, profile)
+                                st.session_state["rower_exam_recorded"] = True
+
+                            passed = percent >= 80 and total >= 5
+
+                            if passed:
+                                st.success("Egzamin próbny zaliczony – świetna robota! 🎉")
+                                if user:
+                                    today_str = today_key
+                                    pdf_bytes = generate_rower_certificate_pdf(
+                                        username=user,
+                                        date_str=today_str,
+                                        correct=correct,
+                                        total=total,
+                                        percent=percent,
+                                    )
+                                    st.download_button(
+                                        "📄 Pobierz certyfikat treningu (PDF)",
+                                        data=pdf_bytes,
+                                        file_name=f"certyfikat_karta_rowerowa_{today_key}.pdf",
+                                        mime="application/pdf",
+                                    )
+                            else:
+                                st.info("Brakuje jeszcze trochę do zaliczenia egzaminu próbnego. Poćwicz i spróbuj ponownie 💪")
+
                             if st.button("Rozpocznij nowy egzamin"):
-                                # Nowy egzamin tego samego dnia -> ta sama dzienna pula pytań
                                 st.session_state["rower_exam_initialized"] = False
+                                st.session_state["rower_exam_recorded"] = False
                                 st.rerun()
                             st.stop()
+
 
                         # Bieżące pytanie
                         q = exam_items[cur]
@@ -1448,6 +1775,37 @@ elif page == "Pomoce szkolne":
                                     st.info(expl)
                                 st.session_state["rower_exam_current"] += 1
                                 st.rerun()
+
+                    # --- Moje najtrudniejsze pytania (na podstawie historii błędów) ---
+                    user = st.session_state.get("user")
+                    if user:
+                        profile = _user_db_get(user) or {}
+                        rower_data = profile.get("rower", {})
+                        hard_map = rower_data.get("hard_questions", {})
+
+                        if hard_map:
+                            full_questions = {q.get("id"): q for q in items}
+                            hardest = sorted(
+                                hard_map.items(),
+                                key=lambda kv: kv[1],
+                                reverse=True,
+                            )
+                            display_list = []
+                            for qid, cnt in hardest:
+                                q_obj = full_questions.get(qid)
+                                if q_obj:
+                                    display_list.append((q_obj.get("question", ""), cnt))
+
+                            if display_list:
+                                with st.expander("😬 Moje najtrudniejsze pytania"):
+                                    for text, cnt in display_list[:5]:
+                                        st.markdown(f"- **{text}** — pomyłka {cnt}×")
+                        else:
+                            st.caption("Na razie brak „trudnych pytań” – dopiero zbieramy dane z quizów 🙂")
+                    else:
+                        st.caption("Zaloguj się, aby śledzić swoje trudne pytania i postęp przygotowań.")
+
+
 
 
 elif page == "Przedmioty szkolne":
@@ -1492,7 +1850,26 @@ elif page == "Przedmioty szkolne":
     today_str = datetime.now().strftime("%Y-%m-%d")
     day_idx = (date.today() - date(2025,1,1)).days
     age_group = st.session_state.get("age_group", "10-12")
-    subjects = ["matematyka","polski","historia","geografia","fizyka","chemia","angielski","niemiecki","biologia"]
+    subject_defs = [
+        ("matematyka", "Matematyka"),
+        ("polski", "Język polski"),
+        ("historia", "Historia"),
+        ("geografia", "Geografia"),
+        ("fizyka", "Fizyka"),
+        ("chemia", "Chemia"),
+        ("angielski", "Angielski"),
+        ("niemiecki", "Niemiecki"),
+        ("biologia", "Biologia"),
+        ("informatyka", "Informatyka"),
+        ("wos", "WOS"),
+        ("muzyka", "Muzyka"),
+        ("religie_swiata", "Religie świata i tradycje"),
+        ("etyka", "Etyka i wartości"),
+        ("wf", "WF - zdrowie i sport"),
+        ("logika", "Logika & problem solving"),
+    ]
+
+    subjects = ["matematyka","polski","historia","geografia","fizyka","chemia","angielski","niemiecki","biologia", "informatyka", "wos", "muzyka", "religie_swiata", "etyka", "wf", "logika",]
 
     def tasks_for(subject: str, group: str):
         subj = TASKS.get(subject, {})
@@ -1544,18 +1921,22 @@ elif page == "Przedmioty szkolne":
                     else:
                         st.error(f"❌ Niepoprawnie. Prawidłowa odpowiedź: **{opts[corr]}**.")
 
-    tab_math, tab_pol, tab_hist, tab_geo, tab_phys, tab_chem, tab_eng, tab_ger, tab_bio = st.tabs(
-    ["Matematyka", "Język polski", "Historia", "Geografia", "Fizyka", "Chemia", "Angielski", "Niemiecki", "Biologia"]
-)
-    with tab_math: show_subject("matematyka", "Matematyka")
-    with tab_pol:  show_subject("polski", "Język polski")
-    with tab_hist: show_subject("historia", "Historia")
-    with tab_geo:  show_subject("geografia", "Geografia")
-    with tab_phys: show_subject("fizyka", "Fizyka")
-    with tab_chem: show_subject("chemia", "Chemia")
-    with tab_eng:  show_subject("angielski", "Angielski")
-    with tab_ger:  show_subject("niemiecki", "Niemiecki")
-    with tab_bio:  show_subject("biologia", "Biologia")
+ # Zamiast zakładek: jedno rozwijane menu
+    subject_labels = [label for _, label in subject_defs]
+
+    selected_label = st.selectbox(
+        "Wybierz przedmiot",
+        subject_labels,
+        key="school_subject_select",
+    )
+
+    # znajdź klucz po etykiecie
+    selected_key = next(
+        key for key, label in subject_defs if label == selected_label
+    )
+
+    show_subject(selected_key, selected_label)
+
 
 elif page == "Słowniczek":
     st.markdown("# 📖 Słowniczek pojęć")
@@ -1586,17 +1967,28 @@ elif page == "Słowniczek":
                     if cat == "ANGIELSKI":
                         tts_button_en(k, key=f"s_{i}")
     else:
-        # Przeglądanie kategorii
-        tabs = st.tabs(list(CATEGORIZED_GLOSSARY.keys()))
-        for (cat, entries), tab in zip(CATEGORIZED_GLOSSARY.items(), tabs):
-            with tab:
-                for i, (k, v) in enumerate(sorted(entries.items()), start=1):
-                    cols = st.columns([3,1])
-                    with cols[0]:
-                        st.write(f"**{k}** — {v}")
-                    with cols[1]:
-                        if cat == "ANGIELSKI":
-                            tts_button_en(k, key=f"{cat}_{i}")
+        # Przeglądanie kategorii – jedna wybrana z listy rozwijanej
+        categories = list(CATEGORIZED_GLOSSARY.keys())
+        if not categories:
+            st.info("Słowniczek jest jeszcze pusty. Dodaj pliki w folderze data/glossary.")
+            st.stop()
+
+        selected_cat = st.selectbox(
+            "Wybierz przedmiot:",
+            categories,
+            index=0,
+        )
+
+        entries = CATEGORIZED_GLOSSARY.get(selected_cat, {})
+
+        for i, (k, v) in enumerate(sorted(entries.items()), start=1):
+            cols = st.columns([3, 1])
+            with cols[0]:
+                st.write(f"**{k}** — {v}")
+            with cols[1]:
+                if selected_cat == "ANGIELSKI":
+                    tts_button_en(k, key=f"{selected_cat}_{i}")
+
 
 elif page == "Hall of Fame":
     st.markdown("# 🏆 Hall of Fame")
@@ -1749,8 +2141,10 @@ elif page == "Regulamin":
 
     # --- Regulamin aplikacji / prywatności ---
     st.markdown("""
-1. **Lokalnie, nie w chmurze.** Aplikacja działa na Twoim urządzeniu.  
-   Nie wysyłamy danych na serwery i nie zbieramy analityki.
+1. **Przechowywanie danych.**
+   Aplikacja korzysta z bazy danych działającej na serwerze twórcy aplikacji. 
+   Dane użytkowników są przechowywane wyłącznie na tym serwerze i nie są przekazywane osobom trzecim ani wykorzystywane do celów komercyjnych. Nie stosujemy zewnętrznej analityki ani śledzenia.
+   Dane są wykorzystywane wyłącznie do działania aplikacji (logowanie, profile, posty, statystyki wewnętrzne).
 
 2. **Brak danych osobowych.** Nie prosimy o imię i nazwisko ani e-mail.  
    Login w aplikacji może być **pseudonimem**.
@@ -1842,7 +2236,67 @@ elif page == "Regulamin":
 3. W sprawach nieuregulowanych regulaminem zastosowanie mają przepisy prawa polskiego.
     """)
 
+elif page == "Kontakt":
+    st.markdown(
+        "<div class='big-title'>📮 Kontakt</div>",
+        unsafe_allow_html=True,
+    )
 
+    st.write(
+        """
+        Ta zakładka jest przeznaczona dla **rodziców, nauczycieli i opiekunów**, którzy chcą
+        skontaktować się w sprawie aplikacji *Data4Kids*.
+
+        Możesz napisać w sprawach:
+        - pytań dotyczących działania aplikacji,
+        - pomysłów na nowe funkcje,
+        - zgłoszeń błędów,
+        - współpracy ze szkołą lub zajęciami edukacyjnymi.
+        """
+    )
+
+    contact_email = "data4kids@proton.me"
+
+    st.subheader("📧 Adres e-mail")
+    st.markdown(
+        f"**{contact_email}**  \n"
+        f"Kliknij tutaj, aby napisać: [mailto:{contact_email}](mailto:{contact_email})"
+    )
+
+    st.write("---")
+    st.subheader("💬 Formularz kontaktowy")
+
+    st.info("Wypełnij poniższy formularz — to najszybszy sposób kontaktu z zespołem Data4Kids.")
+
+    with st.form("contact_form"):
+        name = st.text_input("Imię i nazwisko / szkoła (opcjonalnie)")
+        reply_to = st.text_input("E-mail do odpowiedzi")
+        topic = st.text_input("Temat wiadomości")
+        message = st.text_area("Treść wiadomości")
+
+        sent = st.form_submit_button("Wyślij wiadomość")
+
+    if sent:
+        if not reply_to or not message:
+            st.warning("Aby wysłać wiadomość, podaj e-mail do kontaktu i treść wiadomości.")
+        else:
+            first_name = name.split()[0] if name else ""
+            st.success(
+                f"✅ Dziękujemy za wiadomość{', ' + first_name if first_name else ''}! ✨"
+            )
+            st.markdown(
+                f"""
+                Twoja wiadomość trafiła do zespołu **Data4Kids**.  
+                Odpowiemy na adres: **{reply_to}**.  
+
+                Jeśli chcesz, możesz też napisać bezpośrednio z poczty na:
+                **{contact_email}**.
+                """
+            )
+            st.caption(
+                "Uwaga: w tej wersji aplikacji wiadomość nie jest jeszcze wysyłana "
+                "automatycznie mailem — to formularz kontaktu z twórcą aplikacji."
+            )
 
 # ADMINISTRATOR (TOTP / Authenticator)
 # -----------------------------
