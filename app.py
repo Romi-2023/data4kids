@@ -1042,7 +1042,7 @@ if page == "Start":
             st.session_state.auth_mode = "Zaloguj"
             st.rerun()
 
-    # --- dalej tylko dla zalogowanego dziecka ---
+    # --- dalej: tylko dla zalogowanego dziecka ---
     if not st.session_state.get("user"):
         st.info("Zaloguj się, aby kontynuować.")
         st.stop()
@@ -1087,6 +1087,7 @@ if page == "Start":
             + "".join([f"<span class='badge'>🏅 {b}</span>" for b in st.session_state.badges]),
             unsafe_allow_html=True,
         )
+
 
 
 # -----------------------------
