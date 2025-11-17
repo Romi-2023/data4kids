@@ -983,6 +983,7 @@ if page == "Start":
                         st.session_state.stickers = set(db[li_user].get("stickers", []))
                         st.session_state.badges = set(db[li_user].get("badges", []))
                         st.success(f"Zalogowano jako **{li_user}** 🎉")
+                        st.rerun()
                     else:
                         st.error("Błędne hasło.")
                 else:
