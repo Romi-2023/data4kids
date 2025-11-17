@@ -517,21 +517,28 @@ def award(ok: bool, xp_gain: int, badge: Optional[str] = None, mid: str = ""):
         st.session_state.missions_state[mid] = {"done": False}
     save_progress()
 
-def get_leaderboard(limit: int = 10) -> List[Dict]:
-    """Prosty ranking po XP – baza pod konkursy."""
+def get_leaderboard(limit: int = 10, age_group: Optional[str] = None) -> List[Dict]:
+    """Prosty ranking po XP – z opcjonalnym filtrem po grupie wiekowej."""
     db = _load_users()
     rows = []
     for name, profile in db.items():
         if name.startswith("_"):
             continue  # pomijamy rekordy techniczne
+
+        group = profile.get("age_group")  # może być None dla starych profili
+        if age_group and group != age_group:
+            continue
+
         rows.append({
             "user": name,
             "xp": int(profile.get("xp", 0)),
             "badges": len(profile.get("badges", [])),
             "stickers": len(profile.get("stickers", [])),
+            "age_group": group or "?"
         })
     rows.sort(key=lambda r: r["xp"], reverse=True)
     return rows[:limit]
+
 
 
 def grant_sticker(code: str):
@@ -904,6 +911,7 @@ with st.sidebar:
             "Quiz obrazkowy",
             "Album naklejek",
             "Słowniczek",
+            "Moje osiągnięcia",
             "Hall of Fame",
             "Wsparcie & konkursy",
             "Regulamin",
@@ -946,48 +954,100 @@ if page not in PUBLIC_PAGES and not st.session_state.get("user"):
 if page == "Start":
     st.markdown("### 🔐 Logowanie")
 
-    auth_tab_login, auth_tab_reg = st.tabs(["Zaloguj", "Zarejestruj"])
     db = _load_users()
 
-    with auth_tab_login:
-        li_user = st.text_input("Login", key="li_user")
-        li_pass = st.text_input("Hasło", type="password", key="li_pass")
-        if st.button("Zaloguj"):
-            if li_user in db:
-                salt = db[li_user]["salt"]
-                if hash_pw(li_pass, salt) == db[li_user]["password_hash"]:
-                    st.session_state.user = li_user
-                    st.session_state.xp = int(db[li_user].get("xp", 0))
-                    st.session_state.stickers = set(db[li_user].get("stickers", []))
-                    st.session_state.badges = set(db[li_user].get("badges", []))
-                    st.success(f"Zalogowano jako **{li_user}** 🎉")
+    # --- jeśli NIKT nie jest zalogowany -> pokaż logowanie/rejestrację ---
+    if not st.session_state.get("user"):
+        # sterownik widoku: zamiast st.tabs
+        if "auth_mode" not in st.session_state:
+            st.session_state.auth_mode = "Zaloguj"
+
+        auth_mode = st.radio(
+            " ",
+            ["Zaloguj", "Zarejestruj"],
+            horizontal=True,
+            key="auth_mode",
+            label_visibility="collapsed",
+        )
+
+        # ---------- LOGOWANIE ----------
+        if auth_mode == "Zaloguj":
+            li_user = st.text_input("Login", key="li_user")
+            li_pass = st.text_input("Hasło", type="password", key="li_pass")
+            if st.button("Zaloguj", key="login_btn"):
+                if li_user in db:
+                    salt = db[li_user]["salt"]
+                    if hash_pw(li_pass, salt) == db[li_user]["password_hash"]:
+                        st.session_state.user = li_user
+                        st.session_state.xp = int(db[li_user].get("xp", 0))
+                        st.session_state.stickers = set(db[li_user].get("stickers", []))
+                        st.session_state.badges = set(db[li_user].get("badges", []))
+                        st.success(f"Zalogowano jako **{li_user}** 🎉")
+                    else:
+                        st.error("Błędne hasło.")
                 else:
-                    st.error("Błędne hasło.")
-            else:
-                st.error("Taki login nie istnieje.")
+                    st.error("Taki login nie istnieje.")
 
-    with auth_tab_reg:
-        re_user = st.text_input("Nowy login", key="re_user")
-        re_pass = st.text_input("Hasło", type="password", key="re_pass")
-        re_pass2 = st.text_input("Powtórz hasło", type="password", key="re_pass2")
-        if st.button("Zarejestruj"):
-            if not re_user or not re_pass:
-                st.error("Podaj login i hasło.")
-            elif re_user in db:
-                st.error("Taki login już istnieje.")
-            elif re_pass != re_pass2:
-                st.error("Hasła się różnią.")
-            else:
-                salt = secrets.token_hex(8)
-                db[re_user] = {"salt": salt, "password_hash": hash_pw(re_pass, salt), "xp": 0, "stickers": [], "badges": []}
-                _save_users(db)
-                st.success("Utworzono konto! Teraz zaloguj się zakładką 'Zaloguj'.")
+        # ---------- REJESTRACJA ----------
+        else:
+            accepted_ver = st.session_state.get("accepted_terms_version")
+            has_accepted = (accepted_ver == VERSION)
 
-    if not st.session_state.user:
+            if not has_accepted:
+                st.warning(
+                    "Zanim założysz konto, wejdź do zakładki **Regulamin**, "
+                    "przeczytaj treść i na dole kliknij przycisk akceptacji."
+                )
+
+            re_user = st.text_input("Nowy login", key="reg_user")
+            re_pass = st.text_input("Hasło", type="password", key="reg_pass")
+            re_pass2 = st.text_input("Powtórz hasło", type="password", key="reg_pass2")
+
+            if st.button("Zarejestruj", key="reg_submit"):
+                if not has_accepted:
+                    st.error(
+                        "Aby założyć konto, najpierw przeczytaj regulamin i zaakceptuj go "
+                        "w zakładce **Regulamin**."
+                    )
+                elif not re_user or not re_pass:
+                    st.error("Podaj login i hasło.")
+                elif re_user in db:
+                    st.error("Taki login już istnieje.")
+                elif re_pass != re_pass2:
+                    st.error("Hasła się różnią.")
+                else:
+                    salt = secrets.token_hex(8)
+                    db[re_user] = {
+                        "salt": salt,
+                        "password_hash": hash_pw(re_pass, salt),
+                        "xp": 0,
+                        "stickers": [],
+                        "badges": [],
+                        "accepted_terms_version": VERSION,
+                    }
+                    _save_users(db)
+
+                    st.session_state.auth_mode = "Zaloguj"
+                    st.success("Utworzono konto! Teraz zaloguj się poniżej.")
+                    st.rerun()
+
+    # --- jeśli KTOŚ jest zalogowany -> mały status zamiast formularza ---
+    else:
+        st.success(f"Zalogowano jako **{st.session_state.user}** ✅")
+        if st.button("Wyloguj", key="logout_btn"):
+            st.session_state.user = None
+            st.session_state.xp = 0
+            st.session_state.badges = set()
+            st.session_state.stickers = set()
+            st.session_state.auth_mode = "Zaloguj"
+            st.rerun()
+
+    # --- dalej tylko dla zalogowanego dziecka ---
+    if not st.session_state.get("user"):
         st.info("Zaloguj się, aby kontynuować.")
         st.stop()
 
-    # rest of Start
+    # reszta ekranu Start (to co już masz: imię, wiek, dataset, Start misji)
     st.markdown(f"<div class='big-title'>🧒 {KID_EMOJI} Witaj w {APP_NAME}!</div>", unsafe_allow_html=True)
     colA, colB = st.columns([1, 1])
     with colA:
@@ -1027,6 +1087,7 @@ if page == "Start":
             + "".join([f"<span class='badge'>🏅 {b}</span>" for b in st.session_state.badges]),
             unsafe_allow_html=True,
         )
+
 
 # -----------------------------
 # Pozostałe podstrony (skrócone do kluczowych)
@@ -1069,6 +1130,7 @@ elif page == "Plac zabaw":
     cols = st.multiselect("Kolumny do podglądu", df_view.columns.tolist(), default=df_view.columns[:4].tolist())
     st.caption(f"Zestaw dzienny: {date.today().isoformat()} • rekordów: {len(df_view)}")
     st.dataframe(df_view[cols].head(30), width='stretch')
+
 elif page == "Misje":
     st.markdown(f"<div class='big-title'>🗺️ {KID_EMOJI} Misje</div>", unsafe_allow_html=True)
     missions_path = os.path.join(DATA_DIR, "missions.json")
@@ -1077,11 +1139,15 @@ elif page == "Misje":
         st.info("Brak misji. Dodaj je do data/missions.json")
     else:
         for m in missions:
-            with st.expander(f"🎯 {m.get('title','Misja')} (+{m.get('reward_xp',10)} XP)"):
-                st.write(m.get("desc",""))
+            # 1) Bez XP w tytule
+            with st.expander(f"🎯 {m.get('title','Misja')}"):
+                st.write(m.get("desc", ""))
                 st.caption("Kroki: " + ", ".join(m.get("steps", [])))
-                if st.button("Oznacz jako ukończoną ✅", key=f"mis_{m.get('id','x')}"):
-                    st.success("Zaliczone! +XP przyznane (symbolicznie).")
+                # 2) Samo „odhaczenie”, bez XP
+                if st.button("Zaznacz jako zrobioną 📝", key=f"mis_{m.get('id','x')}"):
+                    st.success("Super! Zaznaczone jako zrobione (bez przyznawania XP).")
+
+
 
 elif page == "Quiz danych":
     st.markdown(f"<div class='big-title'>📊 {KID_EMOJI} Quiz danych</div>", unsafe_allow_html=True)
@@ -1251,8 +1317,6 @@ elif page == "Album naklejek":
         for s in stickers:
             meta = STICKERS.get(s, {"emoji":"🏷️","label":s})
             st.markdown(f"- {meta['emoji']} **{meta.get('label', s)}**")
-
-
 
 elif page == "Pomoce szkolne":
     st.markdown(f"<div class='big-title'>🧭 {KID_EMOJI} Pomoce szkolne</div>", unsafe_allow_html=True)
@@ -1805,9 +1869,6 @@ elif page == "Pomoce szkolne":
                     else:
                         st.caption("Zaloguj się, aby śledzić swoje trudne pytania i postęp przygotowań.")
 
-
-
-
 elif page == "Przedmioty szkolne":
     st.markdown(f"<div class='big-title'>📚 {KID_EMOJI} Przedmioty szkolne</div>", unsafe_allow_html=True)
     st.caption("Codziennie 10 pytań MCQ na przedmiot i grupę wiekową.")
@@ -1989,6 +2050,55 @@ elif page == "Słowniczek":
                 if selected_cat == "ANGIELSKI":
                     tts_button_en(k, key=f"{selected_cat}_{i}")
 
+elif page == "Moje osiągnięcia":
+    st.markdown("# ⭐ Moje osiągnięcia")
+    st.caption("Tutaj zobaczysz swój poziom, XP, odznaki i naklejki.")
+
+    # Główne liczby – podobnie jak w Panelu rodzica
+    col1, col2, col3, col4 = st.columns(4)
+    col1.metric("Poziom", current_level(st.session_state.xp))
+    col2.metric("XP", st.session_state.xp)
+    col3.metric("Odznaki", len(st.session_state.badges))
+    col4.metric("Naklejki", len(st.session_state.stickers))
+
+    st.divider()
+
+    # Imię + grupa wiekowa
+    st.subheader("🧒 Twój profil")
+    st.write(f"Imię/nick: **{st.session_state.kid_name or '(bez imienia)'}**")
+    st.write(f"Wiek: **{st.session_state.age}** lat")
+    st.write(f"Grupa wiekowa: **{st.session_state.age_group}**")
+
+    st.divider()
+
+    # Odznaki
+    st.subheader("🏅 Odznaki")
+    if st.session_state.badges:
+        for b in sorted(list(st.session_state.badges)):
+            st.markdown(f"- {b}")
+    else:
+        st.caption("Nie masz jeszcze odznak. Sprawdź zakładkę **Misje** i **Quizy**, żeby je zdobyć!")
+
+    st.divider()
+
+    # Naklejki
+    st.subheader("📘 Naklejki")
+    if st.session_state.stickers:
+        st.write(", ".join(sorted(list(st.session_state.stickers))))
+        st.caption("Więcej naklejek zdobywasz za misje, quizy i inne zadania.")
+    else:
+        st.caption("Album jest jeszcze pusty. Zajrzyj do zakładki **Album naklejek** i zacznij kolekcję!")
+
+    st.divider()
+
+    st.subheader("📊 Postępy w Data4Kids")
+    st.markdown(
+        """
+        - Robiąc misje i quizy zdobywasz **XP** i **odznaki**.  
+        - Im więcej zadań, tym wyższy **poziom**.  
+        - W zakładce **Hall of Fame** możesz zapisać swój profil do wspólnego pliku mistrzów.
+        """
+    )
 
 elif page == "Hall of Fame":
     st.markdown("# 🏆 Hall of Fame")
@@ -2106,6 +2216,38 @@ elif page == "Wsparcie & konkursy":
                     _save_donors(donors)
                     st.success("Zgłoszenie zapisane. Dziękujemy za wsparcie! 💚")
 
+    with col_right:
+        st.markdown("### 📈 Statystyki i ranking")
+
+        donors = _load_donors()
+        st.metric("Liczba zgłoszeń konkursowych", len(donors))
+
+        st.markdown("#### Mini-ranking XP (przykład konkursu)")
+
+        group_filter = st.selectbox(
+            "Grupa wiekowa dla rankingu:",
+            ["Wszystkie", "7-9", "10-12", "13-14"],
+            index=0,
+        )
+        selected_group = None if group_filter == "Wszystkie" else group_filter
+
+        lb = get_leaderboard(limit=10, age_group=selected_group)
+        if not lb:
+            st.caption("Brak danych o graczach dla tej konfiguracji.")
+        else:
+            df_lb = pd.DataFrame(lb)
+            df_lb.rename(
+                columns={
+                    "user": "Użytkownik",
+                    "xp": "XP",
+                    "badges": "Odznaki",
+                    "stickers": "Naklejki",
+                    "age_group": "Grupa wiekowa",
+                },
+                inplace=True,
+            )
+            st.dataframe(df_lb, hide_index=True, use_container_width=True)
+
     # --- PRAWA KOLUMNA: statystyki i ranking ---
     with col_right:
         st.markdown("### 📈 Statystyki i ranking")
@@ -2176,6 +2318,21 @@ elif page == "Regulamin":
     """)
 
     st.divider()
+    st.subheader("Akceptacja regulaminu")
+
+    accepted_ver = st.session_state.get("accepted_terms_version")
+
+    if accepted_ver == VERSION:
+        st.success("Dla tej wersji aplikacji regulamin został już zaakceptowany na tym urządzeniu.")
+    else:
+        st.info(
+            "Przeczytaj regulamin powyżej. Jeśli się zgadzasz, kliknij przycisk poniżej, "
+            "aby móc założyć konto w zakładce **Start**."
+        )
+        if st.button("Przeczytałem/przeczytałam regulamin i akceptuję go"):
+            st.session_state["accepted_terms_version"] = VERSION
+            st.success("Dziękujemy! Możesz teraz założyć konto w zakładce Start.")
+
 
     # --- Regulamin konkursu ---
     st.markdown(
@@ -2628,7 +2785,12 @@ elif page == "Panel rodzica":
     # Auto-unlock on Enter
     if not st.session_state.get("parent_unlocked", False):
         st.markdown("Wpisz PIN, by odblokować ustawienia:")
-        st.text_input("PIN (domyślnie 1234)", type="password", key="parent_pin_input", on_change=_try_unlock_parent)
+        st.text_input(
+            "PIN rodzica",
+            type="password",
+            key="parent_pin_input",
+            on_change=_try_unlock_parent,
+        )
         st.info("Wpisz PIN i naciśnij Enter.")
         st.stop()
 

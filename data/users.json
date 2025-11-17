@@ -23,6 +23,11 @@
         "matematyka": [
           "ee60234f3fab"
         ]
+      },
+      "2025-11-17": {
+        "matematyka": [
+          "df983487025e"
+        ]
       }
     },
     "rower": {
@@ -43,5 +48,20 @@
   },
   "_admin_totp": {
     "secret": "ZVNJEYA2WRBMBKBT4AWET4PUGPMYAILT"
+  },
+  "Tadek": {
+    "salt": "87bd8615539bf747",
+    "password_hash": "d85df6a3df255f022768f8df9b8bf62d1e26119a5adfbf066266d6845ed8821e",
+    "xp": 0,
+    "stickers": [],
+    "badges": []
+  },
+  "Krzysiu": {
+    "salt": "4215dc727739f588",
+    "password_hash": "4eb5184caa419f0ef02434d33cb2cac2d1a55b8a1a89c0a7a5eaa1763cd5189e",
+    "xp": 0,
+    "stickers": [],
+    "badges": [],
+    "accepted_terms_version": "0.9.0"
   }
 }
