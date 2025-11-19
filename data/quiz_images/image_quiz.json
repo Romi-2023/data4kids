@@ -329,12 +329,12 @@
       "image": "emo_sad.png",
       "q": "Jaką emocję przedstawia ta buźka?",
       "options": [
-        "radość",
-        "złość",
         "smutek",
+        "złość",
+        "radość",
         "strach"
       ],
-      "correct": 2
+      "correct": 0
     },
     {
       "category": "emotions",
