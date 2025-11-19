@@ -314,7 +314,7 @@
     },
     {
       "category": "emotions",
-      "image": "emo_happy.png",
+      "image": "emo_sad.png",
       "q": "Jaką emocję przedstawia ta buźka?",
       "options": [
         "radość",
@@ -322,11 +322,11 @@
         "złość",
         "smutek"
       ],
-      "correct": 0
+      "correct": 2
     },
     {
       "category": "emotions",
-      "image": "emo_sad.png",
+      "image": "emo_happy.png",
       "q": "Jaką emocję przedstawia ta buźka?",
       "options": [
         "smutek",
