@@ -956,9 +956,17 @@ if page == "Start":
 
     db = _load_users()
 
-    # --- jeśli NIKT nie jest zalogowany -> pokaż logowanie/rejestrację ---
+    # Jeśli użytkownik właśnie się zarejestrował, przełącz widok na "Zaloguj"
+    # (robimy to ZANIM narysujemy st.radio)
+    if st.session_state.get("just_registered"):
+        st.session_state.auth_mode = "Zaloguj"
+        st.session_state.reg_step = 1
+        st.session_state.just_registered = False
+        st.session_state.show_reg_success = True
+
+    # --- jeśli NIKT nie jest zalogowany -> pokazujemy logowanie/rejestrację ---
     if not st.session_state.get("user"):
-        # sterownik widoku: zamiast st.tabs
+        # sterownik widoku: radio zamiast tabs
         if "auth_mode" not in st.session_state:
             st.session_state.auth_mode = "Zaloguj"
 
@@ -972,6 +980,11 @@ if page == "Start":
 
         # ---------- LOGOWANIE ----------
         if auth_mode == "Zaloguj":
+            # jeżeli właśnie wróciliśmy po rejestracji – pokaż jednorazowy komunikat
+            if st.session_state.get("show_reg_success"):
+                st.success("Utworzono konto! Teraz zaloguj się na swój login i hasło. 🎉")
+                st.session_state.show_reg_success = False
+
             li_user = st.text_input("Login", key="li_user")
             li_pass = st.text_input("Hasło", type="password", key="li_pass")
             if st.button("Zaloguj", key="login_btn"):
@@ -983,54 +996,98 @@ if page == "Start":
                         st.session_state.stickers = set(db[li_user].get("stickers", []))
                         st.session_state.badges = set(db[li_user].get("badges", []))
                         st.success(f"Zalogowano jako **{li_user}** 🎉")
-                        st.rerun()
+                        st.rerun()  # po zalogowaniu chowamy panel logowania
                     else:
                         st.error("Błędne hasło.")
                 else:
                     st.error("Taki login nie istnieje.")
 
-        # ---------- REJESTRACJA ----------
-        else:
-            accepted_ver = st.session_state.get("accepted_terms_version")
-            has_accepted = (accepted_ver == VERSION)
-
-            if not has_accepted:
-                st.warning(
-                    "Zanim założysz konto, wejdź do zakładki **Regulamin**, "
-                    "przeczytaj treść i na dole kliknij przycisk akceptacji."
-                )
+        # ---------- REJESTRACJA: 2 kroki ----------
+        else:  # auth_mode == "Zarejestruj"
+            # krok rejestracji: 1 = formularz, 2 = regulamin + potwierdzenie
+            if "reg_step" not in st.session_state:
+                st.session_state.reg_step = 1
 
             re_user = st.text_input("Nowy login", key="reg_user")
             re_pass = st.text_input("Hasło", type="password", key="reg_pass")
             re_pass2 = st.text_input("Powtórz hasło", type="password", key="reg_pass2")
 
-            if st.button("Zarejestruj", key="reg_submit"):
-                if not has_accepted:
-                    st.error(
-                        "Aby założyć konto, najpierw przeczytaj regulamin i zaakceptuj go "
-                        "w zakładce **Regulamin**."
-                    )
-                elif not re_user or not re_pass:
-                    st.error("Podaj login i hasło.")
-                elif re_user in db:
-                    st.error("Taki login już istnieje.")
-                elif re_pass != re_pass2:
-                    st.error("Hasła się różnią.")
-                else:
-                    salt = secrets.token_hex(8)
-                    db[re_user] = {
-                        "salt": salt,
-                        "password_hash": hash_pw(re_pass, salt),
-                        "xp": 0,
-                        "stickers": [],
-                        "badges": [],
-                        "accepted_terms_version": VERSION,
-                    }
-                    _save_users(db)
+            # --- KROK 1: dane logowania ---
+            if st.session_state.reg_step == 1:
+                st.caption("Krok 1/2: wpisz login i hasło, potem kliknij **Zarejestruj**.")
 
-                    st.session_state.auth_mode = "Zaloguj"
-                    st.success("Utworzono konto! Teraz zaloguj się poniżej.")
-                    st.rerun()
+                if st.button("Zarejestruj", key="reg_step1"):
+                    # weryfikujemy podstawowe dane, ale JESZCZE nie tworzymy konta
+                    if not re_user or not re_pass:
+                        st.error("Podaj login i hasło.")
+                    elif re_user in db:
+                        st.error("Taki login już istnieje.")
+                    elif re_pass != re_pass2:
+                        st.error("Hasła się różnią.")
+                    else:
+                        st.session_state.reg_step = 2
+                        st.success(
+                            "Świetnie! Teraz przeczytaj Regulamin poniżej i potwierdź, "
+                            "że się z nim zgadzasz (krok 2/2)."
+                        )
+                        st.rerun()
+
+            # --- KROK 2: regulamin + zgoda ---
+            elif st.session_state.reg_step == 2:
+                st.info(
+                    "Krok 2/2: Regulamin Data4Kids – przeczytaj i zaznacz zgodę, aby założyć konto."
+                )
+
+                st.markdown(
+                    """
+                    #### 📜 Regulamin (skrót)
+
+                    1. Dane służą tylko do działania aplikacji (logowanie, XP, misje), nie sprzedajemy ich i nie wysyłamy dalej.  
+                    2. Nie wymagamy imienia i nazwiska ani maila – możesz używać pseudonimu.  
+                    3. Hasła są haszowane, ale nadal dbaj o ich bezpieczeństwo i nie udostępniaj ich innym.  
+                    4. Aplikacja ma charakter edukacyjny i może zawierać drobne błędy.  
+                    5. Profil można w każdej chwili usunąć w Panelu rodzica.
+                    """
+                )
+
+                accept = st.checkbox(
+                    "Przeczytałem/przeczytałam i akceptuję regulamin Data4Kids.",
+                    key="reg_accept_terms",
+                )
+
+                col_reg1, col_reg2 = st.columns([1, 1])
+                with col_reg1:
+                    if st.button("⬅️ Wróć do edycji danych", key="reg_back"):
+                        st.session_state.reg_step = 1
+                        st.rerun()
+
+                with col_reg2:
+                    if st.button(
+                        "Akceptuję regulamin i zakładam konto ✅", key="reg_submit"
+                    ):
+                        if not accept:
+                            st.error("Aby założyć konto, musisz zaakceptować regulamin.")
+                        elif not re_user or not re_pass:
+                            st.error("Brakuje loginu lub hasła. Wróć do kroku 1.")
+                        elif re_user in db:
+                            st.error("Taki login już istnieje.")
+                        elif re_pass != re_pass2:
+                            st.error("Hasła się różnią. Wróć do kroku 1.")
+                        else:
+                            salt = secrets.token_hex(8)
+                            db[re_user] = {
+                                "salt": salt,
+                                "password_hash": hash_pw(re_pass, salt),
+                                "xp": 0,
+                                "stickers": [],
+                                "badges": [],
+                                "accepted_terms_version": VERSION,
+                            }
+                            _save_users(db)
+                            # zaznaczamy, że konto powstało i robimy rerun → widok logowania
+                            st.session_state.reg_step = 1
+                            st.session_state.just_registered = True
+                            st.rerun()
 
     # --- jeśli KTOŚ jest zalogowany -> mały status zamiast formularza ---
     else:
@@ -1048,12 +1105,17 @@ if page == "Start":
         st.info("Zaloguj się, aby kontynuować.")
         st.stop()
 
-    # reszta ekranu Start (to co już masz: imię, wiek, dataset, Start misji)
-    st.markdown(f"<div class='big-title'>🧒 {KID_EMOJI} Witaj w {APP_NAME}!</div>", unsafe_allow_html=True)
+    # -------- Reszta ekranu Start --------
+    st.markdown(
+        f"<div class='big-title'>🧒 {KID_EMOJI} Witaj w {APP_NAME}!</div>",
+        unsafe_allow_html=True,
+    )
     colA, colB = st.columns([1, 1])
     with colA:
         st.text_input("Twoje imię (opcjonalnie)", key="kid_name")
-        age_in = st.number_input("Ile masz lat?", min_value=7, max_value=14, step=1, value=10)
+        age_in = st.number_input(
+            "Ile masz lat?", min_value=7, max_value=14, step=1, value=10
+        )
         st.session_state.age = int(age_in)
         st.session_state.age_group = age_to_group(int(age_in))
         group = st.session_state.age_group
@@ -1065,7 +1127,9 @@ if page == "Start":
         if st.button("Załaduj zestaw danych"):
             cols = presets[preset_name]
             n = 100 if group == "7-9" else (140 if group == "10-12" else 180)
-            st.session_state.data = make_dataset(n, cols, seed=random.randint(1, 999999))
+            st.session_state.data = make_dataset(
+                n, cols, seed=random.randint(1, 999999)
+            )
             st.success(f"Załadowano: {preset_name}")
             log_event(f"dataset_loaded_{group}_{preset_name}")
 
@@ -1074,21 +1138,24 @@ if page == "Start":
             st.success("Super! Wejdź do »Misje« i działamy.")
 
     with colB:
-        st.write("""
-        **Co zrobimy?**
-        - Daily Quest ✅
-        - Rysowanie, detektyw 🕵️
-        - Symulacje 🎲, Czyszczenie ✍️, Fabuła 📖
-        - Przedmioty szkolne 📚 (mat, pol, hist, geo, fiz, chem, ang)
-        - Album naklejek 🗂️ i Quizy 🖼️🧠
-        - XP, odznaki i poziomy 🔓, Hall of Fame 🏆
-        """)
+        st.write(
+            """
+            **Co zrobimy?**
+            - Daily Quest ✅
+            - Rysowanie, detektyw 🕵️
+            - Symulacje 🎲, Czyszczenie ✍️, Fabuła 📖
+            - Przedmioty szkolne 📚 (mat, pol, hist, geo, fiz, chem, ang)
+            - Album naklejek 🗂️ i Quizy 🖼️🧠
+            - XP, odznaki i poziomy 🔓, Hall of Fame 🏆
+            """
+        )
         st.markdown(
             f"XP: **{st.session_state.xp}** | Poziom: **L{current_level(st.session_state.xp)}** "
-            + "".join([f"<span class='badge'>🏅 {b}</span>" for b in st.session_state.badges]),
+            + "".join(
+                [f"<span class='badge'>🏅 {b}</span>" for b in st.session_state.badges]
+            ),
             unsafe_allow_html=True,
         )
-
 
 
 # -----------------------------

@@ -63,5 +63,29 @@
     "stickers": [],
     "badges": [],
     "accepted_terms_version": "0.9.0"
+  },
+  "Tczew": {
+    "salt": "8679251c3c13dbd5",
+    "password_hash": "6261d0426ec176222fca8becbc9ab0ea722eeb3cf44f35d2ad78ef5145d65b25",
+    "xp": 0,
+    "stickers": [],
+    "badges": [],
+    "accepted_terms_version": "0.9.0"
+  },
+  "Wrocław": {
+    "salt": "53b1631dcf8d04bd",
+    "password_hash": "80463c3bd38455ebef7cabd22eeacdf5def80d7cc17e831f460cdbfca068deb5",
+    "xp": 0,
+    "stickers": [],
+    "badges": [],
+    "accepted_terms_version": "0.9.0"
+  },
+  "Gdańsk": {
+    "salt": "4bc5ce4edf555b3c",
+    "password_hash": "8042c8365953a940c9eae4a42f8f97c82a81b75fffdde3980fd55db68dd93d15",
+    "xp": 0,
+    "stickers": [],
+    "badges": [],
+    "accepted_terms_version": "0.9.0"
   }
 }
