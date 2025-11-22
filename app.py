@@ -1070,7 +1070,7 @@ if page == "Start":
                     )
 
                     parent_ok = st.checkbox(
-                        "Jesten w wieku 7 - 14 lat LUB rodzic/opiekun pomaga mi założyć konto.",
+                        "Jestem w wieku 7 - 14 lat LUB rodzic/opiekun pomaga mi założyć konto.",
                         key="reg_parent_ok",
                     )
 
