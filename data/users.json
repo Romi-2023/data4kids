@@ -87,5 +87,18 @@
     "stickers": [],
     "badges": [],
     "accepted_terms_version": "0.9.0"
+  },
+  "Zbigniew": {
+    "salt": "4a639d0fee5f0e32",
+    "password_hash": "fe9f61ee4b5b958994e22c7cff11e69debbec11be81d9e123906c9ff4eecf83f",
+    "xp": 0,
+    "stickers": [],
+    "badges": [],
+    "accepted_terms_version": "0.9.0",
+    "rower": {
+      "theory_viewed": [
+        "podstawy:kim_jest_rowerzysta"
+      ]
+    }
   }
 }

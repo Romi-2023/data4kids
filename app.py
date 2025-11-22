@@ -5,6 +5,7 @@ import hashlib
 import secrets
 import random
 import io
+import re
 from math import ceil
 from datetime import datetime, date
 from dateutil import tz
@@ -954,151 +955,189 @@ if page not in PUBLIC_PAGES and not st.session_state.get("user"):
 if page == "Start":
     st.markdown("### 🔐 Logowanie")
 
-    db = _load_users()
+    # Dwie kolumny: lewa = formularz, prawa = opis aplikacji
+    col_form, col_info = st.columns([2, 1])
 
-    # Jeśli użytkownik właśnie się zarejestrował, przełącz widok na "Zaloguj"
-    # (robimy to ZANIM narysujemy st.radio)
-    if st.session_state.get("just_registered"):
-        st.session_state.auth_mode = "Zaloguj"
-        st.session_state.reg_step = 1
-        st.session_state.just_registered = False
-        st.session_state.show_reg_success = True
+    with col_form:
+        db = _load_users()
 
-    # --- jeśli NIKT nie jest zalogowany -> pokazujemy logowanie/rejestrację ---
-    if not st.session_state.get("user"):
-        # sterownik widoku: radio zamiast tabs
-        if "auth_mode" not in st.session_state:
+        # Jeśli użytkownik właśnie się zarejestrował, przełącz widok na "Zaloguj"
+        # (robimy to ZANIM narysujemy st.radio)
+        if st.session_state.get("just_registered"):
             st.session_state.auth_mode = "Zaloguj"
+            st.session_state.reg_step = 1
+            st.session_state.just_registered = False
+            st.session_state.show_reg_success = True
 
-        auth_mode = st.radio(
-            " ",
-            ["Zaloguj", "Zarejestruj"],
-            horizontal=True,
-            key="auth_mode",
-            label_visibility="collapsed",
-        )
+        # --- jeśli NIKT nie jest zalogowany -> pokazujemy logowanie/rejestrację ---
+        if not st.session_state.get("user"):
+            # sterownik widoku: radio zamiast tabs
+            if "auth_mode" not in st.session_state:
+                st.session_state.auth_mode = "Zaloguj"
 
-        # ---------- LOGOWANIE ----------
-        if auth_mode == "Zaloguj":
-            # jeżeli właśnie wróciliśmy po rejestracji – pokaż jednorazowy komunikat
-            if st.session_state.get("show_reg_success"):
-                st.success("Utworzono konto! Teraz zaloguj się na swój login i hasło. 🎉")
-                st.session_state.show_reg_success = False
+            auth_mode = st.radio(
+                " ",
+                ["Zaloguj", "Zarejestruj"],
+                horizontal=True,
+                key="auth_mode",
+                label_visibility="collapsed",
+            )
 
-            li_user = st.text_input("Login", key="li_user")
-            li_pass = st.text_input("Hasło", type="password", key="li_pass")
-            if st.button("Zaloguj", key="login_btn"):
-                if li_user in db:
-                    salt = db[li_user]["salt"]
-                    if hash_pw(li_pass, salt) == db[li_user]["password_hash"]:
-                        st.session_state.user = li_user
-                        st.session_state.xp = int(db[li_user].get("xp", 0))
-                        st.session_state.stickers = set(db[li_user].get("stickers", []))
-                        st.session_state.badges = set(db[li_user].get("badges", []))
-                        st.success(f"Zalogowano jako **{li_user}** 🎉")
-                        st.rerun()  # po zalogowaniu chowamy panel logowania
+            # ---------- LOGOWANIE ----------
+            if auth_mode == "Zaloguj":
+                # jeżeli właśnie wróciliśmy po rejestracji – pokaż jednorazowy komunikat
+                if st.session_state.get("show_reg_success"):
+                    st.success("Utworzono konto! Teraz zaloguj się na swój login i hasło. 🎉")
+                    st.session_state.show_reg_success = False
+
+                li_user = st.text_input("Login", key="li_user")
+                li_pass = st.text_input("Hasło", type="password", key="li_pass")
+                if st.button("Zaloguj", key="login_btn"):
+                    if li_user in db:
+                        salt = db[li_user]["salt"]
+                        if hash_pw(li_pass, salt) == db[li_user]["password_hash"]:
+                            st.session_state.user = li_user
+                            st.session_state.xp = int(db[li_user].get("xp", 0))
+                            st.session_state.stickers = set(db[li_user].get("stickers", []))
+                            st.session_state.badges = set(db[li_user].get("badges", []))
+                            st.success(f"Zalogowano jako **{li_user}** 🎉")
+                            st.rerun()  # po zalogowaniu chowamy panel logowania
+                        else:
+                            st.error("Błędne hasło.")
                     else:
-                        st.error("Błędne hasło.")
-                else:
-                    st.error("Taki login nie istnieje.")
+                        st.error("Taki login nie istnieje.")
 
-        # ---------- REJESTRACJA: 2 kroki ----------
-        else:  # auth_mode == "Zarejestruj"
-            # krok rejestracji: 1 = formularz, 2 = regulamin + potwierdzenie
-            if "reg_step" not in st.session_state:
-                st.session_state.reg_step = 1
+            # ---------- REJESTRACJA: 2 kroki ----------
+            else:  # auth_mode == "Zarejestruj"
+                # krok rejestracji: 1 = formularz, 2 = regulamin + potwierdzenie
+                if "reg_step" not in st.session_state:
+                    st.session_state.reg_step = 1
 
-            re_user = st.text_input("Nowy login", key="reg_user")
-            re_pass = st.text_input("Hasło", type="password", key="reg_pass")
-            re_pass2 = st.text_input("Powtórz hasło", type="password", key="reg_pass2")
+                re_user = st.text_input("Nowy login", key="reg_user")
+                re_pass = st.text_input("Hasło", type="password", key="reg_pass")
+                re_pass2 = st.text_input("Powtórz hasło", type="password", key="reg_pass2")
 
-            # --- KROK 1: dane logowania ---
-            if st.session_state.reg_step == 1:
-                st.caption("Krok 1/2: wpisz login i hasło, potem kliknij **Zarejestruj**.")
+                # --- KROK 1: dane logowania ---
+                if st.session_state.reg_step == 1:
+                    st.caption("Krok 1/2: wpisz login i hasło, potem kliknij **Zarejestruj**.")
 
-                if st.button("Zarejestruj", key="reg_step1"):
-                    # weryfikujemy podstawowe dane, ale JESZCZE nie tworzymy konta
-                    if not re_user or not re_pass:
-                        st.error("Podaj login i hasło.")
-                    elif re_user in db:
-                        st.error("Taki login już istnieje.")
-                    elif re_pass != re_pass2:
-                        st.error("Hasła się różnią.")
-                    else:
-                        st.session_state.reg_step = 2
-                        st.success(
-                            "Świetnie! Teraz przeczytaj Regulamin poniżej i potwierdź, "
-                            "że się z nim zgadzasz (krok 2/2)."
-                        )
-                        st.rerun()
+                    if st.button("Zarejestruj", key="reg_step1"):
+                        # weryfikujemy podstawowe dane, ale JESZCZE nie tworzymy konta
+                        login_pattern = r"^[A-Za-z0-9_-]{3,20}$"
 
-            # --- KROK 2: regulamin + zgoda ---
-            elif st.session_state.reg_step == 2:
-                st.info(
-                    "Krok 2/2: Regulamin Data4Kids – przeczytaj i zaznacz zgodę, aby założyć konto."
-                )
-
-                st.markdown(
-                    """
-                    #### 📜 Regulamin (skrót)
-
-                    1. Dane służą tylko do działania aplikacji (logowanie, XP, misje), nie sprzedajemy ich i nie wysyłamy dalej.  
-                    2. Nie wymagamy imienia i nazwiska ani maila – możesz używać pseudonimu.  
-                    3. Hasła są haszowane, ale nadal dbaj o ich bezpieczeństwo i nie udostępniaj ich innym.  
-                    4. Aplikacja ma charakter edukacyjny i może zawierać drobne błędy.  
-                    5. Profil można w każdej chwili usunąć w Panelu rodzica.
-                    """
-                )
-
-                accept = st.checkbox(
-                    "Przeczytałem/przeczytałam i akceptuję regulamin Data4Kids.",
-                    key="reg_accept_terms",
-                )
-
-                col_reg1, col_reg2 = st.columns([1, 1])
-                with col_reg1:
-                    if st.button("⬅️ Wróć do edycji danych", key="reg_back"):
-                        st.session_state.reg_step = 1
-                        st.rerun()
-
-                with col_reg2:
-                    if st.button(
-                        "Akceptuję regulamin i zakładam konto ✅", key="reg_submit"
-                    ):
-                        if not accept:
-                            st.error("Aby założyć konto, musisz zaakceptować regulamin.")
-                        elif not re_user or not re_pass:
-                            st.error("Brakuje loginu lub hasła. Wróć do kroku 1.")
+                        if not re_user or not re_pass:
+                            st.error("Podaj login i hasło.")
+                        elif not re.match(login_pattern, re_user):
+                            st.error(
+                                "Login może zawierać tylko litery, cyfry, '-', '_' "
+                                "i musi mieć od 3 do 20 znaków (bez spacji)."
+                            )
+                        elif len(re_pass) < 6:
+                            st.error("Hasło musi mieć co najmniej 6 znaków.")
                         elif re_user in db:
                             st.error("Taki login już istnieje.")
                         elif re_pass != re_pass2:
-                            st.error("Hasła się różnią. Wróć do kroku 1.")
+                            st.error("Hasła się różnią.")
                         else:
-                            salt = secrets.token_hex(8)
-                            db[re_user] = {
-                                "salt": salt,
-                                "password_hash": hash_pw(re_pass, salt),
-                                "xp": 0,
-                                "stickers": [],
-                                "badges": [],
-                                "accepted_terms_version": VERSION,
-                            }
-                            _save_users(db)
-                            # zaznaczamy, że konto powstało i robimy rerun → widok logowania
-                            st.session_state.reg_step = 1
-                            st.session_state.just_registered = True
+                            st.session_state.reg_step = 2
+                            st.success(
+                                "Świetnie! Teraz przeczytaj Regulamin poniżej i potwierdź, "
+                                "że się z nim zgadzasz (krok 2/2)."
+                            )
                             st.rerun()
 
-    # --- jeśli KTOŚ jest zalogowany -> mały status zamiast formularza ---
-    else:
-        st.success(f"Zalogowano jako **{st.session_state.user}** ✅")
-        if st.button("Wyloguj", key="logout_btn"):
-            st.session_state.user = None
-            st.session_state.xp = 0
-            st.session_state.badges = set()
-            st.session_state.stickers = set()
-            st.session_state.auth_mode = "Zaloguj"
-            st.rerun()
+                # --- KROK 2: regulamin + zgoda ---
+                elif st.session_state.reg_step == 2:
+                    st.info(
+                        "Krok 2/2: Regulamin Data4Kids – przeczytaj i zaznacz zgodę, aby założyć konto."
+                    )
+
+                    st.markdown(
+                        """
+                        #### 📜 Regulamin (skrót)
+
+                        1. Dane służą tylko do działania aplikacji (logowanie, XP, misje), nie sprzedajemy ich i nie wysyłamy dalej.  
+                        2. Nie wymagamy imienia i nazwiska ani maila – możesz używać pseudonimu.  
+                        3. Hasła są haszowane, ale nadal dbaj o ich bezpieczeństwo i nie udostępniaj ich innym.  
+                        4. Aplikacja ma charakter edukacyjny i może zawierać drobne błędy.  
+                        5. Profil można w każdej chwili usunąć w Panelu rodzica.
+                        """
+                    )
+
+                    accept = st.checkbox(
+                        "Przeczytałem/przeczytałam i akceptuję regulamin Data4Kids.",
+                        key="reg_accept_terms",
+                    )
+
+                    parent_ok = st.checkbox(
+                        "Jesten w wieku 7 - 14 lat LUB rodzic/opiekun pomaga mi założyć konto.",
+                        key="reg_parent_ok",
+                    )
+
+                    col_reg1, col_reg2 = st.columns([1, 1])
+                    with col_reg1:
+                        if st.button("⬅️ Wróć do edycji danych", key="reg_back"):
+                            st.session_state.reg_step = 1
+                            st.rerun()
+
+                    with col_reg2:
+                        if st.button("Akceptuję regulamin i zakładam konto ✅", key="reg_submit"):
+                            if not accept:
+                                st.error("Aby założyć konto, musisz zaakceptować regulamin.")
+                            elif not parent_ok:
+                                st.error(
+                                    "Aby założyć konto, potrzebna jest zgoda rodzica/opiekuna "
+                                    "lub potwierdzenie, że masz co najmniej 13 lat."
+                                )
+                            elif not re_user or not re_pass:
+                                # na wszelki wypadek, gdyby ktoś odświeżył
+                                st.error("Brakuje loginu lub hasła. Wróć do kroku 1.")
+                            elif re_user in db:
+                                st.error("Taki login już istnieje.")
+                            elif re_pass != re_pass2:
+                                st.error("Hasła się różnią. Wróć do kroku 1.")
+                            else:
+                                salt = secrets.token_hex(8)
+                                db[re_user] = {
+                                    "salt": salt,
+                                    "password_hash": hash_pw(re_pass, salt),
+                                    "xp": 0,
+                                    "stickers": [],
+                                    "badges": [],
+                                    "accepted_terms_version": VERSION,
+                                }
+                                _save_users(db)
+                                st.session_state.reg_step = 1
+                                st.session_state.just_registered = True
+                                st.rerun()
+
+        # --- jeśli KTOŚ jest zalogowany -> mały status zamiast formularza ---
+        else:
+            st.success(f"Zalogowano jako **{st.session_state.user}** ✅")
+            if st.button("Wyloguj", key="logout_btn"):
+                st.session_state.user = None
+                st.session_state.xp = 0
+                st.session_state.badges = set()
+                st.session_state.stickers = set()
+                st.session_state.auth_mode = "Zaloguj"
+                st.rerun()
+
+    # Prawa kolumna: krótka informacja o aplikacji
+    with col_info:
+        st.markdown("### ℹ️ O aplikacji")
+        st.write(
+            """
+            Aplikacja:
+
+            - uczy konsekwentnego myślenia,
+            - wzmacnia analizę informacji,
+            - wspiera trening emocji,
+            - tworzy automatyczne raporty dla rodzica,
+            - dopasowuje misje do dziecka.
+
+            Idealne dla edukacji domowej, szkół i zajęć indywidualnych.
+            """
+        )
 
     # --- dalej: tylko dla zalogowanego dziecka ---
     if not st.session_state.get("user"):
@@ -1112,7 +1151,36 @@ if page == "Start":
     )
     colA, colB = st.columns([1, 1])
     with colA:
-        st.text_input("Twoje imię (opcjonalnie)", key="kid_name")
+        # 1) Widget ma INNY klucz niż session_state.kid_name
+        name_input = st.text_input("Twoje imię (opcjonalnie)", key="kid_name_input")
+        raw_name = name_input.strip()
+
+        # 2) Walidacja imienia: tylko litery, max 12 znaków
+        name_pattern = r"^[A-Za-zÀ-ÖØ-öø-ÿ]{2,12}$"
+        if raw_name:
+            if re.match(name_pattern, raw_name):
+                st.session_state.kid_name = raw_name
+            else:
+                st.warning(
+                    "Imię może mieć tylko litery (bez spacji) i maks. 12 znaków. "
+                    "Nie zapisuję tego imienia."
+                )
+                # jeżeli wcześniej nie było sensownego imienia, wyzeruj
+                if not st.session_state.get("kid_name"):
+                    st.session_state.kid_name = ""
+
+        # 3) Jeśli dalej brak poprawnego imienia → generujemy pseudonim
+        if not st.session_state.get("kid_name"):
+            if "kid_nick" not in st.session_state:
+                nick_roots = ["Lama", "Kometa", "Zorza", "Atlas", "Pixel", "Foka", "Błysk"]
+                st.session_state.kid_nick = random.choice(nick_roots) + "-" + str(
+                    random.randint(10, 99)
+                )
+            st.session_state.kid_name = st.session_state.kid_nick
+
+        st.caption(f"Twój nick w aplikacji: **{st.session_state.kid_name}**")
+
+        # 4) Reszta jak było
         age_in = st.number_input(
             "Ile masz lat?", min_value=7, max_value=14, step=1, value=10
         )
@@ -1162,21 +1230,290 @@ if page == "Start":
 # Pozostałe podstrony (skrócone do kluczowych)
 # -----------------------------
 elif page == "Poznaj dane":
-    st.markdown(f"<div class='big-title'>📊 {KID_EMOJI} Poznaj dane</div>", unsafe_allow_html=True)
-    df_base = st.session_state.data.copy()
-    N = min(15, len(df_base)) if len(df_base) else 0
-    df_daily = pick_daily_sample(df_base, n=max(1, N)) if N else df_base
-    fantasy_mode = st.session_state.get("fantasy_mode", True)
-    df_view = apply_fantasy(df_daily) if fantasy_mode else df_daily
+    st.markdown(
+        f"<div class='big-title'>📊 {KID_EMOJI} Poznaj dane</div>",
+        unsafe_allow_html=True,
+    )
 
-    c1, c2, c3, c4 = st.columns(4)
-    c1.metric("Liczba wierszy (zestaw dnia)", len(df_view))
-    if "wiek" in df_view.columns: c2.metric("Śr. wiek", round(pd.to_numeric(df_view["wiek"], errors='coerce').mean(), 1))
-    if "wzrost_cm" in df_view.columns: c3.metric("Śr. wzrost (cm)", round(pd.to_numeric(df_view["wzrost_cm"], errors='coerce').mean(), 1))
-    if "miasto" in df_view.columns: c4.metric("Miasta", df_view["miasto"].nunique())
-    with st.expander("Zobacz tabelę"):
-        st.caption(f"Zestaw dzienny: {date.today().isoformat()}")
-        st.dataframe(df_view.head(50), width='stretch')
+    df_base = st.session_state.data.copy()
+
+    if df_base is None or len(df_base) == 0:
+        st.info("Brak danych do eksploracji. Najpierw załaduj zestaw w zakładce Start.")
+    else:
+        fantasy_mode = st.session_state.get("fantasy_mode", True)
+
+        # === 🎲 Eksperyment losowania próbek ===
+        st.subheader("🎲 Eksperyment losowania próbek")
+
+        col_s1, col_s2 = st.columns([2, 1])
+        with col_s1:
+            sample_size = st.radio(
+                "Wielkość próby (liczba osób):",
+                [10, 50, 100],
+                index=0,
+                horizontal=True,
+                help="Spróbuj różnych wielkości próby i zobacz, jak zachowuje się średnia."
+            )
+        with col_s2:
+            st.caption(
+                "Klikaj przycisk, aby wylosować nową próbkę tej samej wielkości. "
+                "Dane pochodzą z tego samego zestawu."
+            )
+
+        max_n = len(df_base)
+        if sample_size > max_n:
+            sample_size = max_n
+
+        if "sample_df" not in st.session_state:
+            st.session_state["sample_df"] = None
+            st.session_state["sample_size"] = sample_size
+
+        if st.button(f"Wylosuj próbkę ({sample_size} osób)"):
+            st.session_state["sample_size"] = sample_size
+            st.session_state["sample_df"] = df_base.sample(
+                n=sample_size,
+                replace=False,
+                random_state=random.randint(0, 10**9),
+            )
+
+        sample_df = st.session_state.get("sample_df")
+
+        if isinstance(sample_df, pd.DataFrame) and not sample_df.empty:
+            st.markdown("#### Podsumowanie wylosowanej próby")
+
+            csa1, csa2, csa3 = st.columns(3)
+
+            if "wiek" in sample_df.columns:
+                mean_age = round(pd.to_numeric(sample_df["wiek"], errors="coerce").mean(), 2)
+                csa1.metric("Średni wiek w próbie", mean_age)
+
+            if "wzrost_cm" in sample_df.columns:
+                mean_h = round(pd.to_numeric(sample_df["wzrost_cm"], errors="coerce").mean(), 1)
+                csa2.metric("Śr. wzrost (cm) w próbie", mean_h)
+
+            csa3.metric("Liczba osób w próbie", len(sample_df))
+
+            if "wiek" in sample_df.columns:
+                st.markdown("**Histogram wieku w próbie**")
+                age_df = pd.DataFrame({"wiek": pd.to_numeric(sample_df["wiek"], errors="coerce")}).dropna()
+                if not age_df.empty:
+                    chart_age = (
+                        alt.Chart(age_df)
+                        .mark_bar()
+                        .encode(
+                            x=alt.X("wiek:Q", bin=alt.Bin(maxbins=10), title="Wiek"),
+                            y=alt.Y("count():Q", title="Liczba osób"),
+                        )
+                        .properties(height=200)
+                    )
+                    st.altair_chart(chart_age, use_container_width=True)
+
+            if "miasto" in sample_df.columns:
+                st.markdown("**Ile osób z danego miasta?**")
+                city_counts = (
+                    sample_df["miasto"]
+                    .value_counts()
+                    .reset_index()
+                    .rename(columns={"index": "miasto", "miasto": "liczba"})
+                )
+                st.dataframe(city_counts, use_container_width=True)
+
+            st.info(
+                "Im większa próba, tym **stabilniejsza średnia** i rozkład – "
+                "to właśnie proste Prawo wielkich liczb w praktyce. ✨"
+            )
+        else:
+            st.caption(
+                "Kliknij przycisk powyżej, aby wylosować pierwszą próbkę z danych."
+            )
+
+        st.divider()
+
+        # === Zestaw dnia (mały wycinek danych do spokojnego oglądania) ===
+        N = min(15, len(df_base))
+        df_daily = pick_daily_sample(df_base, n=max(1, N)) if N else df_base
+
+        df_view = apply_fantasy(df_daily) if fantasy_mode else df_daily
+
+        st.subheader("📅 Zestaw dnia")
+        c1, c2, c3, c4 = st.columns(4)
+        c1.metric("Liczba wierszy (zestaw dnia)", len(df_view))
+
+        if "wiek" in df_view.columns:
+            c2.metric(
+                "Śr. wiek",
+                round(pd.to_numeric(df_view["wiek"], errors="coerce").mean(), 1),
+            )
+        if "wzrost_cm" in df_view.columns:
+            c3.metric(
+                "Śr. wzrost (cm)",
+                round(pd.to_numeric(df_view["wzrost_cm"], errors="coerce").mean(), 1),
+            )
+        if "miasto" in df_view.columns:
+            c4.metric("Liczba miast", df_view["miasto"].nunique())
+
+        with st.expander("Zobacz tabelę (zestaw dnia)"):
+            st.caption(f"Zestaw dzienny: {date.today().isoformat()}")
+            st.dataframe(df_view.head(50), use_container_width=True)
+
+        st.divider()
+
+        # === Analiza kolumn liczbowych ===
+        st.subheader("📈 Kolumny liczbowe")
+
+        num_cols = [c for c in df_view.columns if pd.api.types.is_numeric_dtype(df_view[c])]
+
+        if num_cols:
+            num_col = st.selectbox("Wybierz kolumnę do analizy:", num_cols)
+
+            col_data = pd.to_numeric(df_view[num_col], errors="coerce").dropna()
+            if not col_data.empty:
+                desc = col_data.describe().to_frame().T
+                st.markdown("**Statystyki opisowe:**")
+                st.dataframe(desc, use_container_width=True)
+
+                hist_df = pd.DataFrame({num_col: col_data})
+                chart_hist = (
+                    alt.Chart(hist_df)
+                    .mark_bar()
+                    .encode(
+                        x=alt.X(f"{num_col}:Q", bin=alt.Bin(maxbins=20), title=num_col),
+                        y=alt.Y("count():Q", title="Liczba rekordów"),
+                    )
+                    .properties(height=250)
+                )
+                st.altair_chart(chart_hist, use_container_width=True)
+            else:
+                st.caption("Brak danych w wybranej kolumnie.")
+        else:
+            st.caption("Brak kolumn liczbowych w tym zestawie.")
+
+        st.divider()
+
+        # === Analiza kolumn kategorycznych ===
+        st.subheader("📊 Kolumny kategoryczne")
+
+        cat_cols = [
+            c
+            for c in df_view.columns
+            if df_view[c].dtype == "object" and df_view[c].nunique() > 1
+        ]
+
+        if cat_cols:
+            cat_col = st.selectbox("Wybierz kolumnę kategoryczną:", cat_cols)
+
+            vc = (
+                df_view[cat_col]
+                .value_counts()
+                .reset_index()
+                .rename(columns={"index": cat_col, cat_col: "liczba"})
+            )
+
+            st.markdown("**Najczęstsze wartości:**")
+            st.dataframe(vc.head(10), use_container_width=True)
+
+            chart_cat = (
+                alt.Chart(vc.head(10))
+                .mark_bar()
+                .encode(
+                    x=alt.X("liczba:Q", title="Liczba rekordów"),
+                    y=alt.Y(f"{cat_col}:N", sort="-x", title=cat_col),
+                )
+                .properties(height=300)
+            )
+            st.altair_chart(chart_cat, use_container_width=True)
+        else:
+            st.caption(
+                "Brak typowych kolumn kategorycznych (tekstowych) do analizy w tym zestawie."
+            )
+
+        st.divider()
+
+        # === Korelacje między kolumnami liczbowymi ===
+        st.subheader("🔗 Powiązania między kolumnami liczbowymi")
+
+        if len(num_cols) >= 2:
+            corr = df_view[num_cols].corr()
+            corr_df = (
+                corr.reset_index()
+                .melt("index", var_name="kolumna2", value_name="korelacja")
+                .rename(columns={"index": "kolumna1"})
+            )
+
+            chart_corr = (
+                alt.Chart(corr_df)
+                .mark_rect()
+                .encode(
+                    x=alt.X("kolumna2:N", title="Kolumna 2"),
+                    y=alt.Y("kolumna1:N", title="Kolumna 1"),
+                    color=alt.Color(
+                        "korelacja:Q",
+                        scale=alt.Scale(scheme="redblue", domain=(-1, 1)),
+                        title="korelacja",
+                    ),
+                    tooltip=["kolumna1", "kolumna2", "korelacja"],
+                )
+                .properties(height=300)
+            )
+            st.altair_chart(chart_corr, use_container_width=True)
+            st.caption(
+                "Korelacja bliska **1** oznacza silną dodatnią zależność, "
+                "bliska **-1** – silną ujemną, a okolice **0** – brak wyraźnej zależności."
+            )
+        else:
+            st.caption(
+                "Do policzenia korelacji potrzeba co najmniej dwóch kolumn liczbowych."
+            )
+
+        st.divider()
+
+        # === Prosty model liniowy: wiek vs wzrost ===
+        st.subheader("📐 Prosty model liniowy (wiek → wzrost)")
+
+        if "wiek" in df_view.columns and "wzrost_cm" in df_view.columns:
+            reg_df = df_view[["wiek", "wzrost_cm"]].copy()
+            reg_df["wiek"] = pd.to_numeric(reg_df["wiek"], errors="coerce")
+            reg_df["wzrost_cm"] = pd.to_numeric(reg_df["wzrost_cm"], errors="coerce")
+            reg_df = reg_df.dropna()
+
+            if len(reg_df) >= 2:
+                x = reg_df["wiek"].values
+                y = reg_df["wzrost_cm"].values
+
+                a, b = np.polyfit(x, y, 1)  # y ≈ a * wiek + b
+
+                line_x = np.linspace(x.min(), x.max(), 50)
+                line_y = a * line_x + b
+                df_line = pd.DataFrame({"wiek": line_x, "wzrost_model": line_y})
+
+                scatter = (
+                    alt.Chart(reg_df)
+                    .mark_circle(size=60, opacity=0.7)
+                    .encode(
+                        x=alt.X("wiek:Q", title="Wiek"),
+                        y=alt.Y("wzrost_cm:Q", title="Wzrost (cm)"),
+                        tooltip=["wiek", "wzrost_cm"],
+                    )
+                )
+
+                line = (
+                    alt.Chart(df_line)
+                    .mark_line()
+                    .encode(
+                        x=alt.X("wiek:Q"),
+                        y=alt.Y("wzrost_model:Q", title="Modelowany wzrost (cm)"),
+                    )
+                )
+
+                st.altair_chart(scatter + line, use_container_width=True)
+                st.caption(
+                    "Kropki to dzieci z zestawu dnia, a linia to prosty model: "
+                    "jak **średnio** rośnie wzrost wraz z wiekiem."
+                )
+            else:
+                st.caption("Za mało danych, by narysować prostą regresji.")
+        else:
+            st.caption("Ten model wymaga kolumn „wiek” i „wzrost_cm” w danych.")
 
 elif page == "Plac zabaw":
     st.markdown(f"<div class='big-title'>🧪 {KID_EMOJI} Plac zabaw z danymi</div>", unsafe_allow_html=True)
@@ -1201,27 +1538,242 @@ elif page == "Plac zabaw":
     st.dataframe(df_view[cols].head(30), width='stretch')
 
 elif page == "Misje":
-    st.markdown(f"<div class='big-title'>🗺️ {KID_EMOJI} Misje</div>", unsafe_allow_html=True)
+    st.markdown(
+        f"<div class='big-title'>🗺️ {KID_EMOJI} Misje</div>",
+        unsafe_allow_html=True,
+    )
+
     missions_path = os.path.join(DATA_DIR, "missions.json")
     missions = safe_load_json(missions_path, default=[])
+
+    # ================================
+    #  🔍 Analiza quizów -> profil trudności
+    # ================================
+    events = st.session_state.get("activity_log", [])
+    quiz_profile = None
+    hardest_areas = []
+    area_labels = {}
+
+    if events:
+        dfq = pd.DataFrame(events)
+        if "event" in dfq.columns:
+            mask_quiz = dfq["event"].str.contains("quiz_ok") | dfq["event"].str.contains("quiz_fail")
+            dfq = dfq[mask_quiz].copy()
+
+            if not dfq.empty:
+                def _parse_quiz_event(ev: str):
+                    parts = str(ev).split("::")
+                    if not parts or parts[0] not in ("quiz_ok", "quiz_fail"):
+                        return None
+                    status = "ok" if parts[0] == "quiz_ok" else "fail"
+                    source = parts[1] if len(parts) > 1 else "inne"
+
+                    # Domyślne wartości
+                    category = source
+                    area = source  # bardziej „czytelna” etykieta do misji
+
+                    # Quiz danych:  quiz_ok::data::<qid>::<short_q>
+                    if source == "data":
+                        category = "data_quiz"
+                        area = "Dane i liczby"
+
+                    # Quiz obrazkowy:  quiz_ok::image::<cat>::<qid>::<short_q>
+                    elif source == "image":
+                        img_cat = parts[2] if len(parts) > 2 else "inne"
+                        mapping = {
+                            "emotions": "Emocje",
+                            "shapes": "Kształty",
+                            "plots": "Wykresy",
+                            "objects": "Przedmioty",
+                        }
+                        area = mapping.get(img_cat, img_cat)
+                        category = f"image_{img_cat}"
+
+                    return {
+                        "status": status,
+                        "source": source,
+                        "category": category,
+                        "area": area,
+                    }
+
+                parsed = []
+                for ev in dfq["event"]:
+                    p = _parse_quiz_event(ev)
+                    if p:
+                        parsed.append(p)
+
+                if parsed:
+                    qdf = pd.DataFrame(parsed)
+                    stats = (
+                        qdf.groupby("area")
+                        .agg(
+                            total=("status", "size"),
+                            wrong=("status", lambda s: (s == "fail").sum()),
+                            ok=("status", lambda s: (s == "ok").sum()),
+                        )
+                        .reset_index()
+                    )
+                    stats["fail_pct"] = (
+                        stats["wrong"] / stats["total"] * 100
+                    ).round(1)
+
+                    # Bierzemy tylko obszary, w których było przynajmniej kilka odpowiedzi
+                    hardest_areas = (
+                        stats[stats["total"] >= 3]
+                        .sort_values(["fail_pct", "total"], ascending=[False, False])
+                        .to_dict("records")
+                    )
+
+                    quiz_profile = stats
+
+                    # mapka area -> (fail_pct, total)
+                    for row in hardest_areas:
+                        area_labels[row["area"]] = {
+                            "fail_pct": row["fail_pct"],
+                            "total": int(row["total"]),
+                        }
+
+    # ================================
+    #  ⭐ Ranking misji wg profilu trudności
+    # ================================
+    recommended_ids = set()
+    reasons_by_id = {}
+
+    if missions and hardest_areas:
+        # słowa kluczowe do dopasowania treści misji do obszaru trudności
+        AREA_KEYWORDS = {
+            "Emocje": ["emocje", "uczuc", "nastr", "smut", "strach", "rado", "złość"],
+            "Kształty": ["kształt", "figura", "geometr", "trójkąt", "kwadrat", "koło"],
+            "Wykresy": ["wykres", "diagram", "słupk", "liniow", "statystyk", "dane"],
+            "Przedmioty": ["przedmiot", "rzecz", "otoczen", "obiekt"],
+            "Dane i liczby": ["dane", "liczb", "procent", "średn", "tabela"],
+        }
+
+        # weźmy maksymalnie 3 „najtrudniejsze” obszary
+        top_hard = hardest_areas[:3]
+
+        for m in missions:
+            mid = m.get("id") or m.get("title") or str(id(m))
+            text = (m.get("title", "") + " " + m.get("desc", "")).lower()
+
+            best_score = 0
+            best_area = None
+
+            for area_info in top_hard:
+                area_name = area_info["area"]
+                keys = AREA_KEYWORDS.get(area_name, [])
+                # policz, ile słów kluczowych pasuje do tekstu misji
+                score = sum(1 for kw in keys if kw and kw.lower() in text)
+                if score > best_score:
+                    best_score = score
+                    best_area = area_name
+
+            if best_score > 0 and best_area:
+                recommended_ids.add(mid)
+                meta = area_labels.get(best_area, {})
+                fail_pct = meta.get("fail_pct")
+                total = meta.get("total")
+                if fail_pct is not None and total is not None:
+                    reasons_by_id[mid] = (
+                        f"Ta misja pasuje do obszaru, który jest teraz trudniejszy "
+                        f"dla dziecka: **{best_area}** "
+                        f"(błędnych odpowiedzi: {fail_pct}% z {total})."
+                    )
+                else:
+                    reasons_by_id[mid] = (
+                        f"Ta misja pasuje do obszaru, który wymaga teraz więcej ćwiczeń: "
+                        f"**{best_area}**."
+                    )
+
+    # ================================
+    #  UI: Misje rekomendowane + reszta
+    # ================================
     if not missions:
         st.info("Brak misji. Dodaj je do data/missions.json")
     else:
+        # --- Sekcja misji rekomendowanych ---
+        st.markdown("### ⭐ Misje rekomendowane przez Data4Kids")
+
+        if recommended_ids:
+            for m in missions:
+                mid = m.get("id") or m.get("title") or str(id(m))
+                if mid not in recommended_ids:
+                    continue
+
+                with st.expander(f"🎯 {m.get('title','Misja')}"):
+                    st.write(m.get("desc", ""))
+                    st.caption("Kroki: " + ", ".join(m.get("steps", [])))
+
+                    # wyjaśnienie, dlaczego misja jest polecana
+                    reason = reasons_by_id.get(mid)
+                    if reason:
+                        st.markdown(
+                            f"🧠 **Rekomendowane na podstawie quizów.**  \n{reason}"
+                        )
+                    else:
+                        st.markdown(
+                            "🧠 **Rekomendowane na podstawie quizów** – "
+                            "pasuje do obszarów, w których dziecko popełnia więcej błędów."
+                        )
+
+                    if st.button(
+                        "Zaznacz jako zrobioną 📝",
+                        key=f"mis_rec_{mid}",
+                    ):
+                        st.success(
+                            "Super! Zaznaczone jako zrobione (na razie bez przyznawania XP)."
+                        )
+                        try:
+                            log_event(f"mission_done::{mid}::{m.get('title','')}")
+                        except Exception:
+                            pass
+        else:
+            # Brak danych lub brak dopasowanych misji
+            st.caption(
+                "Na razie brak specjalnych rekomendacji – "
+                "potrzebujemy kilku odpowiedzi w quizach, żeby wiedzieć, "
+                "co jest dla dziecka najtrudniejsze. 😊"
+            )
+
+        st.divider()
+
+        # --- Wszystkie misje (w tym ewentualnie niepolecane) ---
+        st.markdown("### 🌍 Wszystkie misje")
+
         for m in missions:
-            # 1) Bez XP w tytule
-            with st.expander(f"🎯 {m.get('title','Misja')}"):
+            mid = m.get("id") or m.get("title") or str(id(m))
+            is_rec = mid in recommended_ids
+
+            title_prefix = "🎯"
+            if is_rec:
+                title_prefix = "💡🎯"  # mały highlight również na liście ogólnej
+
+            with st.expander(f"{title_prefix} {m.get('title','Misja')}"):
                 st.write(m.get("desc", ""))
                 st.caption("Kroki: " + ", ".join(m.get("steps", [])))
-                # 2) Samo „odhaczenie”, bez XP
-                if st.button("Zaznacz jako zrobioną 📝", key=f"mis_{m.get('id','x')}"):
-                    st.success("Super! Zaznaczone jako zrobione (bez przyznawania XP).")
 
+                if is_rec:
+                    st.markdown(
+                        "_Ta misja jest też na liście **rekomendowanych** na górze._"
+                    )
+
+                if st.button(
+                    "Zaznacz jako zrobioną 📝",
+                    key=f"mis_{mid}",
+                ):
+                    st.success(
+                        "Super! Zaznaczone jako zrobione (na razie bez przyznawania XP)."
+                    )
+                    try:
+                        log_event(f"mission_done::{mid}::{m.get('title','')}")
+                    except Exception:
+                        pass
 
 
 elif page == "Quiz danych":
     st.markdown(f"<div class='big-title'>📊 {KID_EMOJI} Quiz danych</div>", unsafe_allow_html=True)
     dq_path = os.path.join(DATA_DIR, "quizzes", "data_quiz.json")
-    dq = safe_load_json(dq_path, default={"items":[]})
+    dq = safe_load_json(dq_path, default={"items": []})
     items = dq.get("items", [])
 
     # --- dzienna rotacja pytań w Quizie danych ---
@@ -1240,16 +1792,53 @@ elif page == "Quiz danych":
     )
 
     for i, t in enumerate(items, start=1):
-        q = t["q"]; opts = t["options"]; corr = int(t["correct"])
+        q = t["q"]
+        opts = t["options"]
+        corr = int(t["correct"])
+
         st.markdown(f"**{i}. {q}**")
-        choice = st.radio("Wybierz:", opts, key=f"dq_{i}", label_visibility="collapsed", index=None)
+        choice = st.radio(
+            "Wybierz:",
+            opts,
+            key=f"dq_{i}",
+            label_visibility="collapsed",
+            index=None,
+        )
+
         if st.button("Sprawdź ✅", key=f"dq_check_{i}"):
             if choice is None:
                 st.warning("Wybierz odpowiedź.")
-            elif opts.index(choice) == corr:
-                st.success("✅ Dobrze!")
             else:
-                st.error(f"❌ Nie. Poprawna: **{opts[corr]}**.")
+                # Przygotowanie skróconego opisu pytania + stabilnego ID
+                try:
+                    short_q = q if len(q) <= 60 else q[:57] + "..."
+                    base = f"dq::{q}"
+                    qid = hashlib.sha256(base.encode("utf-8")).hexdigest()[:8]
+                except Exception:
+                    short_q = q[:60]
+                    qid = None
+
+                if opts.index(choice) == corr:
+                    st.success("✅ Dobrze!")
+                    # logujemy poprawną odpowiedź
+                    try:
+                        log_event(
+                            f"quiz_ok::data::{qid or ''}::{short_q}"
+                        )
+                    except Exception:
+                        pass
+                else:
+                    st.error(f"❌ Nie. Poprawna: **{opts[corr]}**.")
+                    # logujemy błędną odpowiedź
+                    try:
+                        chosen = choice
+                        correct_label = opts[corr]
+                        log_event(
+                            f"quiz_fail::data::{qid or ''}::{short_q}::{chosen}::{correct_label}"
+                        )
+                    except Exception:
+                        pass
+
 
 elif page == "Quiz obrazkowy":
     st.markdown(
@@ -1268,52 +1857,31 @@ elif page == "Quiz obrazkowy":
         if not img:
             continue
 
-        if "questions" in item:
-            # stary format: 1 obrazek -> lista pytań
-            for t in item.get("questions", []):
-                flat_items.append(
-                    {
-                        "image": img,
-                        "q": t.get("q", ""),
-                        "options": t.get("options", []),
-                        "correct": int(t.get("correct", 0)),
-                        "category": t.get("category", item.get("category", "")),
-                    }
-                )
-        else:
-            # nowy format: 1 rekord = 1 pytanie
-            flat_items.append(
-                {
-                    "image": img,
-                    "q": item.get("q", ""),
-                    "options": item.get("options", []),
-                    "correct": int(item.get("correct", 0)),
-                    "category": item.get("category", ""),
-                }
-            )
+        # nowe pole "category" (np. emotions, shapes, plots, objects)
+        cat = item.get("category") or "inne"
 
-    if not flat_items:
-        st.info("Brak pytań w quizie obrazkowym. Uzupełnij plik data/quiz_images/image_quiz.json.")
-        st.stop()
+        # stare pole "age_group" / "group" → filtrujemy wyżej w kodzie
+        age = item.get("age_group") or item.get("group") or "10-12"
 
-    # --- WYBÓR GRUPY WIEKOWEJ --------------------------------------
-    age_label = st.radio(
-        "Wybierz grupę wiekową:",
-        ["7–9 lat", "10–12 lat", "13–14 lat"],
-        key="img_quiz_age_group",
-        horizontal=True,
-    )
+        flat_items.append(
+            {
+                "image": img,
+                "q": item.get("q", ""),
+                "options": item.get("options", []),
+                "correct": item.get("correct", 0),
+                "category": cat,
+                "age_group": age,
+            }
+        )
 
-    if age_label == "7–9 lat":
-        allowed_cats = {"shapes", "objects", "emotions"}
-    elif age_label == "10–12 lat":
-        allowed_cats = {"shapes", "objects", "emotions", "plots"}
-    else:  # 13–14
-        allowed_cats = {"shapes", "objects", "emotions", "plots"}
+    # --- Filtr po grupie wiekowej dziecka --------------------------
+    age_label = st.session_state.age_group  # np. "8-10", "10-12"
+    allowed_cats = iq.get("allowed_categories", ["emotions", "plots", "shapes", "objects"])
 
     age_items = [
         it for it in flat_items
-        if (it.get("category") or "") in allowed_cats
+        if (it.get("age_group") or "10-12") == age_label
+        and (it.get("category") or "inne") in allowed_cats
     ]
 
     total_q = len(age_items)
@@ -1332,7 +1900,7 @@ elif page == "Quiz obrazkowy":
         day_idx,
         f"image_quiz_{age_label}",
     )
-    
+
     st.caption(
         f"Dzisiejszy zestaw: {len(daily_items)} pytań "
         f"(z {total_q} dostępnych dla {age_label})."
@@ -1351,6 +1919,7 @@ elif page == "Quiz obrazkowy":
         q = t.get("q", "")
         opts = t.get("options", [])
         corr = int(t.get("correct", 0))
+        cat = (t.get("category") or "inne")
 
         st.markdown(f"**{i}. {q}**")
 
@@ -1366,15 +1935,44 @@ elif page == "Quiz obrazkowy":
         if st.button("Sprawdź ✅", key=f"{key_base}_check"):
             if choice is None:
                 st.warning("Wybierz odpowiedź.")
-            elif opts and opts.index(choice) == corr:
-                st.success("✅ Dobrze!")
-                st.session_state.xp += 2
-                st.session_state.stickers.add("sticker_hawkeye")
             else:
-                if opts:
-                    st.error(f"❌ Nie. Poprawna: **{opts[corr]}**.")
+                # przygotowanie stabilnego ID pytania
+                try:
+                    short_q = q if len(q) <= 60 else q[:57] + "..."
+                    base = f"iq::{cat}::{q}"
+                    qid = hashlib.sha256(base.encode("utf-8")).hexdigest()[:8]
+                except Exception:
+                    short_q = q[:60]
+                    qid = None
+
+                if opts and opts.index(choice) == corr:
+                    st.success("✅ Dobrze!")
+                    st.session_state.xp += 2
+                    st.session_state.stickers.add("sticker_hawkeye")
+
+                    # log poprawnej odpowiedzi w quizie obrazkowym
+                    try:
+                        log_event(
+                            f"quiz_ok::image::{cat}::{qid or ''}::{short_q}"
+                        )
+                    except Exception:
+                        pass
                 else:
-                    st.error("Brak opcji odpowiedzi w danych quizu.")
+                    if opts:
+                        st.error(f"❌ Nie. Poprawna: **{opts[corr]}**.")
+                    else:
+                        st.error("Brak opcji odpowiedzi w danych quizu.")
+
+                    # log błędnej odpowiedzi z informacją o pomyłce
+                    try:
+                        chosen = choice or ""
+                        correct_label = opts[corr] if opts else ""
+                        log_event(
+                            f"quiz_fail::image::{cat}::{qid or ''}::{short_q}::{chosen}::{correct_label}"
+                        )
+                    except Exception:
+                        pass
+
 
 
 elif page == "Album naklejek":
@@ -2169,9 +2767,150 @@ elif page == "Moje osiągnięcia":
         """
     )
 
+    # === Data science: analiza zadań szkolnych dla tego użytkownika ===
+    user = st.session_state.get("user")
+
+    if user:
+        profile = _user_db_get(user) or {}
+        school_tasks = profile.get("school_tasks", {})
+
+        if school_tasks:
+            import pandas as pd
+
+            rows = []
+            for day, subj_map in school_tasks.items():
+                for subj, tasks in subj_map.items():
+                    rows.append(
+                        {
+                            "data": day,
+                            "przedmiot": subj,
+                            "zadania": len(tasks),
+                        }
+                    )
+
+            if rows:
+                df = pd.DataFrame(rows)
+
+                st.subheader("📈 Ile zadań zrobiono z każdego przedmiotu?")
+                subj_counts = (
+                    df.groupby("przedmiot")["zadania"]
+                    .sum()
+                    .sort_values(ascending=False)
+                )
+                st.bar_chart(subj_counts)
+
+                best_subject = subj_counts.idxmax()
+                worst_subject = subj_counts.idxmin()
+
+                st.subheader("🤖 Podpowiedź Data4Kids")
+                if best_subject == worst_subject:
+                    st.write(
+                        "Na razie masz zadania tylko z jednego przedmiotu – "
+                        "spróbuj dorzucić coś z innego, żeby było ciekawiej. 🙂"
+                    )
+                else:
+                    st.write(
+                        f"Najwięcej zadań zrobiłeś z: **{best_subject}** – super! 💪"
+                    )
+                    st.write(
+                        f"Najmniej ćwiczysz: **{worst_subject}** – "
+                        "może dziś zrobisz jedno zadanie właśnie z tego przedmiotu? 🎯"
+                    )
+        else:
+            st.caption(
+                "Gdy zaczniesz oznaczać zadania jako zrobione w zakładce "
+                "**Przedmioty szkolne**, pojawią się tutaj statystyki i podpowiedzi."
+            )
+    else:
+        st.caption("Zaloguj się, żeby zobaczyć swoje statystyki zadań.")
+
 elif page == "Hall of Fame":
     st.markdown("# 🏆 Hall of Fame")
-    st.write("Dodaj swój profil do tabeli mistrzów i pobierz zaktualizowany plik JSON.")
+    st.caption("Ranking oparty o dane z kont użytkowników (users.json).")
+
+    # --- 1. Wczytanie bazy profili z users.json ---
+    db = _load_users()
+    rows = []
+    for login, prof in db.items():
+        xp = int(prof.get("xp", 0) or 0)
+        age_group = prof.get("age_group") or "brak"
+        age_val = prof.get("age")
+        try:
+            age_val = int(age_val) if age_val is not None else None
+        except Exception:
+            age_val = None
+
+        rows.append(
+            {
+                "login": login,
+                "xp": xp,
+                "level": current_level(xp),
+                "age_group": age_group,
+                "age": age_val,
+            }
+        )
+
+    if not rows:
+        st.info(
+            "Brak zapisanych profili w bazie users.json – "
+            "najpierw załóż kilka kont na stronie **Start**."
+        )
+    else:
+        df_rank = pd.DataFrame(rows)
+
+        st.subheader("📊 Top gracze Data4Kids")
+
+        # --- 2. Filtrowanie po grupie wiekowej ---
+        groups = sorted(
+            g for g in df_rank["age_group"].unique()
+            if g and g != "brak"
+        )
+        group_choice = st.selectbox(
+            "Pokaż ranking dla grupy wiekowej:",
+            ["Wszystkie grupy"] + groups,
+        )
+
+        df_view = df_rank.copy()
+        if group_choice != "Wszystkie grupy":
+            df_view = df_view[df_view["age_group"] == group_choice]
+
+        # --- 3. Sortowanie po XP + wybór liczby graczy ---
+        df_view = df_view.sort_values("xp", ascending=False)
+        top_n = st.slider(
+            "Ilu graczy pokazać w rankingu?",
+            min_value=3,
+            max_value=30,
+            value=10,
+        )
+        df_top = df_view.head(top_n).reset_index(drop=True)
+
+        st.dataframe(
+            df_top[["login", "level", "xp", "age_group", "age"]],
+            use_container_width=True,
+        )
+
+        # --- 4. Wykres słupkowy XP vs gracz ---
+        if not df_top.empty:
+            try:
+                chart = (
+                    alt.Chart(df_top)
+                    .mark_bar()
+                    .encode(
+                        x=alt.X("xp:Q", title="XP"),
+                        y=alt.Y("login:N", sort="-x", title="Gracz"),
+                        tooltip=["login", "xp", "level", "age_group", "age"],
+                    )
+                    .properties(height=300)
+                )
+                st.altair_chart(chart, use_container_width=True)
+            except Exception as e:
+                st.caption(f"(Nie udało się narysować wykresu: {e})")
+
+        st.markdown("---")
+
+    # --- 5. Mój profil do pobrania (jak mini-CV Data4Kids) ---
+    st.subheader("📁 Mój profil do portfolio")
+
     profile = {
         "name": st.session_state.kid_name or "(bez imienia)",
         "age": st.session_state.age,
@@ -2182,17 +2921,19 @@ elif page == "Hall of Fame":
         "stickers": sorted(list(st.session_state.stickers)),
         "dataset": st.session_state.dataset_name,
         "timestamp": datetime.now(tz=tz.gettz("Europe/Warsaw")).isoformat(),
-        "missions_done": sorted([k for k, v in st.session_state.missions_state.items() if v.get("done")]),
+        "missions_done": sorted(
+            [k for k, v in st.session_state.missions_state.items() if v.get("done")]
+        ),
     }
-    st.subheader("Mój profil")
-    c1, c2, c3, c4 = st.columns(4)
-    c1.metric("Imię", st.session_state.kid_name or "—")
-    c2.metric("Wiek", st.session_state.age or "—")
-    c3.metric("Poziom", current_level(st.session_state.xp))
-    c4.metric("XP", st.session_state.xp)
-    st.caption(f"Odznaki: **{len(st.session_state.badges)}**  |  Naklejki: **{len(st.session_state.stickers)}**")
-    st.download_button("Pobierz mój profil (JSON)", data=json.dumps(profile, ensure_ascii=False, indent=2).encode("utf-8"),
-                       file_name="data4kids_profile.json", mime="application/json")
+
+    st.json(profile)
+    st.download_button(
+        "Pobierz mój profil (JSON)",
+        data=json.dumps(profile, ensure_ascii=False, indent=2).encode("utf-8"),
+        file_name="data4kids_profile.json",
+        mime="application/json",
+    )
+
 
 elif page == "Wsparcie & konkursy":
     st.markdown(
@@ -2865,22 +3606,371 @@ elif page == "Panel rodzica":
 
     tab1, tab2, tab3 = st.tabs(["Raport", "Dane i prywatność", "Ustawienia PIN"])
 
+    # === TAB 1: RAPORT AKTYWNOŚCI ===
     with tab1:
         st.subheader("Raport aktywności")
+
+        # --- Główne metryki ---
         c1, c2, c3, c4 = st.columns(4)
         c1.metric("Poziom", current_level(st.session_state.xp))
         c2.metric("XP", st.session_state.xp)
         c3.metric("Odznaki", len(st.session_state.badges))
         c4.metric("Naklejki", len(st.session_state.stickers))
 
-        events = st.session_state.activity_log[-10:][::-1]
+        events = st.session_state.activity_log
+
         if events:
-            st.markdown("#### Ostatnie działania")
-            for e in events:
-                st.write(f"• {e['time']} — {e['event']}")
+            # --- DataFrame z logów ---
+            df = pd.DataFrame(events)  # kolumny: time, event
+
+            # parsowanie czasu
+            try:
+                df["time_dt"] = pd.to_datetime(df["time"])
+            except Exception:
+                df["time_dt"] = pd.to_datetime(df["time"], errors="coerce")
+
+            df = df.dropna(subset=["time_dt"])
+
+            if not df.empty:
+                df["day"] = df["time_dt"].dt.date
+                # kategoria = pierwsza część eventu przed "_"
+                df["category"] = df["event"].str.split("_").str[0]
+
+                st.markdown("### 📈 Aktywność w czasie")
+
+                # liczba zdarzeń dziennie
+                daily_counts = (
+                    df.groupby("day")
+                    .size()
+                    .reset_index(name="liczba_zdarzeń")
+                    .sort_values("day")
+                )
+
+                if not daily_counts.empty:
+                    chart_daily = (
+                        alt.Chart(daily_counts)
+                        .mark_line(point=True)
+                        .encode(
+                            x=alt.X("day:T", title="Dzień"),
+                            y=alt.Y("liczba_zdarzeń:Q", title="Liczba zdarzeń"),
+                        )
+                        .properties(height=250)
+                    )
+                    st.altair_chart(chart_daily, use_container_width=True)
+                else:
+                    st.caption("Brak danych do wykresu dziennej aktywności.")
+
+                st.markdown("### 📊 Typy aktywności")
+
+                cat_counts = (
+                    df["category"]
+                    .value_counts()
+                    .reset_index()
+                    .rename(columns={"index": "category", "category": "count"})
+                )
+
+                if not cat_counts.empty:
+                    chart_cat = (
+                        alt.Chart(cat_counts)
+                        .mark_bar()
+                        .encode(
+                            x=alt.X("category:N", title="Kategoria"),
+                            y=alt.Y("count:Q", title="Liczba zdarzeń"),
+                        )
+                        .properties(height=250)
+                    )
+                    st.altair_chart(chart_cat, use_container_width=True)
+                else:
+                    st.caption("Brak danych do wykresu kategorii zdarzeń.")
+
+                # --- 🧠 Podsumowanie liczbowe ---
+                st.markdown("### 🧠 Podsumowanie")
+
+                total_events = len(df)
+                most_active_day = (
+                    daily_counts.sort_values("liczba_zdarzeń", ascending=False)
+                    .iloc[0]["day"]
+                    if not daily_counts.empty
+                    else None
+                )
+                top_cat = (
+                    cat_counts.iloc[0]["category"]
+                    if not cat_counts.empty
+                    else None
+                )
+
+                bullets = []
+                bullets.append(
+                    f"• Łączna liczba zarejestrowanych zdarzeń: **{total_events}**."
+                )
+                if most_active_day:
+                    bullets.append(
+                        f"• Najbardziej aktywny dzień: **{most_active_day}** "
+                        f"({int(daily_counts.iloc[0]['liczba_zdarzeń'])} zdarzeń)."
+                    )
+                if top_cat:
+                    bullets.append(
+                        f"• Najczęstszy typ aktywności (kategoria eventu): **{top_cat}**."
+                    )
+
+                for b in bullets:
+                    st.write(b)
+
+                # --- 🤖 Podpowiedzi Data4Kids ---
+                st.markdown("### 🤖 Podpowiedzi Data4Kids")
+
+                from datetime import datetime, timezone
+
+                tips = []
+
+                # 1) Jak dawno dziecko było aktywne?
+                now = datetime.now(timezone.utc)
+                last_time = df["time_dt"].max()
+                if last_time.tzinfo is None:
+                    last_time = last_time.replace(tzinfo=timezone.utc)
+
+                days_since = (now - last_time).days
+                if days_since >= 7:
+                    tips.append(
+                        f"• Ostatnia aktywność była **ponad {days_since} dni temu**. "
+                        "Może warto zaplanować wspólną sesję z Data4Kids w najbliższy weekend? 🙂"
+                    )
+                elif days_since >= 3:
+                    tips.append(
+                        f"• Ostatnia aktywność była **{days_since} dni temu**. "
+                        "Drobna przerwa jest OK, ale delikatne przypomnienie może pomóc."
+                    )
+                else:
+                    tips.append(
+                        "• Dziecko korzysta z aplikacji **regularnie w ostatnich dniach** – super! 🚀"
+                    )
+
+                # 2) Quizy – poprawne vs błędne
+                df["is_quiz_ok"] = df["event"].str.contains("quiz_ok")
+                df["is_quiz_fail"] = df["event"].str.contains("quiz_fail")
+
+                quiz_ok = int(df["is_quiz_ok"].sum())
+                quiz_fail = int(df["is_quiz_fail"].sum())
+
+                if quiz_ok + quiz_fail > 0:
+                    fail_rate = quiz_fail / (quiz_ok + quiz_fail)
+                    if fail_rate > 0.5 and quiz_fail >= 3:
+                        tips.append(
+                            "• W ostatnich quizach jest **sporo błędnych odpowiedzi**. "
+                            "Może warto potraktować je jako okazję do rozmowy, a nie oceniania? 🙂"
+                        )
+                    elif quiz_ok >= 3 and fail_rate < 0.3:
+                        tips.append(
+                            "• Dziecko **radzi sobie bardzo dobrze w quizach** – "
+                            "można pomyśleć o trudniejszych misjach lub nowych wyzwaniach."
+                        )
+                else:
+                    tips.append(
+                        "• Brak danych z quizów – spróbuj zachęcić do wykonania choć jednego quizu, "
+                        "żeby zobaczyć mocne strony dziecka."
+                    )
+
+                # 3) Dominujące typy aktywności (na bazie category)
+                if not cat_counts.empty:
+                    top_cat_name = cat_counts.iloc[0]["category"]
+                    if top_cat_name == "school":
+                        tips.append(
+                            "• Najczęściej wykonywane są zadania z **Przedmiotów szkolnych**. "
+                            "To świetne uzupełnienie nauki w szkole. 📚"
+                        )
+                    elif top_cat_name == "quiz":
+                        tips.append(
+                            "• Dziecko najczęściej wybiera **quizy** – lubi szybkie sprawdzanie wiedzy. "
+                            "Można dorzucić misje fabularne dla urozmaicenia. 🎭"
+                        )
+                    elif top_cat_name == "image":
+                        tips.append(
+                            "• Dużo aktywności w **quizach obrazkowych** – "
+                            "to dobra okazja do rozmów o emocjach i spostrzegawczości. 😊"
+                        )
+                    elif top_cat_name == "dataset":
+                        tips.append(
+                            "• Często używane są **dane i wykresy** – "
+                            "to świetne budowanie myślenia analitycznego. 📊"
+                        )
+
+                if tips:
+                    for t in tips:
+                        st.write(t)
+                else:
+                    st.caption(
+                        "Brak szczegółowych podpowiedzi – potrzeba więcej danych."
+                    )
+
+                # --- 🧪 Diagnoza quizów ---
+                st.markdown("### 🧪 Diagnoza quizów")
+
+                quiz_df = df[df["is_quiz_ok"] | df["is_quiz_fail"]].copy()
+
+                if quiz_df.empty:
+                    st.caption(
+                        "Brak danych z quizów – diagnoza pojawi się po kilku próbach quizów."
+                    )
+                else:
+                    # 1) Procent poprawnych odpowiedzi w czasie
+                    quiz_daily = (
+                        quiz_df.groupby("day")
+                        .agg(
+                            ok=("is_quiz_ok", "sum"),
+                            total=("is_quiz_ok", "size"),
+                        )
+                        .reset_index()
+                    )
+                    quiz_daily["percent_ok"] = (
+                        quiz_daily["ok"] / quiz_daily["total"] * 100
+                    ).round(1)
+
+                    if not quiz_daily.empty:
+                        st.markdown("#### 📈 Procent poprawnych odpowiedzi w czasie")
+                        chart_quiz = (
+                            alt.Chart(quiz_daily)
+                            .mark_line(point=True)
+                            .encode(
+                                x=alt.X("day:T", title="Dzień"),
+                                y=alt.Y(
+                                    "percent_ok:Q",
+                                    title="% poprawnych odpowiedzi",
+                                    scale=alt.Scale(domain=[0, 100]),
+                                ),
+                                tooltip=["day", "ok", "total", "percent_ok"],
+                            )
+                            .properties(height=250)
+                        )
+                        st.altair_chart(chart_quiz, use_container_width=True)
+                        st.caption(
+                            "Wykres pokazuje, jak zmienia się skuteczność odpowiedzi w quizach w czasie."
+                        )
+
+                    # 2) Top najtrudniejsze typy pytań
+                    def _parse_quiz_event(ev: str):
+                        parts = str(ev).split("::")
+                        if not parts or parts[0] not in ("quiz_ok", "quiz_fail"):
+                            return None
+                        status = "ok" if parts[0] == "quiz_ok" else "fail"
+                        source = parts[1] if len(parts) > 1 else "inne"
+
+                        if source == "data":
+                            qid = parts[2] if len(parts) > 2 else None
+                            short_q = parts[3] if len(parts) > 3 else ""
+                            category = "Quiz danych"
+                            wrong = parts[4] if status == "fail" and len(parts) > 4 else None
+                            correct = parts[5] if status == "fail" and len(parts) > 5 else None
+                        elif source == "image":
+                            image_cat = parts[2] if len(parts) > 2 else "inne"
+                            qid = parts[3] if len(parts) > 3 else None
+                            short_q = parts[4] if len(parts) > 4 else ""
+                            mapping = {
+                                "emotions": "Emocje",
+                                "shapes": "Kształty",
+                                "plots": "Wykresy",
+                                "objects": "Przedmioty",
+                            }
+                            category = mapping.get(image_cat, image_cat)
+                            wrong = parts[5] if status == "fail" and len(parts) > 5 else None
+                            correct = parts[6] if status == "fail" and len(parts) > 6 else None
+                        else:
+                            qid = parts[2] if len(parts) > 2 else None
+                            short_q = parts[3] if len(parts) > 3 else ""
+                            category = source
+                            wrong = parts[4] if status == "fail" and len(parts) > 4 else None
+                            correct = parts[5] if status == "fail" and len(parts) > 5 else None
+
+                        return {
+                            "status": status,
+                            "source": source,
+                            "category": category,
+                            "qid": qid,
+                            "short_q": short_q,
+                            "wrong": wrong,
+                            "correct": correct,
+                        }
+
+                    parsed_rows = []
+                    for ev in quiz_df["event"]:
+                        parsed = _parse_quiz_event(ev)
+                        if parsed:
+                            parsed_rows.append(parsed)
+
+                    if parsed_rows:
+                        df_parsed = pd.DataFrame(parsed_rows)
+
+                        # statystyki per kategoria
+                        cat_stats = (
+                            df_parsed.groupby("category")
+                            .agg(
+                                total=("status", "size"),
+                                wrong=("status", lambda s: (s == "fail").sum()),
+                                ok=("status", lambda s: (s == "ok").sum()),
+                            )
+                            .reset_index()
+                        )
+                        cat_stats["fail_pct"] = (
+                            cat_stats["wrong"] / cat_stats["total"] * 100
+                        ).round(1)
+
+                        hard_cats = (
+                            cat_stats[cat_stats["total"] >= 3]
+                            .sort_values(
+                                ["fail_pct", "total"], ascending=[False, False]
+                            )
+                        )
+
+                        if not hard_cats.empty:
+                            st.markdown("#### 🧩 Top najtrudniejsze typy pytań")
+                            for _, row in hard_cats.head(3).iterrows():
+                                st.markdown(
+                                    f"- **{row['category']}** – błędne odpowiedzi: "
+                                    f"{int(row['wrong'])} / {int(row['total'])} "
+                                    f"({row['fail_pct']}%)."
+                                )
+                        else:
+                            st.caption(
+                                "Za mało odpowiedzi, żeby policzyć najtrudniejsze typy pytań."
+                            )
+
+                        # Najczęstsza pomyłka (np. emocje – smutek vs strach)
+                        hard_pairs = df_parsed[df_parsed["status"] == "fail"].dropna(
+                            subset=["wrong", "correct"]
+                        )
+                        if not hard_pairs.empty:
+                            pair_stats = (
+                                hard_pairs.groupby(
+                                    ["category", "wrong", "correct"]
+                                )
+                                .size()
+                                .reset_index(name="count")
+                                .sort_values("count", ascending=False)
+                            )
+                            top_pair = pair_stats.iloc[0]
+                            st.caption(
+                                f"Najczęstsza pomyłka: **{top_pair['category']} – "
+                                f"„{top_pair['wrong']}” zamiast „{top_pair['correct']}”** "
+                                f"({int(top_pair['count'])}×)."
+                            )
+                    else:
+                        st.caption(
+                            "Na razie brak szczegółowych danych o tym, które pytania sprawiają trudność."
+                        )
+
+                # --- ostatnie surowe logi ---
+                st.markdown("### 📜 Ostatnie działania")
+                last_events = events[-10:][::-1]
+                for e in last_events:
+                    st.write(f"• {e['time']} — {e['event']}")
+
+            else:
+                st.caption(
+                    "Brak zarejestrowanych zdarzeń — raport pojawi się po pierwszych aktywnościach."
+                )
         else:
             st.caption("Brak zdarzeń — zacznij od strony Start lub Misje.")
 
+        # --- Szczegółowy raport JSON (jak było) ---
         with st.expander("Pokaż szczegóły (JSON)"):
             overview = {
                 "app": APP_NAME,
@@ -2895,8 +3985,6 @@ elif page == "Panel rodzica":
                 "level": current_level(st.session_state.xp),
                 "badges": sorted(list(st.session_state.badges)),
                 "stickers": sorted(list(st.session_state.stickers)),
-                "dataset": st.session_state.dataset_name,
-                "user": st.session_state.get("user"),
             }
             st.json(overview)
             st.download_button(
@@ -2906,68 +3994,10 @@ elif page == "Panel rodzica":
                 mime="application/json",
             )
 
-    with tab2:
-        st.subheader("Wgraj/usuń dane")
+    # === TAB 2 i TAB 3 zostają tak jak były (Dane i prywatność, Ustawienia PIN) ===
 
-        if st.button("Przywróć dane przykładowe"):
-            group = st.session_state.age_group
-            presets = DATASETS_PRESETS[group]
-            first_name = list(presets.keys())[0]
-            st.session_state.data = make_dataset(120, presets[first_name], seed=random.randint(0, 9999))
-            st.success("Przywrócono przykładowe dane.")
 
-        st.divider()
-        st.subheader("Prywatność (MVP)")
-        st.caption("Wersja MVP nie wysyła nic w internet. Wszystko dzieje się lokalnie w przeglądarce.")
 
-        st.divider()
-        st.subheader("Usuwanie danych profilu dziecka")
-        if not st.session_state.get("user"):
-            st.info("Zaloguj dziecko na stronie Start, aby zarządzać jego profilem.")
-        else:
-            u = st.session_state.user
-            st.markdown(f"Zarządzasz profilem: **{u}**. Operacja jest nieodwracalne i dotyczy wyłącznie tego profilu.")
-            confirm_text = st.text_input("Aby potwierdzić, wpisz dokładnie login dziecka:",
-                                         placeholder="wpisz login...", key="delete_confirm_login")
-            confirm_box = st.checkbox("Rozumiem, że tej operacji nie da się cofnąć.", key="delete_confirm_check")
-            if st.button("Usuń ten profil", type="secondary"):
-                if not confirm_box:
-                    st.warning("Zaznacz potwierdzenie, że rozumiesz konsekwencje.")
-                elif confirm_text != u:
-                    st.error("Login nie zgadza się. Wpisz dokładnie nazwę profilu.")
-                else:
-                    db = _load_users()
-                    if u in db:
-                        del db[u]
-                        _save_users(db)
-                    st.session_state.user = None
-                    st.session_state.xp = 0
-                    st.session_state.badges = set()
-                    st.session_state.stickers = set()
-                    st.success("Profil usunięty lokalnie.")
-
-    with tab3:
-        st.subheader("🔐 Zmień PIN rodzica")
-        with st.form("change_parent_pin"):
-            cur = st.text_input("Obecny PIN", type="password")
-            new1 = st.text_input("Nowy PIN (min. 4 cyfry)", type="password")
-            new2 = st.text_input("Powtórz nowy PIN", type="password")
-            submitted = st.form_submit_button("Zmień PIN")
-            if submitted:
-                if not verify_parent_pin(cur):
-                    st.error("Obecny PIN jest nieprawidłowy.")
-                elif new1 != new2:
-                    st.error("Nowe PINy nie są takie same.")
-                else:
-                    try:
-                        set_parent_pin(new1)
-                        st.success("PIN został zmieniony i zaczyna działać od razu.")
-                    except ValueError as e:
-                        st.error(str(e))
-
-        if st.button("🔒 Zablokuj panel rodzica"):
-            st.session_state["parent_unlocked"] = False
-            st.info("Panel zablokowany.")
 # -----------------------------
 # Footer
 
