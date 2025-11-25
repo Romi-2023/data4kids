@@ -7,7 +7,7 @@ import random
 import io
 import re
 from math import ceil
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 from dateutil import tz
 from typing import Optional, List, Dict
 from fpdf import FPDF
@@ -1116,6 +1116,7 @@ if page == "Start":
                                 "stickers": [],
                                 "badges": [],
                                 "accepted_terms_version": VERSION,
+                                "created_at": datetime.now(tz=tz.gettz("Europe/Warsaw")).isoformat(),
                             }
                             _save_users(db)
                             st.session_state.reg_step = 1
@@ -3372,6 +3373,94 @@ elif page == "Administrator":
     st.markdown("## 🔧 Panel administratora — operacje")
     db = _load_users()
 
+    # === Statystyki użytkowników ===
+    users_list = [k for k in db.keys() if not k.startswith("_")]
+    total_users = len(users_list)
+
+    st.subheader("📊 Statystyki użytkowników")
+
+    rows = []
+    for u in users_list:
+        prof = db.get(u, {})
+        created_at = prof.get("created_at")
+        if created_at:
+            rows.append({"login": u, "created_at": created_at})
+
+    if rows:
+        df_users = pd.DataFrame(rows)
+        df_users["created_at_dt"] = pd.to_datetime(
+            df_users["created_at"], errors="coerce"
+        )
+        df_users = df_users.dropna(subset=["created_at_dt"])
+
+        if not df_users.empty:
+            df_users = df_users.sort_values("created_at_dt")
+
+            now = datetime.now(tz=tz.gettz("Europe/Warsaw"))
+            seven_days_ago = now - timedelta(days=7)
+            thirty_days_ago = now - timedelta(days=30)
+
+            recent7 = df_users[df_users["created_at_dt"] >= seven_days_ago]
+            recent30 = df_users[df_users["created_at_dt"] >= thirty_days_ago]
+
+            c1, c2, c3 = st.columns(3)
+            c1.metric("Łączna liczba kont", total_users)
+            c2.metric("Nowe konta (7 dni)", recent7["login"].nunique())
+            c3.metric("Nowe konta (30 dni)", recent30["login"].nunique())
+
+            # --- dziennie (ostatnie 30 dni) ---
+            daily = (
+                recent30.assign(day=lambda d: d["created_at_dt"].dt.date)
+                .groupby("day")
+                .size()
+                .reset_index(name="nowe_konta")
+            )
+
+            if not daily.empty:
+                st.markdown("#### Rejestracje dzienne (ostatnie 30 dni)")
+                chart_daily = (
+                    alt.Chart(daily)
+                    .mark_line(point=True)
+                    .encode(
+                        x=alt.X("day:T", title="Dzień"),
+                        y=alt.Y("nowe_konta:Q", title="Nowe konta"),
+                    )
+                    .properties(height=200)
+                )
+                st.altair_chart(chart_daily, use_container_width=True)
+
+            # --- tygodniowo (ostatnie 12 tygodni) ---
+            weekly = (
+                df_users.set_index("created_at_dt")
+                .resample("W-MON")
+                .size()
+                .reset_index(name="nowe_konta")
+            )
+            weekly = weekly.tail(12)
+
+            if not weekly.empty:
+                st.markdown("#### Rejestracje tygodniowe")
+                chart_week = (
+                    alt.Chart(weekly)
+                    .mark_bar()
+                    .encode(
+                        x=alt.X("created_at_dt:T", title="Tydzień (poniedziałek)"),
+                        y=alt.Y("nowe_konta:Q", title="Nowe konta"),
+                    )
+                    .properties(height=200)
+                )
+                st.altair_chart(chart_week, use_container_width=True)
+    else:
+        c1, _ = st.columns([1, 1])
+        c1.metric("Łączna liczba kont", total_users)
+        st.caption(
+            "Istniejące konta nie mają jeszcze pola `created_at`. "
+            "Nowe rejestracje będą zliczane od teraz. 🙂"
+        )
+
+    st.divider()
+
+    # === Lista kont jak wcześniej ===
     st.subheader("Konta użytkowników")
     if not db or all(k.startswith("_") for k in db.keys()):
         st.caption("Brak użytkowników w bazie danych.")
@@ -3380,7 +3469,6 @@ elif page == "Administrator":
         cols[0].markdown("**Login**")
         cols[1].markdown("**XP**")
         cols[2].markdown("**Akcje**")
-        # show all real users (exclude internal keys starting with _)
         users_list = [k for k in db.keys() if not k.startswith("_")]
         for u in users_list:
             prof = db.get(u, {})
